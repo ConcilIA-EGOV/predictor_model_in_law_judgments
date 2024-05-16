@@ -19,7 +19,7 @@ from util.parameters import INPUT_SIZE, OUTPUT_SIZE, LR, BATCH_SIZE
 from util.parameters import NUM_EPOCHS, FILE_PATH, PYTORCH_MODEL_FILE
 from util.parameters import RANDOM_STATE, TEST_SIZE, RESULTS_COLUMN
 from formatation.input_formatation import load_data, separate_features_labels
-from studies.scikit import split_train_test
+from src.training import split_train_test
 
 
 class CustomDataset(Dataset):

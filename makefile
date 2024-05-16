@@ -1,9 +1,8 @@
 all:
 	@echo "make run          - to run the program"
 	@echo "make clean        - to clean the directory"
-	@echo "make test         - to run the test cases"
-	@echo "make pytorch-test - to run the pytorch test cases"
-	@echo "make scikit-test  - to run the scikit test cases"
+	@echo "make test         - to run the models test cases"
+	@echo "make training     - to run the model training cases"
 
 run:
 	@python3 main.py
@@ -11,12 +10,8 @@ run:
 clean:
 	@rm -rf __pycache__
 
-pytorch-test:
-	@python3 studies/pytorch.py
-
-scikit-test:
-	@python3 studies/scikit.py
+training:
+	@python3 src/training.py
 
 test:
-	@python3 studies/pytorch.py > logs/log_pytorch.txt
-	@python3 studies/scikit.py > logs/log_scikit.txt
+	@python3 studies/model_parameters.py
