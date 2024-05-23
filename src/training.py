@@ -85,6 +85,7 @@ def main():
     # model = KNeighborsClassifier()
     # model = SVC()
     model = GradientBoostingClassifier()
+
     print(f"Training the {model.__str__} model\n---------------------------")
 
     best_acc = json.load(open(BEST_SCORE_STORAGE, "r"))["Cross Validation Mean"]

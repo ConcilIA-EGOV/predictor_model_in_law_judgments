@@ -20,14 +20,6 @@ TEST_SIZE = 0.3
 # Semente aleatória
 RANDOM_STATE = 42
 # parâmetros do modelo
-SDG_PARAMS = {
-    # Loss function
-    'LOSS': 'hinge',
-    # Número máximo de iterações
-    'MAX_ITER': 1000,
-    # Tolerância
-    'TOL':1e-3
-}
 
 # pytorch parameters
 """

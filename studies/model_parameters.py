@@ -16,50 +16,113 @@ from sklearn.calibration import LinearSVC
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import GradientBoostingClassifier
-
-from sklearn.linear_model import SGDClassifier
 # -----------
 from sklearn.model_selection import GridSearchCV
-from util.parameters import FILE_PATH, RESULTS_COLUMN
+from util.parameters import FILE_PATH, RESULTS_COLUMN, CV
 from formatation.input_formatation import load_data, separate_features_labels
 from src.preprocessing import preprocessing
 
-def grid_search(X_train, y_train, classifier, param_grid):
+def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
 
     # Realizar a busca em grade
-    grid_search = GridSearchCV(classifier, param_grid, cv=5)
+    grid_search = GridSearchCV(classifier, param_grid, cv=cv_)
     grid_search.fit(X_train, y_train)
 
     # Melhor combinação de hiperparâmetros
     best_params = grid_search.best_params_
     return best_params
 
-# Definir os hiperparâmetros a serem ajustados
-param_grid = {
-    'loss': ['hinge', 'log', 'modified_huber', 'squared_hinge'],
-    'penalty': ['l2', 'l1', 'elasticnet'],
-    'alpha': [0.0001, 0.001, 0.01, 0.1],
-    'learning_rate': ['constant', 'optimal', 'invscaling', 'adaptive'],
-    'eta0': [0.01, 0.1, 1],
-    'max_iter': [10000, 15000],
-    'tol': [1e-3, 1e-4, 1e-5]
+
+models = {
+    'LinearSVC': LinearSVC(),
+    'KNN': KNeighborsClassifier(),
+    'SVC': SVC(),
+    'GradientBoosting': GradientBoostingClassifier()
 }
 
+main_model = GradientBoostingClassifier()
 
+param_grid_LSVC = {
+    'penalty': ['l1', 'l2'],
+    'loss': ['squared_hinge', 'hinge'],
+    'dual': [True, False],
+    'tol': [0.0001],
+    'C': [1],
+    'multi_class': ['ovr', 'crammer_singer'],
+    'fit_intercept': [True, False],
+    'intercept_scaling': [1.0],
+    'class_weight': ['Mapping', 'str', None],
+    'verbose': [0],
+    'random_state': ['Int', 'RandomState', None],
+    'max_iter': [1000]
+}
 
-models = {'SDG': SGDClassifier(),
-          'LinearSVC': LinearSVC(),
-          'KNN': KNeighborsClassifier(),
-          'SVC': SVC(),
-          'GradientBoosting': GradientBoostingClassifier()
-        }
+param_grid_KNN = {
+    'n_neighbors': [5],
+    'weights': ["((...) -> Any)", ['uniform', 'distance'], None],
+    'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
+    'leaf_size': [30],
+    'p': [2],
+    'metric': ['str', '((...) -> Any)', "minkowski"],
+    'metric_params': [dict(), None],
+    'n_jobs': 'Int | None = None'
+}
+
+param_grid_SVC = {
+    'C': [1],
+    'kernel': ['((...) -> Any)', ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']],
+    'degree': [3],
+    'gamma': [float, ['scale', 'auto']],
+    'coef0': [0],
+    'shrinking': [True, False],
+    'probability': [True, False],
+    'tol': [0.001],
+    'cache_size': [200],
+    'class_weight': ['Mapping', 'str', None],
+    'verbose': [True, False],
+    'max_iter': [1000],
+    'decision_function_shape': ['ovo', 'ovr'],
+    'break_ties': [True, False],
+    'random_state': ['Int', 'RandomState', None]
+}
+
+param_grid_GB = {
+    'loss': ['log_loss', 'deviance', 'exponential'],
+    'learning_rate': [0.1],
+    'n_estimators': [100],
+    'subsample': [1.0],
+    'criterion': ['friedman_mse', 'squared_error'],
+    'min_samples_split': [2.0],
+    'min_samples_leaf': [1.0],
+    'min_weight_fraction_leaf': [0.0],
+    'max_depth': [None, 3],
+    'min_impurity_decrease': [0.0],
+    'init': ['str', 'BaseEstimator', None],
+    'random_state': ['Int', 'RandomState', None],
+    'max_features': ['float', 'int', ['auto', 'sqrt', 'log2'], None],
+    'verbose': [0],
+    'max_leaf_nodes': ['Int', None],
+    'warm_start': [True, False],
+    'validation_fraction': [0.1],
+    'n_iter_no_change': ['Int', None],
+    'tol': [0.0001],
+    'ccp_alpha': [0.0]
+}
+
+param_grid = {
+    'LinearSVC': param_grid_LSVC,
+    'KNN': param_grid_KNN,
+    'SVC': param_grid_SVC,
+    'GradientBoosting': param_grid_GB
+}
 
 if __name__ == "__main__":
     data = load_data(FILE_PATH)
     X, y = separate_features_labels(data, RESULTS_COLUMN)
     X, y = preprocessing(X, y)
     best_params_all = dict()
-    grid_search(X, y, SGDClassifier(), param_grid)
-    '''for key, model in models.items():
-        best_params_all[key] = grid_search(X, y, model, param_grid)
+    grid_search(X, y, GradientBoostingClassifier(), param_grid, CV)
+    '''
+    for key, model in models.items():
+        best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
     '''
