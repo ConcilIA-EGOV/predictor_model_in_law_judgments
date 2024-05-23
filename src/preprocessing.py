@@ -11,6 +11,7 @@ sys.path.append(project_dir)
 ###
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from util.parameters import TEST_SIZE, RANDOM_STATE
 
 def split_train_test(X, y):

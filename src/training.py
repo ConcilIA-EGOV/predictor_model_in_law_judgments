@@ -17,6 +17,12 @@ from util.parameters import FILE_PATH, RESULTS_COLUMN, CV, BEST_SCORE_STORAGE
 from util.parameters import NUM_EPOCHS, MAIN_MODEL_FILE
 from formatation.input_formatation import load_data, separate_features_labels
 from src.preprocessing import preprocessing
+############################
+from sklearn.calibration import LinearSVC
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+
 
 def train_model(model, X_train, y_train):
     """
@@ -74,7 +80,12 @@ def main():
     # X_train, X_test, y_train, y_test = split_train_test(X, y, TEST_SIZE, RANDOM_STATE)
     
     # Passo 5: Inicializar o modelo de Classificação
-    model = load(MAIN_MODEL_FILE)
+    # model = load(MAIN_MODEL_FILE)
+    # model = LinearSVC(dual=True, max_iter=10000, tol=1e-3)
+    # model = KNeighborsClassifier()
+    # model = SVC()
+    model = GradientBoostingClassifier()
+    print(f"Training the {model.__str__} model\n---------------------------")
 
     best_acc = json.load(open(BEST_SCORE_STORAGE, "r"))["Cross Validation Mean"]
     for epoch in range(NUM_EPOCHS):
@@ -95,6 +106,5 @@ def main():
 
 # Chamando a função principal para treinar o modelo
 if __name__ == "__main__":
-    print("Training the scikit model\n---------------------------")
     main()
     print("\n---------------------------\nModel trained successfully!")
