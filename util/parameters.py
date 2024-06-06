@@ -5,12 +5,29 @@ MODEL_PATH = "models_storage/"
 MAIN_MODEL_FILE = MODEL_PATH + "main_model.joblib"
 BEST_SCORE_STORAGE = MODEL_PATH + "best_scores.json"
 
+
+DATA_VARS = [
+    "Direito de arrependimento/Cancelamento pelo consumidor",
+    "Descumprimento de oferta (assento)",
+    "Extravio Definitivo",
+    "Extravio Temporário",
+    "Intervalo do Extravio",
+    "Violação (furto, avaria)",
+    "Cancelamento (sem realocação)/Alteração de destino",
+    "Atraso (com realocação)",
+    "Intervalo do Atraso",
+    "Culpa Exclusiva do Consumidor",
+    "Condições Climáticas Desfavoráveis/Fechamento Aeroporto",
+    "No Show",
+    "Overbooking",
+    "Assistência da Cia Aérea",
+    "Hipervulnerável (idoso/criança/pcd)",
+    "Dano Moral"
+]
 ##############
 # Parâmetros #
 ##############
 
-# Índice da coluna de resultados (última)
-RESULTS_COLUMN = -1
 # Número de épocas
 NUM_EPOCHS = 100
 # Número de folds para a validação cruzada
