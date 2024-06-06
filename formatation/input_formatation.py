@@ -15,7 +15,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
-from util.parameters import DATA_VARS, FILE_PATH
+from util.parameters import DATA_VARS, FILE_PATH, USE_RANGES
 
 def hour_to_float(value, interval_values=[]):
     # print(" --> Valor com horas:", value)
@@ -39,6 +39,7 @@ def format_comma_strings(value, interval_values=[]):
     return f_value
 
 # Função para reformatar valores float
+# TODO: função específica para cada coluna
 def format_cell(value):
     if type(value) == int:
         return value
@@ -54,7 +55,7 @@ def format_cell(value):
         return -1
     if ',' in value:
         # print(" --> Valor com vírgula:", value)
-        return float(value.replace(',', '.'))
+        return format_comma_strings(value)
     if ':' in value:
         return hour_to_float(value)
     else:
@@ -65,19 +66,21 @@ def trim_columns(df: pd.DataFrame):
     """
     Remove colunas não relacionadas ao experimento
     """
-    if "Sentença" in df.columns:
-        df = df.drop(columns="Sentença")
-    target_column = -1
-    for col in df.columns:
-        if any(i in col for i in ["Resultado", "Dano",
-                                  "resultado", "dano",
-                                  "Result", "Damage",
-                                  "result", "damage"]):
-            target_column = df.columns.get_loc(col)
-            break
-    if target_column == -1:
-        print("Coluna alvo não encontrada")
-        return None
+    df = df.drop(columns="sentença")
+    df = df.drop(columns="número_do_processo")
+    df = df.drop(columns="julgamento")
+    df = df.drop(columns="julgamento(2)")
+    df = df.drop(columns="data_do_julgamento")
+    df = df.drop(columns="julgador(a)")
+    df = df.drop(columns="tipo_julgador(a)")
+    if USE_RANGES:
+        df = df.drop(columns="dano_moral_individual")
+        df = df.drop(columns="intervalo_do_extravio_(dias)")
+        df = df.drop(columns="intervalo_do_atraso_(horas:minutos)")
+    else:
+        df = df.drop(columns="faixa_dano_moral_individual")
+
+    target_column = df.columns.get_loc("dano_moral_individual")
     if target_column != df.shape[1] - 1:
         # Mover a coluna alvo para a última posição
         tc = df.columns[target_column]

@@ -24,6 +24,7 @@ DATA_VARS = [
     "Hipervulnerável (idoso/criança/pcd)",
     "Dano Moral"
 ]
+USE_RANGES = True
 ##############
 # Parâmetros #
 ##############
