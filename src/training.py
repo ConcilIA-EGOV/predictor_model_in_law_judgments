@@ -13,7 +13,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
-from util.parameters import FILE_PATH, RESULTS_COLUMN, CV, BEST_SCORE_STORAGE
+from util.parameters import FILE_PATH, CV, BEST_SCORE_STORAGE
 from util.parameters import NUM_EPOCHS, MAIN_MODEL_FILE
 from formatation.input_formatation import load_data, separate_features_labels
 from src.preprocessing import preprocessing
@@ -47,19 +47,19 @@ def test_model(model, X, y, cv):
     return cv_score
 
 
-def save_model(model, cv_score, model_file, best_score_storage):
+def save_model(model, cv_score):
     """
     Salvar o modelo treinado em um arquivo e o score em outro
     """
     score = {"Cross Validation Scores": cv_score.tolist(),
              "Cross Validation Mean": cv_score.mean()}
-    json.dump(score, open(best_score_storage, "w"))
-    dump(model, model_file)
+    json.dump(score, open(BEST_SCORE_STORAGE, "w"))
+    dump(model, MAIN_MODEL_FILE)
     return
 
 
-def print_results(cv_score, epoch, num_epochs):
-    print(f"Epoch {epoch + 1}/{num_epochs}")
+def print_results(cv_score, epoch):
+    print(f"Epoch {epoch + 1}/{NUM_EPOCHS}")
     prt_cv = " - ".join([f"{(score)*100:.2f}%" for score in cv_score])
     print(f"Cross Validation Scores: {prt_cv}")
     print(f"Cross Validation Mean: {(cv_score.mean())*100:.2f}%\n")
@@ -69,9 +69,12 @@ def print_results(cv_score, epoch, num_epochs):
 def main():
     # Passo 1: Carregar os dados do CSV
     data = load_data(FILE_PATH)
+    if data is None:
+        print("Erro ao carregar os dados!")
+        return
     
     # Passo 2: Separar features (X) dos labels (Y)
-    X, y = separate_features_labels(data, RESULTS_COLUMN)
+    X, y = separate_features_labels(data)
     
     # Passo 3: Pré-processar os dados
     X, y = preprocessing(X, y)
@@ -99,9 +102,8 @@ def main():
         # Passo 8: Salvar o melhor modelo
         if cv_score.mean() > best_acc:
             best_acc = cv_score.mean()
-            save_model(model, cv_score, MAIN_MODEL_FILE,
-                       BEST_SCORE_STORAGE)
-            print_results(cv_score, epoch, NUM_EPOCHS)
+            save_model(model, cv_score)
+            print_results(cv_score, epoch)
 
 
 

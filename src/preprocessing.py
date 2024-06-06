@@ -12,6 +12,7 @@ sys.path.append(project_dir)
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import RobustScaler
 from util.parameters import TEST_SIZE, RANDOM_STATE
 
 def split_train_test(X, y):
@@ -28,7 +29,7 @@ def preprocessing(X_, y_):
     """
     Preprocessar os dados
     """
-    scaler = StandardScaler()
+    scaler = RobustScaler()
     X = scaler.fit_transform(X_)
     y = y_
 
