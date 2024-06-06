@@ -1,4 +1,3 @@
-from sklearn.model_selection import cross_val_score
 from joblib import dump, load
 import json
 import numpy as np
@@ -16,12 +15,13 @@ sys.path.append(project_dir)
 from util.parameters import FILE_PATH, CV, BEST_SCORE_STORAGE
 from util.parameters import NUM_EPOCHS, MAIN_MODEL_FILE
 from formatation.input_formatation import load_data, separate_features_labels
-from src.preprocessing import preprocessing
+from src.preprocessing import preprocessing, split_train_test
 ############################
 from sklearn.calibration import LinearSVC
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import classification_report
 
 
 def train_model(model, X_train, y_train):
@@ -39,21 +39,20 @@ def train_model(model, X_train, y_train):
     return model
 
 
-def test_model(model, X, y, cv):
+def test_model(model, X, y):
     '''
     Testar o modelo usando o conjunto de teste
     '''
-    cv_score = cross_val_score(model, X, y, cv=cv)
-    return cv_score
+    score = classification_report(y, model.predict(X), output_dict=True)
+    return score
 
 
-def save_model(model, cv_score):
+def save_model(model, score):
     """
     Salvar o modelo treinado em um arquivo e o score em outro
     """
-    score = {"Cross Validation Scores": cv_score.tolist(),
-             "Cross Validation Mean": cv_score.mean()}
-    json.dump(score, open(BEST_SCORE_STORAGE, "w"))
+    dict_score = {"best_score": score}
+    json.dump(dict_score, open(BEST_SCORE_STORAGE, "w"))
     dump(model, MAIN_MODEL_FILE)
     return
 
@@ -80,7 +79,7 @@ def main():
     X, y = preprocessing(X, y)
 
     # Passo 4: Dividir em conjuntos de treino e teste
-    # X_train, X_test, y_train, y_test = split_train_test(X, y, TEST_SIZE, RANDOM_STATE)
+    X_train, X_test, y_train, y_test = split_train_test(X, y)
     
     # Passo 5: Inicializar o modelo de Classificação
     # model = load(MAIN_MODEL_FILE)
@@ -91,23 +90,21 @@ def main():
 
     print(f"Training the {model.__str__} model\n---------------------------")
 
-    best_acc = json.load(open(BEST_SCORE_STORAGE, "r"))["Cross Validation Mean"]
+    best_acc = json.load(open(BEST_SCORE_STORAGE, "r"))["best_score"]
     for epoch in range(NUM_EPOCHS):
         # Passo 6: Treinar o modelo
-        train_model(model, X, y)
+        train_model(model, X_train, y_train)
         
         # Passo 7: Testar o modelo usando o conjunto de teste
-        cv_score = test_model(model, X, y, CV)
+        score = test_model(model, X_test, y_test)
 
         # Passo 8: Salvar o melhor modelo
-        if cv_score.mean() > best_acc:
-            best_acc = cv_score.mean()
-            save_model(model, cv_score)
-            print_results(cv_score, epoch)
-
+        if score > best_acc:
+            best_acc = score
+            save_model(model, score)
+            print_results(score, epoch)
 
 
 # Chamando a função principal para treinar o modelo
 if __name__ == "__main__":
     main()
-    print("\n---------------------------\nModel trained successfully!")

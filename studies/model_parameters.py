@@ -1,9 +1,6 @@
 ###
 import sys
 import os
-
-
-
 # Obtém o diretório atual do script
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -12,10 +9,12 @@ project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
 import numpy as np
+import json
 from sklearn.calibration import LinearSVC
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.linear_model import Perceptron
 # -----------
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
@@ -41,8 +40,7 @@ def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
     grid_search = GridSearchCV(estimator=classifier,
                                param_grid=param_grid,
                                scoring='accuracy',
-                               cv=cv_, n_jobs=-1,
-                               verbose=1, refit=True)
+                               cv=cv_, n_jobs=-1, refit=True)
     grid_search.fit(X_train, y_train)
 
     # Melhor combinação de hiperparâmetros
@@ -118,12 +116,30 @@ param_grid_GB = {
     'ccp_alpha': [0.0, 0.01, 0.1]
 }
 
+param_grid_Perceptron = {
+    'penalty': ['l2', 'l1', 'elasticnet', None],
+    'alpha': [0.0001, 0.001, 0.01],
+    'l1_ratio': [0.15, 0.5, 0.75],
+    'fit_intercept': [True, False],
+    'max_iter': [1000, 1500, 2000],
+    'tol': [0.001, 0.0001],
+    'shuffle': [True, False],
+    'eta0': [1.0, 0.1, 0.01],
+    'n_jobs': [-1],
+    'random_state': [0, 42, 100],
+    'early_stopping': [False, True],
+    'validation_fraction': [0.1, 0.2],
+    'n_iter_no_change': [5, 10],
+    'class_weight': [None, 'balanced'],
+    'warm_start': [False, True]
+}
 
 param_grid = {
     'LinearSVC': param_grid_LSVC,
     'KNN': param_grid_KNN,
     'SVC': param_grid_SVC,
-    'GradientBoosting': param_grid_GB
+    'GradientBoosting': param_grid_GB,
+    'Perceptron': param_grid_Perceptron
 }
 
 
@@ -131,7 +147,8 @@ models = {
     'LinearSVC': LinearSVC(),
     'KNN': KNeighborsClassifier(),
     'SVC': SVC(),
-    'GradientBoosting': GradientBoostingClassifier()
+    'GradientBoosting': GradientBoostingClassifier(),
+    'Perceptron': Perceptron()
 }
 
 main_model = GradientBoostingClassifier()
@@ -145,5 +162,5 @@ if __name__ == "__main__":
     for key, model in models.items():
         best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
     
-    print(best_params_all)
+    json.dump(best_params_all, open("studies/best_parameters", "w"))
     
