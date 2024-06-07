@@ -76,7 +76,7 @@ def main():
     X, y = separate_features_labels(data)
     
     # Passo 3: Pré-processar os dados
-    X, y = preprocessing(X, y)
+    X = preprocessing(X)
 
     # Passo 4: Dividir em conjuntos de treino e teste
     X_train, X_test, y_train, y_test = split_train_test(X, y)
@@ -87,8 +87,6 @@ def main():
     # model = KNeighborsClassifier()
     # model = SVC()
     model = GradientBoostingClassifier()
-
-    print(f"Training the {model.__str__} model\n---------------------------")
 
     best_acc = json.load(open(BEST_SCORE_STORAGE, "r"))["best_score"]
     for epoch in range(NUM_EPOCHS):
