@@ -29,6 +29,7 @@ def preprocessing(X: pd.DataFrame):
     """
     Preprocessar os dados
     """
+    return X
     categorical_features = X.select_dtypes(include=['int', 'int64']).columns.tolist()
     continuous_features = [col for col in X.columns if X[col].nunique() > 2]
     

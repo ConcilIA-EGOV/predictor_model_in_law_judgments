@@ -58,9 +58,9 @@ param_grid_LSVC = {
     'fit_intercept': [True, False],
     'intercept_scaling': [0.1, 0.5, 1.0, 2.0, 5.0],
     'class_weight': [None, 'balanced'],  # or a dictionary {class_label: weight}
-    'verbose': [0, 1, 2],
-    'random_state': [None, 42, 100, 200, np.random.RandomState(42)],  # values for reproducibility
-    'max_iter': [1000, 2000, 3000, 4000, 5000]
+    'verbose': [0],
+    'random_state': [None, 42, 100, 200, np.random.RandomState()],  # values for reproducibility
+    'max_iter': [20000, 50000, 100000]
 }
 
 
@@ -85,8 +85,8 @@ param_grid_SVC = {
     'probability': [True, False],
     'tol': [1e-4, 1e-3, 1e-2],
     'cache_size': [200, 500, 1000],
-    'class_weight': [None, 'balanced', {0: 1, 1: 10}, {0: 1, 1: 50}],
-    'verbose': False,  # Geralmente mantido False para evitar log excessivo
+    'class_weight': [None, 'balanced'],
+    'verbose': [False],  # Geralmente mantido False para evitar log excessivo
     'max_iter': [-1, 1000, 5000],  # -1 para sem limite
     'decision_function_shape': ['ovo', 'ovr'],
     'break_ties': [True, False],
@@ -106,7 +106,7 @@ param_grid_GB = {
     'min_impurity_decrease': [0.0, 0.01, 0.05, 0.1],
     'init': [None],  # ou uma instância de estimador, geralmente None
     'random_state': [42, 100, 200, np.random.RandomState(42), ],  # valores comuns para garantir replicabilidade
-    'verbose': False,  # Geralmente mantido False para evitar log excessivo
+    'verbose': [False],  # Geralmente mantido False para evitar log excessivo
     'max_features': [None, 'auto', 'sqrt', 'log2', 0.5, 0.7],
     'max_leaf_nodes': [None, 10, 20, 50, 100, 200],
     'warm_start': [True, False],
@@ -156,7 +156,7 @@ main_model = GradientBoostingClassifier()
 if __name__ == "__main__":
     data = load_data(FILE_PATH)
     X, y = separate_features_labels(data)
-    X, y = preprocessing(X, y)
+    X = preprocessing(X)
     best_params_all = dict()
     # grid_search(X, y, GradientBoostingClassifier(), param_grid['GradientBoosting'], CV)
     for key, model in models.items():
