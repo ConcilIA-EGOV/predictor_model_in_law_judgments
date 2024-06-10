@@ -51,7 +51,7 @@ def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
 param_grid_LSVC = {
     'penalty': ['l1', 'l2'],
     'loss': ['squared_hinge', 'hinge'],
-    'dual': [True, False],  # 'l1' penalty is not supported with dual=False
+    'dual': ['auto'],  # 'l1' penalty is not supported with dual=False
     'tol': [1e-4, 1e-3, 1e-2],
     'C': [0.01, 0.1, 1, 10, 100],
     'multi_class': ['ovr', 'crammer_singer'],
@@ -59,14 +59,14 @@ param_grid_LSVC = {
     'intercept_scaling': [0.1, 0.5, 1.0, 2.0, 5.0],
     'class_weight': [None, 'balanced'],  # or a dictionary {class_label: weight}
     'verbose': [0],
-    'random_state': [None, 42, 100, 200, np.random.RandomState()],  # values for reproducibility
+    'random_state': [None, 42, 100, 200],  # values for reproducibility
     'max_iter': [20000, 50000, 100000]
 }
 
 
 param_grid_KNN = {
     'n_neighbors': [3, 5, 10, 15, 20, 30, 50],
-    'weights': ['uniform', 'distance', lambda x: 1 / (x + 1e-5), lambda x: x ** 2, 'custom'],
+    'weights': ['uniform', 'distance', 'custom'],
     'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
     'leaf_size': [10, 20, 30, 40, 50, 60],
     'p': [1, 2],  # 1 for Manhattan distance, 2 for Euclidean distance
@@ -87,10 +87,10 @@ param_grid_SVC = {
     'cache_size': [200, 500, 1000],
     'class_weight': [None, 'balanced'],
     'verbose': [False],  # Geralmente mantido False para evitar log excessivo
-    'max_iter': [-1, 1000, 5000],  # -1 para sem limite
+    'max_iter': [-1],  # -1 para sem limite
     'decision_function_shape': ['ovo', 'ovr'],
     'break_ties': [True, False],
-    'random_state': [None, 42, 100, 200, np.random.RandomState(42)]
+    'random_state': [None, 42, 100, 200]
 }
 
 param_grid_GB = {
@@ -105,13 +105,13 @@ param_grid_GB = {
     'max_depth': [None, 3, 5, 10, 20, 50, 100],
     'min_impurity_decrease': [0.0, 0.01, 0.05, 0.1],
     'init': [None],  # ou uma instância de estimador, geralmente None
-    'random_state': [42, 100, 200, np.random.RandomState(42), ],  # valores comuns para garantir replicabilidade
+    'random_state': [42, 100, 200],  # valores comuns para garantir replicabilidade
     'verbose': [False],  # Geralmente mantido False para evitar log excessivo
     'max_features': [None, 'auto', 'sqrt', 'log2', 0.5, 0.7],
     'max_leaf_nodes': [None, 10, 20, 50, 100, 200],
     'warm_start': [True, False],
     'validation_fraction': [0.1, 0.2, 0.3],
-    'n_iter_no_change': [None, 5, 10, 20],
+    'n_iter_no_change': [None, 20, 100],
     'tol': [1e-4, 1e-3, 1e-2],
     'ccp_alpha': [0.0, 0.01, 0.1]
 }
@@ -160,7 +160,14 @@ if __name__ == "__main__":
     best_params_all = dict()
     # grid_search(X, y, GradientBoostingClassifier(), param_grid['GradientBoosting'], CV)
     for key, model in models.items():
-        best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
+        print(f"Testing {key}")
+        try:
+            best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
+            json.dump(best_params_all, open("studies/best_parameters__"+key, "w"))
+        except Exception as e:
+            print(f"Error in {key}")
+            print(e)
+            best_params_all[key] = e
     
     json.dump(best_params_all, open("studies/best_parameters", "w"))
     
