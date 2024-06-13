@@ -55,21 +55,21 @@ param_grid_LSVC = {
     'loss': ['squared_hinge', 'hinge'],
     'dual': ['auto'],  # 'l1' penalty is not supported with dual=False
     'tol': [1e-4, 1e-3, 1e-2],
-    'C': [0.01, 0.1, 1, 10, 100],
+    'C': [0.1, 1, 10],
     'multi_class': ['ovr', 'crammer_singer'],
     'fit_intercept': [True, False],
-    'intercept_scaling': [0.1, 0.5, 1.0, 2.0, 5.0],
+    'intercept_scaling': [0.1, 1.0, 5.0],
     'class_weight': [None, 'balanced'],  # or a dictionary {class_label: weight}
     'verbose': [0],
-    'random_state': [None, 42, 100, 200],  # values for reproducibility
+    'random_state': [None, 42, 100],  # values for reproducibility
     'max_iter': [1000]
 }
 
 param_grid_SVC = {
-    'C': [0.1, 1, 10, 100, 1000],
+    'C': [0.1, 1, 10],
     'kernel': ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
     'degree': [2, 3, 4, 5],
-    'gamma': ['scale', 'auto', 0.001, 0.01, 0.1, 1],
+    'gamma': ['scale', 'auto', 0.001, 0.1, 1],
     'coef0': [0.0, 0.1, 0.5, 1],
     'shrinking': [True, False],
     'probability': [True, False],
@@ -80,17 +80,17 @@ param_grid_SVC = {
     'max_iter': [-1],  # -1 para sem limite
     'decision_function_shape': ['ovo', 'ovr'],
     'break_ties': [True, False],
-    'random_state': [None, 42, 100, 200]
+    'random_state': [None, 42, 100]
 }
 
 param_grid_GB = {
     'loss': ['log_loss', 'exponential'],
     'learning_rate': [0.01, 0.05, 0.1, 0.2],
-    'n_estimators': [100, 200, 300, 400, 500],
+    'n_estimators': [100, 300, 500],
     'subsample': [0.6, 0.8, 1.0],
     'criterion': ['friedman_mse', 'squared_error', 'mae'],
     'min_samples_split': [2, 50, 500],
-    'min_samples_leaf': [1, 10, 50, 100, 500, 1000],
+    'min_samples_leaf': [1, 10, 100, 1000],
     'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
     'max_depth': [None],
     'min_impurity_decrease': [0.0, 0.01, 0.05, 0.1],
@@ -133,8 +133,8 @@ param_grid = {
 
 
 models = {
-    #'LinearSVC': LinearSVC(),
-    #'SVC': SVC(),
+    'LinearSVC': LinearSVC(),
+    'SVC': SVC(),
     'GradientBoosting': GradientBoostingClassifier(),
     'Perceptron': Perceptron()
 }
