@@ -67,7 +67,7 @@ param_grid_LSVC = {
 
 param_grid_SVC = {
     'C': [0.1, 1, 10],
-    'kernel': ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
+    'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
     'degree': [2, 3, 4, 5],
     'gamma': ['scale', 'auto', 0.001, 0.1, 1],
     'coef0': [0.0, 0.1, 0.5, 1],
@@ -79,7 +79,7 @@ param_grid_SVC = {
     'verbose': [False],  # Geralmente mantido False para evitar log excessivo
     'max_iter': [-1],  # -1 para sem limite
     'decision_function_shape': ['ovo', 'ovr'],
-    'break_ties': [True, False],
+    'break_ties': [False],
     'random_state': [None, 42, 100]
 }
 
@@ -97,7 +97,7 @@ param_grid_GB = {
     'init': [None],  # ou uma instância de estimador, geralmente None
     'random_state': [42, 100, 200],  # valores comuns para garantir replicabilidade
     'verbose': [False],  # Geralmente mantido False para evitar log excessivo
-    'max_features': [None, 'sqrt', 'log2', 0.5],
+    'max_features': [None, 'sqrt', 'log2', 0.5, 2],
     'max_leaf_nodes': [None, 10, 50, 100],
     'warm_start': [True, False],
     'validation_fraction': [0.1, 0.2, 0.3],
@@ -133,10 +133,10 @@ param_grid = {
 
 
 models = {
-    'LinearSVC': LinearSVC(),
+    #'LinearSVC': LinearSVC(),
     'SVC': SVC(),
-    'GradientBoosting': GradientBoostingClassifier(),
-    'Perceptron': Perceptron()
+    #'GradientBoosting': GradientBoostingClassifier(),
+    #'Perceptron': Perceptron()
 }
 
 if __name__ == "__main__":

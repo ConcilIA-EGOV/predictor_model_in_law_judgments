@@ -31,7 +31,8 @@ def preprocessing(X: pd.DataFrame):
     """
     return X
     categorical_features = X.select_dtypes(include=['int', 'int64']).columns.tolist()
-    continuous_features = [col for col in X.columns if X[col].nunique() > 2]
+    categorical_features = [col for col in categorical_features if X[col].nunique() > 2]
+    continuous_features = X.select_dtypes(include=['float', 'float64']).columns.tolist()
     
     # Aplicar RobustScaler seguido por StandardScaler às colunas contínuas e float
     if continuous_features:
