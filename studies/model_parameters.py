@@ -49,22 +49,6 @@ def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
     test_best_model(grid_search, X_train, y_train)
     return best_params
 
-
-param_grid_LSVC = {
-    'penalty': ['l1', 'l2'],
-    'loss': ['squared_hinge', 'hinge'],
-    'dual': ['auto'],  # 'l1' penalty is not supported with dual=False
-    'tol': [1e-4, 1e-3, 1e-2],
-    'C': [0.1, 1, 10],
-    'multi_class': ['ovr', 'crammer_singer'],
-    'fit_intercept': [True, False],
-    'intercept_scaling': [0.1, 1.0, 5.0],
-    'class_weight': [None, 'balanced'],  # or a dictionary {class_label: weight}
-    'verbose': [0],
-    'random_state': [None, 42, 100],  # values for reproducibility
-    'max_iter': [1000]
-}
-
 param_grid_SVC = {
     'C': [0.1, 1, 10],
     'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
@@ -111,7 +95,7 @@ param_grid_Perceptron = {
     'alpha': [0.0001, 0.001, 0.01],
     'l1_ratio': [0.15, 0.5, 0.75],
     'fit_intercept': [True, False],
-    'max_iter': [1000, 2000],
+    'max_iter': [10],
     'tol': [0.001, 0.0001],
     'shuffle': [True, False],
     'eta0': [1.0, 0.1, 0.01],
@@ -125,7 +109,6 @@ param_grid_Perceptron = {
 }
 
 param_grid = {
-    'LinearSVC': param_grid_LSVC,
     'SVC': param_grid_SVC,
     'GradientBoosting': param_grid_GB,
     'Perceptron': param_grid_Perceptron
@@ -133,10 +116,9 @@ param_grid = {
 
 
 models = {
-    #'LinearSVC': LinearSVC(),
     'SVC': SVC(),
-    #'GradientBoosting': GradientBoostingClassifier(),
-    #'Perceptron': Perceptron()
+    'GradientBoosting': GradientBoostingClassifier(),
+    'Perceptron': Perceptron()
 }
 
 if __name__ == "__main__":
@@ -148,12 +130,11 @@ if __name__ == "__main__":
         print(f"Testing {key}")
         try:
             best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
-            json.dump(best_params_all[key], open("params/best_parameters__"+key+".txt", "w"))
+            json.dump(best_params_all[key], open("best_parameters__"+key+".txt", "w"))
         except Exception as e:
-            print(f"Error in {key}")
             print(e)
             best_params_all[key] = str(e)
-            json.dump(best_params_all[key], open("params/best_parameters__"+key+".txt", "w"))
+            json.dump(best_params_all[key], open("best_parameters__"+key+".txt", "w"))
     
-    json.dump(best_params_all, open("params/best_parameters.txt", "w"))
+    json.dump(best_params_all, open("best_parameters.txt", "w"))
     

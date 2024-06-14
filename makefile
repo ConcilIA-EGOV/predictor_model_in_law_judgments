@@ -15,7 +15,7 @@ training:
 	@python3 src/training.py
 
 test:
-	@python3 studies/model_parameters.py
+	@python3 studies/model_parameters.py > logs/params.txt
 
 test-formatation:
 	@ python3 formatation/input_formatation.py
