@@ -148,12 +148,12 @@ if __name__ == "__main__":
         print(f"Testing {key}")
         try:
             best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
-            json.dump(best_params_all[key], open("studies/best_parameters__"+key+".txt", "w"))
+            json.dump(best_params_all[key], open("params/best_parameters__"+key+".txt", "w"))
         except Exception as e:
             print(f"Error in {key}")
             print(e)
-            best_params_all[key] = e
-            json.dump(best_params_all[key], open("studies/best_parameters__"+key+".txt", "w"))
+            best_params_all[key] = str(e)
+            json.dump(best_params_all[key], open("params/best_parameters__"+key+".txt", "w"))
     
-    json.dump(best_params_all, open("studies/best_parameters.txt", "w"))
+    json.dump(best_params_all, open("params/best_parameters.txt", "w"))
     
