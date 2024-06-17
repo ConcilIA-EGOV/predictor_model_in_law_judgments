@@ -25,15 +25,15 @@ param_grid_KNN = {
 }
 
 param_grid_SVC = {
-    'C': [0.1, 1, 10],
-    'kernel': ['linear', 'poly', 'rbf', 'sigmoid'],
+    'C': [10, 50, 100],
+    'kernel': ['poly', 'rbf', 'sigmoid'],
     'degree': [2, 3, 4, 5],
-    'gamma': ['scale', 'auto', 0.001, 0.1, 1],
+    'gamma': [0.5, 1, 2],
     'coef0': [0.0, 0.5, 1],
     'shrinking': [True, False],
     'probability': [True, False],
-    'tol': [1e-4, 1e-3, 1e-2],
-    'cache_size': [200, 500, 1000],
+    'tol': [1e-4, 1e-3, 1e-5],
+    'cache_size': [100, 200, 300],
     'class_weight': [None, 'balanced'],
     'verbose': [False],  # Geralmente mantido False para evitar log excessivo
     'max_iter': [10],  # -1 para sem limite

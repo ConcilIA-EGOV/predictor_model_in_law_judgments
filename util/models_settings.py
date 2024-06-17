@@ -30,6 +30,24 @@ LINEARSVC_PARAMS = {
     'verbose': 0
 }
 
+SVC_PARAMS = {
+    "C": 10, 
+    "break_ties": False,
+    "cache_size": 200,
+    "class_weight": "balanced",
+    "coef0": 0.0,
+    "decision_function_shape": "ovr",
+    "degree": 2,
+    "gamma": 1,
+    "kernel": "rbf",
+    "max_iter": 10,
+    "probability": True,
+    "random_state": None,
+    "shrinking": True,
+    "tol": 0.0001,
+    "verbose": False
+}
+
 MODELS = {
     'KNN': KNeighborsClassifier(**KNN_PARAMS),
     'LinearSVC': LinearSVC(**LINEARSVC_PARAMS),
