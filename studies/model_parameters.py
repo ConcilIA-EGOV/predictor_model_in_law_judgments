@@ -52,7 +52,6 @@ def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
 
 models = {
     'GradientBoosting': GradientBoostingClassifier(),
-    'SVC': SVC(),
     'Perceptron': Perceptron()
 }
 
