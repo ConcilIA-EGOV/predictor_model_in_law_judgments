@@ -44,42 +44,42 @@ param_grid_SVC = {
 
 param_grid_GB = {
     'loss': ['log_loss', 'exponential'],
-    'learning_rate': [0.05, 0.1, 0.2],
-    'n_estimators': [50, 100, 200],
+    'learning_rate': [0.1, 0.2],
+    'n_estimators': [100, 200],
     'subsample': [0.8, 1.0],
     'criterion': ['friedman_mse', 'squared_error'],
-    'min_samples_split': [0.5, 1, 2, 10],
-    'min_samples_leaf': [0.5, 1, 10, 50],
-    'min_weight_fraction_leaf': [0.0, 0.2, 0.5],
-    'max_depth': [1, 5, 10],
-    'min_impurity_decrease': [0.0, 0.1, 0.5],
-    'init': [None],  # ou uma instância de estimador, geralmente None
-    'random_state': [42, 100, 200],  # valores comuns para garantir replicabilidade
-    'verbose': [False],  # Geralmente mantido False para evitar log excessivo
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [10, 50],
+    'min_weight_fraction_leaf': [0.0, 0.5],
+    'max_depth': [5, 10],
+    'min_impurity_decrease': [0.0, 0.5],
+    'init': [None],
+    'random_state': [0, 42],
+    'verbose': [False],
     'max_features': [None, 'sqrt', 'log2', 0.5, 2],
-    'max_leaf_nodes': [None, 2, 10, 50],
+    'max_leaf_nodes': [2, 10, 20],
     'warm_start': [True, False],
-    'validation_fraction': [0.1, 0.2, 0.3],
-    'n_iter_no_change': [None, 20],
-    'tol': [1e-4, 1e-3, 1e-5],
-    'ccp_alpha': [0.0, 0.05, 0.1]
+    'validation_fraction': [0.1, 0.3],
+    'n_iter_no_change': [10, 20],
+    'tol': [1e-4],
+    'ccp_alpha': [0.0, 0.1]
 }
 
 param_grid_Perceptron = {
-    'penalty': ['l2', 'l1', 'elasticnet', None],
-    'alpha': [0.0001, 0.001, 0.01],
-    'l1_ratio': [0.15, 0.5, 0.75],
-    'fit_intercept': [True, False],
-    'max_iter': [10],
+    'penalty': ['elasticnet'],
+    'alpha': [0.0001, 0.00001],
+    'l1_ratio': [0, 0.75, 1],
+    'fit_intercept': [True],
+    'max_iter': [10000],
     'tol': [0.001, 0.0001],
     'shuffle': [True, False],
     'eta0': [1.0, 0.5, 2],
     'n_jobs': [-1],
-    'random_state': [0, 42, 100],
-    'early_stopping': [False, True],
-    'validation_fraction': [0.1, 0.2],
-    'n_iter_no_change': [5, 10],
-    'class_weight': [None, 'balanced'],
+    'random_state': [200, 100],
+    'early_stopping': [True],
+    'validation_fraction': [0.3, 0.2],
+    'n_iter_no_change': [10],
+    'class_weight': [None],
     'warm_start': [False, True]
 }
 

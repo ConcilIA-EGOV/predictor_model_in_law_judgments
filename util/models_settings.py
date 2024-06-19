@@ -48,7 +48,27 @@ SVC_PARAMS = {
     "verbose": False
 }
 
+PERCEPTON_PARAMS = {
+    "penalty": "elasticnet",
+    "alpha": 0.0001,
+    "l1_ratio": 0.75,
+    "fit_intercept": True,
+    "max_iter": 10,
+    "tol": 0.001,
+    "shuffle": True,
+    "eta0": 0.5,
+    "n_jobs": -1,
+    "random_state": 100,
+    "early_stopping": True,
+    "validation_fraction": 0.2,
+    "n_iter_no_change": 10,
+    "class_weight": None,
+    "warm_start": False
+}
+
 MODELS = {
     'KNN': KNeighborsClassifier(**KNN_PARAMS),
     'LinearSVC': LinearSVC(**LINEARSVC_PARAMS),
+    'SVC': SVC(**SVC_PARAMS),
+    'Perceptron': Perceptron(**PERCEPTON_PARAMS)
 }
