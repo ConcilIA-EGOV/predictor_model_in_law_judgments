@@ -48,6 +48,29 @@ SVC_PARAMS = {
     "verbose": False
 }
 
+GB_PARAMS = {
+    "loss": "log_loss",
+    "learning_rate": 0.1,
+    "n_estimators": 100,
+    "subsample": 0.8,
+    "criterion": "friedman_mse",
+    "min_samples_split": 2,
+    "min_samples_leaf": 10,
+    "min_weight_fraction_leaf": 0.0,
+    "max_depth": 5,
+    "min_impurity_decrease": 0.0,
+    "init": None,
+    "random_state": 0,
+    "verbose": False,
+    "max_features": None,
+    "max_leaf_nodes": 2,
+    "warm_start": True,
+    "validation_fraction": 0.1,
+    "n_iter_no_change": 10,
+    "tol": 0.0001,
+    "ccp_alpha": 0.0
+}
+
 PERCEPTON_PARAMS = {
     "penalty": "elasticnet",
     "alpha": 0.0001,
@@ -56,9 +79,9 @@ PERCEPTON_PARAMS = {
     "max_iter": 10,
     "tol": 0.001,
     "shuffle": True,
-    "eta0": 0.5,
+    "eta0": 1.0,
     "n_jobs": -1,
-    "random_state": 100,
+    "random_state": 200,
     "early_stopping": True,
     "validation_fraction": 0.2,
     "n_iter_no_change": 10,

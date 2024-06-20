@@ -44,43 +44,43 @@ param_grid_SVC = {
 
 param_grid_GB = {
     'loss': ['log_loss', 'exponential'],
-    'learning_rate': [0.1, 0.2],
-    'n_estimators': [100, 200],
-    'subsample': [0.8, 1.0],
+    'learning_rate': [0.1, 0.05],
+    'n_estimators': [100, 50],
+    'subsample': [0.8, 0.5],
     'criterion': ['friedman_mse', 'squared_error'],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [10, 50],
-    'min_weight_fraction_leaf': [0.0, 0.5],
-    'max_depth': [5, 10],
-    'min_impurity_decrease': [0.0, 0.5],
+    'min_samples_split': [2],
+    'min_samples_leaf': [10],
+    'min_weight_fraction_leaf': [0.0],
+    'max_depth': [5, 2],
+    'min_impurity_decrease': [0.0],
     'init': [None],
-    'random_state': [0, 42],
+    'random_state': [0, 100, 200],
     'verbose': [False],
-    'max_features': [None, 'sqrt', 'log2', 0.5, 2],
-    'max_leaf_nodes': [2, 10, 20],
-    'warm_start': [True, False],
-    'validation_fraction': [0.1, 0.3],
-    'n_iter_no_change': [10, 20],
-    'tol': [1e-4],
-    'ccp_alpha': [0.0, 0.1]
+    'max_features': [None],
+    'max_leaf_nodes': [2, 5],
+    'warm_start': [True],
+    'validation_fraction': [0.1, 0.05],
+    'n_iter_no_change': [10],
+    'tol': [1e-4, 1e-5],
+    'ccp_alpha': [0.0]
 }
 
 param_grid_Perceptron = {
     'penalty': ['elasticnet'],
-    'alpha': [0.0001, 0.00001],
-    'l1_ratio': [0, 0.75, 1],
+    'alpha': [0.0001, 0.001],
+    'l1_ratio': [0.5, 0.75, 1],
     'fit_intercept': [True],
     'max_iter': [10000],
     'tol': [0.001, 0.0001],
-    'shuffle': [True, False],
-    'eta0': [1.0, 0.5, 2],
+    'shuffle': [True],
+    'eta0': [1.0],
     'n_jobs': [-1],
-    'random_state': [200, 100],
+    'random_state': [200, 300],
     'early_stopping': [True],
-    'validation_fraction': [0.3, 0.2],
-    'n_iter_no_change': [10],
+    'validation_fraction': [0.1, 0.2],
+    'n_iter_no_change': [10, 5],
     'class_weight': [None],
-    'warm_start': [False, True]
+    'warm_start': [True]
 }
 
 
