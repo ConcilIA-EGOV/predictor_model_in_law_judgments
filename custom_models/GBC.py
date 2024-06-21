@@ -27,6 +27,7 @@ GB_PARAMS = {
 
 class GBC(GradientBoostingClassifier):
     def __init__(self, **kwargs):
+        print(**kwargs)
         if not kwargs:
             params = GB_PARAMS
         else:

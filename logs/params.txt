@@ -1,10 +1,28 @@
+
 Testing GBC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Invalid parameter 'ccp_alpha' for estimator GBC(). Valid parameters are: [].
-Testing Perceptron
-Invalid parameter 'alpha' for estimator Perceptron(). Valid parameters are: [].
-Testing KNN
-Invalid parameter 'algorithm' for estimator KNN(). Valid parameters are: [].
-Testing SVC
-Invalid parameter 'C' for estimator SVC(). Valid parameters are: [].
-Testing LSVC
-Invalid parameter 'C' for estimator LSVC(). Valid parameters are: [].

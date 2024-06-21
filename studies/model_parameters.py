@@ -62,4 +62,5 @@ if __name__ == "__main__":
             best_params_all[key] = [str(e)]
         with open("logs/best_parameters__"+key+".json", "w") as f:
             json.dump(best_params_all[key], f, indent=4)
+        break
     
