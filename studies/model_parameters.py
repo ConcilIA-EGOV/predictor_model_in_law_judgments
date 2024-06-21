@@ -10,11 +10,6 @@ sys.path.append(project_dir)
 ###
 import numpy as np
 import json
-from sklearn.calibration import LinearSVC
-from sklearn.svm import SVC
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.linear_model import Perceptron
 # -----------
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
@@ -49,12 +44,12 @@ def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
     # Melhor score
     test_best_model(grid_search, X_train, y_train)
     return best_params
-
+'''
 models = {
-    'GradientBoosting': GradientBoostingClassifier(),
+    'GBC': GradientBoostingClassifier(),
     'Perceptron': Perceptron()
 }
-
+'''
 if __name__ == "__main__":
     data = load_data(FILE_PATH)
     X, y = separate_features_labels(data)

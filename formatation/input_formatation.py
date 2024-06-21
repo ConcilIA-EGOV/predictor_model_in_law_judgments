@@ -42,7 +42,7 @@ def trim_columns(df: pd.DataFrame):
     return df
 
 
-def load_data(csv_file):
+def load_data(csv_file=FILE_PATH):
     """
     Carregar os dados de um arquivo CSV
     E formata-los

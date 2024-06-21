@@ -8,28 +8,18 @@ project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
 
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import RobustScaler, StandardScaler
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 import pandas as pd
-from util.parameters import TEST_SIZE, RANDOM_STATE, FILE_PATH
-
-def split_train_test(X, y):
-    """
-    Dividir em conjuntos de treino e teste e normalizar os dados
-    """
-    (X_train, X_test,
-     y_train, y_test) = train_test_split(X, y,
-                                         test_size=TEST_SIZE,
-                                         random_state=RANDOM_STATE)
-    return X_train, X_test, y_train, y_test
+from util.parameters import FILE_PATH, PREP
 
 def preprocessing(X: pd.DataFrame):
     """
     Preprocessar os dados
     """
-    return X
+    if not PREP:
+        return X
     categorical_features = X.select_dtypes(include=['int', 'int64']).columns.tolist()
     categorical_features = [col for col in categorical_features if X[col].nunique() > 2]
     continuous_features = X.select_dtypes(include=['float', 'float64']).columns.tolist()

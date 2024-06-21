@@ -1,0 +1,1182 @@
+sentença,julgamento,julgamento_2,dano_moral_individual,faixa_dano_moral_individual,data_julgamento,juiz,tipo_juiz,direito_de_arrependimento,descumprimento_de_oferta,extravio_definitivo,extravio_temporário,intervalo_extravio_temporário,faixa_intervalo_extravio_temporário,violação_furto_avaria,cancelamento/alteração_destino,atraso,intervalo_atraso,faixa_intervalo_atraso,culpa_exclusiva_consumidor,condições_climáticas/fechamento_aeroporto,noshow,overbooking,assistência_cia_aérea,hipervulnerável
+1,parcial_procedente,-,"R$ 10,000.00",5,10/04/2019,Vânia Petermann,Titular,N,N,N,S,2,2,S,N,S,04:50:00,2,N,N,N,N,N,N
+2,improcedente,-,R$ 0.00,0,07/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+3,parcial_procedente,-,"R$ 10,000.00",5,22/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,N,24:00:00,6,N,N,N,N,S,N
+4,parcial_procedente,-,"R$ 10,000.00",5,18/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,N,22:00:00,5,N,N,N,N,S,S
+5,parcial_procedente,-,"R$ 20,000.00",6,22/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,20,4,N,N,N,-,0,N,N,N,N,-,S
+6,parcial_procedente,-,"R$ 10,000.00",5,27/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,14,4,N,N,N,-,0,N,N,N,N,-,N
+7,improcedente,-,R$ 0.00,0,11/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,-,N
+8,parcial_procedente,-,"R$ 5,000.00",3,27/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,N,N
+9,parcial_procedente,-,"R$ 10,000.00",5,18/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,N,N
+10,improcedente,-,R$ 0.00,0,27/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,02:00:00,1,S,N,N,N,S,N
+11,parcial_procedente,-,"R$ 2,000.00",1,20/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,S,S
+12,parcial_procedente,-,"R$ 6,000.00",3,18/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,S,N
+13,parcial_procedente,-,"R$ 9,000.00",5,11/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,N,N
+14,parcial_procedente,-,"R$ 10,000.00",5,08/03/2019,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+15,parcial_procedente,-,"R$ 8,000.00",4,11/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,16:00:00,5,N,N,N,N,S,N
+16,parcial_procedente,-,"R$ 13,000.00",6,27/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,21:00:00,5,N,N,N,N,N,S
+17,parcial_procedente,-,"R$ 3,000.00",2,18/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,06:00:00,2,N,N,N,N,N,N
+18,improcedente,-,R$ 0.00,0,18/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,12:00:00,4,N,S,N,N,S,N
+19,total_procedente,-,"R$ 10,000.00",5,22/03/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,N,24:00:00,6,N,N,N,N,S,N
+20,total_procedente,-,"R$ 9,700.00",5,26/03/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+21,parcial_procedente,-,"R$ 15,000.00",6,28/03/2019,Lucilene dos Santos,Substituto,N,N,N,S,4,3,N,N,S,08:00:00,3,N,N,N,S,S,S
+22,parcial_procedente,-,"R$ 4,000.00",2,29/03/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+23,parcial_procedente,-,"R$ 10,000.00",5,05/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,N,N
+24,parcial_procedente,-,"R$ 13,000.00",6,04/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+25,parcial_procedente,-,"R$ 10,000.00",5,05/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,N,N
+26,parcial_procedente,-,"R$ 10,000.00",5,04/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,S,N
+27,parcial_procedente,-,"R$ 12,000.00",6,05/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,25:00:00,6,N,N,N,N,S,N
+28,parcial_procedente,-,"R$ 4,000.00",2,05/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,S,N
+29,total_procedente,-,"R$ 7,000.00",4,09/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,S,N
+30,parcial_procedente,-,"R$ 5,000.00",3,11/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,N,N
+31,parcial_procedente,-,"R$ 12,000.00",6,09/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:00:00,5,N,N,N,N,S,N
+32,parcial_procedente,-,"R$ 2,000.00",1,09/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:25:00,2,N,N,N,N,N,N
+33,parcial_procedente,-,"R$ 2,000.00",1,09/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:30:00,2,N,N,N,N,N,N
+34,total_procedente,-,"R$ 15,000.00",6,11/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,41:55:00,7,N,N,N,N,S,N
+35,parcial_procedente,-,"R$ 5,000.00",3,11/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,N,N
+36,parcial_procedente,-,"R$ 15,000.00",6,29/04/2019,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,24:00:00,6,N,N,N,N,S,N
+37,parcial_procedente,-,"R$ 3,000.00",2,15/04/2019,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,-,N
+38,parcial_procedente,-,"R$ 2,000.00",1,15/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,07:15:00,2,N,N,N,N,S,N
+39,parcial_procedente,-,"R$ 12,000.00",6,15/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,48:00:00,7,N,N,N,N,N,N
+40,total_procedente,-,"R$ 6,000.00",3,16/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,24:00:00,6,N,N,N,N,S,N
+41,parcial_procedente,-,"R$ 6,000.00",3,16/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,13:30:00,4,N,N,N,N,S,N
+42,parcial_procedente,-,"R$ 11,000.00",6,16/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,20:00:00,5,N,N,N,N,N,N
+43,parcial_procedente,-,"R$ 4,000.00",2,16/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,S,N
+44,parcial_procedente,-,"R$ 10,000.00",5,16/04/2019,Vânia Petermann,Titular,N,N,N,S,10,4,N,N,N,-,0,N,N,N,N,-,N
+44,parcial_procedente,-,"R$ 7,500.00",4,16/04/2019,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,-,N
+45,parcial_procedente,-,"R$ 10,000.00",5,25/04/2019,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+46,parcial_procedente,-,"R$ 3,000.00",2,22/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,N,N
+47,parcial_procedente,-,"R$ 2,250.00",2,22/04/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,-,S
+48,parcial_procedente,-,"R$ 10,000.00",5,29/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,S,N
+49,parcial_procedente,-,"R$ 4,500.00",3,29/04/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,-,N
+50,parcial_procedente,-,"R$ 4,000.00",2,23/04/2019,Vânia Petermann,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,-,N
+51,parcial_procedente,-,"R$ 5,000.00",3,24/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+52,parcial_procedente,-,"R$ 6,000.00",3,30/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+53,parcial_procedente,-,"R$ 14,000.00",6,29/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+54,parcial_procedente,-,"R$ 5,000.00",3,30/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+55,parcial_procedente,-,"R$ 10,000.00",5,30/04/2019,Vânia Petermann,Titular,N,N,N,S,15,4,N,N,N,-,0,N,N,N,N,-,N
+56,parcial_procedente,-,"R$ 6,000.00",3,30/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+57,parcial_procedente,-,"R$ 6,000.00",3,30/04/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+58,parcial_procedente,-,"R$ 2,000.00",1,30/04/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,-,N
+59,total_procedente,-,"R$ 5,000.00",3,02/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+60,parcial_procedente,-,"R$ 7,000.00",4,02/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:15:00,4,N,N,N,N,N,N
+61,parcial_procedente,-,R$ 0.00,0,02/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+61,parcial_procedente,-,"R$ 5,000.00",3,02/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+62,parcial_procedente,-,"R$ 5,000.00",3,03/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,S,N,N
+63,parcial_procedente,-,"R$ 5,000.00",3,03/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+64,extinto,total_procedente,R$ 0.00,0,03/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,S,N
+65,parcial_procedente,-,"R$ 5,000.00",3,09/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+66,improcedente,-,R$ 0.00,0,10/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,00:35:00,1,S,N,N,N,N,N
+67,parcial_procedente,-,"R$ 10,000.00",5,10/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,28:00:00,7,N,N,N,N,N,N
+68,parcial_procedente,-,"R$ 5,000.00",3,15/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+69,parcial_procedente,-,"R$ 15,000.00",6,15/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,N,N
+70,parcial_procedente,-,"R$ 2,000.00",1,17/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:45:00,2,N,N,N,N,N,N
+71,parcial_procedente,-,"R$ 2,000.00",1,17/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:20:00,2,N,N,N,N,S,N
+72,parcial_procedente,-,"R$ 10,000.00",5,10/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:30:00,5,N,N,N,N,S,N
+73,parcial_procedente,-,"R$ 11,000.00",6,10/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,S,N
+74,parcial_procedente,-,"R$ 10,000.00",5,10/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,S,N
+75,parcial_procedente,-,"R$ 2,000.00",1,15/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,S,N
+76,parcial_procedente,-,"R$ 6,000.00",3,18/12/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+77,parcial_procedente,-,"R$ 10,000.00",5,23/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,N,N
+78,parcial_procedente,-,"R$ 17,000.00",6,21/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,S,N,N
+79,parcial_procedente,-,"R$ 5,000.00",3,22/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+80,parcial_procedente,-,"R$ 10,000.00",5,21/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,S,N
+81,parcial_procedente,-,"R$ 7,000.00",4,25/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,N,S
+82,parcial_procedente,-,R$ 0.00,0,29/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+83,improcedente,-,R$ 0.00,0,25/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,02:50:00,1,N,N,N,N,N,N
+84,parcial_procedente,-,"R$ 5,000.00",3,04/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+85,parcial_procedente,-,R$ 0.00,0,05/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+86,parcial_procedente,-,"R$ 2,000.00",1,06/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,N,N
+87,parcial_procedente,-,R$ 0.00,0,14/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+88,parcial_procedente,-,"R$ 4,000.00",2,06/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,-,N
+89,parcial_procedente,-,"R$ 15,000.00",6,06/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+90,parcial_procedente,-,"R$ 4,000.00",2,07/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,S,N
+91,parcial_procedente,-,"R$ 6,000.00",3,19/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,N,N
+92,parcial_procedente,-,"R$ 5,000.00",3,19/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,N,N
+93,parcial_procedente,-,"R$ 7,000.00",4,19/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+93,parcial_procedente,-,"R$ 7,000.00",4,19/02/2019,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+94,parcial_procedente,-,"R$ 5,000.00",3,18/02/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+95,improcedente,-,R$ 0.00,0,21/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,02:00:00,1,N,N,N,N,N,N
+96,improcedente,-,R$ 0.00,0,20/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,S,N,N,N,N
+97,parcial_procedente,-,"R$ 5,000.00",3,24/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,S,N,N
+98,total_procedente,-,"R$ 10,000.00",5,24/09/2018,Rodrigo Clímaco José,Substituto,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,-,N
+99,total_procedente,-,"R$ 2,852.04",2,24/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+100,total_procedente,-,"R$ 7,000.00",4,25/09/2018,Rômulo Vinicius Finato,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+101,parcial_procedente,-,"R$ 1,000.00",1,26/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,-,N
+102,parcial_procedente,-,R$ 0.00,0,27/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+103,parcial_procedente,-,"R$ 8,000.00",4,28/08/2018,Letícia Bodanese Rodegheri,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,-,N
+104,parcial_procedente,-,"R$ 5,000.00",3,04/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+105,parcial_procedente,-,"R$ 2,000.00",1,02/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,N,N
+106,total_procedente,-,"R$ 4,000.00",2,02/10/2018,Raul Bertani de Campos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+107,parcial_procedente,-,"R$ 1,000.00",1,03/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,03:00:00,1,N,N,N,N,N,N
+109,parcial_procedente,-,"R$ 5,000.00",3,03/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,-,N
+110,improcedente,-,R$ 0.00,0,04/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,N,N
+111,improcedente,-,R$ 0.00,0,05/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,S,N,N,-,N
+112,improcedente,-,R$ 0.00,0,08/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+113,parcial_procedente,-,"R$ 10,000.00",5,08/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+114,parcial_procedente,-,R$ 0.00,0,09/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,00:15:00,1,N,N,N,N,N,N
+115,parcial_procedente,-,"R$ 10,000.00",5,10/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+116,parcial_procedente,-,"R$ 5,000.00",3,10/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,-,N
+117,parcial_procedente,-,"R$ 5,000.00",3,10/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,N,N
+118,parcial_procedente,-,"R$ 3,000.00",2,10/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,04:50:00,2,N,N,N,N,N,N
+119,parcial_procedente,-,"R$ 3,500.00",2,11/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,N,N
+120,improcedente,-,R$ 0.00,0,11/10/2018,Bruna Luiza Hoffmann,Substituto,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,S,N
+121,parcial_procedente,-,"R$ 4,000.00",2,11/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,04:50:00,2,N,N,N,N,-,N
+122,total_procedente,-,"R$ 4,000.00",2,11/10/2018,Gabriel Marcon Dalponte,Substituto,N,N,N,N,-,0,N,N,S,05:20:00,2,N,N,N,N,S,N
+123,total_procedente,-,"R$ 7,000.00",4,11/10/2018,Gabriel Marcon Dalponte,Substituto,N,N,N,N,-,0,N,N,S,13:20:00,4,N,N,N,N,S,N
+124,parcial_procedente,-,"R$ 11,000.00",6,15/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+125,parcial_procedente,-,"R$ 10,000.00",5,05/11/2018,Marcelo Pizolati,Titular,N,N,N,N,-,0,N,N,S,22:00:00,5,N,N,N,N,N,N
+126,parcial_procedente,-,"R$ 2,000.00",1,15/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,S,N
+127,total_procedente,-,"R$ 10,000.00",5,17/10/2018,Janaína Alexandre Linsmeyer Berbigier,Substituto,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+128,parcial_procedente,-,"R$ 5,000.00",3,18/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,-,N
+129,parcial_procedente,-,"R$ 10,000.00",5,26/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,N,S
+130,parcial_procedente,-,"R$ 5,000.00",3,22/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,-,N
+131,parcial_procedente,-,"R$ 20,000.00",6,23/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,35:00:00,7,N,N,N,N,N,S
+132,parcial_procedente,extinto,"R$ 15,000.00",6,26/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,27:15:00,6,N,N,N,N,S,N
+133,parcial_procedente,-,"R$ 3,000.00",2,28/11/2018,Leone Carlos Martins Júnior,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+134,total_procedente,-,"R$ 5,000.00",3,30/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+135,total_procedente,-,"R$ 10,000.00",5,31/10/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,S,N
+136,parcial_procedente,-,"R$ 5,000.00",3,07/12/2018,Leone Carlos Martins Júnior,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+137,parcial_procedente,-,"R$ 6,000.00",3,01/11/2018,Marcelo Pizolati,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,N,N
+138,total_procedente,-,"R$ 10,000.00",5,01/11/2018,Marcelo Pizolati,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,S,N
+139,parcial_procedente,-,"R$ 7,000.00",4,05/11/2018,Marcelo Pizolati,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,S,N
+140,parcial_procedente,improcedente,"R$ 3,000.00",2,07/11/2018,Marcelo Pizolati,Titular,N,N,N,N,-,0,N,N,S,04:50:00,2,N,N,N,N,N,N
+141,parcial_procedente,-,"R$ 1,000.00",1,28/11/2018,Leone Carlos Martins Júnior,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+142,parcial_procedente,-,"R$ 2,000.00",1,21/11/2018,Marcelo Pizolati,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,-,N
+143,parcial_procedente,-,"R$ 13,000.00",6,14/11/2018,Leone Carlos Martins Júnior,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,N,N
+144,parcial_procedente,-,"R$ 2,250.00",2,20/07/2018,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,N,N
+145,parcial_procedente,-,"R$ 4,000.00",2,20/07/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,-,N
+146,parcial_procedente,-,"R$ 4,000.00",2,20/07/2018,Vânia Petermann,Titular,N,N,S,N,8,4,N,N,N,-,0,N,N,N,N,S,N
+147,parcial_procedente,-,"R$ 3,000.00",2,26/07/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:44:00,2,N,N,N,N,-,N
+148,parcial_procedente,-,"R$ 5,000.00",3,27/07/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+149,total_procedente,-,"R$ 5,000.00",3,27/07/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+150,improcedente,-,R$ 0.00,0,31/07/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,S,N,N,N,N
+151,parcial_procedente,-,"R$ 2,000.00",1,01/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,S,N
+152,parcial_procedente,-,"R$ 6,000.00",3,08/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+153,parcial_procedente,-,"R$ 5,000.00",3,02/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,N,N
+154,parcial_procedente,-,"R$ 5,000.00",3,02/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+155,parcial_procedente,-,"R$ 6,000.00",3,06/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+156,parcial_procedente,-,"R$ 4,500.00",3,07/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+157,parcial_procedente,-,"R$ 10,000.00",5,08/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,-,N
+158,parcial_procedente,-,"R$ 2,000.00",1,27/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,S,N,N,N,N
+159,parcial_procedente,-,"R$ 12,000.00",6,08/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+160,total_procedente,-,"R$ 7,496.00",4,09/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+161,parcial_procedente,-,"R$ 6,000.00",3,09/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+162,parcial_procedente,-,"R$ 10,000.00",5,09/08/2018,Vânia Petermann,Titular,N,N,N,S,1,1,N,S,N,-,0,N,N,N,N,N,N
+162,parcial_procedente,-,"R$ 8,000.00",4,09/08/2018,Vânia Petermann,Titular,N,N,N,S,1,1,N,S,N,-,0,N,N,N,N,N,N
+163,total_procedente,-,"R$ 6,000.00",3,09/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,N,N
+164,parcial_procedente,-,"R$ 9,000.00",5,13/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+165,parcial_procedente,-,R$ 0.00,0,13/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+166,parcial_procedente,-,"R$ 3,000.00",2,14/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+167,total_procedente,-,"R$ 6,000.00",3,14/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,-,N
+168,parcial_procedente,-,"R$ 9,000.00",5,27/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,N,N
+169,parcial_procedente,-,"R$ 4,000.00",2,27/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+170,total_procedente,-,"R$ 10,000.00",5,30/08/2018,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,22:00:00,5,N,N,N,N,N,N
+171,parcial_procedente,-,"R$ 5,000.00",3,30/08/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,N,N
+172,improcedente,-,R$ 0.00,0,04/09/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,S,N,N,N,N
+173,parcial_procedente,-,"R$ 25,000.00",6,05/09/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+174,parcial_procedente,-,"R$ 10,000.00",5,11/09/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+175,parcial_procedente,-,"R$ 5,000.00",3,12/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,S,N,N
+176,parcial_procedente,-,"R$ 5,000.00",3,12/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,N,N
+177,total_procedente,-,"R$ 10,000.00",5,12/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,N,N
+178,parcial_procedente,-,R$ 0.00,0,13/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+179,parcial_procedente,-,"R$ 5,000.00",3,13/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,-,N
+180,parcial_procedente,-,"R$ 5,000.00",3,13/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+181,parcial_procedente,-,"R$ 5,000.00",3,13/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+182,parcial_procedente,-,"R$ 5,000.00",3,14/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,N,N
+183,total_procedente,-,"R$ 2,000.00",1,18/09/2018,Leandro Ernani Freitag,Substituto,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+184,extinto,-,R$ 0.00,0,18/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+185,parcial_procedente,-,"R$ 10,000.00",5,18/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,-,N
+186,parcial_procedente,-,"R$ 5,000.00",3,19/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+187,parcial_procedente,-,R$ 0.00,0,20/09/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,S,N
+188,total_procedente,-,"R$ 3,000.00",2,20/09/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,-,N
+189,parcial_procedente,-,"R$ 5,000.00",3,02/04/2018,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,S,N
+190,parcial_procedente,-,"R$ 4,000.00",2,05/04/2018,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,N,N
+191,parcial_procedente,-,"R$ 3,000.00",2,10/04/2018,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+192,parcial_procedente,-,"R$ 5,000.00",3,02/04/2018,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,N,N
+193,parcial_procedente,-,"R$ 5,000.00",3,20/04/2018,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+194,parcial_procedente,-,"R$ 3,000.00",2,20/04/2018,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,21:00:00,5,N,N,N,N,N,N
+195,parcial_procedente,-,"R$ 4,000.00",2,21/05/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:20:00,3,N,N,N,N,N,N
+196,improcedente,-,R$ 0.00,0,18/05/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,S,N,N,S,N
+197,improcedente,-,R$ 0.00,0,21/05/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,02:00:00,1,N,S,N,N,N,N
+198,parcial_procedente,-,"R$ 2,000.00",1,28/05/2018,Vânia Petermann,Titular,N,N,N,S,2,2,S,N,N,-,0,N,N,N,N,N,N
+199,improcedente,-,R$ 0.00,0,28/05/2018,Vânia Petermann,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,-,N
+200,parcial_procedente,-,"R$ 10,000.00",5,29/05/2018,Vânia Petermann,Titular,N,N,S,S,6,3,N,N,N,-,0,N,N,N,N,-,S
+201,improcedente,-,R$ 0.00,0,29/05/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+202,total_procedente,-,"R$ 8,900.00",5,19/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+203,parcial_procedente,-,"R$ 10,000.00",5,19/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,72:00:00,7,N,N,N,S,N,N
+204,parcial_procedente,-,"R$ 1,000.00",1,26/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+205,parcial_procedente,-,R$ 0.00,0,06/02/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+206,improcedente,-,R$ 0.00,0,08/02/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,03:00:00,1,N,S,N,N,-,S
+207,total_procedente,-,"R$ 10,000.00",5,08/02/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+208,total_procedente,-,"R$ 10,000.00",5,19/02/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,S,N
+209,total_procedente,-,"R$ 10,000.00",5,15/02/2018,Ana Luisa Schmidt Ramos,Substituto,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,N,S
+210,parcial_procedente,-,"R$ 10,000.00",5,06/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,N,N
+211,parcial_procedente,-,"R$ 11,000.00",6,06/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+212,parcial_procedente,-,"R$ 7,000.00",4,05/03/2018,Alexandra Lorenzi da Silva,,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+213,parcial_procedente,-,"R$ 5,000.00",3,06/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+214,parcial_procedente,-,"R$ 7,000.00",4,06/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,S,11,4,N,N,N,-,0,N,N,N,N,N,N
+215,total_procedente,-,"R$ 8,500.00",5,08/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+216,parcial_procedente,-,"R$ 4,000.00",2,08/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,N,N
+217,parcial_procedente,-,"R$ 8,000.00",4,08/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,-,N
+218,parcial_procedente,-,"R$ 6,000.00",3,13/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,S
+219,parcial_procedente,-,"R$ 3,000.00",2,09/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,N,N
+220,parcial_procedente,-,R$ 0.00,0,12/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+221,parcial_procedente,-,"R$ 8,000.00",4,08/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,S,2,2,S,N,N,-,0,N,N,N,N,-,S
+222,total_procedente,-,"R$ 6,000.00",3,12/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,-,N
+223,parcial_procedente,-,"R$ 2,000.00",1,13/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,N,N
+224,parcial_procedente,-,R$ 0.00,0,14/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,02:20:00,1,N,N,N,N,-,N
+225,parcial_procedente,-,"R$ 7,000.00",4,14/03/2018,Alexandra Lorenzi da Silva,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,N,N
+226,parcial_procedente,-,R$ 0.00,0,07/12/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+227,improcedente,-,R$ 0.00,0,04/12/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,00:40:00,1,N,N,N,N,-,N
+228,parcial_procedente,-,R$ 0.00,0,27/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,S,N
+228,parcial_procedente,-,"R$ 2,000.00",1,27/11/2017,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+228,parcial_procedente,-,"R$ 2,000.00",1,27/11/2017,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+229,parcial_procedente,-,"R$ 10,000.00",5,29/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,-,N
+230,parcial_procedente,-,"R$ 4,000.00",2,11/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,N,N
+231,parcial_procedente,-,"R$ 8,000.00",4,11/01/2018,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,10:00:00,3,N,N,N,N,S,N
+232,total_procedente,-,"R$ 5,000.00",3,19/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,S,N
+233,parcial_procedente,-,"R$ 9,000.00",5,18/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,S,07:00:00,2,N,N,N,N,N,N
+234,parcial_procedente,-,R$ 0.00,0,16/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+235,parcial_procedente,-,"R$ 1,000.00",1,17/01/2018,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,-,N
+236,parcial_procedente,-,"R$ 12,000.00",6,17/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+237,parcial_procedente,-,"R$ 10,000.00",5,18/01/2018,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,S,N,N
+241,parcial_procedente,-,"R$ 3,000.00",2,03/08/2017,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,S,N
+242,improcedente,-,R$ 0.00,0,22/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+243,parcial_procedente,-,"R$ 10,000.00",5,29/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+244,parcial_procedente,-,"R$ 6,000.00",3,31/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,16:00:00,5,N,N,N,N,N,N
+245,improcedente,-,R$ 0.00,0,31/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+246,parcial_procedente,-,"R$ 4,000.00",2,01/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,-,N
+247,improcedente,-,R$ 0.00,0,04/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+248,parcial_procedente,-,"R$ 10,000.00",5,04/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:00:00,5,N,N,N,N,-,N
+249,parcial_procedente,-,"R$ 2,000.00",1,04/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,-,N
+250,parcial_procedente,-,R$ 0.00,0,05/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+251,parcial_procedente,-,R$ 0.00,0,06/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+252,improcedente,-,R$ 0.00,0,06/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,02:00:00,1,N,N,N,S,N,N
+253,parcial_procedente,-,"R$ 4,000.00",2,06/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,S,N
+254,parcial_procedente,-,"R$ 4,000.00",2,11/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,-,N
+255,parcial_procedente,-,"R$ 4,000.00",2,14/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,-,N
+256,parcial_procedente,-,"R$ 1,000.00",1,12/09/2017,Vânia Petermann,Titular,N,N,N,S,1,1,S,N,N,-,0,N,N,N,N,-,N
+257,parcial_procedente,-,"R$ 10,000.00",5,12/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,S,N
+258,parcial_procedente,-,"R$ 1,500.00",1,12/09/2017,Vânia Petermann,Titular,N,N,N,S,1.5,2,N,N,N,-,0,N,N,N,N,S,N
+259,parcial_procedente,-,"R$ 10,000.00",5,22/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,22:00:00,5,N,N,N,N,S,N
+260,parcial_procedente,-,"R$ 12,000.00",6,25/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+261,parcial_procedente,-,"R$ 4,000.00",2,25/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,S,N
+262,parcial_procedente,-,"R$ 5,000.00",3,25/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+263,parcial_procedente,-,"R$ 8,000.00",4,26/09/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+264,improcedente,-,R$ 0.00,0,26/09/2017,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,S,N,N,N,N,N
+265,parcial_procedente,-,"R$ 1,500.00",1,04/10/2017,Vânia Petermann,Titular,N,N,N,S,6,3,N,N,N,-,0,N,N,N,N,N,N
+266,parcial_procedente,-,"R$ 5,000.00",3,24/10/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,N,N
+267,parcial_procedente,-,"R$ 8,000.00",4,24/10/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,N,N
+268,parcial_procedente,-,"R$ 5,000.00",3,25/10/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,-,N
+269,parcial_procedente,-,"R$ 10,000.00",5,25/10/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+270,parcial_procedente,-,"R$ 4,000.00",2,30/10/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,S,S,N
+271,improcedente,-,R$ 0.00,0,30/10/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,03:35:00,1,N,N,N,N,N,N
+272,parcial_procedente,-,R$ 0.00,0,01/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+273,improcedente,-,R$ 0.00,0,09/11/2017,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,N,S
+274,parcial_procedente,-,"R$ 14,240.00",6,03/11/2017,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+275,parcial_procedente,-,"R$ 10,000.00",5,06/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,22:00:00,5,N,N,N,N,S,N
+276,parcial_procedente,-,"R$ 10,000.00",5,08/11/2017,Vânia Petermann,Titular,N,N,N,S,13,4,N,N,N,-,0,N,N,N,N,N,N
+277,parcial_procedente,-,"R$ 2,000.00",1,09/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,-,N
+278,parcial_procedente,-,"R$ 8,000.00",4,13/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:00:00,5,N,N,N,N,-,N
+279,parcial_procedente,-,"R$ 6,000.00",3,14/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,N,N
+280,parcial_procedente,-,"R$ 4,000.00",2,14/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,-,N
+281,parcial_procedente,-,"R$ 12,000.00",6,20/11/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,N,N
+282,improcedente,-,R$ 0.00,0,12/12/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,03:00:00,1,N,N,N,N,N,N
+283,parcial_procedente,-,"R$ 10,000.00",5,31/07/2017,Vânia Petermann,Titular,N,N,N,S,17,4,N,N,N,-,0,N,N,N,N,N,N
+284,parcial_procedente,-,"R$ 8,000.00",4,31/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,S,N
+285,parcial_procedente,-,"R$ 3,000.00",2,31/07/2017,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,N,N
+286,parcial_procedente,-,"R$ 5,000.00",3,01/08/2017,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,08:00:00,3,N,N,N,N,S,N
+287,parcial_procedente,-,"R$ 8,000.00",4,11/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,-,N
+288,parcial_procedente,-,"R$ 5,000.00",3,06/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,S,N
+289,parcial_procedente,-,"R$ 5,000.00",3,07/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+290,parcial_procedente,-,"R$ 5,000.00",3,12/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,S,N
+291,improcedente,-,R$ 0.00,0,14/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,S,N
+292,parcial_procedente,-,"R$ 5,000.00",3,12/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+293,total_procedente,-,"R$ 10,000.00",5,26/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,N,N
+294,parcial_procedente,-,"R$ 5,000.00",3,06/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+295,parcial_procedente,-,"R$ 5,000.00",3,18/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+296,improcedente,-,R$ 0.00,0,30/05/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,03:00:00,1,N,N,N,N,N,N
+297,parcial_procedente,-,"R$ 12,000.00",6,14/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,33:00:00,7,N,N,N,N,N,N
+298,parcial_procedente,-,"R$ 2,000.00",1,20/07/2017,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,N,N
+299,parcial_procedente,-,"R$ 8,000.00",4,01/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+300,parcial_procedente,-,"R$ 1,000.00",1,31/07/2017,Vânia Petermann,Titular,N,N,N,S,1,1,S,N,N,-,0,N,N,N,N,S,N
+301,parcial_procedente,-,"R$ 10,000.00",5,13/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+302,parcial_procedente,-,R$ 0.00,0,31/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+303,parcial_procedente,-,"R$ 2,000.00",1,04/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,N,N
+304,improcedente,-,R$ 0.00,0,19/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+305,extinto,parcial_procedente,R$ 0.00,0,23/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+305,extinto,parcial_procedente,R$ 0.00,0,23/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+305,parcial_procedente,extinto,"R$ 5,000.00",3,23/06/2017,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,-,N
+306,total_procedente,-,"R$ 8,500.00",5,26/07/2017,Vânia Petermann,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,-,N
+307,total_procedente,-,"R$ 7,500.00",4,26/07/2017,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,-,N
+308,parcial_procedente,-,"R$ 6,000.00",3,01/08/2017,Vânia Petermann,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,-,N
+309,total_procedente,-,"R$ 2,000.00",1,23/06/2017,Felipe L. da S. N. Schwambach,Leigo,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+310,parcial_procedente,-,"R$ 5,000.00",3,01/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+311,improcedente,-,R$ 0.00,0,07/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+312,total_procedente,-,"R$ 2,000.00",1,01/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:15:00,2,N,N,N,N,-,N
+313,parcial_procedente,-,"R$ 4,000.00",2,31/05/2017,Vânia Petermann,Titular,N,N,N,S,6,3,N,N,N,-,0,N,N,N,N,-,N
+314,improcedente,-,R$ 0.00,0,31/05/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,-,N
+315,parcial_procedente,-,R$ 0.00,0,31/05/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+316,parcial_procedente,-,R$ 0.00,0,14/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+317,parcial_procedente,-,R$ 0.00,0,01/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+317,parcial_procedente,-,"R$ 5,000.00",3,01/08/2017,Vânia Petermann,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,-,N
+318,parcial_procedente,-,"R$ 12,000.00",6,31/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+319,parcial_procedente,-,"R$ 4,000.00",2,12/07/2017,Vânia Petermann,Titular,N,N,N,S,4,3,N,N,S,04:00:00,2,N,N,N,N,N,N
+320,total_procedente,-,"R$ 8,000.00",4,11/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,S,N
+321,parcial_procedente,-,"R$ 10,000.00",5,10/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,26:00:00,6,N,N,N,N,N,N
+322,parcial_procedente,-,"R$ 6,000.00",3,01/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+323,improcedente,-,R$ 0.00,0,31/05/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+324,parcial_procedente,-,R$ 0.00,0,01/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+325,parcial_procedente,-,R$ 0.00,0,01/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,S,N
+326,parcial_procedente,-,"R$ 3,000.00",2,01/06/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:20:00,2,N,N,N,N,N,N
+327,parcial_procedente,-,"R$ 6,000.00",3,27/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,-,N
+328,improcedente,-,R$ 0.00,0,06/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+329,improcedente,-,R$ 0.00,0,27/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,03:55:00,1,N,N,N,N,S,N
+330,parcial_procedente,-,"R$ 3,000.00",2,11/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+331,parcial_procedente,-,"R$ 4,000.00",2,28/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,N,N
+332,parcial_procedente,-,R$ 0.00,0,28/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+333,parcial_procedente,-,"R$ 4,000.00",2,23/07/2017,Denise Lago Pereira Haas,Leigo,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,N,N
+334,total_procedente,-,"R$ 10,000.00",5,18/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,S,N
+335,parcial_procedente,-,"R$ 7,000.00",4,01/08/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,S,N
+336,parcial_procedente,-,"R$ 5,590.01",3,19/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,-,N
+338,parcial_procedente,-,R$ 0.00,0,23/01/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+339,total_procedente,-,"R$ 3,000.00",2,15/10/2018,Ana Luisa Schmidt Ramos,Substituto,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+340,improcedente,-,R$ 0.00,0,07/04/2017,Denise Lago Pereira Haas,Leigo,N,N,N,N,-,0,N,N,S,03:24:00,1,N,N,N,N,-,N
+341,improcedente,-,R$ 0.00,0,16/02/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,21:00:00,5,N,S,N,N,S,N
+342,parcial_procedente,-,"R$ 8,000.00",4,21/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,S,N
+343,parcial_procedente,-,"R$ 6,000.00",3,25/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+344,parcial_procedente,-,"R$ 10,000.00",5,19/04/2017,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+345,improcedente,-,R$ 0.00,0,25/04/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,-,N
+346,parcial_procedente,-,"R$ 10,000.00",5,13/05/2017,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+347,total_procedente,-,"R$ 2,000.00",1,04/05/2017,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,N,N
+348,parcial_procedente,-,"R$ 3,000.00",2,27/10/2016,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,-,N
+349,parcial_procedente,-,"R$ 3,000.00",2,27/10/2016,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,-,N
+350,parcial_procedente,-,"R$ 5,000.00",3,24/04/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,-,N
+351,parcial_procedente,-,"R$ 4,000.00",2,03/04/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:10:00,4,N,N,N,N,-,N
+352,parcial_procedente,-,R$ 0.00,0,20/04/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,S,N,N,N,-,N
+353,total_procedente,-,"R$ 8,000.00",4,16/05/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+354,parcial_procedente,-,"R$ 3,000.00",2,20/04/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,-,N
+355,improcedente,-,R$ 0.00,0,20/04/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+356,parcial_procedente,-,"R$ 5,000.00",3,20/04/2017,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,N,N
+357,improcedente,-,R$ 0.00,0,16/05/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,N,N
+358,parcial_procedente,-,"R$ 1,000.00",1,15/05/2017,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,S,N
+359,parcial_procedente,-,"R$ 10,000.00",5,07/02/2017,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+360,parcial_procedente,-,R$ 0.00,0,31/01/2017,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+361,improcedente,-,R$ 0.00,0,09/02/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,S,N,-,N
+362,parcial_procedente,-,R$ 0.00,0,08/02/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+363,parcial_procedente,-,"R$ 8,000.00",4,11/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+364,total_procedente,-,"R$ 5,000.00",3,14/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,S,N
+365,total_procedente,-,"R$ 5,000.00",3,13/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,-,N
+366,total_procedente,-,"R$ 1,500.00",1,11/10/2016,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,-,N
+367,improcedente,extinto,R$ 0.00,0,11/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,-,N
+368,parcial_procedente,-,"R$ 3,000.00",2,11/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+369,parcial_procedente,-,"R$ 8,000.00",4,07/12/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,N,N
+370,parcial_procedente,-,"R$ 1,000.00",1,20/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,02:00:00,1,N,N,N,N,N,N
+371,parcial_procedente,-,"R$ 3,000.00",2,24/10/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,S,N,N,-,N
+372,parcial_procedente,-,"R$ 5,000.00",3,19/09/2016,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,-,N
+373,extinto,-,R$ 0.00,0,09/12/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+374,parcial_procedente,-,"R$ 10,000.00",5,09/12/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,N,N
+376,parcial_procedente,-,"R$ 5,000.00",3,24/11/2016,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,N,N
+377,parcial_procedente,-,R$ 0.00,0,19/12/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+378,total_procedente,-,"R$ 3,000.00",2,27/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,-,N
+379,total_procedente,-,"R$ 14,000.00",6,28/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,42:00:00,7,N,N,N,N,-,N
+380,total_procedente,-,"R$ 5,000.00",3,27/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,N,N
+381,total_procedente,-,"R$ 3,000.00",2,27/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,S,N
+382,total_procedente,extinto,"R$ 8,000.00",4,31/08/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+383,parcial_procedente,-,"R$ 10,000.00",5,27/07/2016,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+384,total_procedente,-,"R$ 10,000.00",5,31/08/2016,Vânia Petermann,Titular,N,N,N,S,17,4,N,N,N,-,0,N,N,N,N,N,N
+385,total_procedente,-,"R$ 10,000.00",5,27/07/2016,Bárbara Gonçalves Dalponte,Leigo,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,S,N
+386,improcedente,-,R$ 0.00,0,05/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,N,N
+387,parcial_procedente,-,"R$ 7,000.00",4,13/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:35:00,2,N,N,N,N,N,N
+388,parcial_procedente,-,"R$ 3,000.00",2,14/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+389,improcedente,-,R$ 0.00,0,02/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,S,N,N,-,N
+390,parcial_procedente,-,R$ 0.00,0,27/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+391,parcial_procedente,-,"R$ 4,000.00",2,12/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,N,N
+392,total_procedente,-,"R$ 7,000.00",4,01/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,-,N
+393,total_procedente,-,"R$ 5,000.00",3,05/09/2016,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+394,parcial_procedente,-,"R$ 10,000.00",5,15/09/2016,Vânia Petermann,Titular,N,N,N,S,6,3,N,N,N,-,0,N,N,N,N,N,N
+395,parcial_procedente,-,"R$ 1,000.00",1,04/07/2016,Fernando de Castro Faria,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,S,N
+396,parcial_procedente,-,"R$ 10,000.00",5,29/07/2016,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,N
+397,improcedente,-,R$ 0.00,0,22/06/2016,Fernando de Castro Faria,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,S,N
+398,total_procedente,-,"R$ 5,000.00",3,29/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,S,S,N,-,0,N,N,N,N,N,N
+399,parcial_procedente,-,"R$ 2,000.00",1,29/07/2016,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+400,total_procedente,-,"R$ 5,000.00",3,11/08/2016,Maiara Nuernberg Philippi,Leigo,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,-,N
+401,improcedente,-,R$ 0.00,0,21/07/2016,Fernando de Castro Faria,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,S,N,-,N
+402,parcial_procedente,-,R$ 0.00,0,27/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+403,parcial_procedente,-,R$ 0.00,0,27/07/2016,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,-,N
+404,total_procedente,-,"R$ 2,000.00",1,11/04/2016,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,N,N
+405,total_procedente,-,"R$ 15,000.00",6,30/05/2016,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+406,parcial_procedente,-,R$ 0.00,0,19/05/2016,Lucilene dos Santos,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,S,N
+407,total_procedente,-,"R$ 5,000.00",3,30/05/2016,Lucilene dos Santos,Substituto,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,-,S
+408,total_procedente,-,"R$ 12,000.00",6,18/03/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,-,N
+409,parcial_procedente,-,"R$ 8,000.00",4,18/03/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,-,N
+410,parcial_procedente,-,"R$ 3,000.00",2,08/04/2016,Rudson Marcos,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,N,N
+411,total_procedente,-,"R$ 3,000.00",2,08/04/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+412,parcial_procedente,-,"R$ 5,000.00",3,08/04/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,-,N
+413,improcedente,-,R$ 0.00,0,08/05/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,-,S
+414,total_procedente,-,"R$ 5,000.00",3,08/04/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+415,total_procedente,-,"R$ 12,000.00",6,08/04/2016,Rudson Marcos,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,N,N
+416,parcial_procedente,-,"R$ 2,500.00",2,04/04/2016,Rudson Marcos,Titular,N,N,N,N,-,0,S,N,S,04:00:00,2,N,N,N,N,-,N
+417,parcial_procedente,-,"R$ 8,000.00",4,25/01/2016,Davidson Jahn Mello,Titular,N,N,N,S,2,2,N,N,S,10:00:00,3,N,N,N,N,N,N
+418,total_procedente,-,"R$ 3,000.00",2,26/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+419,total_procedente,-,"R$ 8,000.00",4,28/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,21:35:00,5,N,N,N,N,-,N
+420,total_procedente,-,"R$ 8,000.00",4,27/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+421,parcial_procedente,-,"R$ 1,000.00",1,27/01/2016,Davidson Jahn Mello,Titular,N,N,N,S,1,1,N,N,S,01:00:00,1,N,N,N,N,,
+422,total_procedente,-,"R$ 8,000.00",4,29/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+423,total_procedente,-,"R$ 6,000.00",3,28/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,15:20:00,4,N,N,N,N,,
+424,total_procedente,-,"R$ 2,000.00",1,04/02/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+425,total_procedente,-,"R$ 7,500.00",4,15/02/2016,Cleni Serly Rauen Vieira,Substituto,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+426,total_procedente,-,"R$ 10,000.00",5,24/02/2016,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+427,parcial_procedente,-,"R$ 5,000.00",3,22/02/2016,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,04:25:00,2,N,N,N,N,,
+428,total_procedente,-,"R$ 5,000.00",3,22/02/2016,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+429,total_procedente,-,"R$ 5,000.00",3,29/02/2016,Andresa Bernardo,Substituto,N,N,N,N,-,0,N,N,S,03:55:00,1,N,N,N,N,,
+430,total_procedente,-,"R$ 15,000.00",6,12/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+431,parcial_procedente,-,"R$ 8,000.00",4,12/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+432,total_procedente,-,"R$ 2,000.00",1,07/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,S,N,S,N,,
+433,total_procedente,-,"R$ 4,000.00",2,14/01/2016,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+434,total_procedente,-,"R$ 5,000.00",3,18/12/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+435,parcial_procedente,-,"R$ 5,000.00",3,19/11/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+436,improcedente,-,R$ 0.00,0,26/11/2015,Bárbara Gonçalves Dalponte,Leigo,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+437,total_procedente,-,"R$ 15,000.00",6,09/12/2015,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+438,parcial_procedente,-,"R$ 15,000.00",6,10/12/2015,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+439,total_procedente,-,"R$ 5,000.00",3,14/12/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+440,total_procedente,-,"R$ 5,000.00",3,14/12/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+441,total_procedente,-,"R$ 10,000.00",5,14/12/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,22:00:00,5,N,N,N,N,,
+442,total_procedente,-,"R$ 8,000.00",4,15/12/2015,Vânia Petermann,Titular,N,N,N,N,1,1,N,N,S,08:00:00,3,N,N,N,N,,
+443,total_procedente,-,"R$ 3,000.00",2,15/12/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+444,total_procedente,-,"R$ 3,000.00",2,17/12/2015,Maiara Nuernberg Philippi,Leigo,N,N,N,S,1,1,N,N,S,01:25:00,1,N,N,N,N,,
+445,total_procedente,-,"R$ 3,000.00",2,22/10/2015,Davidson Jahn Mello,Titular,N,N,N,S,60,4,N,N,N,-,0,N,N,N,N,,
+446,parcial_procedente,-,R$ 0.00,0,05/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+447,total_procedente,-,"R$ 7,000.00",4,02/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+448,total_procedente,-,"R$ 4,000.00",2,10/09/2015,Vânia Petermann,Titular,N,N,N,S,0.5,1,N,N,S,09:00:00,3,N,N,N,N,,
+449,total_procedente,-,"R$ 9,000.00",5,09/09/2015,Vânia Petermann,Titular,N,N,N,S,12,4,N,N,N,-,0,N,N,N,N,,
+450,total_procedente,-,"R$ 10,000.00",5,09/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+451,total_procedente,-,"R$ 7,000.00",4,09/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+452,total_procedente,-,"R$ 5,000.00",3,09/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+453,total_procedente,-,"R$ 3,000.00",2,09/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,,
+454,total_procedente,-,"R$ 20,000.00",6,04/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+455,total_procedente,-,R$ 0.00,0,10/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+456,total_procedente,-,"R$ 10,000.00",5,06/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+457,total_procedente,-,"R$ 2,000.00",1,01/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+458,total_procedente,-,"R$ 4,000.00",2,01/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+459,total_procedente,-,"R$ 4,500.00",3,15/09/2015,Vânia Petermann,Titular,N,N,N,S,10,4,N,N,N,-,0,N,N,N,N,,
+459,total_procedente,-,"R$ 2,000.00",1,15/09/2015,Vânia Petermann,Titular,N,N,N,S,10,4,N,N,N,-,0,N,N,N,N,,
+460,parcial_procedente,-,"R$ 15,000.00",6,23/09/2015,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+461,parcial_procedente,extinto,"R$ 4,000.00",2,09/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+462,total_procedente,-,"R$ 3,000.00",2,16/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,,
+463,parcial_procedente,-,"R$ 10,000.00",5,19/10/2015,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+464,parcial_procedente,-,"R$ 10,000.00",5,19/10/2015,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+465,total_procedente,-,"R$ 4,000.00",2,22/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+466,parcial_procedente,-,"R$ 4,000.00",2,26/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+467,total_procedente,-,"R$ 7,000.00",4,26/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+468,total_procedente,-,"R$ 7,000.00",4,26/10/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+469,total_procedente,-,"R$ 10,000.00",5,28/10/2015,Vânia Petermann,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+470,improcedente,-,R$ 0.00,0,04/11/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,S,N,N,N,,
+471,improcedente,-,R$ 0.00,0,09/11/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+472,total_procedente,-,"R$ 3,000.00",2,23/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+473,parcial_procedente,-,"R$ 2,000.00",1,03/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+474,total_procedente,-,"R$ 5,000.00",3,02/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+476,total_procedente,-,"R$ 2,000.00",1,03/06/2015,Iasodara Fin Nishi,Substituto,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+477,total_procedente,-,"R$ 5,000.00",3,18/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,S,1,1,N,N,S,00:10:00,1,N,N,N,N,,
+478,parcial_procedente,-,R$ 0.00,0,08/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+479,parcial_procedente,-,R$ 0.00,0,08/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+480,total_procedente,-,R$ 0.00,0,09/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+481,total_procedente,-,"R$ 8,000.00",4,17/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+482,improcedente,extinto,R$ 0.00,0,18/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+483,total_procedente,-,"R$ 5,000.00",3,29/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+484,total_procedente,-,"R$ 8,000.00",4,17/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+485,total_procedente,-,"R$ 6,000.00",3,23/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+486,improcedente,-,R$ 0.00,0,24/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+487,total_procedente,-,"R$ 3,000.00",2,23/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,,
+488,total_procedente,-,"R$ 15,000.00",6,29/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+489,parcial_procedente,-,"R$ 15,000.00",6,29/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+490,parcial_procedente,-,R$ 0.00,0,29/06/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+491,total_procedente,-,"R$ 10,000.00",5,22/05/2015,Iasodara Fin Nishi,Substituto,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+492,parcial_procedente,-,R$ 0.00,0,22/05/2015,Eduardo Peruffo e Silva,Leigo,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+493,total_procedente,-,"R$ 5,000.00",3,26/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+494,parcial_procedente,-,R$ 0.00,0,26/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+495,total_procedente,-,"R$ 3,000.00",2,27/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+496,total_procedente,-,"R$ 8,000.00",4,26/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+497,total_procedente,-,"R$ 4,500.00",3,27/05/2015,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+498,total_procedente,-,"R$ 4,500.00",3,27/05/2015,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+499,parcial_procedente,-,R$ 0.00,0,28/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+500,parcial_procedente,-,"R$ 14,000.00",6,29/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+501,total_procedente,-,"R$ 4,000.00",2,03/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+502,total_procedente,-,"R$ 2,000.00",1,03/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+503,extinto,-,R$ 0.00,0,03/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+504,total_procedente,-,"R$ 9,000.00",5,03/08/2015,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,13:00:00,4,N,N,N,N,,
+505,parcial_procedente,-,"R$ 5,000.00",3,28/07/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+506,total_procedente,-,"R$ 8,000.00",4,03/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+507,total_procedente,-,R$ 500.00,1,03/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+508,improcedente,-,R$ 0.00,0,03/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+509,parcial_procedente,-,R$ 0.00,0,18/08/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+510,parcial_procedente,-,"R$ 8,000.00",4,22/07/2015,Erica Lourenço de Lima Ferreira,Titular,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,S,,
+511,total_procedente,-,"R$ 8,000.00",4,07/07/2015,Erica Lourenço de Lima Ferreira,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+512,parcial_procedente,-,"R$ 3,000.00",2,10/07/2015,Erica Lourenço de Lima Ferreira,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+513,improcedente,-,R$ 0.00,0,20/07/2015,Erica Lourenço de Lima Ferreira,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+514,total_procedente,-,"R$ 2,000.00",1,07/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,S,N,N,,
+515,parcial_procedente,-,"R$ 4,000.00",2,19/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+516,parcial_procedente,-,"R$ 4,000.00",2,23/02/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+517,parcial_procedente,-,R$ 0.00,0,23/02/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+518,improcedente,-,R$ 0.00,0,23/02/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+519,parcial_procedente,-,R$ 0.00,0,23/02/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+520,parcial_procedente,-,R$ 0.00,0,04/03/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+521,total_procedente,-,"R$ 3,000.00",2,09/03/2015,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+522,parcial_procedente,-,"R$ 7,000.00",4,12/03/2015,Vânia Petermann,Titular,N,N,N,S,9,4,N,N,N,-,0,N,N,N,N,,
+523,total_procedente,-,"R$ 2,000.00",1,12/03/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+524,total_procedente,-,"R$ 7,000.00",4,24/03/2015,Vânia Petermann,Titular,N,N,N,S,10,4,N,N,N,-,0,N,N,N,N,,
+525,total_procedente,-,"R$ 6,000.00",3,06/04/2015,Vânia Petermann,Titular,N,N,N,S,12,4,N,N,N,-,0,N,N,N,N,,
+526,total_procedente,-,"R$ 5,000.00",3,10/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+527,parcial_procedente,-,"R$ 5,000.00",3,13/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+528,total_procedente,-,R$ 0.00,0,15/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+529,improcedente,-,R$ 0.00,0,15/03/2015,Josiane Vincoski Gavião da Silva,Leigo,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+530,total_procedente,-,"R$ 2,000.00",1,17/04/2015,Vânia Petermann,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+531,total_procedente,-,"R$ 2,000.00",1,17/04/2015,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+532,parcial_procedente,-,"R$ 5,000.00",3,22/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:10:00,2,N,N,N,N,,
+533,parcial_procedente,-,"R$ 5,000.00",3,22/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+534,parcial_procedente,-,"R$ 5,000.00",3,24/04/2015,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+535,total_procedente,-,R$ 0.00,0,24/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+536,parcial_procedente,-,R$ 0.00,0,27/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+537,total_procedente,-,"R$ 6,000.00",3,29/04/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,,
+538,parcial_procedente,-,"R$ 15,000.00",6,07/05/2015,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+539,total_procedente,-,"R$ 4,000.00",2,20/05/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+540,total_procedente,-,"R$ 1,000.00",1,20/01/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,S,,
+541,total_procedente,-,"R$ 10,000.00",5,07/01/2015,Davidson Jahn Mello,Titular,N,N,N,S,-,0,N,N,N,-,0,N,N,N,N,,
+542,parcial_procedente,-,"R$ 4,000.00",2,13/01/2015,Davidson Jahn Mello,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+543,total_procedente,-,"R$ 1,000.00",1,21/01/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+544,parcial_procedente,-,"R$ 4,000.00",2,21/01/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+545,total_procedente,-,"R$ 3,000.00",2,26/01/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+546,total_procedente,-,"R$ 10,000.00",5,28/01/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,,
+547,total_procedente,-,"R$ 5,000.00",3,29/01/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+548,total_procedente,-,"R$ 7,000.00",4,04/02/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+549,total_procedente,-,"R$ 7,000.00",4,04/02/2015,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+550,total_procedente,-,"R$ 10,000.00",5,13/12/2014,Vânia Petermann,Titular,N,N,N,S,11,4,N,N,N,-,0,N,N,N,N,,
+551,total_procedente,-,"R$ 5,000.00",3,13/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,,
+552,total_procedente,-,"R$ 5,000.00",3,13/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+553,total_procedente,-,"R$ 5,000.00",3,13/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+554,total_procedente,-,"R$ 3,000.00",2,07/11/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,03:36:00,1,N,N,N,N,,
+555,total_procedente,-,"R$ 5,000.00",3,13/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+556,total_procedente,-,"R$ 5,000.00",3,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+557,total_procedente,-,"R$ 5,000.00",3,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,S,03:40:00,1,N,N,N,N,,
+558,total_procedente,-,"R$ 5,000.00",3,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+559,improcedente,-,R$ 0.00,0,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,S,N,N,,
+560,total_procedente,-,"R$ 8,000.00",4,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+561,total_procedente,-,"R$ 5,000.00",3,14/12/2014,Vânia Petermann,Titular,N,N,N,S,4,3,S,N,N,-,0,N,N,N,N,,
+562,total_procedente,-,"R$ 5,000.00",3,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+563,improcedente,-,R$ 0.00,0,14/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,02:00:00,1,N,N,N,N,,
+564,total_procedente,-,"R$ 8,000.00",4,14/12/2014,Vânia Petermann,Titular,N,N,N,S,6,3,N,N,N,-,0,N,N,N,N,,
+565,total_procedente,-,"R$ 12,000.00",6,14/12/2014,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+566,total_procedente,-,"R$ 10,000.00",5,14/12/2014,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+567,total_procedente,-,"R$ 2,000.00",1,24/11/2014,Monique de Oliveira Woytuski,Leigo,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,,
+568,total_procedente,-,"R$ 5,000.00",3,03/12/2014,Vânia Petermann,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+569,total_procedente,-,"R$ 5,000.00",3,03/12/2014,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+570,parcial_procedente,-,"R$ 5,000.00",3,03/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+571,total_procedente,-,"R$ 4,000.00",2,04/12/2014,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+572,total_procedente,-,"R$ 4,000.00",2,04/12/2014,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+573,total_procedente,-,R$ 0.00,0,05/12/2014,Eduardo Peruffo e Silva,Leigo,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+574,total_procedente,-,"R$ 7,000.00",4,05/12/2014,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+575,total_procedente,-,"R$ 4,000.00",2,05/12/2014,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+576,total_procedente,-,"R$ 4,000.00",2,09/12/2014,Vânia Petermann,Titular,N,N,S,N,-,0,S,N,N,-,0,N,N,N,N,,
+577,total_procedente,-,"R$ 2,500.00",2,10/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:00:00,2,N,N,N,N,,
+578,total_procedente,-,"R$ 5,000.00",3,12/12/2014,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+579,total_procedente,-,"R$ 4,000.00",2,15/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+580,parcial_procedente,-,"R$ 7,240.00",4,13/12/2014,Helio Marcos Filho,Leigo,N,N,N,S,120,4,N,N,N,-,0,N,N,N,N,,
+581,improcedente,-,R$ 0.00,0,16/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,S,N,N,N,,
+582,total_procedente,-,R$ 0.00,0,16/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+583,total_procedente,-,"R$ 5,000.00",3,16/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+584,parcial_procedente,-,"R$ 5,000.00",3,17/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+585,parcial_procedente,-,R$ 0.00,0,18/12/2014,Eduardo Peruffo e Silva,Leigo,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+586,parcial_procedente,-,"R$ 5,000.00",3,19/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+587,total_procedente,-,R$ 0.00,0,19/12/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+588,total_procedente,-,"R$ 7,000.00",4,04/02/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+589,parcial_procedente,-,"R$ 4,000.00",2,10/02/2015,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+591,total_procedente,-,"R$ 10,000.00",5,29/09/2014,Vânia Petermann,Titular,N,N,N,S,1.5,2,N,N,N,-,0,N,N,N,N,,
+592,total_procedente,-,"R$ 8,000.00",4,22/08/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+593,total_procedente,-,"R$ 8,000.00",4,22/08/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+594,total_procedente,-,"R$ 8,000.00",4,11/08/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+595,total_procedente,-,"R$ 4,000.00",2,23/09/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+596,total_procedente,-,"R$ 4,000.00",2,15/10/2014,Vânia Petermann,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,,
+597,total_procedente,-,"R$ 8,000.00",4,17/10/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+598,total_procedente,-,"R$ 8,000.00",4,17/10/2014,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+599,parcial_procedente,-,"R$ 10,000.00",5,29/09/2014,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+600,total_procedente,-,"R$ 8,000.00",4,21/05/2014,Margani de Mello,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+601,parcial_procedente,-,"R$ 3,000.00",2,22/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+602,parcial_procedente,-,"R$ 6,000.00",3,23/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,,
+603,total_procedente,-,"R$ 5,000.00",3,27/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+604,total_procedente,improcedente,"R$ 5,000.00",3,05/06/2014,Margani de Mello,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+604,improcedente,total_procedente,R$ 0.00,0,05/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+605,total_procedente,-,"R$ 3,000.00",2,03/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+606,total_procedente,improcedente,"R$ 10,000.00",5,04/06/2014,Margani de Mello,Titular,N,N,N,S,30,4,S,N,N,-,0,N,N,N,N,,
+607,total_procedente,-,"R$ 4,000.00",2,04/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,05:30:00,2,N,N,N,N,,
+608,parcial_procedente,-,"R$ 10,000.00",5,05/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,,
+609,total_procedente,-,"R$ 5,000.00",3,05/06/2014,Margani de Mello,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+610,parcial_procedente,-,"R$ 12,000.00",6,05/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+611,total_procedente,-,"R$ 8,000.00",4,06/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+612,total_procedente,-,"R$ 4,000.00",2,09/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+613,total_procedente,-,"R$ 8,000.00",4,09/06/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+614,total_procedente,-,"R$ 4,000.00",2,10/06/2014,Margani de Mello,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+615,total_procedente,-,"R$ 10,000.00",5,07/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+616,total_procedente,-,"R$ 6,000.00",3,14/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+617,total_procedente,-,"R$ 6,000.00",3,17/03/2014,Margani de Mello,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+618,total_procedente,-,"R$ 10,000.00",5,21/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+618,total_procedente,-,"R$ 2,500.00",2,21/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+619,parcial_procedente,-,"R$ 10,000.00",5,21/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+620,total_procedente,-,"R$ 10,000.00",5,21/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+621,parcial_procedente,-,R$ 0.00,0,28/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+622,parcial_procedente,-,"R$ 3,000.00",2,28/03/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+623,improcedente,-,R$ 0.00,0,01/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+624,total_procedente,improcedente,"R$ 4,000.00",2,03/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,01:35:00,1,N,N,N,N,,
+625,total_procedente,-,"R$ 5,000.00",3,08/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+626,total_procedente,-,"R$ 2,000.00",1,14/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,04:37:00,2,N,N,N,N,,
+627,parcial_procedente,-,"R$ 8,000.00",4,15/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+628,parcial_procedente,-,"R$ 5,000.00",3,15/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+629,total_procedente,-,"R$ 10,000.00",5,15/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,,
+630,parcial_procedente,-,"R$ 2,000.00",1,30/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+631,total_procedente,-,"R$ 5,000.00",3,30/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+632,total_procedente,-,"R$ 5,000.00",3,30/04/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+633,total_procedente,-,"R$ 8,000.00",4,09/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,,
+634,total_procedente,-,"R$ 5,000.00",3,15/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+635,parcial_procedente,-,R$ 0.00,0,16/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+636,total_procedente,-,"R$ 5,000.00",3,16/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,05:30:00,2,N,N,N,N,,
+637,improcedente,-,R$ 0.00,0,16/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+638,improcedente,-,R$ 0.00,0,16/05/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+639,total_procedente,-,"R$ 4,000.00",2,16/05/2014,Margani de Mello,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+640,total_procedente,-,"R$ 10,000.00",5,10/02/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+641,parcial_procedente,-,"R$ 15,000.00",6,10/02/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+642,total_procedente,-,"R$ 15,000.00",6,10/02/2014,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+643,parcial_procedente,-,"R$ 10,000.00",5,10/02/2014,Margani de Mello,Titular,N,N,N,S,10,4,N,N,N,-,0,N,N,N,N,,
+644,total_procedente,-,"R$ 10,000.00",5,10/02/2014,Margani de Mello,Titular,N,N,N,S,10,4,N,N,N,-,0,N,N,N,N,,
+645,total_procedente,-,"R$ 5,000.00",3,21/01/2014,Davidson Jahn Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+646,parcial_procedente,-,"R$ 2,000.00",1,27/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+647,parcial_procedente,-,"R$ 8,000.00",4,21/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,,
+648,parcial_procedente,-,"R$ 8,000.00",4,22/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+649,parcial_procedente,-,"R$ 10,000.00",5,22/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+650,parcial_procedente,-,"R$ 5,000.00",3,22/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+651,improcedente,-,R$ 0.00,0,23/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+652,parcial_procedente,-,"R$ 10,000.00",5,23/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,S,,
+653,parcial_procedente,-,"R$ 4,600.00",3,23/05/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+654,parcial_procedente,-,"R$ 4,500.00",3,23/05/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+655,parcial_procedente,-,"R$ 5,000.00",3,27/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+656,parcial_procedente,-,"R$ 7,000.00",4,28/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+657,parcial_procedente,-,"R$ 8,000.00",4,28/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+658,parcial_procedente,-,"R$ 3,500.00",2,28/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+659,parcial_procedente,-,"R$ 3,000.00",2,28/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:13:00,2,N,N,N,N,,
+660,parcial_procedente,-,"R$ 5,000.00",3,28/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+661,parcial_procedente,-,"R$ 10,000.00",5,30/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+662,total_procedente,-,"R$ 15,000.00",6,29/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,,
+663,parcial_procedente,-,"R$ 5,000.00",3,29/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+664,improcedente,-,R$ 0.00,0,30/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+665,parcial_procedente,-,"R$ 10,000.00",5,29/05/2019,Vânia Petermann,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+666,parcial_procedente,-,R$ 0.00,0,30/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+667,parcial_procedente,-,"R$ 11,000.00",6,30/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,26:00:00,6,N,N,N,N,,
+668,total_procedente,-,"R$ 10,000.00",5,30/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,34:00:00,7,N,N,N,N,,
+669,parcial_procedente,-,"R$ 7,000.00",4,31/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+670,parcial_procedente,-,"R$ 7,000.00",4,31/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+671,parcial_procedente,-,R$ 0.00,0,31/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+672,improcedente,-,R$ 0.00,0,31/05/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+673,parcial_procedente,-,"R$ 5,000.00",3,03/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,S,,
+674,parcial_procedente,-,"R$ 11,000.00",6,05/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+674,parcial_procedente,-,"R$ 10,000.00",5,05/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+675,parcial_procedente,-,"R$ 10,000.00",5,06/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+676,parcial_procedente,-,"R$ 10,000.00",5,07/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+677,parcial_procedente,-,"R$ 15,000.00",6,07/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,36:00:00,7,N,N,N,N,,
+678,parcial_procedente,-,"R$ 14,000.00",6,07/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,31:00:00,7,N,N,N,N,,
+679,parcial_procedente,-,"R$ 10,000.00",5,07/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+680,parcial_procedente,-,"R$ 2,000.00",1,07/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+681,parcial_procedente,-,"R$ 8,000.00",4,10/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+682,total_procedente,extinto,"R$ 8,000.00",4,10/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+683,parcial_procedente,-,"R$ 8,000.00",4,10/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,16:00:00,5,N,N,N,N,,
+684,parcial_procedente,-,"R$ 8,000.00",4,10/06/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,S,07:00:00,2,N,N,N,N,,
+685,parcial_procedente,-,"R$ 10,000.00",5,11/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+686,parcial_procedente,-,"R$ 6,000.00",3,11/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+687,parcial_procedente,-,"R$ 3,000.00",2,11/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+688,parcial_procedente,-,"R$ 5,000.00",3,11/06/2019,Vânia Petermann,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+689,parcial_procedente,-,"R$ 15,000.00",6,11/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,29:30:00,7,N,N,N,N,,
+690,parcial_procedente,-,"R$ 10,000.00",5,12/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+691,parcial_procedente,-,"R$ 8,000.00",4,14/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:15:00,3,N,N,N,N,,
+691,parcial_procedente,-,"R$ 5,000.00",3,14/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:15:00,3,N,N,N,N,,
+692,parcial_procedente,-,R$ 0.00,0,13/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+693,total_procedente,-,R$ 0.00,0,13/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+694,parcial_procedente,-,"R$ 2,000.00",1,14/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+695,parcial_procedente,-,R$ 0.00,0,17/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+696,improcedente,-,R$ 0.00,0,17/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+697,improcedente,-,R$ 0.00,0,17/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+698,improcedente,extinto,R$ 0.00,0,17/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+699,parcial_procedente,-,"R$ 15,000.00",6,17/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+700,parcial_procedente,-,R$ 0.00,0,17/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+701,parcial_procedente,-,"R$ 15,000.00",6,18/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,54:00:00,7,N,N,N,N,,
+702,parcial_procedente,-,"R$ 8,000.00",4,18/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+703,parcial_procedente,-,"R$ 7,000.00",4,18/06/2019,Vânia Petermann,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+704,parcial_procedente,-,"R$ 5,000.00",3,18/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+705,parcial_procedente,-,"R$ 7,000.00",4,19/06/2019,Vânia Petermann,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+706,parcial_procedente,-,"R$ 6,000.00",3,19/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,S,,
+707,parcial_procedente,-,R$ 0.00,0,21/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+708,parcial_procedente,-,"R$ 8,000.00",4,21/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+709,parcial_procedente,-,"R$ 10,000.00",5,24/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,S,N,,
+710,parcial_procedente,-,"R$ 1,500.00",1,25/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+711,parcial_procedente,-,"R$ 4,500.00",3,25/06/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+712,total_procedente,improcedente,"R$ 3,000.00",2,25/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+713,parcial_procedente,-,"R$ 7,000.00",4,27/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:00:00,5,N,N,N,N,,
+714,improcedente,-,R$ 0.00,0,27/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,,
+715,parcial_procedente,-,"R$ 11,000.00",6,28/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,,
+716,improcedente,-,R$ 0.00,0,28/06/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,,
+717,parcial_procedente,-,"R$ 7,000.00",4,01/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+718,improcedente,-,R$ 0.00,0,01/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+719,improcedente,-,R$ 0.00,0,02/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+720,parcial_procedente,-,R$ 0.00,0,03/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+721,parcial_procedente,-,"R$ 8,000.00",4,04/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+722,total_procedente,-,"R$ 7,000.00",4,04/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+723,improcedente,-,R$ 0.00,0,04/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+724,parcial_procedente,-,"R$ 7,000.00",4,04/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:30:00,4,N,N,N,N,,
+725,parcial_procedente,-,"R$ 4,000.00",2,04/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+726,parcial_procedente,-,"R$ 5,000.00",3,05/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+727,parcial_procedente,-,"R$ 5,000.00",3,09/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+728,parcial_procedente,-,"R$ 5,000.00",3,05/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+729,parcial_procedente,-,"R$ 3,000.00",2,05/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+730,parcial_procedente,-,"R$ 5,000.00",3,09/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+731,parcial_procedente,-,"R$ 4,500.00",3,10/07/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+731,parcial_procedente,-,"R$ 3,000.00",2,10/07/2019,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+732,parcial_procedente,-,"R$ 8,000.00",4,10/07/2019,Vânia Petermann,Titular,N,N,N,S,22,4,S,N,N,-,0,N,N,N,N,,
+733,parcial_procedente,-,"R$ 2,000.00",1,11/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:20:00,2,N,N,N,N,,
+734,parcial_procedente,-,"R$ 5,000.00",3,12/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+735,parcial_procedente,-,"R$ 8,000.00",4,12/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+736,parcial_procedente,-,"R$ 7,000.00",4,12/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+737,parcial_procedente,-,"R$ 7,000.00",4,12/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+738,parcial_procedente,-,"R$ 7,000.00",4,15/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:30:00,4,N,N,N,N,,
+739,parcial_procedente,-,"R$ 1,500.00",1,15/07/2019,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+740,parcial_procedente,-,"R$ 6,000.00",3,15/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+741,parcial_procedente,-,"R$ 5,000.00",3,16/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+742,parcial_procedente,-,"R$ 4,000.00",2,15/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+743,parcial_procedente,improcedente,R$ 0.00,0,16/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+744,parcial_procedente,-,"R$ 5,000.00",3,16/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+745,parcial_procedente,-,"R$ 1,000.00",1,18/07/2019,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+746,parcial_procedente,-,"R$ 2,000.00",1,19/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+747,parcial_procedente,-,"R$ 8,000.00",4,19/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,16:00:00,5,N,S,N,N,,
+748,parcial_procedente,-,"R$ 8,000.00",4,24/07/2019,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,10:00:00,3,N,N,N,N,,
+749,parcial_procedente,-,"R$ 10,000.00",5,24/07/2019,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+750,parcial_procedente,-,"R$ 10,000.00",5,26/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,26:00:00,6,N,N,N,N,,
+751,total_procedente,-,R$ 0.00,0,29/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+752,parcial_procedente,-,"R$ 6,500.00",4,30/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+753,parcial_procedente,-,"R$ 9,000.00",5,31/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+754,parcial_procedente,-,"R$ 3,000.00",2,01/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+755,parcial_procedente,-,"R$ 10,000.00",5,31/07/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,37:00:00,7,N,N,N,N,,
+756,improcedente,-,R$ 0.00,0,02/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+757,parcial_procedente,-,"R$ 13,500.00",6,01/08/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,S,24:00:00,6,N,N,N,N,,
+758,parcial_procedente,-,"R$ 4,500.00",3,02/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+759,parcial_procedente,-,"R$ 5,000.00",3,01/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+760,parcial_procedente,-,"R$ 6,000.00",3,02/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+761,parcial_procedente,-,"R$ 4,000.00",2,01/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+762,parcial_procedente,-,R$ 0.00,0,02/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+763,parcial_procedente,-,"R$ 20,000.00",6,02/08/2019,Vânia Petermann,Titular,N,N,S,S,2,2,N,N,N,-,0,N,N,N,N,,
+764,parcial_procedente,-,"R$ 6,000.00",3,02/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+765,total_procedente,-,"R$ 10,000.00",5,02/08/2019,Vânia Petermann,Titular,N,N,N,S,72,4,N,N,N,-,0,N,N,N,N,,
+766,parcial_procedente,-,"R$ 6,000.00",3,02/08/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+767,parcial_procedente,-,"R$ 12,000.00",6,02/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,31:00:00,7,N,N,N,N,,
+768,total_procedente,-,"R$ 5,000.00",3,05/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+769,parcial_procedente,-,"R$ 2,500.00",2,05/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+770,parcial_procedente,-,"R$ 5,000.00",3,06/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:30:00,2,N,N,N,N,,
+771,parcial_procedente,-,"R$ 9,000.00",5,06/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,16:00:00,5,N,N,N,N,,
+772,parcial_procedente,-,"R$ 10,000.00",5,06/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+773,parcial_procedente,-,"R$ 10,000.00",5,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+774,parcial_procedente,-,R$ 0.00,0,06/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+775,parcial_procedente,-,"R$ 9,000.00",5,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+776,improcedente,-,R$ 0.00,0,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+777,parcial_procedente,-,R$ 0.00,0,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+778,parcial_procedente,-,"R$ 5,000.00",3,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+779,improcedente,-,R$ 0.00,0,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+780,improcedente,-,R$ 0.00,0,07/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+781,parcial_procedente,-,"R$ 8,000.00",4,08/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+782,parcial_procedente,-,"R$ 5,000.00",3,08/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+783,parcial_procedente,-,"R$ 10,000.00",5,08/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+784,parcial_procedente,-,R$ 0.00,0,09/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+785,parcial_procedente,-,"R$ 5,000.00",3,09/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+786,parcial_procedente,-,R$ 0.00,0,09/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+787,parcial_procedente,-,"R$ 3,000.00",2,12/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+788,parcial_procedente,-,"R$ 8,000.00",4,12/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,,
+789,parcial_procedente,-,"R$ 2,000.00",1,09/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+790,parcial_procedente,-,"R$ 3,500.00",2,09/08/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,S,02:00:00,1,N,N,N,N,,
+791,parcial_procedente,-,"R$ 6,000.00",3,09/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,16:00:00,5,N,N,N,N,,
+792,parcial_procedente,-,"R$ 5,000.00",3,12/08/2019,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+793,parcial_procedente,-,"R$ 4,000.00",2,12/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+794,parcial_procedente,-,"R$ 10,000.00",5,13/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,21:00:00,5,N,N,N,N,,
+795,parcial_procedente,-,"R$ 5,000.00",3,13/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+796,parcial_procedente,-,"R$ 5,000.00",3,14/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+797,parcial_procedente,-,"R$ 10,000.00",5,14/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,,
+798,total_procedente,-,"R$ 10,000.00",5,14/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+799,parcial_procedente,-,R$ 0.00,0,18/07/2017,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+800,parcial_procedente,-,"R$ 8,000.00",4,14/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+801,parcial_procedente,-,"R$ 10,000.00",5,19/08/2019,Vânia Petermann,Titular,N,N,S,S,5,3,N,N,N,-,0,N,N,N,N,,
+802,parcial_procedente,-,"R$ 6,000.00",3,19/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+803,parcial_procedente,-,"R$ 10,000.00",5,20/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+804,total_procedente,-,"R$ 10,000.00",5,20/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,,
+805,parcial_procedente,-,"R$ 5,000.00",3,20/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+806,parcial_procedente,-,"R$ 3,000.00",2,21/08/2019,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+807,parcial_procedente,-,"R$ 5,000.00",3,21/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+808,parcial_procedente,-,"R$ 10,000.00",5,22/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,27:00:00,6,N,N,N,N,,
+809,parcial_procedente,-,"R$ 5,000.00",3,23/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+810,parcial_procedente,-,R$ 0.00,0,26/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+811,parcial_procedente,-,"R$ 3,000.00",2,27/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+812,parcial_procedente,-,R$ 0.00,0,27/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+813,parcial_procedente,-,"R$ 6,000.00",3,28/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+814,parcial_procedente,-,"R$ 3,500.00",2,28/08/2019,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,07:00:00,2,N,N,N,N,,
+815,parcial_procedente,-,R$ 0.00,0,29/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+816,parcial_procedente,-,"R$ 6,000.00",3,29/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+817,parcial_procedente,-,"R$ 10,000.00",5,30/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,,
+818,improcedente,-,R$ 0.00,0,30/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+819,parcial_procedente,-,"R$ 10,000.00",5,30/08/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+820,parcial_procedente,-,"R$ 5,000.00",3,02/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+821,parcial_procedente,-,"R$ 10,000.00",5,03/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+822,parcial_procedente,-,"R$ 8,000.00",4,04/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:00:00,5,N,N,N,N,,
+823,parcial_procedente,-,"R$ 6,000.00",3,04/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+824,parcial_procedente,-,"R$ 5,000.00",3,04/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+825,parcial_procedente,-,"R$ 1,000.00",1,05/09/2019,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+826,parcial_procedente,-,"R$ 6,000.00",3,06/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+827,parcial_procedente,-,"R$ 7,000.00",4,09/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+828,parcial_procedente,-,"R$ 4,000.00",2,09/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+829,parcial_procedente,-,"R$ 4,000.00",2,09/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+830,parcial_procedente,-,"R$ 3,500.00",2,10/09/2019,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,S,05:00:00,2,N,N,N,N,,
+831,parcial_procedente,-,"R$ 10,000.00",5,10/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,,
+832,parcial_procedente,-,"R$ 10,000.00",5,10/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+833,parcial_procedente,-,"R$ 7,000.00",4,11/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+834,parcial_procedente,-,"R$ 10,000.00",5,13/09/2019,Vânia Petermann,Titular,N,N,N,S,11,4,N,N,N,-,0,N,N,N,N,,
+835,parcial_procedente,-,"R$ 6,000.00",3,08/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+836,parcial_procedente,-,"R$ 6,000.00",3,17/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+837,parcial_procedente,-,"R$ 10,000.00",5,25/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,22:00:00,5,N,N,N,N,,
+838,parcial_procedente,-,R$ 0.00,0,27/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+839,improcedente,-,R$ 0.00,0,27/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+840,parcial_procedente,-,R$ 0.00,0,01/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+841,parcial_procedente,-,"R$ 10,000.00",5,01/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+842,parcial_procedente,-,"R$ 12,000.00",6,02/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+843,improcedente,-,R$ 0.00,0,02/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+844,parcial_procedente,-,"R$ 6,000.00",3,04/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+845,parcial_procedente,-,"R$ 7,000.00",4,10/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+846,improcedente,-,R$ 0.00,0,15/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+847,improcedente,-,R$ 0.00,0,15/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+848,parcial_procedente,-,"R$ 4,000.00",2,05/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,,
+849,parcial_procedente,-,"R$ 3,000.00",2,05/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+850,parcial_procedente,-,"R$ 5,000.00",3,06/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+851,parcial_procedente,-,"R$ 5,000.00",3,12/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+852,parcial_procedente,-,"R$ 6,000.00",3,08/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+853,parcial_procedente,-,R$ 0.00,0,11/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+854,parcial_procedente,-,"R$ 4,000.00",2,11/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+855,parcial_procedente,-,"R$ 3,000.00",2,13/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+856,parcial_procedente,-,"R$ 2,000.00",1,13/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+859,parcial_procedente,-,"R$ 6,000.00",3,25/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+860,parcial_procedente,-,"R$ 4,500.00",3,14/11/2019,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+861,parcial_procedente,-,"R$ 4,000.00",2,18/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+862,parcial_procedente,-,"R$ 6,000.00",3,20/11/2019,Vânia Petermann,Titular,N,N,N,S,0.5,1,N,N,S,13:00:00,4,N,N,N,N,,
+863,parcial_procedente,-,"R$ 8,500.00",5,22/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+864,improcedente,-,R$ 0.00,0,26/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+865,parcial_procedente,-,"R$ 4,000.00",2,27/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+866,parcial_procedente,-,"R$ 6,000.00",3,27/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+867,parcial_procedente,-,"R$ 3,000.00",2,27/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+868,parcial_procedente,-,"R$ 5,000.00",3,29/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+869,parcial_procedente,-,"R$ 6,000.00",3,29/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:30:00,2,N,N,N,N,,
+870,parcial_procedente,-,"R$ 5,000.00",3,12/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+871,parcial_procedente,-,"R$ 6,000.00",3,10/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,S,N,,
+872,parcial_procedente,-,"R$ 5,000.00",3,28/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+873,parcial_procedente,-,"R$ 5,000.00",3,29/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+874,parcial_procedente,-,"R$ 4,000.00",2,02/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+875,parcial_procedente,-,"R$ 11,000.00",6,02/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+876,parcial_procedente,-,"R$ 3,500.00",2,06/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:30:00,2,N,N,N,N,,
+877,parcial_procedente,-,"R$ 5,000.00",3,10/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+879,parcial_procedente,-,R$ 0.00,0,10/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+880,parcial_procedente,-,"R$ 6,000.00",3,15/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+881,parcial_procedente,-,"R$ 3,000.00",2,17/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+882,parcial_procedente,-,"R$ 7,000.00",4,17/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+883,parcial_procedente,-,"R$ 2,000.00",1,20/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+884,parcial_procedente,-,"R$ 1,500.00",1,22/01/2020,Vânia Petermann,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+885,parcial_procedente,-,R$ 0.00,0,21/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+886,parcial_procedente,-,"R$ 7,500.00",4,27/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+887,parcial_procedente,-,"R$ 10,000.00",5,29/01/2020,Vânia Petermann,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+888,parcial_procedente,-,"R$ 5,000.00",3,30/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+889,parcial_procedente,-,"R$ 10,000.00",5,16/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+891,parcial_procedente,-,"R$ 10,000.00",5,10/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+892,parcial_procedente,-,R$ 0.00,0,17/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+893,total_procedente,-,"R$ 6,000.00",3,18/02/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+894,total_procedente,-,"R$ 5,000.00",3,15/03/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+895,total_procedente,-,"R$ 6,000.00",3,11/04/2013,Margani de Mello,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+896,total_procedente,-,"R$ 6,000.00",3,11/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+897,total_procedente,-,"R$ 4,000.00",2,11/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+898,total_procedente,-,"R$ 10,000.00",5,22/04/2013,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+899,total_procedente,-,"R$ 3,000.00",2,23/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+900,total_procedente,-,"R$ 5,000.00",3,25/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+901,extinto,-,R$ 0.00,0,25/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+902,total_procedente,-,"R$ 7,500.00",4,25/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+903,parcial_procedente,-,"R$ 10,000.00",5,26/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+904,total_procedente,-,"R$ 8,000.00",4,29/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+905,parcial_procedente,-,"R$ 3,000.00",2,29/04/2013,Margani de Mello,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+906,parcial_procedente,-,R$ 0.00,0,30/04/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+907,improcedente,-,R$ 0.00,0,13/05/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+908,improcedente,-,R$ 0.00,0,06/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+909,total_procedente,-,"R$ 10,000.00",5,05/06/2013,Eduardo Peruffo e Silva,Leigo,N,N,N,S,35,4,N,N,N,-,0,N,N,N,N,,
+910,total_procedente,-,R$ 500.00,1,06/06/2013,Eduardo Peruffo e Silva,Leigo,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+911,parcial_procedente,-,R$ 0.00,0,07/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+912,parcial_procedente,-,R$ 800.00,1,07/06/2013,Eduardo Peruffo e Silva,Leigo,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+913,total_procedente,-,"R$ 1,000.00",1,11/06/2013,Margani de Mello,Titular,N,N,N,S,0.5,1,N,N,N,-,0,N,N,N,N,,
+914,parcial_procedente,-,"R$ 2,000.00",1,13/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+915,parcial_procedente,-,R$ 0.00,0,12/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+916,improcedente,-,R$ 0.00,0,14/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+917,total_procedente,-,"R$ 8,000.00",4,17/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,16:00:00,5,N,N,N,N,,
+918,total_procedente,-,R$ 304.00,1,20/06/2013,Margani de Mello,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+919,total_procedente,-,"R$ 3,000.00",2,19/06/2013,Margani de Mello,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,,
+920,parcial_procedente,-,"R$ 2,000.00",1,03/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+921,improcedente,-,R$ 0.00,0,05/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+922,parcial_procedente,-,"R$ 1,500.00",1,05/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+923,parcial_procedente,-,"R$ 3,000.00",2,26/06/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+924,total_procedente,-,"R$ 1,000.00",1,26/06/2013,Margani de Mello,Titular,N,N,N,S,7,3,S,N,N,-,0,N,N,N,N,,
+925,improcedente,-,R$ 0.00,0,05/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+926,total_procedente,-,"R$ 6,000.00",3,08/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+927,parcial_procedente,-,"R$ 10,000.00",5,09/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,,
+928,parcial_procedente,-,"R$ 10,000.00",5,11/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+929,total_procedente,-,"R$ 5,000.00",3,12/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+930,total_procedente,-,"R$ 8,000.00",4,11/07/2013,Margani de Mello,Titular,N,N,N,S,1,1,N,N,S,09:00:00,3,N,N,N,N,,
+931,parcial_procedente,extinto,"R$ 4,000.00",2,16/07/2013,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+932,total_procedente,-,"R$ 5,000.00",3,19/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+933,total_procedente,-,"R$ 1,000.00",1,19/07/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+934,total_procedente,-,"R$ 5,000.00",3,30/07/2013,Margani de Mello,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+935,parcial_procedente,-,"R$ 5,500.00",3,02/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,05:40:00,2,N,N,N,N,,
+936,total_procedente,-,"R$ 10,000.00",5,05/08/2013,Margani de Mello,Titular,N,N,N,S,18,4,N,N,N,-,0,N,N,N,N,,
+937,total_procedente,improcedente,"R$ 5,000.00",3,05/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+938,parcial_procedente,-,"R$ 8,000.00",4,07/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+939,total_procedente,-,"R$ 10,000.00",5,07/08/2013,Eduardo Peruffo e Silva,Leigo,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+940,total_procedente,-,"R$ 6,000.00",3,08/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+941,parcial_procedente,-,"R$ 5,000.00",3,14/08/2013,Margani de Mello,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+942,parcial_procedente,-,"R$ 5,000.00",3,15/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+943,total_procedente,-,R$ 0.00,0,14/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+944,total_procedente,-,"R$ 6,000.00",3,12/08/2013,Margani de Mello,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+945,total_procedente,-,"R$ 2,000.00",1,19/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+946,total_procedente,-,"R$ 6,000.00",3,22/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+947,total_procedente,-,"R$ 6,000.00",3,22/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+948,total_procedente,-,"R$ 6,000.00",3,22/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+949,total_procedente,-,"R$ 3,000.00",2,23/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,04:30:00,2,N,N,N,N,,
+950,improcedente,-,R$ 0.00,0,26/08/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+951,total_procedente,-,"R$ 4,000.00",2,02/09/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,N,,
+952,improcedente,-,R$ 0.00,0,06/09/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+953,total_procedente,-,"R$ 1,000.00",1,04/09/2013,Margani de Mello,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+954,total_procedente,-,"R$ 5,000.00",3,13/09/2013,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+955,total_procedente,-,"R$ 5,000.00",3,09/09/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,,
+956,total_procedente,-,"R$ 3,000.00",2,26/09/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+957,total_procedente,-,"R$ 4,000.00",2,07/10/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,04:20:00,2,N,N,N,N,,
+958,total_procedente,-,"R$ 4,000.00",2,01/10/2013,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+959,total_procedente,-,"R$ 8,000.00",4,09/10/2013,Margani de Mello,Titular,N,N,N,S,12,4,N,N,N,-,0,N,N,N,N,,
+960,total_procedente,-,"R$ 4,000.00",2,09/10/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+961,parcial_procedente,-,"R$ 2,000.00",1,14/10/2013,Margani de Mello,Titular,N,N,N,S,8,4,N,N,S,06:00:00,2,N,N,N,N,,
+962,parcial_procedente,-,R$ 0.00,0,15/10/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+963,total_procedente,-,"R$ 8,000.00",4,04/11/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,,
+964,parcial_procedente,-,"R$ 10,000.00",5,05/11/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+965,total_procedente,-,"R$ 10,000.00",5,05/11/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+966,total_procedente,-,"R$ 1,500.00",1,14/11/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+967,parcial_procedente,-,"R$ 10,000.00",5,21/11/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,17:39:00,5,N,N,N,N,,
+968,improcedente,-,R$ 0.00,0,12/11/2013,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+969,improcedente,-,R$ 0.00,0,10/02/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+970,total_procedente,-,"R$ 5,000.00",3,22/02/2012,Margani de Mello,Titular,N,S,N,N,-,0,N,N,S,13:40:00,4,N,N,N,N,,
+971,total_procedente,-,"R$ 6,000.00",3,22/02/2012,Pedro Luiz Brancalione,Leigo,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+972,improcedente,-,R$ 0.00,0,04/06/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+973,total_procedente,-,"R$ 8,000.00",4,26/06/2012,Pedro Luiz Brancalione,Leigo,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+974,total_procedente,-,"R$ 5,000.00",3,03/07/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+975,improcedente,-,R$ 0.00,0,03/07/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+976,total_procedente,-,"R$ 5,000.00",3,18/07/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+977,total_procedente,-,"R$ 5,000.00",3,23/07/2013,Margani de Mello,Titular,N,N,N,S,0.5,1,N,N,S,02:15:00,1,N,N,N,S,,
+978,parcial_procedente,-,"R$ 3,000.00",2,06/08/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,18:30:00,5,N,S,N,N,,
+979,parcial_procedente,-,"R$ 6,000.00",3,13/08/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+980,parcial_procedente,-,R$ 0.00,0,27/08/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+981,parcial_procedente,-,"R$ 6,000.00",3,12/09/2012,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+981,parcial_procedente,-,R$ 0.00,0,12/09/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+982,total_procedente,-,"R$ 3,000.00",2,12/09/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+983,parcial_procedente,-,"R$ 6,000.00",3,08/10/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+984,total_procedente,-,"R$ 2,000.00",1,21/09/2012,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+985,parcial_procedente,-,"R$ 5,000.00",3,08/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+986,parcial_procedente,-,R$ 0.00,0,09/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+987,total_procedente,-,"R$ 5,000.00",3,09/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+988,total_procedente,-,"R$ 8,000.00",4,10/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+989,improcedente,-,R$ 0.00,0,08/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+990,total_procedente,-,"R$ 4,000.00",2,11/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+991,total_procedente,-,"R$ 10,000.00",5,18/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+992,total_procedente,-,"R$ 1,000.00",1,26/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+993,total_procedente,-,"R$ 3,000.00",2,26/10/2012,Margani de Mello,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+994,total_procedente,-,"R$ 3,000.00",2,26/10/2012,Margani de Mello,Titular,N,N,N,S,7,3,N,N,N,-,0,N,N,N,N,,
+995,total_procedente,-,R$ 500.00,1,26/10/2012,Margani de Mello,Titular,N,N,N,S,1,1,S,N,N,-,0,N,N,N,N,,
+996,parcial_procedente,-,R$ 0.00,0,26/10/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+997,total_procedente,-,"R$ 8,000.00",4,29/10/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+998,parcial_procedente,-,"R$ 6,000.00",3,29/10/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+999,parcial_procedente,-,"R$ 1,500.00",1,29/10/2012,Margani de Mello,Titular,S,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1000,total_procedente,-,"R$ 3,000.00",2,30/10/2012,Margani de Mello,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+1001,parcial_procedente,-,R$ 0.00,0,08/11/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1001,parcial_procedente,-,"R$ 2,500.00",2,08/11/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1001,parcial_procedente,-,"R$ 2,500.00",2,08/11/2012,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1002,improcedente,-,R$ 0.00,0,07/11/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1003,parcial_procedente,-,R$ 0.00,0,13/11/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1004,total_procedente,-,"R$ 3,000.00",2,13/11/2012,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1005,parcial_procedente,-,R$ 0.00,0,08/02/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1006,parcial_procedente,-,R$ 0.00,0,09/02/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1007,improcedente,-,R$ 0.00,0,11/02/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+1008,total_procedente,-,"R$ 4,000.00",2,09/02/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+1009,improcedente,-,R$ 0.00,0,08/02/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1010,parcial_procedente,-,R$ 0.00,0,14/03/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1011,total_procedente,-,"R$ 4,360.00",3,22/03/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,S,4,3,N,N,N,-,0,N,N,N,N,,
+1012,parcial_procedente,-,R$ 0.00,0,22/03/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1013,improcedente,-,R$ 0.00,0,22/03/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1014,total_procedente,-,"R$ 3,270.00",2,01/04/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+1015,parcial_procedente,-,R$ 0.00,0,05/04/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1016,total_procedente,-,"R$ 2,000.00",1,04/05/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,N,-,0,S,N,N,-,0,N,N,N,N,,
+1017,total_procedente,-,"R$ 6,000.00",3,04/05/2011,Cláudio Eduardo Regis de Figueiredo e Silva,Titular,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+1018,total_procedente,-,"R$ 4,000.00",2,03/05/2011,Paula Caruso Mac-Donald,Leigo,N,N,N,S,3,2,N,N,N,-,0,N,N,N,N,,
+1019,total_procedente,extinto,"R$ 4,000.00",2,09/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,,
+1020,parcial_procedente,-,R$ 0.00,0,09/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1021,total_procedente,-,"R$ 4,000.00",2,03/05/2011,Paula Caruso Mac-Donald,Leigo,N,N,N,N,-,0,N,S,N,-,0,N,N,N,S,,
+1022,total_procedente,-,"R$ 3,000.00",2,10/05/2011,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1023,parcial_procedente,-,"R$ 3,000.00",2,10/05/2011,Margani de Mello,Titular,N,N,N,S,11,4,N,N,N,-,0,N,N,N,N,,
+1024,total_procedente,-,"R$ 6,000.00",3,10/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,38:00:00,7,N,N,N,N,,
+1026,parcial_procedente,-,R$ 0.00,0,26/04/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1027,total_procedente,-,"R$ 6,000.00",3,10/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+1028,parcial_procedente,-,R$ 0.00,0,11/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+1029,total_procedente,-,"R$ 5,000.00",3,12/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+1029,total_procedente,-,"R$ 4,000.00",2,12/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+1030,parcial_procedente,-,"R$ 5,000.00",3,12/05/2011,Margani de Mello,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1031,parcial_procedente,-,R$ 0.00,0,16/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,S,,
+1032,parcial_procedente,-,R$ 0.00,0,17/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1033,total_procedente,-,"R$ 2,000.00",1,17/05/2011,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1034,parcial_procedente,-,"R$ 3,000.00",2,23/05/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,S,27:00:00,6,N,N,N,N,,
+1035,total_procedente,-,"R$ 5,000.00",3,17/10/2011,Margani de Mello,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1036,parcial_procedente,-,R$ 0.00,0,15/12/2011,Margani de Mello,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1037,improcedente,-,R$ 0.00,0,30/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1038,improcedente,-,R$ 0.00,0,30/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1039,improcedente,-,R$ 0.00,0,29/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1040,total_procedente,-,"R$ 10,000.00",5,30/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1041,parcial_procedente,-,"R$ 11,000.00",6,27/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1042,parcial_procedente,-,"R$ 10,000.00",5,22/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1043,parcial_procedente,-,"R$ 11,000.00",6,20/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,,
+1044,parcial_procedente,-,"R$ 3,000.00",2,20/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:05:00,2,N,N,N,N,,
+1045,parcial_procedente,-,"R$ 10,000.00",5,08/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,28:00:00,7,N,N,N,N,,
+1046,parcial_procedente,-,"R$ 8,000.00",4,25/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+1047,parcial_procedente,-,"R$ 7,000.00",4,10/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:10:00,4,N,N,N,N,,
+1048,parcial_procedente,-,"R$ 2,000.00",1,28/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:10:00,2,N,N,N,N,,
+1049,parcial_procedente,-,"R$ 8,000.00",4,30/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:15:00,5,N,N,N,N,,
+1050,parcial_procedente,-,"R$ 2,000.00",1,30/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:25:00,2,N,N,N,N,,
+1051,parcial_procedente,-,"R$ 2,500.00",2,29/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:40:00,2,N,N,N,N,,
+1052,parcial_procedente,-,"R$ 2,500.00",2,04/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+1053,parcial_procedente,-,"R$ 4,000.00",2,16/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:25:00,3,N,N,N,N,,
+1054,parcial_procedente,-,"R$ 6,000.00",3,13/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+1055,total_procedente,-,"R$ 8,000.00",4,25/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,23:00:00,5,N,N,N,N,,
+1056,parcial_procedente,-,"R$ 5,000.00",3,16/06/2020,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,S,07:00:00,2,N,N,N,N,,
+1057,parcial_procedente,-,"R$ 6,000.00",3,14/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+1058,parcial_procedente,-,"R$ 10,000.00",5,24/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1059,parcial_procedente,-,"R$ 3,500.00",2,22/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:00:00,2,N,N,N,N,,
+1060,parcial_procedente,-,"R$ 3,000.00",2,03/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:30:00,2,N,N,N,N,,
+1061,parcial_procedente,-,"R$ 12,000.00",6,20/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,,
+1062,parcial_procedente,-,"R$ 8,000.00",4,20/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+1063,parcial_procedente,-,"R$ 10,000.00",5,17/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,,
+1064,parcial_procedente,-,"R$ 4,500.00",3,31/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+1065,parcial_procedente,-,"R$ 2,000.00",1,23/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:00:00,2,N,N,N,N,,
+1066,parcial_procedente,-,"R$ 5,000.00",3,23/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1067,parcial_procedente,-,"R$ 10,000.00",5,22/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1068,parcial_procedente,-,R$ 0.00,0,03/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1069,parcial_procedente,-,"R$ 3,000.00",2,29/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+1070,parcial_procedente,-,"R$ 2,000.00",1,30/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:30:00,2,N,N,N,N,,
+1071,parcial_procedente,-,"R$ 10,000.00",5,02/03/2020,Mônica Bonelli Paulo Prazeres,Substituto,N,N,N,N,-,0,N,N,S,20:00:00,5,N,N,N,N,,
+1072,parcial_procedente,-,"R$ 10,000.00",5,02/03/2020,Mônica Bonelli Paulo Prazeres,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1073,parcial_procedente,-,"R$ 10,000.00",5,02/03/2020,Mônica Bonelli Paulo Prazeres,Substituto,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1074,parcial_procedente,-,"R$ 4,000.00",2,20/02/2020,Mônica Bonelli Paulo Prazeres,Substituto,N,N,N,N,-,0,N,N,S,10:20:00,3,N,N,N,N,,
+1075,parcial_procedente,-,R$ 0.00,0,09/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1076,parcial_procedente,-,"R$ 5,000.00",3,14/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1077,parcial_procedente,-,R$ 0.00,0,23/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1078,parcial_procedente,-,"R$ 4,000.00",2,22/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,11:00:00,3,N,N,N,N,,
+1079,parcial_procedente,-,"R$ 10,000.00",5,21/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,21:00:00,5,N,N,N,N,,
+1080,parcial_procedente,-,R$ 0.00,0,25/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1081,parcial_procedente,-,R$ 0.00,0,20/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1082,parcial_procedente,-,"R$ 5,000.00",3,28/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,12:00:00,4,N,N,N,N,,
+1083,parcial_procedente,-,R$ 0.00,0,27/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1084,improcedente,-,R$ 0.00,0,11/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,,
+1085,improcedente,-,R$ 0.00,0,16/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1086,parcial_procedente,-,"R$ 10,000.00",5,27/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1087,parcial_procedente,-,"R$ 11,000.00",6,22/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,,
+1088,parcial_procedente,-,R$ 0.00,0,20/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1089,parcial_procedente,-,"R$ 6,000.00",3,04/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,,
+1090,parcial_procedente,-,"R$ 10,000.00",5,03/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1091,parcial_procedente,-,"R$ 12,000.00",6,06/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,26:20:00,6,N,N,N,N,,
+1092,parcial_procedente,-,"R$ 9,000.00",5,10/02/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+1093,parcial_procedente,-,"R$ 8,000.00",4,01/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1094,parcial_procedente,-,"R$ 5,000.00",3,18/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,13:00:00,4,N,N,N,N,,
+1095,parcial_procedente,-,"R$ 6,000.00",3,08/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+1096,parcial_procedente,-,"R$ 8,000.00",4,28/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,19:00:00,5,N,N,N,N,,
+1097,parcial_procedente,-,"R$ 11,000.00",6,24/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1098,parcial_procedente,-,"R$ 13,000.00",6,24/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1099,parcial_procedente,-,"R$ 13,000.00",6,24/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1100,parcial_procedente,-,"R$ 10,500.00",6,31/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,20:15:00,5,N,N,N,N,,
+1101,parcial_procedente,-,"R$ 8,000.00",4,25/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,17:00:00,5,N,N,N,N,,
+1102,parcial_procedente,-,"R$ 11,000.00",6,23/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,48:00:00,7,N,N,N,N,,
+1103,parcial_procedente,-,"R$ 13,000.00",6,19/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1104,parcial_procedente,-,"R$ 5,000.00",3,06/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+1105,parcial_procedente,-,"R$ 4,500.00",3,03/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,,
+1106,parcial_procedente,-,"R$ 10,000.00",5,27/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1107,parcial_procedente,-,"R$ 10,000.00",5,16/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,30:00:00,7,N,N,N,N,,
+1108,extinto,improcedente,R$ 0.00,0,13/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1109,parcial_procedente,-,"R$ 7,000.00",4,23/01/2020,Vânia Petermann,Titular,N,N,N,S,6,3,N,N,N,-,0,N,N,N,N,,
+1110,parcial_procedente,-,"R$ 15,000.00",6,30/04/2020,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1111,parcial_procedente,-,"R$ 7,500.00",4,30/03/2020,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+1112,parcial_procedente,-,"R$ 1,500.00",1,18/08/2020,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+1113,parcial_procedente,-,"R$ 5,000.00",3,17/08/2020,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+1114,parcial_procedente,-,"R$ 8,000.00",4,13/07/2020,Vânia Petermann,Titular,N,N,N,S,3,2,N,N,S,09:00:00,3,N,N,N,N,,
+1115,total_procedente,-,"R$ 10,000.00",5,22/01/2020,Vânia Petermann,Titular,N,N,S,N,-,0,N,N,N,-,0,N,N,N,N,,
+1116,parcial_procedente,-,"R$ 1,500.00",1,23/01/2020,Vânia Petermann,Titular,N,N,N,S,1,1,N,N,N,-,0,N,N,N,N,,
+1117,parcial_procedente,-,"R$ 7,500.00",4,23/03/2020,Vânia Petermann,Titular,N,N,N,S,5,3,N,N,N,-,0,N,N,N,N,,
+1118,parcial_procedente,-,"R$ 2,000.00",1,16/07/2020,Vânia Petermann,Titular,N,N,N,S,2,2,N,N,N,-,0,N,N,N,N,,
+1119,parcial_procedente,-,R$ 0.00,0,14/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1120,parcial_procedente,-,"R$ 2,000.00",1,03/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,04:40:00,2,N,N,S,N,,
+1121,parcial_procedente,-,"R$ 5,000.00",3,12/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1122,parcial_procedente,-,"R$ 5,000.00",3,29/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+1123,parcial_procedente,-,"R$ 4,000.00",2,23/01/2020,Vânia Petermann,Titular,N,N,N,S,11,4,N,N,N,-,0,N,N,N,N,,
+1124,parcial_procedente,-,"R$ 2,000.00",1,29/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,05:35:00,2,N,N,N,N,,
+1125,parcial_procedente,-,"R$ 5,000.00",3,24/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,,
+1126,parcial_procedente,-,"R$ 8,000.00",4,20/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:00:00,4,N,N,N,S,,
+1127,parcial_procedente,-,"R$ 6,500.00",4,27/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,14:35:00,4,N,N,N,N,,
+1128,parcial_procedente,-,"R$ 2,000.00",1,24/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,06:30:00,2,N,N,N,N,,
+1129,parcial_procedente,-,"R$ 5,000.00",3,08/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,15:00:00,4,N,N,N,N,,
+1130,parcial_procedente,-,"R$ 5,500.00",3,12/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+1130,parcial_procedente,-,"R$ 4,500.00",3,12/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+1131,parcial_procedente,-,R$ 0.00,0,03/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1132,parcial_procedente,-,"R$ 1,000.00",1,23/01/2020,Vânia Petermann,Titular,N,S,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1133,parcial_procedente,-,"R$ 17,000.00",6,19/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,42:00:00,7,N,N,N,S,,
+1134,parcial_procedente,-,"R$ 8,500.00",5,22/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,S,,
+1135,parcial_procedente,-,"R$ 5,000.00",3,29/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+1136,parcial_procedente,-,"R$ 5,000.00",3,20/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,S,,
+1137,parcial_procedente,-,"R$ 17,000.00",6,19/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,42:00:00,7,N,N,N,S,,
+1138,parcial_procedente,-,"R$ 4,000.00",2,20/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,,
+1139,improcedente,-,R$ 0.00,0,25/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1140,improcedente,-,R$ 0.00,0,11/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1141,improcedente,-,R$ 0.00,0,04/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1142,improcedente,-,R$ 0.00,0,16/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1143,improcedente,-,R$ 0.00,0,16/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1144,total_procedente,-,R$ 0.00,0,08/10/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1145,parcial_procedente,-,"R$ 2,500.00",2,29/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,,
+1146,total_procedente,-,R$ 0.00,0,03/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1147,parcial_procedente,-,"R$ 15,000.00",6,24/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1148,parcial_procedente,-,"R$ 9,000.00",5,02/12/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,18:00:00,5,N,N,N,N,,
+1149,parcial_procedente,-,"R$ 1,000.00",1,29/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,01:45:00,1,N,N,N,N,,
+1150,parcial_procedente,-,"R$ 10,000.00",5,30/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,25:00:00,6,N,N,N,N,,
+1151,parcial_procedente,-,"R$ 10,000.00",5,30/09/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,25:00:00,6,N,N,N,N,,
+1152,parcial_procedente,-,"R$ 5,000.00",3,08/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,08:00:00,3,N,N,N,N,,
+1153,parcial_procedente,-,"R$ 2,000.00",1,08/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,07:00:00,2,N,N,N,N,,
+1154,parcial_procedente,-,R$ 0.00,0,11/05/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1155,parcial_procedente,-,R$ 0.00,0,30/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1156,parcial_procedente,-,R$ 0.00,0,31/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1157,parcial_procedente,-,"R$ 5,000.00",3,19/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,24:00:00,6,N,N,N,N,,
+1158,parcial_procedente,-,R$ 0.00,0,09/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1159,parcial_procedente,-,"R$ 4,000.00",2,04/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:45:00,3,N,N,N,N,,
+1160,parcial_procedente,-,"R$ 12,000.00",6,02/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,43:00:00,7,N,N,N,N,,
+1161,parcial_procedente,-,R$ 0.00,0,02/09/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1162,parcial_procedente,-,"R$ 5,000.00",3,27/08/2020,Vânia Petermann,Titular,N,N,N,S,2,2,N,S,N,-,0,N,N,N,N,,
+1163,parcial_procedente,-,R$ 0.00,0,21/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1164,parcial_procedente,-,"R$ 4,000.00",2,21/08/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,09:00:00,3,N,N,N,N,S,N
+1165,parcial_procedente,-,R$ 0.00,0,18/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,N,N,,
+1166,parcial_procedente,-,"R$ 5,000.00",3,23/01/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+1167,parcial_procedente,-,"R$ 5,000.00",3,05/11/2019,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,S
+1168,parcial_procedente,-,"R$ 8,000.00",4,18/06/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,22:00:00,5,N,N,N,N,N,N
+1169,parcial_procedente,-,"R$ 2,000.00",1,03/04/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,N,-,0,N,N,S,N,-,N
+1170,parcial_procedente,-,"R$ 2,000.00",1,26/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+1171,parcial_procedente,-,"R$ 4,000.00",2,26/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,N,S,10:00:00,3,N,N,N,N,S,N
+1172,parcial_procedente,-,"R$ 5,000.00",3,13/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,S,N,N,N
+1173,parcial_procedente,-,"R$ 5,000.00",3,10/03/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N
+1174,parcial_procedente,-,"R$ 2,000.00",1,28/07/2020,Vânia Petermann,Titular,N,N,N,N,-,0,N,S,N,-,0,N,N,N,N,N,N

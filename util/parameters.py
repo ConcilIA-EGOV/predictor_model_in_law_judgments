@@ -46,6 +46,8 @@ DATA_VARS_CONTINUOUS = [
 ]
 
 USE_RANGES = True
+PREP = False
+REFIT = False
 # DATA_VARS = DATA_VARS_CONTINUOUS
 DATA_VARS = DATA_VARS_RANGE
 
@@ -59,12 +61,9 @@ NUM_EPOCHS = 100
 CV = 5
 # Tamanho do conjunto de teste
 TEST_SIZE = 0.3
-# parâmetros do modelo
-# Semente aleatória
-RANDOM_STATE = 42
 
-# pytorch parameters
 """
+# pytorch parameters
 # Número de características
 INPUT_SIZE = 13
 # Número de classes
