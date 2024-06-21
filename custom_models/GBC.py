@@ -1,6 +1,5 @@
 from sklearn.ensemble import GradientBoostingClassifier
 
-
 GB_PARAMS = {
     "loss": "log_loss",
     "learning_rate": 0.1,
@@ -24,22 +23,26 @@ GB_PARAMS = {
     "ccp_alpha": 0.0
 }
 
-
 class GBC(GradientBoostingClassifier):
     def __init__(self, **kwargs):
-        print(**kwargs)
-        if not kwargs:
-            params = GB_PARAMS
-        else:
-            params = kwargs
-        try: 
-            super().__init__(**params)
-        except Exception as e:
-            print(f"Erro ao instanciar o modelo {self.name}: {e}")
-            super().__init__(**GB_PARAMS)
         self.name = "Gradient Boosting Classifier"
-        self.params = params
-    
+        # Use GB_PARAMS if no parameters are provided
+        params = GB_PARAMS.copy()
+        if kwargs:
+            params.update(kwargs)
+        try:
+            super().__init__(**params)
+            self.params = params
+        except Exception as e:
+            print(f"Erro ao instanciar o modelo {self.name} com parâmetros fornecidos: {e}")
+            # Tente inicializar com GB_PARAMS caso os parâmetros fornecidos sejam inválidos
+            try:
+                super().__init__(**GB_PARAMS)
+                self.params = GB_PARAMS
+            except Exception as e2:
+                print(f"Erro ao instanciar o modelo {self.name} com parâmetros padrão: {e2}")
+                raise e2  # Relevante para interromper a execução caso ambos falhem
+
     def fit(self, X, y):
         output = None
         try:
@@ -47,3 +50,12 @@ class GBC(GradientBoostingClassifier):
         except Exception as e:
             print(f"Erro ao treinar o modelo {self.name}: {e}")
         return output
+
+# Exemplo de uso
+if __name__ == "__main__":
+    # Parâmetros incorretos para testar a recuperação
+    wrong_params = {"max_depth": "deep"}
+    model = GBC(**wrong_params)
+
+    # Parâmetros corretos
+    model = GBC(**GB_PARAMS)
