@@ -1,6 +1,7 @@
 from sklearn.neighbors import KNeighborsClassifier
 
-KNN_PARAMS = {
+# Default parameters
+PARAMS = {
     "n_neighbors": 10,
     "weights": "uniform",
     "algorithm": "ball_tree",
@@ -12,18 +13,18 @@ KNN_PARAMS = {
 }
 
 class KNN(KNeighborsClassifier):
-    def __init__(self, **kwargs):
-        if not kwargs:
-            params = KNN_PARAMS
-        else:
-            params = kwargs
+    def __init__(self, n_neighbors=10, weights='uniform', algorithm='ball_tree',
+                 leaf_size=30, p=2, metric='minkowski', metric_params=None,
+                 n_jobs=-1):
         try: 
-            super().__init__(**params)
+            super().__init__(
+                n_neighbors=n_neighbors, weights=weights, algorithm=algorithm,
+                leaf_size=leaf_size, p=p, metric=metric, metric_params=metric_params,
+                 n_jobs=n_jobs)
         except Exception as e:
-            print(f"Erro ao instanciar o modelo {self.name}: {e}")
-            super().__init__(**KNN_PARAMS)
+            print(f"Erro ao instanciar o modelo KNN: {e}")
+            super().__init__(**PARAMS)
         self.name = "K-Nearest Neighbors"
-        self.params = params
     
     def fit(self, X, y):
         output = None

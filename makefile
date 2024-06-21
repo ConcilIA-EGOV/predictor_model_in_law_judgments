@@ -11,13 +11,17 @@ run:
 clean:
 	@rm -rf __pycache__
 
+clean-logs:
+	@rm -rf logs/*.txt
+	@rm -rf logs/*.json
+
 training-test:
 	@python3 main.py > logs/training_output.txt
-#@make commit
+	@make commit
 
 test:
 	@python3 studies/model_parameters.py > logs/params.txt
-#@make commit
+	@make commit
 
 test-formatation:
 	@python3 formatation/input_formatation.py > logs/formatation.txt

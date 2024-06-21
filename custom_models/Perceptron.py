@@ -3,7 +3,7 @@ from util.parameters import NUM_EPOCHS
 import numpy as np
 
 
-PERCEPTON_PARAMS = {
+PARAMS = {
     "penalty": "elasticnet",
     "alpha": 0.0001,
     "l1_ratio": 0.75,
@@ -23,18 +23,22 @@ PERCEPTON_PARAMS = {
 
 
 class Perceptron(pcn):
-    def __init__(self, **kwargs):
-        if not kwargs:
-            params = PERCEPTON_PARAMS
-        else:
-            params = kwargs
+    def __init__(self, penalty="elasticnet", alpha=0.0001, l1_ratio=0.75,
+                 fit_intercept=True, max_iter=10000, tol=0.001, shuffle=True,
+                 eta0=1.0, n_jobs=-1, random_state=200, early_stopping=True,
+                 validation_fraction=0.2, n_iter_no_change=10, class_weight=None,
+                 warm_start=False):
         try: 
-            super().__init__(**params)
+            super().__init__(penalty=penalty, alpha=alpha, l1_ratio=l1_ratio,
+                             fit_intercept=fit_intercept, max_iter=max_iter, tol=tol,
+                             shuffle=shuffle, eta0=eta0, n_jobs=n_jobs, random_state=random_state,
+                             early_stopping=early_stopping, validation_fraction=validation_fraction,
+                             n_iter_no_change=n_iter_no_change, class_weight=class_weight,
+                             warm_start=warm_start)
         except Exception as e:
-            print(f"Erro ao instanciar o modelo {self.name}: {e}")
-            super().__init__(**PERCEPTON_PARAMS)
+            print(f"Erro ao instanciar o modelo Perceptron: {e}")
+            super().__init__(**PARAMS)
         self.name = "Perceptron"
-        self.params = params
     
     def fit(self, X, y):
         output = None
