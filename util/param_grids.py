@@ -1,7 +1,7 @@
 param_grid_LSVC = {
     'penalty': ['l1', 'l2'],
     'loss': ['squared_hinge', 'hinge'],
-    'dual': ['auto'],  # 'l1' penalty is not supported with dual=False
+    'dual': [True, False],  # 'l1' penalty is not supported with dual=False
     'tol': [1e-4, 1e-3, 1e-2],
     'C': [0.1, 1, 10],
     'multi_class': ['ovr', 'crammer_singer'],
@@ -86,9 +86,9 @@ param_grid_Perceptron = {
 
 
 param_grid = {
-    'LinearSVC': param_grid_LSVC,
+    'LSVC': param_grid_LSVC,
     'KNN': param_grid_KNN,
     'SVC': param_grid_SVC,
-    'GradientBoosting': param_grid_GB,
+    'GBC': param_grid_GB,
     'Perceptron': param_grid_Perceptron
 }

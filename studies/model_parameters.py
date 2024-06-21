@@ -13,10 +13,12 @@ import json
 # -----------
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
-from util.parameters import FILE_PATH, CV
+from util.parameters import CV
 from util.param_grids import param_grid
+###
 from formatation.input_formatation import load_data, separate_features_labels
 from src.preprocessing import preprocessing
+from src.training import get_models
 
 def test_best_model(grid_search:GridSearchCV, X_test, y_test):
     '''
@@ -30,35 +32,31 @@ def test_best_model(grid_search:GridSearchCV, X_test, y_test):
     y_pred = best_model.predict(X_test)
     print(classification_report(y_test, y_pred))
 
-def grid_search(X_train, y_train, classifier, param_grid, cv_=5):
+def grid_search(X, y, classifier, param_grid):
 
     # Realizar a busca em grade
     grid_search = GridSearchCV(estimator=classifier,
                                param_grid=param_grid,
                                scoring='accuracy',
-                               cv=cv_, n_jobs=-1, refit=True)
-    grid_search.fit(X_train, y_train)
+                               cv=CV, n_jobs=-1, refit=True)
+    grid_search.fit(X, y)
 
     # Melhor combinação de hiperparâmetros
     best_params = grid_search.best_params_
     # Melhor score
-    test_best_model(grid_search, X_train, y_train)
+    test_best_model(grid_search, X, y)
     return best_params
-'''
-models = {
-    'GBC': GradientBoostingClassifier(),
-    'Perceptron': Perceptron()
-}
-'''
+
 if __name__ == "__main__":
-    data = load_data(FILE_PATH)
+    data = load_data()
     X, y = separate_features_labels(data)
     X = preprocessing(X)
     best_params_all = dict()
+    models = get_models()
     for key, model in models.items():
         print(f"Testing {key}")
         try:
-            best_params_all[key] = grid_search(X, y, model, param_grid[key], CV)
+            best_params_all[key] = grid_search(X, y, model, param_grid[key])
         except Exception as e:
             print(e)
             best_params_all[key] = [str(e)]
