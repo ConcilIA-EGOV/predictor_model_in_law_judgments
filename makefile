@@ -12,16 +12,18 @@ clean:
 	@rm -rf __pycache__
 
 training-test:
-	@python3 main.py
-# > logs/training_output.txt
+	@python3 main.py > logs/training_output.txt
+	@make commit
 
 test:
 	@python3 studies/model_parameters.py > logs/params.txt
+	@make commit
 
 test-formatation:
-	@ python3 formatation/input_formatation.py > logs/formatation.txt
+	@python3 formatation/input_formatation.py > logs/formatation.txt
+	@make commit
 
 commit:
-	git add .
-	git commit -m "Test"
-	git push
+	@git add .
+	@git commit -m "Test Finished"
+	@git push
