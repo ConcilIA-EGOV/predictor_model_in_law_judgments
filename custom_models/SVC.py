@@ -21,8 +21,16 @@ SVC_PARAMS = {
 
 
 class SVC(svc):
-    def __init__(self, params=SVC_PARAMS):
-        super().__init__(**params)
+    def __init__(self, **kwargs):
+        if not kwargs:
+            params = SVC_PARAMS
+        else:
+            params = kwargs
+        try: 
+            super().__init__(**params)
+        except Exception as e:
+            print(f"Erro ao instanciar o modelo {self.name}: {e}")
+            super().__init__(**SVC_PARAMS)
         self.name = "Support Vector Classifier"
         self.params = params
     

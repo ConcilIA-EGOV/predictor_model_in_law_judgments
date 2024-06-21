@@ -1,0 +1,20 @@
+Model: GBC
+Cross Validation Scores: 56.25% - 56.25% - 51.06% - 51.06% - 55.32%
+Cross Validation Mean: 53.99%
+
+Model: Perceptron
+Cross Validation Scores: 27.08% - 39.58% - 40.43% - 31.91% - 34.04%
+Cross Validation Mean: 34.61%
+
+Model: KNN
+Cross Validation Scores: 47.92% - 54.17% - 46.81% - 42.55% - 48.94%
+Cross Validation Mean: 48.08%
+
+Model: SVC
+Cross Validation Scores: 45.83% - 52.08% - 48.94% - 44.68% - 40.43%
+Cross Validation Mean: 46.39%
+
+Model: LSVC
+Cross Validation Scores: 47.92% - 45.83% - 51.06% - 36.17% - 38.30%
+Cross Validation Mean: 43.86%
+

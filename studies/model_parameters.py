@@ -60,6 +60,6 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
             best_params_all[key] = [str(e)]
-        with open("best_parameters__"+key+".json", "w") as f:
+        with open("logs/best_parameters__"+key+".json", "w") as f:
             json.dump(best_params_all[key], f, indent=4)
     

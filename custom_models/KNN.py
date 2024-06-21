@@ -12,8 +12,16 @@ KNN_PARAMS = {
 }
 
 class KNN(KNeighborsClassifier):
-    def __init__(self, params=KNN_PARAMS):
-        super().__init__(**params)
+    def __init__(self, **kwargs):
+        if not kwargs:
+            params = KNN_PARAMS
+        else:
+            params = kwargs
+        try: 
+            super().__init__(**params)
+        except Exception as e:
+            print(f"Erro ao instanciar o modelo {self.name}: {e}")
+            super().__init__(**KNN_PARAMS)
         self.name = "K-Nearest Neighbors"
         self.params = params
     

@@ -23,8 +23,16 @@ PERCEPTON_PARAMS = {
 
 
 class Perceptron(pcn):
-    def __init__(self, params=PERCEPTON_PARAMS):
-        super().__init__(**params)
+    def __init__(self, **kwargs):
+        if not kwargs:
+            params = PERCEPTON_PARAMS
+        else:
+            params = kwargs
+        try: 
+            super().__init__(**params)
+        except Exception as e:
+            print(f"Erro ao instanciar o modelo {self.name}: {e}")
+            super().__init__(**PERCEPTON_PARAMS)
         self.name = "Perceptron"
         self.params = params
     
