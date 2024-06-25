@@ -41,7 +41,7 @@ class Perceptron(pcn):
         self.name = "Perceptron"
     
     def fit(self, X, y):
-        output = None
+        output = self
         try:
             classes = np.unique(y)
             output = super().fit(X, y)

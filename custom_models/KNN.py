@@ -27,7 +27,7 @@ class KNN(KNeighborsClassifier):
         self.name = "K-Nearest Neighbors"
     
     def fit(self, X, y):
-        output = None
+        output = self
         try:
             output = super().fit(X, y)
         except Exception as e:

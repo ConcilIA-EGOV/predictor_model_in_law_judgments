@@ -1,6 +1,7 @@
 all:
 	@echo "make run              - to run the program"
 	@echo "make clean            - to clean the directory"
+	@echo "make clean-logs       - to undo tests results"
 	@echo "make test             - to run the models paramters test cases"
 	@echo "make training-test    - to run and get a log of the model training cases"
 	@echo "make test-formatation - to run the formatation test cases"

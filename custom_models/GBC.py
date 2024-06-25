@@ -42,13 +42,12 @@ class GBC(GradientBoostingClassifier):
                  max_leaf_nodes=max_leaf_nodes, warm_start=warm_start, validation_fraction=validation_fraction,
                  n_iter_no_change=n_iter_no_change, tol=tol, ccp_alpha=ccp_alpha)
         except Exception as e:
-            print(f"Erro ao instanciar o modelo: {e}",
-                  "\nUsando parâmetros padrão.",)
+            print(f"Erro ao instanciar o modelo: {e}")
             super().__init__(**PARAMS)
         self.name = "Gradient Boosting Classifier"
     
     def fit(self, X, y):
-        output = None
+        output = self
         try:
             output = super().fit(X, y)
         except Exception as e:

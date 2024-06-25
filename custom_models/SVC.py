@@ -39,7 +39,7 @@ class SVC(svc):
         self.name = "Support Vector Classifier"
     
     def fit(self, X, y):
-        output = None
+        output = self
         try:
             output = super().fit(X, y)
         except Exception as e:
