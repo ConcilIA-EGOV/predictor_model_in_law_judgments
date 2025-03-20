@@ -170,3 +170,6 @@ cython_debug/
 # models_storage/*.joblib
 # models_storage/*.json
 # logs/*.txt
+projecao/*.csv
+projecao/*/*.csv
+data/*.csv

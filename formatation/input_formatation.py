@@ -10,7 +10,7 @@ project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
 import pandas as pd
-from util.parameters import DATA_VARS, FILE_PATH, USE_RANGES
+from util.parameters import DATA_VARS, FILE_PATH, USE_RANGES, TARGET
 from formatation.variable_formatation import FUNCTIONS
 
 
@@ -26,11 +26,9 @@ def trim_columns(df: pd.DataFrame):
     Remove colunas não relacionadas ao experimento
     """
     remove_columns = [col for col in df.columns if col not in DATA_VARS]
+    #print(f"Removendo colunas: {remove_columns}")
     df = df.drop(columns=remove_columns)
-    results_columns = "dano_moral_individual"
-    if USE_RANGES:
-        results_columns = "faixa_dano_moral_individual"
-    target_column = df.columns.get_loc(results_columns)
+    target_column = df.columns.get_loc(TARGET)
     if target_column != df.shape[1] - 1:
         # Mover a coluna alvo para a última posição
         tc = df.columns[target_column]
@@ -52,7 +50,7 @@ def load_data(csv_file=FILE_PATH):
     # Remover colunas não relacionadas ao experimento
     data = trim_columns(data)
     # Formatar os dados
-    data = format_data(data)
+    # data = format_data(data)
     # Salvar o DataFrame modificado de volta ao arquivo CSV
     new_file = csv_file.replace(".csv", "__NEW.csv")
     data.to_csv(new_file, index=False)
