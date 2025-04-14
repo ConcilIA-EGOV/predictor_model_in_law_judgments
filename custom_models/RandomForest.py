@@ -39,7 +39,8 @@ def main():
     (bs_rmse, bs_mae, folds) = test_model(base_model, X_test, y_test)
     print(f'RMSE: {bs_rmse}')
     print(f'MAE: {bs_mae}')
-    print(f'Folds: \n{folds}\n')
+    print('\nPor Faixa:')
+    [print(f'\t-\t{folds[i]}') for i in range(len(folds))]
     # Save the base model
     joblib.dump(base_model, 'models_storage/RandomForest.pkl')
 

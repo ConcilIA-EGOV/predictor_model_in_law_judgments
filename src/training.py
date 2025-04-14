@@ -24,7 +24,6 @@ def stratify(y, N=10):
     """
     retorna um y_bin, para estratificação, que divide o y em N partes
     """
-    min, max = y.min(), y.max()
     bins = np.linspace(y.min(), y.max(), N + 1)
     labes = [f"{i}" for i in range(N)]
     y_bin = pd.cut(y, bins=bins, labels=labes, include_lowest=True)
@@ -124,12 +123,8 @@ def test_model(model, X, y, CV=14):
             continue
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
-        resultados.append({
-            'Faixa': faixa + 1,
-            'MAE': round(mae, 2),
-            'RMSE': round(rmse, 2),
-            'N Amostras': len(grupo)
-        })
+        resultados.append(f"""Faixa {int(faixa) + 1}:\n\t\t-\tMAE: {round(mae, 2)}\n\t\t-\tRMSE: {round(rmse, 2)}\n\t\t-\tN Amostras: {len(grupo)}"""
+        )
     return (rmse_all, mae_all, resultados)
 
 
