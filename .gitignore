@@ -166,9 +166,10 @@ cython_debug/
 # data/*.xlsx
 # data/*.csv
 # data/*.txt
-# models_storage/*.pth
-# models_storage/*.joblib
-# models_storage/*.json
+models_storage/*.pth
+models_storage/*.joblib
+models_storage/*.json
+models_storage/*.pkl
 # logs/*.txt
 projecao/*.csv
 projecao/*/*.csv
