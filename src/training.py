@@ -12,18 +12,31 @@ sys.path.append(project_dir)
 from joblib import dump, load
 import json
 import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import root_mean_squared_error, mean_absolute_error
 from util.parameters import CV, BEST_SCORE_STORAGE, MAIN_MODEL_FILE, REFIT
 from custom_models import MODELS
-from sklearn.metrics import classification_report
-from sklearn.model_selection import cross_val_score, train_test_split
 
 
-def split_train_test(X, y):
+def stratify(y, N=10):
+    """
+    retorna um y_bin, para estratificação, que divide o y em N partes
+    """
+    min, max = y.min(), y.max()
+    bins = np.linspace(y.min(), y.max(), N + 1)
+    labes = [f"{i}" for i in range(N)]
+    y_bin = pd.cut(y, bins=bins, labels=labes, include_lowest=True)
+    return y_bin
+
+
+def split_train_test(X, y, test_size=0.2, y_bin=None):
     """
     Dividir em conjuntos de treino e teste
     """
     (X_train, X_test,
-     y_train, y_test) = train_test_split(X, y, test_size=0.2)
+     y_train, y_test) = train_test_split(X, y, test_size=test_size, stratify=y_bin, random_state=15)
+    #return X, X, y, y
     return X_train, X_test, y_train, y_test
 
 
@@ -35,13 +48,35 @@ def train_model(model, X, y):
     return model
 
 
-def test_model(model, X, y):
+def test_model(model, X, y, CV=14):
     '''
     Testar o modelo usando o conjunto de teste
     '''
     #score = classification_report(y, model.predict(X), output_dict=True)
-    score = cross_val_score(model, X, y, cv=CV)
-    return score
+    # score = cross_val_score(model, X, y, cv=CV, n_jobs=-1)
+    # Make predictions
+    predictions = model.predict(X)
+    
+    # Calculate the RMSE, and MAE overall
+    rmse_all = root_mean_squared_error(y, predictions)
+    mae_all = mean_absolute_error(y, predictions)
+
+    # Calculate the RMSE, and MAE for each fold
+    y_bin = stratify(y, N=CV)
+    df = pd.DataFrame({"y_true": y, "y_pred": predictions, "fold": y_bin})
+    resultados = []
+    for faixa, grupo in df.groupby('fold', observed=False):
+        if len(grupo) == 0:
+            continue
+        mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
+        rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
+        resultados.append({
+            'Faixa': faixa,
+            'MAE': round(mae, 2),
+            'RMSE': round(rmse, 2),
+            'N Amostras': len(grupo)
+        })
+    return (rmse_all, mae_all, resultados)
 
 
 def save_model(model, score):
