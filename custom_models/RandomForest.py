@@ -42,23 +42,5 @@ def main():
     joblib.dump(base_model, 'models_storage/RandomForest.pkl')
 
 
-    adb = False
-    if adb:
-        # Initialize the AdaBoost Regressor
-        model = AdaBoostRegressor(estimator=base_model, n_estimators=200,
-                                loss='square', random_state=15,
-                                learning_rate=0.000001)
-        
-        # Fit the model to the data
-        model.fit(X_train, y_train)
-        
-        # Make predictions
-        (rmse, mae, folds) = test_model(model, X_test, y_test, CV=14)
-        print(f'RMSE: {rmse}')
-        print(f'MAE: {mae}')
-        print(f'Folds: \n{folds}\n')
-        # Save the model
-        joblib.dump(model, 'models_storage/AdaBoost.pkl')
-
 if __name__ == "__main__":
     main()
