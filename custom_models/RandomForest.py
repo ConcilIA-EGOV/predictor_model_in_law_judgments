@@ -8,9 +8,8 @@ project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
 import pandas as pd
-from sklearn.ensemble import AdaBoostRegressor
 from sklearn.ensemble import RandomForestRegressor
-from src.training import split_train_test, test_model, stratify
+from src.training import split_train_test, test_model, stratify, balance_data
 import joblib  # Para salvar o modelo
 
 def main():
@@ -18,12 +17,15 @@ def main():
     data = pd.read_csv('data/main.csv')
     
     # Split the data into features and target variable
-    X = data.drop('Dano-Moral', axis=1)
     y = data['Dano-Moral']
-    y_bin = None #stratify(y, N=14)
+    X = data.drop(['sentenca'], axis=1)
+    X.to_csv('data/X.csv', index=False)
+    X = X.drop('Dano-Moral', axis=1)
+    y_bin = stratify(y, N=14)
+    X_bal, y_bal, y_bin = balance_data(X, y, y_bin, strategy='not majority', random_state=15, N=14)
 
     # Treinar/testar
-    X_train, X_test, y_train, y_test = split_train_test(X, y, test_size=0.2, y_bin=y_bin)
+    X_train, X_test, y_train, y_test = split_train_test(X_bal, y_bal, test_size=0.2, y_bin=y_bin)
 
 
     # Modelo base do AdaBoost, a random forest regressor

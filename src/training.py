@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
+from imblearn.over_sampling import RandomOverSampler
 from util.parameters import CV, BEST_SCORE_STORAGE, MAIN_MODEL_FILE, REFIT
 from custom_models import MODELS
 
@@ -28,6 +29,59 @@ def stratify(y, N=10):
     labes = [f"{i}" for i in range(N)]
     y_bin = pd.cut(y, bins=bins, labels=labes, include_lowest=True)
     return y_bin
+
+
+def balance_data(X, y, y_bins, strategy='not majority', random_state=15, N=10):
+    """
+    Realiza oversampling em um problema de regressão com variáveis categóricas,
+    usando discretização do alvo contínuo em faixas (bins).
+
+    Parâmetros:
+    -----------
+    X : pd.DataFrame
+        DataFrame com variáveis categóricas.
+    y : pd.Series
+        Série com alvo contínuo (ex: atraso em minutos).
+    bins : list or None
+        Lista de limites de faixas.
+    labels : list or None
+        Lista de rótulos dos bins.
+    strategy : str
+        Estratégia de oversampling (ex: 'not majority', 'auto', 'minority').
+    random_state : int
+        Semente aleatória para reprodutibilidade.
+
+    Retorna:
+    --------
+    X_resampled : pd.DataFrame
+        Conjunto de entrada balanceado.
+    y_resampled : pd.Series
+        Alvo contínuo balanceado.
+    """
+
+    # 1. Guardar os índices originais
+    X_temp = X.copy()
+    X_temp["__index__"] = X.index
+
+    # 2. Realizar oversampling com base nos bins
+    ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
+    X_resampled, y_bins_resampled = ros.fit_resample(X_temp, y_bins)
+
+    # 3. Criar cópia do DataFrame original com y contínuo
+    df_original = X.copy()
+    df_original['y_continuo'] = y
+
+    # 4. Recuperar os índices dos dados originais usados
+    idx_resampled = X_resampled["__index__"].values
+
+
+    # 5. Recuperar os valores contínuos de y
+    y_resampled = y.loc[idx_resampled].reset_index(drop=True)
+
+    # 6. Limpar coluna de índice temporário
+    X_resampled = X_resampled.drop(columns=["__index__"]).reset_index(drop=True)
+    
+    return X_resampled, y_resampled, y_bins_resampled
 
 
 def split_train_test(X, y, test_size=0.2, y_bin=None):
@@ -71,7 +125,7 @@ def test_model(model, X, y, CV=14):
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
         resultados.append({
-            'Faixa': faixa,
+            'Faixa': faixa + 1,
             'MAE': round(mae, 2),
             'RMSE': round(rmse, 2),
             'N Amostras': len(grupo)
