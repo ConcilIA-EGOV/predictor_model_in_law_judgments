@@ -13,6 +13,7 @@ from joblib import dump, load
 import json
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
 from imblearn.over_sampling import RandomOverSampler
@@ -123,9 +124,22 @@ def test_model(model, X, y, CV=14):
             continue
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
-        resultados.append(f"""Faixa {int(faixa) + 1}:\n\t\t-\tMAE: {round(mae, 2)}\n\t\t-\tRMSE: {round(rmse, 2)}\n\t\t-\tN Amostras: {len(grupo)}"""
-        )
+        resultados.append(f"""Faixa {int(faixa) + 1}:\n\t\t-\tMAE: {round(mae, 2)}\n\t\t-\tRMSE: {round(rmse, 2)}\n\t\t-\tN Amostras: {len(grupo)}""")
     return (rmse_all, mae_all, resultados)
+
+
+def feature_importance(model, X):
+    importances = model.feature_importances_
+    features = X.columns
+    sorted_idx = importances.argsort()
+
+    plt.figure(figsize=(10,6))
+    plt.barh(features[sorted_idx], importances[sorted_idx])
+    plt.title('Importância das Features')
+    plt.tight_layout()
+    # since FigureCanvasAgg is non-interactive, and thus cannot be show
+    plt.savefig("feature_importance.png")
+    plt.close()
 
 
 def save_model(model, score):
