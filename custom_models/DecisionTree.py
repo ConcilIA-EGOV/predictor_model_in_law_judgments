@@ -9,8 +9,34 @@ sys.path.append(project_dir)
 ###
 import pandas as pd
 import joblib  # Para salvar o modelo
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor, plot_tree, export_graphviz
+import matplotlib.pyplot as plt
+import graphviz
 from src.training import split_train_test, test_model, stratify, balance_data
+
+def plot_decision_tree(model, feature_names):
+    plt.figure(figsize=(20,10))
+    plot_tree(model, feature_names=feature_names, filled=True,
+              rounded=True, max_depth=3, fontsize=10)
+    plt.title("Árvore de Decisão - Explicação")
+    plt.savefig("DecisionTree.png", dpi=300)
+
+def export_tree_to_graphviz(model, feature_names):
+    # Exporta para o formato .dot
+    dot_data = export_graphviz(
+        model,
+        out_file=None,
+        feature_names=feature_names,
+        filled=True,
+        rounded=True,
+        special_characters=True,
+        max_depth=15  # ou mais
+    )
+
+    # Cria visualização
+    graph = graphviz.Source(dot_data)
+    graph.render("arvore_decisao", format="pdf", cleanup=True)  # também pode ser PNG
+    graph.view()
 
 def main():
     # Load the dataset
@@ -29,9 +55,9 @@ def main():
 
 
     # Modelo base do AdaBoost, a random forest regressor
-    base_model = RandomForestRegressor(n_estimators=330, min_samples_split=2,
-                                       max_features=1.0, criterion='poisson',
-                                       random_state=15, n_jobs=-1, max_depth=15)
+    base_model = DecisionTreeRegressor(min_samples_split=2, max_features=1.0,
+                                       criterion='poisson', max_depth=15,
+                                       random_state=15)
 
     # Fit the base model
     base_model.fit(X_train, y_train)
@@ -41,8 +67,10 @@ def main():
     print(f'MAE: {bs_mae}')
     print('\nPor Faixa:')
     [print(f'\t{folds[i]}') for i in range(len(folds))]
+    # Plot the tree
+    export_tree_to_graphviz(base_model, X_train.columns)
     # Save the base model
-    joblib.dump(base_model, 'models_storage/RandomForest.pkl')
+    joblib.dump(base_model, 'models_storage/DecisionTree.pkl')
 
 
 if __name__ == "__main__":
