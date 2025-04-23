@@ -10,25 +10,13 @@ sys.path.append(project_dir)
 import pandas as pd
 import joblib  # Para salvar o modelo
 from sklearn.ensemble import RandomForestRegressor
-from src.training import split_train_test, test_model, stratify, balance_data
+from src.training import test_model
+from src.file_op import load_data
 
 def main():
-    # Load the dataset
-    data = pd.read_csv('data/main.csv')
-    
-    # Split the data into features and target variable
-    y = data['Dano-Moral']
-    X = data.drop(['sentenca'], axis=1)
-    X.to_csv('data/X.csv', index=False)
-    X = X.drop('Dano-Moral', axis=1)
-    y_bin = stratify(y, N=14)
-    X_bal, y_bal, y_bin = balance_data(X, y, y_bin, strategy='not majority', random_state=15, N=14)
+    # Carregar os dados
+    X_train, X_test, y_train, y_test, y_test_bin, _, _ = load_data()
 
-    # Treinar/testar
-    X_train, X_test, y_train, y_test = split_train_test(X_bal, y_bal, test_size=0.2, y_bin=y_bin)
-
-
-    # Modelo base do AdaBoost, a random forest regressor
     base_model = RandomForestRegressor(n_estimators=330, min_samples_split=2,
                                        max_features=1.0, criterion='poisson',
                                        random_state=15, n_jobs=-1, max_depth=15)
@@ -36,7 +24,7 @@ def main():
     # Fit the base model
     base_model.fit(X_train, y_train)
     # Make predictions with the base model
-    (bs_rmse, bs_mae, folds) = test_model(base_model, X_test, y_test)
+    (bs_rmse, bs_mae, folds) = test_model(base_model, X_test, y_test, y_test_bin)
     print(f'RMSE: {bs_rmse}')
     print(f'MAE: {bs_mae}')
     print('\nPor Faixa:')

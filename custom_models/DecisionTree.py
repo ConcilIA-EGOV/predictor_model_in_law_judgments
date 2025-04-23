@@ -12,7 +12,8 @@ import joblib  # Para salvar o modelo
 from sklearn.tree import DecisionTreeRegressor, plot_tree, export_graphviz
 import matplotlib.pyplot as plt
 import graphviz
-from src.training import split_train_test, test_model, stratify, balance_data
+from src.training import test_model
+from src.file_op import load_data
 
 def plot_decision_tree(model, feature_names):
     plt.figure(figsize=(20,10))
@@ -40,18 +41,7 @@ def export_tree_to_graphviz(model, feature_names):
 
 def main():
     # Load the dataset
-    data = pd.read_csv('data/main.csv')
-    
-    # Split the data into features and target variable
-    y = data['Dano-Moral']
-    X = data.drop(['sentenca'], axis=1)
-    X.to_csv('data/X.csv', index=False)
-    X = X.drop('Dano-Moral', axis=1)
-    y_bin = stratify(y, N=14)
-    X_bal, y_bal, y_bin = balance_data(X, y, y_bin, strategy='not majority', random_state=15, N=14)
-
-    # Treinar/testar
-    X_train, X_test, y_train, y_test = split_train_test(X_bal, y_bal, test_size=0.2, y_bin=y_bin)
+    X_train, X_test, y_train, y_test, y_test_bin, _, _ = load_data()
 
 
     # Modelo base do AdaBoost, a random forest regressor
@@ -62,13 +52,13 @@ def main():
     # Fit the base model
     base_model.fit(X_train, y_train)
     # Make predictions with the base model
-    (bs_rmse, bs_mae, folds) = test_model(base_model, X_test, y_test)
+    (bs_rmse, bs_mae, folds) = test_model(base_model, X_test, y_test, y_test_bin)
     print(f'RMSE: {bs_rmse}')
     print(f'MAE: {bs_mae}')
     print('\nPor Faixa:')
     [print(f'\t{folds[i]}') for i in range(len(folds))]
     # Plot the tree
-    export_tree_to_graphviz(base_model, X_train.columns)
+    # export_tree_to_graphviz(base_model, X_train.columns)
     # Save the base model
     joblib.dump(base_model, 'models_storage/DecisionTree.pkl')
 
