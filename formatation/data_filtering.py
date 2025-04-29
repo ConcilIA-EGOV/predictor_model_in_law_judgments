@@ -45,15 +45,18 @@ def trim_confactors(df: pd.DataFrame, name:str) -> tuple[pd.DataFrame]:
     pro = pro.drop(columns=['culpa_exclusiva_consumidor', 'fechamento_aeroporto'])
     pro.to_csv(f'projecao/{name}Pro.csv', index=False)
     con.to_csv(f'projecao/{name}Con.csv', index=False)
+    pro = df.drop(columns=['culpa_exclusiva_consumidor', 'fechamento_aeroporto'])
     return pro, con
 
 def format(df: pd.DataFrame, name:str, out_col):
     # Inverting the values of assistencia_cia_aerea to make it a profactor
-    df.loc[(df['cancelamento'] == 0) & (df['atraso'] == 0), 'assistencia_cia_aerea'] = -1
+    df.loc[(df['faixa_intervalo_atraso'] == 0), 'assistencia_cia_aerea'] = -1
     df['assistencia_cia_aerea'] = df['assistencia_cia_aerea'].replace(1, -1)
     df['assistencia_cia_aerea'] = df['assistencia_cia_aerea'].replace(0, 1)
     df['assistencia_cia_aerea'] = df['assistencia_cia_aerea'].replace(-1, 0)
-    df = df.drop(columns=['extravio_temporario', 'atraso'])
+    df[out_col] = df[out_col].replace('.0', '')
+    df = df.drop(columns=['extravio_temporario', 'atraso', 'intervalo_extravio_temporario'])
+    
     # remove outliers based on out_col and the quantile
     q_low = df[out_col].quantile(0.01)
     q_hi  = df[out_col].quantile(0.99)
