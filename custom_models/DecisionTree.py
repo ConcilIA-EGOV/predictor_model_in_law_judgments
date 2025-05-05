@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import graphviz
 from src.training import test_model
 from src.file_op import load_data
+from util.parameters import MODEL_PATH
 
 def plot_decision_tree(model, feature_names):
     plt.figure(figsize=(20,10))
@@ -40,6 +41,7 @@ def export_tree_to_graphviz(model, feature_names):
     graph.view()
 
 def main():
+    model_name = "DecisionTree"
     # Load the dataset
     X_train, X_test, y_train, y_test, y_test_bin, _, _ = load_data()
 
@@ -53,14 +55,16 @@ def main():
     base_model.fit(X_train, y_train)
     # Make predictions with the base model
     (bs_rmse, bs_mae, folds) = test_model(base_model, X_test, y_test, y_test_bin)
-    print(f'RMSE: {bs_rmse}')
-    print(f'MAE: {bs_mae}')
-    print('\nPor Faixa:')
-    [print(f'\t{folds[i]}') for i in range(len(folds))]
+    log_file = open(f'{MODEL_PATH}/{model_name}-log.txt', 'w')
+    log_file.write(f'RMSE: {bs_rmse}\n')
+    log_file.write(f'MAE: {bs_mae}\n')
+    log_file.write('\nPor Faixa:\n')
+    [log_file.write(f'\t{folds[i]}\n') for i in range(len(folds))]
+    log_file.close()
     # Plot the tree
     # export_tree_to_graphviz(base_model, X_train.columns)
     # Save the base model
-    joblib.dump(base_model, 'models_storage/DecisionTree.pkl')
+    joblib.dump(base_model, f'{MODEL_PATH}/{model_name}.pkl')
 
 
 if __name__ == "__main__":

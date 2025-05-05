@@ -170,6 +170,7 @@ models_storage/*.pth
 models_storage/*.joblib
 models_storage/*.json
 models_storage/*.pkl
+models_storage/*.txt
 # logs/*.txt
 projecao/*.csv
 projecao/*/*.csv
