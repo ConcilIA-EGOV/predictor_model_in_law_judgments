@@ -37,8 +37,7 @@ def export_tree_to_graphviz(model, feature_names):
 
     # Cria visualização
     graph = graphviz.Source(dot_data)
-    graph.render("arvore_decisao", format="pdf", cleanup=True)  # também pode ser PNG
-    graph.view()
+    graph.render("arvore_decisao", format="pdf", cleanup=True)
 
 def main():
     model_name = "DecisionTree"
@@ -62,7 +61,7 @@ def main():
     [log_file.write(f'\t{folds[i]}\n') for i in range(len(folds))]
     log_file.close()
     # Plot the tree
-    # export_tree_to_graphviz(base_model, X_train.columns)
+    export_tree_to_graphviz(base_model, X_train.columns)
     # Save the base model
     joblib.dump(base_model, f'{MODEL_PATH}/{model_name}.pkl')
 
