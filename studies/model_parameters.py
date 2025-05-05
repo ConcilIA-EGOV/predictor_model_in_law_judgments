@@ -17,7 +17,6 @@ from util.parameters import CV
 from util.param_grids import param_grid
 ###
 from formatation.input_formatation import load_data, separate_features_labels
-from src.preprocessing import preprocessing
 from src.training import get_models
 
 def test_best_model(grid_search:GridSearchCV, X_test, y_test):
@@ -32,10 +31,10 @@ def test_best_model(grid_search:GridSearchCV, X_test, y_test):
     y_pred = best_model.predict(X_test)
     print(classification_report(y_test, y_pred))
 
-def grid_search(X, y, classifier, param_grid):
+def grid_search(X, y, model, param_grid):
 
     # Realizar a busca em grade
-    grid_search = GridSearchCV(estimator=classifier,
+    grid_search = GridSearchCV(estimator=model,
                                param_grid=param_grid,
                                scoring='accuracy',
                                cv=CV, n_jobs=-1, refit=True)
@@ -50,7 +49,6 @@ def grid_search(X, y, classifier, param_grid):
 if __name__ == "__main__":
     data = load_data()
     X, y = separate_features_labels(data)
-    X = preprocessing(X)
     best_params_all = dict()
     models = get_models()
     for key, model in models.items():

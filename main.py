@@ -10,7 +10,6 @@ project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
 from formatation.input_formatation import load_data, separate_features_labels
-from src.preprocessing import preprocessing
 from src.training import train_model, test_model, save_model, get_models
 from src.training import print_results, split_train_test, is_best_model
 from src.loss_function import normalEqn, gradientDescent, computeCost
@@ -25,11 +24,8 @@ def main():
     
     # Passo 2: Separar features (X) dos labels (Y)
     X, y = separate_features_labels(data)
-    
-    # Passo 3: Pré-processar os dados
-    X = preprocessing(X)
 
-    # Passo 4: Dividir em conjuntos de treino e teste
+    # Passo 3: Dividir em conjuntos de treino e teste
     X_train, X_test, y_train, y_test = split_train_test(X, y)
     
     # Passo 5: Inicializar o modelo de Classificação
