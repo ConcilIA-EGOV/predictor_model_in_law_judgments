@@ -16,8 +16,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
-from util.parameters import BEST_SCORE_STORAGE, MAIN_MODEL_FILE, REFIT
-from custom_models import MODELS
+from util.parameters import BEST_SCORE_STORAGE, MAIN_MODEL_FILE
 
 def split_train_test(X, y, test_size, y_bin=None):
     """
@@ -88,12 +87,9 @@ def save_model(model, score):
 def get_best_score():
     return json.load(open(BEST_SCORE_STORAGE, "r"))["best_score"]
 
-def get_models() -> dict[str, object]:
-    if not REFIT:
-        return MODELS
+def get_model() -> dict[str, object]:
     model = load(MAIN_MODEL_FILE)
     name = 'DecisionTree'
-    #name = model.__str__
     return {name: model}
 
 def is_best_model(score):
@@ -117,5 +113,3 @@ def print_results(key, cv_score):
     print(f"Cross Validation Mean: {(cv_score.mean())*100:.2f}%\n")
 
 
-if __name__ == "__main__":
-    print(get_models())

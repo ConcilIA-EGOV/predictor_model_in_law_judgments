@@ -2,7 +2,7 @@
 FILE_PATH = "data/main.csv"
 RESULT_FILE_PATH = "data/result.csv"
 MODEL_PATH = "models_storage/"
-MAIN_MODEL_FILE = MODEL_PATH + "DecisionTree.pkl"
+MAIN_MODEL_FILE = MODEL_PATH + "main_model.pkl"
 # MAIN_MODEL_FILE = MODEL_PATH + "main_model.joblib"
 BEST_SCORE_STORAGE = MODEL_PATH + "best_scores.json"
 
@@ -15,7 +15,7 @@ TARGET = 'Dano-Moral'
 
 USE_RANGES = True
 PREP = False
-REFIT = True
+REFIT = False
 
 ##############
 # Parâmetros #

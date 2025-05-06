@@ -13,11 +13,11 @@ import json
 # -----------
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
-from util.parameters import CV
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 from util.param_grids import param_grid
 ###
-from formatation.input_formatation import load_data, separate_features_labels
-from src.training import get_models
+from src.file_op import load_data
 
 def test_best_model(grid_search:GridSearchCV, X_test, y_test):
     '''
@@ -36,8 +36,8 @@ def grid_search(X, y, model, param_grid):
     # Realizar a busca em grade
     grid_search = GridSearchCV(estimator=model,
                                param_grid=param_grid,
-                               scoring='accuracy',
-                               cv=CV, n_jobs=-1, refit=True)
+                               scoring='neg_root_mean_squared_error',
+                               n_jobs=-1, refit=True)
     grid_search.fit(X, y)
 
     # Melhor combinação de hiperparâmetros
@@ -47,10 +47,12 @@ def grid_search(X, y, model, param_grid):
     return best_params
 
 if __name__ == "__main__":
-    data = load_data()
-    X, y = separate_features_labels(data)
+    X, y, _, _ = load_data(split=False)
     best_params_all = dict()
-    models = get_models()
+    models = {
+        "DecisionTree": DecisionTreeRegressor(),
+        "RandomForest": RandomForestRegressor()
+    }
     for key, model in models.items():
         print(f"Testing {key}")
         try:
