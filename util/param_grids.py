@@ -27,7 +27,7 @@ param_grid_DecisionTree = {
     'min_samples_split': [2, 5, 10],
     'min_samples_leaf': [1, 2, 4],
     'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
-    'max_features': [None, 'auto', 'sqrt', 'log2', 1.0],
+    'max_features': [None, 'sqrt', 'log2', 1.0],
     'random_state': [None, 15],
     'max_leaf_nodes': [None, 10, 20, 30],
     'min_impurity_decrease': [0.0, 0.1, 0.2],

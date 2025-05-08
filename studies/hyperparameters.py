@@ -12,24 +12,12 @@ import numpy as np
 import json
 # -----------
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
+import joblib  # Para salvar o modelo
 from util.param_grids import param_grid
 ###
 from src.file_op import load_data
-
-def test_best_model(grid_search:GridSearchCV, X_test, y_test):
-    '''
-    Print the best parameters and best score
-    '''
-    print("Best parameters found: ", grid_search.best_params_)
-    print("Best cross-validation score: {:.2f}".format(grid_search.best_score_))
-
-    # Evaluate the best model on the test set
-    best_model = grid_search.best_estimator_
-    y_pred = best_model.predict(X_test)
-    print(classification_report(y_test, y_pred))
 
 def grid_search(X, y, model, param_grid):
 
@@ -42,9 +30,12 @@ def grid_search(X, y, model, param_grid):
 
     # Melhor combinação de hiperparâmetros
     best_params = grid_search.best_params_
+    best_score = grid_search.best_score_
+    best_model = grid_search.best_estimator_
     # Melhor score
-    test_best_model(grid_search, X, y)
-    return best_params
+    print("Best parameters found: ", best_params)
+    print("Best cross-validation score: {:.2f}".format(best_score))
+    return best_params, best_score, best_model
 
 if __name__ == "__main__":
     X, y, _, _ = load_data(split=False)
@@ -56,7 +47,12 @@ if __name__ == "__main__":
     for key, model in models.items():
         print(f"Testing {key}")
         try:
-            best_params_all[key] = grid_search(X, y, model, param_grid[key])
+            best_params, best_score, best_model = grid_search(X, y, model, param_grid[key])
+            best_params_all[key] = dict()
+            best_params_all[key]['params'] = best_params
+            best_params_all[key]['score'] = best_score
+            # Save the base model
+            joblib.dump(best_model, f'logs/best_{key}.pkl')
         except Exception as e:
             print(e)
             best_params_all[key] = [str(e)]
