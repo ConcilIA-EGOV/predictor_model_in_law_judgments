@@ -12,7 +12,7 @@ param_grid_RandForest = {
     'min_impurity_decrease': [0.0, 0.1, 0.2],
     'bootstrap': [True, False],
     'oob_score': [True, False],
-    'n_jobs': [None, -1],
+    'n_jobs': [-1],
     'random_state': [None, 15],
     'verbose': [0],
     'warm_start': [False, True],

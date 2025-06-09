@@ -39,14 +39,17 @@ def train_model(model, X, y):
 def test_model(model, X, y, y_bin):
     '''
     Testar o modelo usando o conjunto de teste
+    
     '''
     #score = classification_report(y, model.predict(X), output_dict=True)
     # score = cross_val_score(model, X, y, cv=FOLDS, n_jobs=-1)
     # Make predictions
     predictions = model.predict(X)
     
-    # Calculate the RMSE, and MAE overall
+    # Calculate the RMSE, MAE and proportional MAE overall
     rmse_all = root_mean_squared_error(y, predictions)
+    # Calculate the percentual MAE
+    pmae_all = np.mean(np.abs((y - predictions) / y)) * 100
     mae_all = mean_absolute_error(y, predictions)
 
     # Calculate the RMSE, and MAE for each fold
@@ -57,8 +60,9 @@ def test_model(model, X, y, y_bin):
             continue
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
-        resultados.append(f"""Faixa {int(faixa) + 1}:\n\t\tMAE: {round(mae, 2)}\n\t\tRMSE: {round(rmse, 2)}\n\t\tN Amostras: {len(grupo)}""")
-    return (rmse_all, mae_all, resultados)
+        pmae = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_true'])) * 100
+        resultados.append(f"""Faixa {int(faixa) + 1}:\n\t\tMAE: {round(mae, 2)}\n\t\tRMSE: {round(rmse, 2)}\n\t\tP-MAE: {round(pmae, 2)}\n\t\tN Amostras: {len(grupo)}""")
+    return (rmse_all, mae_all, pmae_all, resultados)
 
 
 def feature_importance(model, X):
