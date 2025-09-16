@@ -18,12 +18,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
 from util.parameters import BEST_SCORE_STORAGE, MAIN_MODEL_FILE
 
-def split_train_test(X, y, test_size, y_bin=None):
+def split_train_test(X:pd.DataFrame, y:pd.DataFrame, test_size:float, y_bin=None) -> tuple:
     """
     Dividir em conjuntos de treino e teste
     """
     (X_train, X_test,
-     y_train, y_test) = train_test_split(X, y, test_size=test_size, stratify=y_bin, random_state=15)
+     y_train, y_test) = train_test_split(X, y,
+                        test_size=test_size,
+                        stratify=y_bin,
+                        random_state=42)
     #return X, X, y, y
     return X_train, X_test, y_train, y_test
 
@@ -36,7 +39,7 @@ def train_model(model, X, y):
     return model
 
 
-def test_model(model, X, y, y_bin):
+def test_model(model, X:pd.DataFrame, y:pd.DataFrame, y_bin:pd.DataFrame):
     '''
     Testar o modelo usando o conjunto de teste
     
@@ -58,10 +61,16 @@ def test_model(model, X, y, y_bin):
     for faixa, grupo in df.groupby('fold', observed=False):
         if len(grupo) == 0:
             continue
+        faixa = int(faixa) # type: ignore
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
         pmae = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_true'])) * 100
-        resultados.append(f"""Faixa {int(faixa) + 1}:\n\t\tMAE: {round(mae, 2)}\n\t\tRMSE: {round(rmse, 2)}\n\t\tP-MAE: {round(pmae, 2)}\n\t\tN Amostras: {len(grupo)}""")
+        resultados.append(f"""Faixa {
+            faixa + 1}:\n\t\tMAE: {round(mae,2
+            )}\n\t\tRMSE: {round(rmse,2
+            )}\n\t\tP-MAE: {round(pmae,2
+            )}\n\t\tN Amostras: {len(grupo
+            )}""")
     return (rmse_all, mae_all, pmae_all, resultados)
 
 

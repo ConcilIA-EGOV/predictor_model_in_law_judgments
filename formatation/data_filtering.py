@@ -39,7 +39,7 @@ def separate_zeros(df: pd.DataFrame, name:str) -> tuple[pd.DataFrame, pd.DataFra
     p.to_csv(f'projecao/P/{name}.csv', index=False)
     return ip, p
 
-def trim_confactors(df: pd.DataFrame, name:str) -> tuple[pd.DataFrame]:
+def trim_confactors(df: pd.DataFrame, name:str) -> tuple[pd.DataFrame, pd.DataFrame]:
     pro = df[(df['culpa_exclusiva_consumidor'] == 0) & (df['fechamento_aeroporto'] == 0)]
     con = df[(df['culpa_exclusiva_consumidor'] == 1) | (df['fechamento_aeroporto'] == 1)]
     pro = pro.drop(columns=['culpa_exclusiva_consumidor', 'fechamento_aeroporto'])
@@ -69,9 +69,9 @@ def main():
     if reformat:
         df = pd.read_csv(f'projecao/original.csv')
         ip, p = separate_zeros(df, 'all')
-        _, _ = trim_confactors(df, 'all/')
-        _, _ = trim_confactors(ip, 'IP/')
-        main, _ = trim_confactors(p, 'P/')
+        trim_confactors(df, 'all/')
+        trim_confactors(ip, 'IP/')
+        main = trim_confactors(p, 'P/')[0]
         format(main, 'main', 'Dano-Moral')
     main = pd.read_csv(f'projecao/main.csv')
     # plot_all_columns(main, 'Dano-Moral', ['sentenca'])

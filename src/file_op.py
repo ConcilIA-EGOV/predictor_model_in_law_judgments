@@ -61,7 +61,7 @@ def balance_data(X, y, y_bins, strategy='not majority',
 
     # 2. Realizar oversampling com base nos bins
     ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
-    X_resampled, y_bins_resampled = ros.fit_resample(X_temp, y_bins)
+    X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, y_bins)]
 
     # 3. Criar cópia do DataFrame original com y contínuo
     df_original = X.copy()
@@ -76,11 +76,12 @@ def balance_data(X, y, y_bins, strategy='not majority',
 
     # 6. Limpar coluna de índice temporário
     X_resampled = X_resampled.drop(columns=["__index__"]).reset_index(drop=True)
+    X_resampled = pd.DataFrame(X_resampled)
     
-    return X_resampled, y_resampled, y_bins_resampled
+    return X_resampled, y_resampled, y_bins_resampled # type: ignore
 
 
-def load_data(split=True) -> tuple[pd.DataFrame]:
+def load_data(split=True) -> list[pd.DataFrame]:
     """
     Carrega os dados do arquivo CSV, divide em treino e teste, e aplica balanceamento.
 
@@ -113,7 +114,7 @@ def load_data(split=True) -> tuple[pd.DataFrame]:
 
     # Treinar/testar
     if split:
-        X_train, X_test, y_train, y_test = split_train_test(X_bal, y_bal, test_size=TEST_SIZE, y_bin=y_bin)
+        X_train, X_test, y_train, y_test = split_train_test(X_bal, y_bal, test_size=TEST_SIZE, y_bin=y_bin) # type: ignore
         y_test_bin = stratify(y_test, N=DM_FOLDS)
         # Adiciona a coluna de sentenca ao DataFrame de teste
         sentences_train = X_train['sentenca'].copy()
@@ -123,10 +124,12 @@ def load_data(split=True) -> tuple[pd.DataFrame]:
         # sentences_test.to_csv('data/sentences_test.csv', index=False)
         X_train = X_train.drop(columns=['sentenca'])
         X_test = X_test.drop(columns=['sentenca'])
-        return X_train, X_test, y_train, y_test, y_test_bin, sentences_train, sentences_test
+        output = [pd.DataFrame(i) for i in (X_train, X_test, y_train, y_test, y_test_bin, sentences_train, sentences_test)]
+        return output
 
     X_bal = X_bal.drop(columns=['sentenca'])
-    return X_bal, y_bal, y_bin, sentences_bal
+    output = [pd.DataFrame(i) for i in [X_bal, y_bal, y_bin, sentences_bal]]
+    return output
 
 if __name__ == '__main__':
     # Load the dataset without splitting

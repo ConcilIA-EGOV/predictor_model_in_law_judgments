@@ -28,7 +28,7 @@ def trim_columns(df: pd.DataFrame):
     remove_columns = [col for col in df.columns if col not in DATA_VARS]
     #print(f"Removendo colunas: {remove_columns}")
     df = df.drop(columns=remove_columns)
-    target_column = df.columns.get_loc(TARGET)
+    target_column = int(df.columns.get_loc(TARGET)) # type: ignore
     if target_column != df.shape[1] - 1:
         # Mover a coluna alvo para a última posição
         tc = df.columns[target_column]
