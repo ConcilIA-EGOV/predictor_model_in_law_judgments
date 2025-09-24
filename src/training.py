@@ -1,35 +1,9 @@
-###
-import sys
-import os
-
-# Obtém o diretório atual do script
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Adiciona o diretório base do projeto ao caminho de busca do Python
-project_dir = os.path.dirname(current_dir)
-sys.path.append(project_dir)
-###
-from joblib import dump, load
-import json
+from joblib import dump
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
+
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
-from util.parameters import BEST_SCORE_STORAGE, MAIN_MODEL_FILE
-
-def split_train_test(X:pd.DataFrame, y:pd.DataFrame, test_size:float, y_bin=None) -> tuple:
-    """
-    Dividir em conjuntos de treino e teste
-    """
-    (X_train, X_test,
-     y_train, y_test) = train_test_split(X, y,
-                        test_size=test_size,
-                        stratify=y_bin,
-                        random_state=42)
-    #return X, X, y, y
-    return X_train, X_test, y_train, y_test
-
+from util.parameters import MODEL_PATH
 
 def train_model(model, X, y):
     """
@@ -39,10 +13,10 @@ def train_model(model, X, y):
     return model
 
 
-def test_model(model, X:pd.DataFrame, y:pd.DataFrame, y_bin:pd.DataFrame):
+def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple:
     '''
     Testar o modelo usando o conjunto de teste
-    
+    Retorna RMSE, MAE, P-MAE e resultados por faixa de valores    
     '''
     #score = classification_report(y, model.predict(X), output_dict=True)
     # score = cross_val_score(model, X, y, cv=FOLDS, n_jobs=-1)
@@ -74,55 +48,20 @@ def test_model(model, X:pd.DataFrame, y:pd.DataFrame, y_bin:pd.DataFrame):
     return (rmse_all, mae_all, pmae_all, resultados)
 
 
-def feature_importance(model, X):
-    importances = model.feature_importances_
-    features = X.columns
-    sorted_idx = importances.argsort()
-
-    plt.figure(figsize=(10,6))
-    plt.barh(features[sorted_idx], importances[sorted_idx])
-    plt.title('Importância das Features')
-    plt.tight_layout()
-    # since FigureCanvasAgg is non-interactive, and thus cannot be show
-    plt.savefig("feature_importance.png")
-    plt.close()
-
-
-def save_model(model, score):
+def save_model(model, model_name, bs_rmse, bs_mae, bs_pmae, folds):
     """
-    Salvar o modelo treinado em um arquivo e o score em outro
-    """
-    dict_score = {"best_score": score}
-    json.dump(dict_score, open(BEST_SCORE_STORAGE, "w"))
-    dump(model, MAIN_MODEL_FILE)
-    return
-
-def get_best_score():
-    return json.load(open(BEST_SCORE_STORAGE, "r"))["best_score"]
-
-def get_model() -> dict[str, object]:
-    model = load(MAIN_MODEL_FILE)
-    name = 'DecisionTree'
-    return {name: model}
-
-def is_best_model(score):
-    best_score = get_best_score()
-    scr = -1
-    tipo = type(score)
-    if tipo == float:
-        scr = score
-    elif tipo == dict:
-        scr = score["accuracy"]
-    elif tipo == np.ndarray:
-        scr = score.mean()
-    else:
-        raise TypeError("Tipo de score não suportado")
-    return scr > best_score
-
-def print_results(key, cv_score):
-    print(f"Model: {key}")
-    prt_cv = " - ".join([f"{(score)*100:.2f}%" for score in cv_score])
-    print(f"Cross Validation Scores: {prt_cv}")
-    print(f"Cross Validation Mean: {(cv_score.mean())*100:.2f}%\n")
-
-
+    Salvar o modelo treinado em um arquivo e os logs de performance em outro
+    """    
+    log_file = open(f'{MODEL_PATH}/{model_name}-log.txt', 'w')
+    log_file.write(f'RMSE: {bs_rmse}\n')
+    print(f'RMSE: {bs_rmse}')
+    log_file.write(f'MAE: {bs_mae}\n')
+    print(f'MAE:  {bs_mae}')
+    log_file.write(f'PMAE: {bs_pmae:.2f}%\n')
+    # prints the PMAE with 2 decimal places
+    print(f'PMAE: {bs_pmae:.2f}%')
+    log_file.write('\nPor Faixa:\n')
+    [log_file.write(f'\t{folds[i]}\n') for i in range(len(folds))]
+    log_file.close()
+    # Save the base model
+    dump(model, f'{MODEL_PATH}/{model_name}.pkl')

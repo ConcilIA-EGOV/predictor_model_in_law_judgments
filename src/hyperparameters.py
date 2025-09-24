@@ -15,9 +15,11 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 import joblib  # Para salvar o modelo
-from util.param_grids import param_grid
 ###
-from src.file_op import load_data
+
+from util.param_grids import param_grid
+from util.parameters import FILE_PATH
+from formatation.data_formatation import load_data
 
 def grid_search(X, y, model, param_grid):
 
@@ -38,7 +40,7 @@ def grid_search(X, y, model, param_grid):
     return best_params, best_score, best_model
 
 if __name__ == "__main__":
-    X, y, _, _ = load_data(split=False)
+    X, y, = load_data(FILE_PATH)
     best_params_all = dict()
     models = {
         "DecisionTree": DecisionTreeRegressor(),
