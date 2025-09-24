@@ -39,6 +39,8 @@ DATA_VARS = [
     'cancelamento',
 #    'intervalo_atraso',
     'faixa_intervalo_atraso',
+    "culpa_exclusiva_consumidor",
+    "fechamento_aeroporto",
     'noshow',
     'overbooking',
     'assistencia_cia_aerea',

@@ -6,7 +6,7 @@ def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     return ip, p
 
 def trim_confactors(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    if 'culpa_exclusiva_consumidor' in df.columns or 'fechamento_aeroporto' not in df.columns:
+    if 'culpa_exclusiva_consumidor' not in df.columns or 'fechamento_aeroporto' not in df.columns:
         print("Colunas de co-fatores já removidas.")
         # create an empty DataFrame with the same columns as df
         return df, pd.DataFrame(columns=df.columns)

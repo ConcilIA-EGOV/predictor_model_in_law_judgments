@@ -34,6 +34,8 @@ def format_binario(value, anomaly=0, yes=1, no=0) -> int:
             return yes
         if value == 0:
             return no
+        if value == -1:
+            return anomaly
     if type(value) == bool:
         if value:
             return yes
@@ -76,6 +78,7 @@ FUNCTIONS = {
     'faixa_intervalo_atraso': lambda x: int(x),
     'culpa_exclusiva_consumidor': lambda x: format_binario(x),
     'condicoes_climaticas/fechamento_aeroporto': lambda x: format_binario(x),
+    'fechamento_aeroporto': lambda x: format_binario(x),
     'noshow': lambda x: format_binario(x),
     'overbooking': lambda x: format_binario(x),
     'assistencia_cia_aerea': lambda x: format_binario(x, -1),
