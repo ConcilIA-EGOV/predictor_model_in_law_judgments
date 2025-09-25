@@ -11,6 +11,7 @@ def plot_decision_tree(model, feature_names):
     plt.title("Árvore de Decisão - Explicação")
     plt.savefig("DecisionTree.png", dpi=300)
 
+
 def export_tree_to_graphviz(model, feature_names):
     # Exporta para o formato .dot
     dot_data = export_graphviz(
@@ -26,7 +27,6 @@ def export_tree_to_graphviz(model, feature_names):
     # Cria visualização
     graph = graphviz.Source(dot_data)
     graph.render("models_storage/arvore_decisao", format="pdf", cleanup=True)
-
 
 
 def plot_graphic_from_csv(data: pd.DataFrame,
@@ -70,3 +70,48 @@ def feature_importance(model, X):
     # since FigureCanvasAgg is non-interactive, and thus cannot be show
     plt.savefig("feature_importance.png")
     plt.close()
+
+
+def associate_id_with_target(df1: pd.DataFrame, df2: pd.DataFrame, id_col: str, target_col: str) -> pd.DataFrame:
+    """
+    Associa os IDs do df1 com os valores alvo do df2
+    Baseado em df2 também ter a coluna de IDs
+    Retorna um novo DataFrame com as colunas de df1 mais a coluna alvo de df2
+    """
+    if id_col not in df1.columns or id_col not in df2.columns:
+        raise ValueError(f"Coluna de ID '{id_col}' não encontrada em um dos DataFrames.")
+    if target_col not in df2.columns:
+        raise ValueError(f"Coluna alvo '{target_col}' não encontrada no DataFrame df2.")
+    print("df1 rows:", len(df1), "unique ids:", df1[id_col].nunique())
+    print("df2 rows:", len(df2), "unique ids:", df2[id_col].nunique())
+
+    # check duplicates in df2
+    dups = df2[id_col].duplicated().sum()
+    print("duplicate id_col in df2:", dups)
+
+    # check per-key multiplicity
+    counts = df2.groupby(id_col).size()
+    print("max rows per id in df2:", counts.max())
+    print("keys with >1 rows:", (counts>1).sum())
+    
+    # If df2 has multiple rows per id, reduce it to one row per id to avoid expanding df1 on a left merge.
+    if dups > 0:
+        print("Warning: df2 contains duplicate IDs; dropping duplicate rows and keeping the first occurrence for each ID.")
+        df2_unique = df2.drop_duplicates(subset=id_col, keep='first')
+        print("df2 reduced from", len(df2), "to", len(df2_unique), "rows after dropping duplicates on", id_col)
+    else:
+        df2_unique = df2
+
+    merged_df = pd.merge(df1, df2_unique[[id_col, target_col]], on=id_col, how='left')
+    # Sanity check: merged should not have more rows than df1 after deduplication
+    if len(merged_df) > len(df1):
+        raise RuntimeError("Merged dataframe has more rows than df1 despite deduplication; inspect keys.")
+    merged_df.to_csv("data/merged_with_target.csv", index=False)
+    return merged_df
+
+if __name__ == "__main__":
+    df1 = pd.read_csv("input/ajudicada.csv")
+    df2 = pd.read_csv("input/original.csv")
+    merged = associate_id_with_target(df1, df2, 'sentenca', 'Dano-Moral')
+    # print(merged.columns)
+    print(merged.shape)
