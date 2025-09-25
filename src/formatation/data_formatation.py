@@ -57,10 +57,16 @@ def trim_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = df.drop(columns=remove_columns)
     # renames faixa_intervalo_atraso to intervalo_atraso
     if 'faixa_intervalo_atraso' in df.columns:
+        if 'intervalo_atraso' in df.columns:
+            print("Coluna intervalo_atraso já existe. Removendo-a.")
+            df = df.drop(columns=['intervalo_atraso'])
         print("Renomeando coluna faixa_intervalo_atraso para intervalo_atraso")
         df.rename(columns={'faixa_intervalo_atraso': 'intervalo_atraso'}, inplace=True)
     # renames faixa_intervalo_extravio_temporario to intervalo_extravio_temporario
     if 'faixa_intervalo_extravio_temporario' in df.columns:
+        if 'intervalo_extravio_temporario' in df.columns:
+            print("Coluna intervalo_extravio_temporario já existe. Removendo-a.")
+            df = df.drop(columns=['intervalo_extravio_temporario'])
         print("Renomeando coluna faixa_intervalo_extravio_temporario para intervalo_extravio_temporario")
         df = df.rename(columns={'faixa_intervalo_extravio_temporario': 'intervalo_extravio_temporario'})
     # renames dano_moral_individual to Target
@@ -100,8 +106,8 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     if os.path.exists(DATA_PATH):
         print(f"Arquivo {DATA_PATH} já existe. Carregando dados formatados...")
         data = pd.read_csv(DATA_PATH)
-        data = trim_columns(data)
-        data.to_csv(f'data/0-trimmed_data.csv', index=False)
+        # data = trim_columns(data)
+        # data.to_csv(f'logs/trimmed_data.csv', index=False)
         X, y = separate_features_labels(data)
         print("Features e labels separados com sucesso!")
         print(f"Features shape: {X.shape}, Labels shape: {y.shape}")
