@@ -1,12 +1,6 @@
-###
-import sys
-import os
-# Obtém o diretório atual do script
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
 # Adiciona o diretório base do projeto ao caminho de busca do Python
-project_dir = os.path.dirname(current_dir)
-sys.path.append(project_dir)
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ###
 import numpy as np
 import json
@@ -15,7 +9,6 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 import joblib  # Para salvar o modelo
-###
 
 from util.param_grids import param_grid
 from util.parameters import FILE_PATH

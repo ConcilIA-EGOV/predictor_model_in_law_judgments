@@ -2,6 +2,7 @@
 FILE_PATH = "input/original.csv"
 DATA_PATH = "data/main.csv"
 LOG_PATH = "logs/"
+log_file = open(LOG_PATH + "log_data_formatation.txt", 'w')
 # RESULT_FILE_PATH = "data/result.csv"
 MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
 # diretório para salvar os modelos treinados
@@ -28,6 +29,12 @@ RANDOM_STATE = 42
 # Estratégia de balanceamento
 BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
 
+PIPELINE_PARAMS = {
+    'Número de folds': DM_FOLDS,
+    'Tamanho percentual do conjunto de teste': TEST_SIZE,
+    'Random Seed': RANDOM_STATE,
+    'Estratégia de balanceamento': BALANCE_STRATEGY,
+}
 
 DATA_VARS = [
     'sentenca',

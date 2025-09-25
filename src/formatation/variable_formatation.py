@@ -1,5 +1,5 @@
 import numpy as np
-from util.parameters import FAIXAS_EXTRAVIO, FAIXAS_ATRASO, FAIXAS_DANO
+from util.parameters import FAIXAS_EXTRAVIO, FAIXAS_ATRASO, FAIXAS_DANO, log_file
 
 def generate_range(value, interval_values=[]) -> int:
     for i, interval in enumerate(interval_values):
@@ -7,8 +7,8 @@ def generate_range(value, interval_values=[]) -> int:
             return i
     return len(interval_values)
 
+
 def hour_to_float(value, interval_values=[]):
-    # print(" --> Valor com horas:", value)
     splits = value.split(":")
     last = len(splits) - 1
     minutes = float(splits[-last].strip()) / 60
@@ -17,6 +17,7 @@ def hour_to_float(value, interval_values=[]):
     f_value = generate_range(f_value, interval_values)
     return f_value
 
+
 def format_comma_strings(value:str, interval_values=[]):
     if ',' in value:
         f_value = float(value.replace(',', '.'))
@@ -24,6 +25,7 @@ def format_comma_strings(value:str, interval_values=[]):
         f_value = float(value)
     f_value = generate_range(f_value, interval_values)
     return f_value
+
 
 def format_binario(value, anomaly=0, yes=1, no=0) -> int:
     if type(value) == float:
@@ -45,7 +47,7 @@ def format_binario(value, anomaly=0, yes=1, no=0) -> int:
         return yes
     if value in ['N', 'n', 'Não', 'não', 'NÃO', 'NO', 'No', 'no', '0']:
         return no
-    print("Valor binário não reconhecido:", value)
+    log_file.write(f" -> Valor binário não reconhecido: {value}\n")
     return anomaly
     
 
@@ -61,8 +63,9 @@ def format_intervalo(value, interval_values=[]):
     if ':' in value:
         return hour_to_float(value, interval_values)
     else:
-        print("Valor não reconhecido:", value)
+        log_file.write(f" -> Valor de intervalo não reconhecido: {value}\n")
         return value
+
 
 FUNCTIONS = {
     'sentenca': lambda x: x,

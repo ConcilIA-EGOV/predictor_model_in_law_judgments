@@ -1,11 +1,6 @@
-###
-import sys
-import os
-# Obtém o diretório atual do script
-current_dir = os.path.dirname(os.path.abspath(__file__))
 # Adiciona o diretório base do projeto ao caminho de busca do Python
-project_dir = os.path.dirname(current_dir)
-sys.path.append(project_dir)
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ###
 import shap
 import matplotlib.pyplot as plt
@@ -46,8 +41,8 @@ def map_sentences_idx(X_test: pd.DataFrame, sentencas_test: pd.DataFrame, numero
             continue
         if sent == numero_sentenca:
             return idx
-        else:
-            print(f"Sentença {sent} não é igual a {numero_sentenca}")
+        # else:
+        #     print(f"Sentença {sent} não é igual a {numero_sentenca}")
     raise KeyError(f"Sentença {numero_sentenca} não encontrada no conjunto de teste.")
 
 

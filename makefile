@@ -3,7 +3,7 @@ all:
 	@echo "make shap SENT=X     - to run the SHAP explainability (optionally with a sentence number instead of X)"
 	@echo "make clean           - to clear all logs and cache"
 	@echo "make parameters  	- to run the models parameters test cases"
-	@echo "make formatation 	- to run the formatation test cases"
+	@echo "make format 			- to run the formatation test cases"
 
 run:
 	@python3 main.py > logs/model.txt
@@ -18,9 +18,8 @@ parameters:
 	@python3 src/hyperparameters.py > logs/params.txt
 	@cat logs/params.txt
 
-formatation:
-	@python3 src/formatation/data_formatation.py > logs/formatation.txt
-	@cat logs/formatation.txt
+format:
+	@python3 src/formatation/data_formatation.py
 
 clean:
 	@rm -rf __pycache__
@@ -30,4 +29,3 @@ clean:
 	@rm -rf logs/*.json
 	@rm -rf logs/*.csv
 	@rm -rf logs/*/*.csv
-	@clear
