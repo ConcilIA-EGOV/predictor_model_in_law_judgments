@@ -6,13 +6,19 @@ def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     return ip, p
 
 def trim_confactors(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    if 'culpa_exclusiva_consumidor' not in df.columns or 'fechamento_aeroporto' not in df.columns:
-        print("Colunas de co-fatores já removidas.")
-        # create an empty DataFrame with the same columns as df
-        return df, pd.DataFrame(columns=df.columns)
-    pro = df[(df['culpa_exclusiva_consumidor'] == 0) & (df['fechamento_aeroporto'] == 0)]
-    con = df[(df['culpa_exclusiva_consumidor'] == 1) | (df['fechamento_aeroporto'] == 1)]
-    pro = pro.drop(columns=['culpa_exclusiva_consumidor', 'fechamento_aeroporto'])
+    conf1 = 'culpa_exclusiva_consumidor'
+    conf2 = 'fechamento_aeroporto'
+    if conf1 not in df.columns:
+        conf1 = conf2
+    if conf2 not in df.columns:
+        if conf2 == conf1:
+            print("Colunas de co-fatores já removidas.")
+            # create an empty DataFrame with the same columns as df
+            return df, pd.DataFrame(columns=df.columns)
+        conf2 = conf1
+    pro = df[(df[conf1] == 0) & (df[conf2] == 0)]
+    con = df[(df[conf1] == 1) | (df[conf2] == 1)]
+    pro = pro.drop(columns=[conf1, conf2])
     return pro, con
 
 def remove_outliers(df: pd.DataFrame, out_col:str) -> tuple[pd.DataFrame, pd.DataFrame]:    
