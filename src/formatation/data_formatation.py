@@ -10,7 +10,7 @@ project_dir = os.path.dirname(current_dir)
 sys.path.append(project_dir)
 ###
 import pandas as pd
-from util.parameters import DATA_VARS, DATA_PATH, FILE_PATH, TARGET
+from util.parameters import DATA_VARS, DATA_PATH, LOG_PATH, FILE_PATH, TARGET
 from formatation.variable_formatation import FUNCTIONS
 from formatation.data_filtering import separate_zeros, trim_confactors, remove_outliers
 
@@ -107,7 +107,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
         print(f"Arquivo {DATA_PATH} já existe. Carregando dados formatados...")
         data = pd.read_csv(DATA_PATH)
         # data = trim_columns(data)
-        # data.to_csv(f'logs/trimmed_data.csv', index=False)
+        # data.to_csv(f'{LOG_PATH}trimmed_data.csv', index=False)
         X, y = separate_features_labels(data)
         print("Features e labels separados com sucesso!")
         print(f"Features shape: {X.shape}, Labels shape: {y.shape}")
@@ -120,37 +120,39 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     
     data = trim_columns(data)
     print(f"Colunas após trim: {data.columns.tolist()}")
-    data.to_csv(f'logs/data/{steps}-trimmed_data.csv', index=False)
+    data.to_csv(f'{LOG_PATH}data/{steps}-trimmed_data.csv', index=False)
     steps += 1
     
     data = format_data(data)
     print("Dados formatados com sucesso!")
-    data.to_csv(f'logs/data/{steps}-formatted_data.csv', index=False)
+    data.to_csv(f'{LOG_PATH}data/{steps}-formatted_data.csv', index=False)
     steps += 1
     
     data = feature_formatation(data)
     print("Features formatadas com sucesso!")
-    data.to_csv(f'logs/data/{steps}-feature_formatted_data.csv', index=False)
+    data.to_csv(f'{LOG_PATH}data/{steps}-feature_formatted_data.csv', index=False)
     steps += 1
     
     ip, p = separate_zeros(data)
-    ip.to_csv('logs/IP/all.csv', index=False)
-    p.to_csv('logs/P/all.csv', index=False)
+    ip.to_csv(f'{LOG_PATH}IP/all.csv', index=False)
+    p.to_csv(f'{LOG_PATH}P/all.csv', index=False)
     pro, con = trim_confactors(data)
-    pro.to_csv('logs/all/Pro.csv', index=False)
-    con.to_csv('logs/all/Con.csv', index=False)
+    pro.to_csv(f'{LOG_PATH}all/Pro.csv', index=False)
+    con.to_csv(f'{LOG_PATH}all/Con.csv', index=False)
     pro, con = trim_confactors(ip)
-    pro.to_csv('logs/IP/Pro.csv', index=False)
-    con.to_csv('logs/IP/Con.csv', index=False)
+    pro.to_csv(f'{LOG_PATH}IP/Pro.csv', index=False)
+    con.to_csv(f'{LOG_PATH}IP/Con.csv', index=False)
     data, con = trim_confactors(p)
-    con.to_csv('logs/P/Con.csv', index=False)
-    data.to_csv(f'logs/data/{steps}-filtered_data.csv', index=False)
+    con.to_csv(f'{LOG_PATH}P/Con.csv', index=False)
+    data.to_csv(f'{LOG_PATH}data/{steps}-filtered_data.csv', index=False)
     steps += 1
     print(f"Colunas após remover confactors: {data.columns.tolist()}")
     
      # Remove outliers
     data, out  = remove_outliers(data, TARGET)
-    out.to_csv('logs/data/Outliers.csv', index=False)
+    out.to_csv(f'{LOG_PATH}data/Outliers.csv', index=False)
+    data.to_csv(f'{LOG_PATH}main.csv', index=False)
+    steps += 1
     print("Outliers removidos com sucesso!")
     data.to_csv(DATA_PATH, index=False)
     

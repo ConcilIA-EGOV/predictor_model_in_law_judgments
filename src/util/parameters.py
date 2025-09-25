@@ -1,6 +1,7 @@
 # caminhos para os arquivos de dados e modelos
 FILE_PATH = "input/original.csv"
 DATA_PATH = "data/main.csv"
+LOG_PATH = "logs/"
 # RESULT_FILE_PATH = "data/result.csv"
 MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
 # diretório para salvar os modelos treinados
@@ -25,7 +26,7 @@ TEST_SIZE = 0.2
 # Random Seed
 RANDOM_STATE = 42
 # Estratégia de balanceamento
-BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'minority', 'balanced', 'none'
+BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
 
 
 DATA_VARS = [
