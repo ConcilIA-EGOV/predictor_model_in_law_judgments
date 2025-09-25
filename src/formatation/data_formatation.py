@@ -96,6 +96,16 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     10. Separa features (X) e labels (y)
     11. Retorna features (X) e labels (y).
     """
+    # if there's already a DATA_PATH file, use it
+    if os.path.exists(DATA_PATH):
+        print(f"Arquivo {DATA_PATH} já existe. Carregando dados formatados...")
+        data = pd.read_csv(DATA_PATH)
+        data = trim_columns(data)
+        data.to_csv(f'data/0-trimmed_data.csv', index=False)
+        X, y = separate_features_labels(data)
+        print("Features e labels separados com sucesso!")
+        print(f"Features shape: {X.shape}, Labels shape: {y.shape}")
+        return X, y
     steps = 1
     # Ler o arquivo CSV usando pandas
     data = pd.read_csv(csv_file)
