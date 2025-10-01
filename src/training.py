@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
-from util.parameters import MODEL_PATH, PIPELINE_PARAMS
+
+from util.parameters import MODEL_PATH, get_data_log
 from util.param_grids import MODEL_PARAMS
 
 def train_model(model, X, y):
@@ -35,16 +36,19 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple:
         if len(grupo) == 0:
             continue
         faixa = int(faixa) # type: ignore
+        mininmo = grupo['y_true'].min()
+        maximo = grupo['y_true'].max()
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
         pmae = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_true'])) * 100
         resultados.append(f"""Faixa {
             faixa + 1
-            }:\n\t\t - MAE:  {round(mae,2
-            )}\n\t\t - RMSE: {round(rmse,2
-            )}\n\t\t - PMAE: {round(pmae,2
-            )}%\n\t\t - N Amostras: {len(grupo
-            )}""")
+            }:\n\t - MAE:  {round(mae,2
+            )}\n\t - RMSE: {round(rmse,2
+            )}\n\t - PMAE: {round(pmae,2
+            )}%\n\t - N Amostras: {len(grupo
+            )}\n\t - Valores: {mininmo} a {maximo}
+            """)
     return (rmse_all, mae_all, pmae_all, resultados)
 
 
@@ -53,11 +57,17 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_pmae, folds):
     Salvar o modelo treinado em um arquivo e os logs de performance em outro
     """    
     log_file = open(f'{MODEL_PATH}/{model_name}-log.txt', 'w')
-    log_file.write(f'Parâmetros do Modelo ({model_name}):\n')
+    log_file.write('Parâmetros da Pipeline:\n')
+    for key, value in get_data_log().items():
+        if isinstance(value, list):
+            if len(value) == 0:
+                log_file.write(f' - {key}: []\n')
+                continue
+            log_file.write(f' - {key}: \n\t - {"\n\t - ".join(map(str, value))}\n')
+            continue
+        log_file.write(f' - {key}: {value}\n')
+    log_file.write(f'\nParâmetros do Modelo ({model_name}):\n')
     for param, value in MODEL_PARAMS.items():
-        log_file.write(f' - {param}: {value}\n')
-    log_file.write('\nParâmetros da Pipeline:\n')
-    for param, value in PIPELINE_PARAMS.items():
         log_file.write(f' - {param}: {value}\n')
     log_file.write('\nPerformance do Modelo Base:\n')
     log_file.write(f' - RMSE: {bs_rmse}\n')
@@ -67,8 +77,9 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_pmae, folds):
     log_file.write(f' - PMAE: {bs_pmae:.2f}%\n')
     # prints the PMAE with 2 decimal places
     print(f'PMAE: {bs_pmae:.2f}%')
-    log_file.write('\n - Por Faixa:\n')
-    [log_file.write(f'\t - {folds[i]}\n') for i in range(len(folds))]
+    [log_file.write(f' - {folds[i]}\n') for i in range(len(folds))]
+    
+    # Log dos dados usados
     log_file.close()
     # Save the base model
     dump(model, f'{MODEL_PATH}/{model_name}.pkl')

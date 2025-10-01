@@ -1,29 +1,36 @@
 import pandas as pd
-from util.parameters import log_file, TARGET, OUTLIERS_MIN_QUANTILE, OUTLIERS_MAX_QUANTILE
+
+from util.parameters import log_file, append_to_data_log_list, update_data_log
+from util.parameters import OUTLIERS_MIN_QUANTILE, OUTLIERS_MAX_QUANTILE, TARGET
 
 def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     ip = df[(df['Dano-Moral'] == 0)]
     p = df[(df['Dano-Moral'] > 0)]
-    log_file.write(f"Separando {ip.shape} instâncias de Dano-Moral = 0 e {p.shape} instâncias de Dano-Moral > 0.\n")
+    log_file.write(f"Separando {ip.shape
+                   } instâncias de Dano-Moral = 0 e {p.shape
+                   } instâncias de Dano-Moral > 0.\n")
+    append_to_data_log_list("Alteracoes nas Features", f"Removidas {ip.shape[0]} instancias com Dano-Moral = 0")
     return ip, p
 
 def trim_confactors(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     conf1 = 'culpa_exclusiva_consumidor'
     conf2 = 'fechamento_aeroporto'
     if conf1 not in df.columns:
-        log_file.write(f"Coluna co-fator {conf1} já removidas.\n")
+        log_file.write(f"Coluna confator {conf1} já removida.\n")
         conf1 = conf2
     if conf2 not in df.columns:
+        log_file.write(f"Coluna confator {conf2} já removida.\n")
         if conf2 == conf1:
-            log_file.write("Colunas de co-fatores já removidas.\n")
             # create an empty DataFrame with the same columns as df
             return df, pd.DataFrame(columns=df.columns)
-        log_file.write(f"Coluna co-fator {conf2} já removidas.\n")
         conf2 = conf1
     pro = df[(df[conf1] == 0) & (df[conf2] == 0)]
     con = df[(df[conf1] == 1) | (df[conf2] == 1)]
+    append_to_data_log_list('Features Removidas', conf1)
+    append_to_data_log_list('Features Removidas', conf2)
+    append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instâncias que continham confactors: {conf1}, {conf2}")
     pro = pro.drop(columns=[conf1, conf2])
-    log_file.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instâncias Pro e {con.shape} instâncias Con.\n")
+    log_file.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instâncias sem confactors e {con.shape} instâncias com confactors.\n")
     return pro, con
 
 def remove_outliers(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -39,4 +46,5 @@ def remove_outliers(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
                         } instâncias principais e {df_out.shape
                         } instâncias outliers.\n")
     log_file.write(f"   --> Valores de {TARGET} entre {df_main[TARGET].min()} e {df_main[TARGET].max()}.\n")
+    update_data_log("Numero de Outliers Removidos", f"{df_out.shape[0]}, com valores <= {q_low} ou >= {q_hi}")
     return df_main, df_out

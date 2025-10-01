@@ -1,20 +1,25 @@
+from os import SEEK_END
 import pandas as pd
 import numpy as np
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import train_test_split
 
-def stratify(y: pd.Series, N) -> pd.Series:
+from src.util.parameters import update_data_log
+from src.util.parameters import LOG_DATA_PATH, log_file, TARGET
+log_file.seek(0, SEEK_END)  # Move the cursor to the end of the file for appending new logs
+
+def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
     """
     retorna um y_bin, para estratificação, que divide o y em N partes
     """
-    bins = np.linspace(y.min(), y.max(), N + 1)
-    labes = [f"{i}" for i in range(N)]
-    y_bin = pd.cut(y, bins=bins, labels=labes, include_lowest=True)
-    return y_bin
+    bins, step = np.linspace(y.min(), y.max(), N + 1, retstep=True)
+    labels = [f"{i}" for i in range(N)]
+    y_bin = pd.cut(y, bins=bins, labels=labels, include_lowest=True)
+    return y_bin, step
 
 
 def split_data(X:pd.DataFrame, y:pd.Series, test_size:float,
-               y_bin, n_folds) -> tuple[
+               y_bin: pd.Series, n_folds: int) -> tuple[
                    pd.DataFrame, pd.DataFrame,
                    pd.Series, pd.Series, pd.Series]:
     """
@@ -37,23 +42,27 @@ def split_data(X:pd.DataFrame, y:pd.Series, test_size:float,
                         test_size=test_size,
                         stratify=y_bin,
                         random_state=42)
-    y_test_bin = stratify(y_test, n_folds)
+    y_test_bin, _ = stratify(y_test, n_folds)
+    y_train_bin, _ = stratify(y_train, n_folds)
+
+    # Log dos tamanhos dos conjuntos
+    update_data_log('Tamanho do Conjunto de Treino', len(y_train))
+    update_data_log('Tamanho do Conjunto de Teste', len(y_test))
+    log_file.write(f"\n----\nTamanho do conjunto de treino: {len(y_train)}\n")
+    log_file.write(f"Tamanho do conjunto de teste: {len(y_test)}\n")
 
     # Para verificar o balanceamento das sentenças
-    sentences_test = X_test['sentenca'].copy()
-    sentences_train = X_train['sentenca'].copy()
-    
-    sentences_test.to_csv('logs/sentences/test.csv', index=False)
-    sentences_train.to_csv('logs/sentences/train.csv', index=False)
-    
-    X_test.to_csv('logs/data/X_test.csv', index=False)
-    y_test.to_csv('logs/data/y_test.csv', index=False)
-    X_train.to_csv('logs/data/X_train.csv', index=False)
-    y_train.to_csv('logs/data/y_train.csv', index=False)
-    y_test_bin.to_csv('logs/data/y_test_bin.csv', index=False)
+    X_train[TARGET] = y_train.values
+    X_train['bin'] = y_train_bin.values
+    X_test[TARGET] = y_test.values
+    X_test['bin'] = y_test_bin.values
+    X_train.to_csv(f"{LOG_DATA_PATH}Train.csv", index=False)
+    X_test.to_csv(f"{LOG_DATA_PATH}Test.csv", index=False)
 
-    X_train = X_train.drop(columns=['sentenca'])
-    X_test = X_test.drop(columns=['sentenca'])
+    X_train = X_train.drop(columns=['sentenca', 'bin', TARGET])
+    X_test = X_test.drop(columns=['sentenca', 'bin', TARGET])
+    
+    
     return X_train, X_test, y_train, y_test, y_test_bin
 
 
@@ -91,33 +100,47 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,
         Alvo discretizado balanceado.
     """
 
-    # 1. Guardar os índices originais
+    # Guardar os índices originais
     X_temp = X.copy()
     X_temp["__index__"] = X.index
 
-    # 2. Realizar oversampling com base nos bins
+    # Realizar oversampling com base nos bins
+    log_file.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
     ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
-    X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, stratify(y, n_folds))]
+    strat, step = stratify(y, n_folds)
+    X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, strat)]
+    
+    # Log dos dados balanceados
+    update_data_log("Valor de Intervalo das Faixas", step)
+    update_data_log("Bibliteca de Balanceamento", 'imblearn.over_sampling.RandomOverSampler')
+    update_data_log("Metodo de Balanceamento", "fit_resample")
+    update_data_log("Numero de Instancias Apos Balanceamento", len(y_bins_resampled))
+    update_data_log("Valor Medio Apos Balanceamento", round(y.mean(), 2))
+    update_data_log("Valor Minimo Apos Balanceamento", int(y.min()))
+    update_data_log("Valor Maximo Apos Balanceamento", int(y.max()))
 
-    # 3. Criar cópia do DataFrame original com y contínuo
-    df_original = X.copy()
-    df_original['y_continuo'] = y
+    log_file.write(f"\n----\nDiscretizando o alvo contínuo em {n_folds
+                   } faixas com step = {step}\n")
+    log_file.write(f"Número de instâncias Apos Balanceamento: {len(y_bins_resampled)}\n")
+    log_file.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
+    log_file.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
+    log_file.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")
+    
 
-    # 4. Recuperar os índices dos dados originais usados
-    idx_resampled = (X_resampled["__index__"].values)
+    # Recuperar os índices dos dados originais usados
+    idx_resampled = list(X_resampled["__index__"].values)
 
-
-    # 5. Recuperar os valores contínuos de y
     # Converter idx_resampled para uma lista/Index para satisfazer o tipo aceito por .loc
-    idx_list = list(idx_resampled)
-    y_resampled = y.loc[idx_list].reset_index(drop=True)
+    y_resampled = y.loc[idx_resampled].reset_index(drop=True)
 
-    # 6. Limpar coluna de índice temporário
+    # Limpar coluna de índice temporário
     X_resampled = X_resampled.drop(columns=["__index__"]).reset_index(drop=True)
     X_resampled = pd.DataFrame(X_resampled)
     
-    # 7. Adiciona a coluna de sentenca ao DataFrame balanceado
-    sentences_bal = X_resampled['sentenca'].copy()
-    sentences_bal.to_csv('logs/sentences/bal.csv', index=False)
-    
+    # Salvar dados balanceados para debug
+    X_resampled[TARGET] = y_resampled
+    X_resampled['Faixa'] = y_bins_resampled
+    X_resampled.to_csv(f'{LOG_DATA_PATH}Balanced-Data.csv', index=False)
+    X_resampled = X_resampled.drop(columns=[TARGET, "Faixa"])
+
     return X_resampled, y_resampled, pd.Series(y_bins_resampled)

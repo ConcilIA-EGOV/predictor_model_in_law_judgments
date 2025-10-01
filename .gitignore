@@ -173,5 +173,6 @@ models_storage/*.png
 logs/*.txt
 logs/*.csv
 logs/*/*.csv
+logs/*.json
 input/*.csv
 data/*.csv

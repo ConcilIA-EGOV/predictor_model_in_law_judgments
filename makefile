@@ -6,17 +6,14 @@ all:
 	@echo "make format 			- to run the formatation test cases"
 
 run:
-	@python3 main.py > logs/model.txt
-	@cat logs/model.txt
+	@python3 main.py
 
 SENT=0
 shap:
-	@python3 src/shap_custom.py $(SENT) > logs/shap.txt
-	@cat logs/shap.txt
+	@python3 src/shap_custom.py $(SENT)
 
 parameters:
-	@python3 src/hyperparameters.py > logs/params.txt
-	@cat logs/params.txt
+	@python3 src/hyperparameters.py
 
 format:
 	@python3 src/formatation/data_formatation.py

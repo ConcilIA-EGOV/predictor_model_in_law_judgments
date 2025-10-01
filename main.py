@@ -6,7 +6,8 @@ from src.formatation.data_preparation import split_data, balance_data
 from src.formatation.data_formatation import load_data
 from src.formatation.visualization import export_tree_to_graphviz
 from src.util.param_grids import get_model_instance
-from src.util.parameters import FILE_PATH, MODEL_NAME, TEST_SIZE, BALANCE_STRATEGY, RANDOM_STATE, DM_FOLDS
+from src.util.parameters import FILE_PATH, MODEL_NAME, TEST_SIZE
+from src.util.parameters import BALANCE_STRATEGY, RANDOM_STATE, DM_FOLDS
 from src.shap_custom import explain_global, get_values
 from src.training import train_model, test_model, save_model
 

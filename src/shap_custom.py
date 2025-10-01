@@ -6,8 +6,8 @@ import shap
 import matplotlib.pyplot as plt
 import joblib as jl
 import pandas as pd
-from util.parameters import TEST_SIZE, DM_FOLDS
-from util.parameters import MAIN_MODEL_FILE, FILE_PATH
+from util.parameters import TEST_SIZE, DM_FOLDS, MODEL_PATH
+from util.parameters import MAIN_MODEL_FILE, FILE_PATH, LOG_DATA_PATH
 from util.parameters import BALANCE_STRATEGY, RANDOM_STATE
 from formatation.data_formatation import load_data
 from formatation.data_preparation import balance_data, split_data
@@ -33,7 +33,7 @@ def get_values(model, X_train, X_test) -> shap.Explanation:
     return shap_values
 
 
-def map_sentences_idx(X_test: pd.DataFrame, sentencas_test: pd.DataFrame, numero_sentenca:int) -> int:
+def map_sentences_idx(X_test: pd.DataFrame, numero_sentenca:int) -> int:
     # Busca os índices em que essa sentença aparece no X_test
     for idx, sent in enumerate(X_test['sentenca'].to_list()):
         if not isinstance(sent, int):
@@ -52,7 +52,7 @@ def explain_prediction(shap_values, N_features, sent_num:int, sent_pos:int):
     """
     shap.plots.waterfall(shap_values[sent_pos], show=False, max_display=N_features)
     plt.title(f"SHAP - Sentença {sent_num}")
-    plt.savefig(f"models_storage/shap_sentenca_{sent_num}.png", bbox_inches="tight", dpi=300)
+    plt.savefig(f"{MODEL_PATH}shap_sentenca_{sent_num}.png", bbox_inches="tight", dpi=300)
     plt.clf()
 
 
@@ -61,11 +61,11 @@ def explain_global(shap_values, N_features):
 
     # Importância média global
     shap.plots.bar(shap_values, show=False, max_display=N_features)
-    plt.savefig("models_storage/shap_global.png", bbox_inches="tight", dpi=300)
+    plt.savefig(f"{MODEL_PATH}shap_global.png", bbox_inches="tight", dpi=300)
     plt.clf()
     # Dispersão do impacto por feature
     shap.plots.beeswarm(shap_values, show=False, max_display=N_features)
-    plt.savefig("models_storage/shap_beeswarm.png", bbox_inches="tight", dpi=300)
+    plt.savefig(f"{MODEL_PATH}shap_beeswarm.png", bbox_inches="tight", dpi=300)
     plt.clf()
     return 0
 
@@ -83,15 +83,15 @@ if __name__ == '__main__':
     shap_values = get_values(base_model, X_train, X_test)
     #
     N_features = X_test.shape[1]
-    X_test = pd.read_csv('logs/data/X_test.csv')
+    # Is needed to map the sentence number to its index in X_test
+    X_test = pd.read_csv(f'{LOG_DATA_PATH}Test.csv')
     # receive the arguments from the command line
     args = sys.argv[1:]
     # check if the arguments are empty
     if len(args) > 0 and args[0].isdigit() and int(args[0]) > 0:
         sent_num = int(args[0])
-        sent_test = pd.read_csv('logs/sentences/test.csv')
         try:
-            sent_pos = map_sentences_idx(X_test, sent_test, sent_num)
+            sent_pos = map_sentences_idx(X_test, sent_num)
             print(f"Explaining sentence: {sent_num}")
             explain_prediction(shap_values, N_features, sent_num, sent_pos)
         except Exception as e:
