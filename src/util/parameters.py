@@ -16,8 +16,8 @@ TEST_SIZE = 0.2
 # Random Seed
 RANDOM_STATE = 42
 # Outliers removal
-OUTLIERS_MIN_QUANTILE = 0.01
-OUTLIERS_MAX_QUANTILE = 0.99
+OUTLIERS_MIN_QUANTILE = 0.05
+OUTLIERS_MAX_QUANTILE = 0.95
 # Estratégia de balanceamento
 BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
 # tamanho do intervalo de cada faixa para balanceamento
@@ -25,7 +25,7 @@ FOLD_SIZE = 1000
 
 FAIXAS_EXTRAVIO = [1, 24, 72, 168]
 FAIXAS_ATRASO = [1, 4, 8, 12, 16, 24, 28]
-CANCELAMENTO = -1
+CANCELAMENTO = len(FAIXAS_ATRASO) + 1
 TARGET = 'Dano-Moral'
 
 import json, os
