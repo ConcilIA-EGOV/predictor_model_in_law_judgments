@@ -1,5 +1,5 @@
 import pandas as pd
-from util.parameters import log_file
+from util.parameters import log_file, TARGET, OUTLIERS_MIN_QUANTILE, OUTLIERS_MAX_QUANTILE
 
 def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     ip = df[(df['Dano-Moral'] == 0)]
@@ -26,14 +26,17 @@ def trim_confactors(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     log_file.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instâncias Pro e {con.shape} instâncias Con.\n")
     return pro, con
 
-def remove_outliers(df: pd.DataFrame, out_col:str) -> tuple[pd.DataFrame, pd.DataFrame]:    
-    # remove outliers based on out_col and the quantile
-    q_low = df[out_col].quantile(0.01)
-    q_hi  = df[out_col].quantile(0.99)
-    df_main = df[(df[out_col] < q_hi) & (df[out_col] > q_low)]
-    df_out = df[(df[out_col] > q_hi) | (df[out_col] < q_low)]
-    log_file.write(f"Removendo outliers baseados na coluna {out_col}:\n")
-    log_file.write(f"   --> Limite inferior (1% quantil): {q_low}\n")
-    log_file.write(f"   --> Limite superior (99% quantil): {q_hi}\n")
-    log_file.write(f"   --> Resultando em {df_main.shape} instâncias principais e {df_out.shape} instâncias outliers.\n")
+def remove_outliers(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    # remove outliers based on out_col and the quantiles
+    q_low = df[TARGET].quantile(OUTLIERS_MIN_QUANTILE)
+    q_hi  = df[TARGET].quantile(OUTLIERS_MAX_QUANTILE)
+    df_main = df[(df[TARGET] < q_hi) & (df[TARGET] > q_low)]
+    df_out = df[(df[TARGET] >= q_hi) | (df[TARGET] <= q_low)]
+    log_file.write(f"Removendo outliers baseados na coluna {TARGET}:\n")
+    log_file.write(f"   --> Limite inferior ({OUTLIERS_MIN_QUANTILE * 100}% quantil): {q_low}\n")
+    log_file.write(f"   --> Limite superior ({OUTLIERS_MAX_QUANTILE * 100}% quantil): {q_hi}\n")
+    log_file.write(f"   --> Resultando em {df_main.shape
+                        } instâncias principais e {df_out.shape
+                        } instâncias outliers.\n")
+    log_file.write(f"   --> Valores de {TARGET} entre {df_main[TARGET].min()} e {df_main[TARGET].max()}.\n")
     return df_main, df_out

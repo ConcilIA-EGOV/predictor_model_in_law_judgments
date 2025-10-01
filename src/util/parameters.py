@@ -26,14 +26,19 @@ DM_FOLDS = 14
 TEST_SIZE = 0.2
 # Random Seed
 RANDOM_STATE = 42
+# Outliers removal
+OUTLIERS_MIN_QUANTILE = 0.05
+OUTLIERS_MAX_QUANTILE = 0.95
 # Estratégia de balanceamento
 BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
 
 PIPELINE_PARAMS = {
     'Número de folds': DM_FOLDS,
-    'Tamanho percentual do conjunto de teste': TEST_SIZE,
+    'Tamanho do conjunto de teste': f"{TEST_SIZE*100}%",
+    'Tamanho do conjunto de treino': f"{(1 - TEST_SIZE)*100}%",
     'Random Seed': RANDOM_STATE,
-    'Estratégia de balanceamento': BALANCE_STRATEGY,
+    'Estratégia de balanceamento (OverSampling)': BALANCE_STRATEGY,
+    'Remoção de outliers': f'Quantis {OUTLIERS_MIN_QUANTILE} e {OUTLIERS_MAX_QUANTILE}'
 }
 
 DATA_VARS = [

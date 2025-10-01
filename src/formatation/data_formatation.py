@@ -111,37 +111,39 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
         log_file.write(f"Colunas carregadas: {data.columns.tolist()}\n")
         X, y = separate_features_labels(data)
         return X, y
-    steps = 1
+    steps = 0
     # Ler o arquivo CSV usando pandas
     log_file.write("Carregando dados...\n")
     data = pd.read_csv(csv_file)
     log_file.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
-    
+    data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
+    steps += 1
+
     # Remove colunas não relacionadas ao experimento
     log_file.write("\n-----\nRemovendo colunas não relacionadas...\n")
     data = trim_columns(data)
     log_file.write(f"\n-----\nColunas após trim: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_PATH}data/{steps}-trimmed_data.csv', index=False)
     steps += 1
-    
+
     # Formata os features conforme necessário
     log_file.write("\n-----\nFormatando dados...\n")
     data = format_data(data)
     data.to_csv(f'{LOG_PATH}data/{steps}-formatted_data.csv', index=False)
     steps += 1
-    
+
     # Formata features especiais (assistencia_cia_aerea)
     log_file.write("\n-----\nFormatando features especiais...\n")
     data = feature_formatation(data)
     data.to_csv(f'{LOG_PATH}data/{steps}-feature_formatted_data.csv', index=False)
     steps += 1
-    
+
     # Separa os dados em procedentes e não procedentes
     log_file.write("\n-----\nSeparando dados procedentes e não procedentes...\n")
     ip, p = separate_zeros(data)
     ip.to_csv(f'{LOG_PATH}IP/all.csv', index=False)
     p.to_csv(f'{LOG_PATH}P/all.csv', index=False)
-    
+
     # Remove confatores
     log_file.write("\n-----\nSeparando dados procedentes e não procedentes...\n")
     # Separa todos os confatores primeiro
@@ -162,7 +164,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     
      # Remove outliers
     log_file.write("\n-----\nRemovendo outliers...\n")
-    data, out  = remove_outliers(data, TARGET)
+    data, out  = remove_outliers(data)
     out.to_csv(f'{LOG_PATH}data/Outliers.csv', index=False)
     data.to_csv(f'{LOG_PATH}main.csv', index=False)
     steps += 1
