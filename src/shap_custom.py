@@ -6,7 +6,7 @@ import shap
 import matplotlib.pyplot as plt
 import joblib as jl
 import pandas as pd
-from util.parameters import TEST_SIZE, DM_FOLDS, MODEL_PATH
+from util.parameters import TEST_SIZE, MODEL_PATH
 from util.parameters import MAIN_MODEL_FILE, FILE_PATH, LOG_DATA_PATH
 from util.parameters import BALANCE_STRATEGY, RANDOM_STATE
 from formatation.data_formatation import load_data
@@ -76,9 +76,9 @@ if __name__ == '__main__':
     # Carregar os dados
     X, y = load_data(FILE_PATH)
     # Balancear os dados
-    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE, DM_FOLDS)
+    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE)
     # Split into train and test sets
-    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin, DM_FOLDS)
+    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin)
     # Calculate SHAP values
     shap_values = get_values(base_model, X_train, X_test)
     #

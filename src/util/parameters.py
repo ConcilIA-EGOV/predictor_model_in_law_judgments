@@ -11,8 +11,6 @@ MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
 MODEL_PATH = "models_storage/"
 MAIN_MODEL_FILE = MODEL_PATH + MODEL_NAME + ".pkl"
 
-# Número de folds para a validação cruzada
-DM_FOLDS = 14
 # Tamanho do conjunto de teste
 TEST_SIZE = 0.2
 # Random Seed
@@ -22,6 +20,8 @@ OUTLIERS_MIN_QUANTILE = 0.01
 OUTLIERS_MAX_QUANTILE = 0.99
 # Estratégia de balanceamento
 BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
+# tamanho do intervalo de cada faixa para balanceamento
+FOLD_SIZE = 1000
 
 FAIXAS_EXTRAVIO = [1, 24, 72, 168]
 FAIXAS_ATRASO = [1, 4, 8, 12, 16, 24, 28]
@@ -74,7 +74,9 @@ start_data_log = {
     "Valor Maximo": 0,
     "Valor Medio": 0,
     'Random Seed': RANDOM_STATE,
-    'Número de Faixas de Valor': DM_FOLDS,
+    'Numero de Faixas de Valor': 0,
+    "Tamanho de cada Faixa": 0,
+    "Limite de tamanho para cada Faixa": FOLD_SIZE,
     "Bibliteca de Balanceamento": "",
     "Metodo de Balanceamento": "",
     'Estrategia de Balanceamento': BALANCE_STRATEGY,
@@ -82,7 +84,6 @@ start_data_log = {
     "Valor Medio Apos Balanceamento": 0,
     "Valor Minimo Apos Balanceamento": 0,
     "Valor Maximo Apos Balanceamento": 0,
-    "Valor de Intervalo das Faixas": 0,
     'Tamanho percentual do Conjunto de treino': f"{(1 - TEST_SIZE)*100}%",
     "Tamanho do Conjunto de Treino": 0,
     'Tamanho percentual do Conjunto de teste': f"{TEST_SIZE*100}%",

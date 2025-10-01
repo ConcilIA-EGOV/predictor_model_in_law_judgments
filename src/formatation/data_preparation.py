@@ -1,11 +1,12 @@
 from os import SEEK_END
 import pandas as pd
 import numpy as np
+import math
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import train_test_split
 
-from src.util.parameters import update_data_log
-from src.util.parameters import LOG_DATA_PATH, log_file, TARGET
+from src.util.parameters import update_data_log, get_data_log, log_file
+from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE
 log_file.seek(0, SEEK_END)  # Move the cursor to the end of the file for appending new logs
 
 def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
@@ -18,10 +19,8 @@ def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
     return y_bin, step
 
 
-def split_data(X:pd.DataFrame, y:pd.Series, test_size:float,
-               y_bin: pd.Series, n_folds: int) -> tuple[
-                   pd.DataFrame, pd.DataFrame,
-                   pd.Series, pd.Series, pd.Series]:
+def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series
+               ) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
     """
     Dividir em conjuntos de treino e teste
     Parâmetros:
@@ -42,6 +41,8 @@ def split_data(X:pd.DataFrame, y:pd.Series, test_size:float,
                         test_size=test_size,
                         stratify=y_bin,
                         random_state=42)
+    n_folds = get_data_log()['Numero de Faixas de Valor']
+    # Recalcula y_bin para os conjuntos de treino e teste
     y_test_bin, _ = stratify(y_test, n_folds)
     y_train_bin, _ = stratify(y_train, n_folds)
 
@@ -66,9 +67,8 @@ def split_data(X:pd.DataFrame, y:pd.Series, test_size:float,
     return X_train, X_test, y_train, y_test, y_test_bin
 
 
-def balance_data(X: pd.DataFrame, y: pd.Series, strategy,
-                 random_state, n_folds)->tuple[
-                     pd.DataFrame, pd.Series, pd.Series]:
+def balance_data(X: pd.DataFrame, y: pd.Series, strategy,random_state
+                 )-> tuple[pd.DataFrame, pd.Series, pd.Series]:
     """
     Realiza oversampling em um problema de regressão com variáveis categóricas,
     usando discretização do alvo contínuo em faixas (bins).
@@ -104,14 +104,18 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,
     X_temp = X.copy()
     X_temp["__index__"] = X.index
 
+    # Determinar o número de faixas (bins) com base no intervalo do alvo
+    n_folds = math.ceil((y.max() - y.min()) / FOLD_SIZE)
+    update_data_log("Limite de tamanho para cada Faixa", FOLD_SIZE)
+    update_data_log("Numero de Faixas de Valor", n_folds)
     # Realizar oversampling com base nos bins
-    log_file.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
     ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
     strat, step = stratify(y, n_folds)
     X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, strat)]
     
     # Log dos dados balanceados
-    update_data_log("Valor de Intervalo das Faixas", step)
+    log_file.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
+    update_data_log("Tamanho de cada Faixa", round(step, 2))
     update_data_log("Bibliteca de Balanceamento", 'imblearn.over_sampling.RandomOverSampler')
     update_data_log("Metodo de Balanceamento", "fit_resample")
     update_data_log("Numero de Instancias Apos Balanceamento", len(y_bins_resampled))
@@ -121,7 +125,7 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,
 
     log_file.write(f"\n----\nDiscretizando o alvo contínuo em {n_folds
                    } faixas com step = {step}\n")
-    log_file.write(f"Número de instâncias Apos Balanceamento: {len(y_bins_resampled)}\n")
+    log_file.write(f"Numero de instâncias Apos Balanceamento: {len(y_bins_resampled)}\n")
     log_file.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
     log_file.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
     log_file.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")

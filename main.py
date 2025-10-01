@@ -7,7 +7,7 @@ from src.formatation.data_formatation import load_data
 from src.formatation.visualization import export_tree_to_graphviz
 from src.util.param_grids import get_model_instance
 from src.util.parameters import FILE_PATH, MODEL_NAME, TEST_SIZE
-from src.util.parameters import BALANCE_STRATEGY, RANDOM_STATE, DM_FOLDS
+from src.util.parameters import BALANCE_STRATEGY, RANDOM_STATE
 from src.shap_custom import explain_global, get_values
 from src.training import train_model, test_model, save_model
 
@@ -18,11 +18,11 @@ def main(model, model_name: str):
     print("-> Dados carregados.")
     
     # Balance the data
-    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE, DM_FOLDS)
+    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE)
     print("-> Dados balanceados.")
     
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin, DM_FOLDS)
+    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin)
     print("-> Dados divididos em treino e teste.")
 
     # Fit the base model

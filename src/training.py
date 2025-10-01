@@ -47,8 +47,7 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple:
             )}\n\t - RMSE: {round(rmse,2
             )}\n\t - PMAE: {round(pmae,2
             )}%\n\t - N Amostras: {len(grupo
-            )}\n\t - Valores: {mininmo} a {maximo}
-            """)
+            )}\n\t - Valores: {mininmo} a {maximo}""")
     return (rmse_all, mae_all, pmae_all, resultados)
 
 
