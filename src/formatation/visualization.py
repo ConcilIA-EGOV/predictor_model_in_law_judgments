@@ -103,10 +103,20 @@ def associate_id_with_target(df1: pd.DataFrame, df2: pd.DataFrame, id_col: str, 
         df2_unique = df2
 
     merged_df = pd.merge(df1, df2_unique[[id_col, target_col]], on=id_col, how='left')
+
+    # Fill missing target values (ids not found in df2) with 0
+    merged_df[target_col] = merged_df[target_col].fillna(0)
+
+    # If the original target in df2 was integer, convert to pandas nullable Int64 to avoid float upcast
+    try:
+        if pd.api.types.is_integer_dtype(df2_unique[target_col].dtype):
+            merged_df[target_col] = merged_df[target_col].astype('Int64')
+    except Exception:
+        pass
     # Sanity check: merged should not have more rows than df1 after deduplication
     if len(merged_df) > len(df1):
         raise RuntimeError("Merged dataframe has more rows than df1 despite deduplication; inspect keys.")
-    merged_df.to_csv("data/merged_with_target.csv", index=False)
+    merged_df.to_csv("input/merged_with_target.csv", index=False)
     return merged_df
 
 if __name__ == "__main__":
