@@ -124,6 +124,9 @@ def format_intervalo(value, interval_values=[]):
 
 FUNCTIONS = {
     'sentenca': lambda x: int(x),
+    'ano': lambda x: int(x),
+    'semestre': lambda x: int(x),
+    'trimestre': lambda x: int(x),
     'direito_de_arrependimento': lambda x: format_binario(x),
     'descumprimento_de_oferta': lambda x: format_binario(x),
     'extravio_definitivo': lambda x: format_binario(x),
