@@ -1,14 +1,14 @@
 # caminhos para os arquivos de dados e modelos
 FILE_PATH = "input/original.csv"
 DATA_PATH = "data/main.csv"
-LOG_PATH = "logs/"
+LOG_PATH = "model/logs/"
 LOG_DATA_PATH = LOG_PATH + "data/"
 PIPELINE_LOG_PATH = LOG_PATH + "log-pipeline.json"
 log_file = open(LOG_PATH + "log_data_preparation.txt", 'a')
 
 MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
 # diretório para salvar os modelos treinados
-MODEL_PATH = "models_storage/"
+MODEL_PATH = "model/"
 MAIN_MODEL_FILE = MODEL_PATH + MODEL_NAME + ".pkl"
 
 # Tamanho do conjunto de teste

@@ -163,16 +163,21 @@ cython_debug/
 #.idea/
 
 
-models_storage/*.pth
-models_storage/*.joblib
-models_storage/*.json
-models_storage/*.pkl
-models_storage/*.txt
-models_storage/*.pdf
-models_storage/*.png
-logs/*.txt
-logs/*.csv
-logs/*/*.csv
-logs/*.json
+model/*.pth
+model/*.joblib
+model/*.json
+model/*.pkl
+model/*.txt
+model/*.pdf
+model/*.png
+model/*/*.csv
+model/*/*/*.csv
+model/*/*.txt
+model/*/*.pdf
+model/*/*.png
+model/*/*.pth
+model/*/*.joblib
+model/*/*.json
+model/*/*.pkl
 input/*.csv
 data/*.csv

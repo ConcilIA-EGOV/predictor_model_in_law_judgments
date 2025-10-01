@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 
 from src.util.parameters import update_data_log, get_data_log, log_file
 from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE
-log_file.seek(0, SEEK_END)  # Move the cursor to the end of the file for appending new logs
 
 def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
     """

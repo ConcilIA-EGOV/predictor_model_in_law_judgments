@@ -22,7 +22,7 @@ clean:
 	@rm -rf __pycache__
 	@rm -rf */__pycache__
 	@rm -rf data/*.csv
-	@rm -rf logs/*.txt
-	@rm -rf logs/*.json
-	@rm -rf logs/*.csv
-	@rm -rf logs/*/*.csv
+	@rm -rf model/logs/*.txt
+	@rm -rf model/logs/*.json
+	@rm -rf model/logs/*.csv
+	@rm -rf model/logs/*/*.csv

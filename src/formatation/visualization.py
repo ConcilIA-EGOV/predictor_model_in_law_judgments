@@ -4,12 +4,14 @@ import pandas as pd
 import numpy as np
 import graphviz
 
+from util.parameters import MODEL_PATH
+
 def plot_decision_tree(model, feature_names):
     plt.figure(figsize=(20,10))
     plot_tree(model, feature_names=feature_names, filled=True,
               rounded=True, max_depth=3, fontsize=10)
     plt.title("Árvore de Decisão - Explicação")
-    plt.savefig("DecisionTree.png", dpi=300)
+    plt.savefig(f"{MODEL_PATH}DecisionTree.png", dpi=300)
 
 
 def export_tree_to_graphviz(model, feature_names):
@@ -26,7 +28,7 @@ def export_tree_to_graphviz(model, feature_names):
 
     # Cria visualização
     graph = graphviz.Source(dot_data)
-    graph.render("models_storage/arvore_decisao", format="pdf", cleanup=True)
+    graph.render(f"{MODEL_PATH}arvore_decisao", format="pdf", cleanup=True)
 
 
 def plot_graphic_from_csv(data: pd.DataFrame,
@@ -68,7 +70,7 @@ def feature_importance(model, X):
     plt.title('Importância das Features')
     plt.tight_layout()
     # since FigureCanvasAgg is non-interactive, and thus cannot be show
-    plt.savefig("feature_importance.png")
+    plt.savefig(f"{MODEL_PATH}feature_importance.png")
     plt.close()
 
 
