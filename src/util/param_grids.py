@@ -65,7 +65,7 @@ RF_PARAMS = {
     'n_jobs': -1,
 }
 
-MODEL_PARAMS = "DecisionTree"
+MODEL_PARAMS = None
 
 if MODEL_NAME == "DecisionTree":
     MODEL_PARAMS = DT_PARAMS

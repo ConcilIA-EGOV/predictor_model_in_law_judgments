@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ###
 import pandas as pd
 
-from util.parameters import DATA_PATH, LOG_PATH, LOG_DATA_PATH, CANCELAMENTO
+from util.parameters import LOG_PATH, LOG_DATA_PATH, CANCELAMENTO
 from util.parameters import FILE_PATH, TARGET, log_file, append_to_data_log_list, update_data_log
 from formatation.variable_formatation import FUNCTIONS
 import formatation.variable_formatation as vf
@@ -120,13 +120,6 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     10. Separa features (X) e labels (y)
     11. Retorna features (X) e labels (y).
     """
-    # if there's already a DATA_PATH file, use it
-    if os.path.exists(DATA_PATH):
-        log_file.write(f"Arquivo {DATA_PATH} já existe. Carregando dados formatados...\n")
-        data = pd.read_csv(DATA_PATH)
-        log_file.write(f"Colunas carregadas: {data.columns.tolist()}\n")
-        X, y = separate_features_labels(data)
-        return X, y
     steps = 0
     # Ler o arquivo CSV usando pandas
     log_file.write("Carregando dados...\n")
@@ -171,7 +164,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     log_file.write("\n-----\nSeparando dados procedentes e não procedentes...\n")
     ip, data = separate_zeros(data)
     ip.to_csv(f'{LOG_DATA_PATH}{steps}.5-Improcedentes.csv', index=False)
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-Procedentes.csv', index=False)
+    data.to_csv(f'{LOG_DATA_PATH}{steps}-procedentes.csv', index=False)
     
     steps += 1
     
@@ -179,8 +172,6 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     log_file.write("\n-----\nRemovendo outliers...\n")
     data, out  = remove_outliers(data)
     out.to_csv(f'{LOG_DATA_PATH}{steps}.5-Outliers.csv', index=False)
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-main.csv', index=False)
-    steps += 1
 
     update_data_log("Valor Minimo", int(data[TARGET].min()))
     update_data_log("Valor Maximo", int(data[TARGET].max()))
@@ -188,9 +179,10 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     update_data_log("Instancias Usadas", data.shape[0])
 
     # storing the main data
-    data.to_csv(DATA_PATH, index=False)
-    log_file.write(f"\n-----\nDados principais salvos em {DATA_PATH}\n")
-    
+    data.to_csv(f'{LOG_DATA_PATH}{steps}-Preprocessed.csv', index=False)
+    steps += 1
+    log_file.write(f"\n-----\nDados principais salvos em {LOG_DATA_PATH}{steps}-main.csv\n")
+
     # Separa features (X) e labels (y)
     log_file.write("\n-----\nSeparando features e labels...\n")
     X, y = separate_features_labels(data)

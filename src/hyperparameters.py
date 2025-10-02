@@ -11,8 +11,8 @@ from sklearn.ensemble import RandomForestRegressor
 import joblib  # Para salvar o modelo
 
 from util.param_grids import param_grid
-from util.parameters import FILE_PATH
-from formatation.data_formatation import load_data
+from util.parameters import FILE_PATH, LOG_PATH, MODEL_PATH
+from src.formatation.preprocessing import load_data
 
 def grid_search(X, y, model, param_grid):
 
@@ -34,6 +34,7 @@ def grid_search(X, y, model, param_grid):
 
 if __name__ == "__main__":
     X, y, = load_data(FILE_PATH)
+    # TODO: Isso aqui deveria ser parte do main.py
     best_params_all = dict()
     models = {
         "DecisionTree": DecisionTreeRegressor(),
@@ -47,10 +48,10 @@ if __name__ == "__main__":
             best_params_all[key]['params'] = best_params
             best_params_all[key]['score'] = best_score
             # Save the base model
-            joblib.dump(best_model, f'logs/best_{key}.pkl')
+            joblib.dump(best_model, f'{MODEL_PATH}/best_{key}.pkl')
+            with open(f"{LOG_PATH}/best_parameters__{key}.json", "w") as f:
+                json.dump(best_params_all[key], f, indent=4)
         except Exception as e:
             print(e)
             best_params_all[key] = [str(e)]
-        with open("logs/best_parameters__"+key+".json", "w") as f:
-            json.dump(best_params_all[key], f, indent=4)
     

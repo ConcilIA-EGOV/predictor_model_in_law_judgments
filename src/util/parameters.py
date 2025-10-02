@@ -1,10 +1,9 @@
 # caminhos para os arquivos de dados e modelos
 FILE_PATH = "input/original.csv"
-DATA_PATH = "data/main.csv"
 LOG_PATH = "model/logs/"
 LOG_DATA_PATH = LOG_PATH + "data/"
-PIPELINE_LOG_PATH = LOG_PATH + "log-pipeline.json"
-log_file = open(LOG_PATH + "log_data_preparation.txt", 'a')
+PIPELINE_LOG_PATH = LOG_PATH + "pipeline.json"
+log_file = open(LOG_PATH + "data_preparation.txt", 'a')
 
 MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
 # diretório para salvar os modelos treinados

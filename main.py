@@ -3,7 +3,7 @@ import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ###
 from src.formatation.data_preparation import split_data, balance_data
-from src.formatation.data_formatation import load_data
+from src.formatation.preprocessing import load_data
 from src.formatation.visualization import export_tree_to_graphviz
 from src.util.param_grids import get_model_instance
 from src.util.parameters import FILE_PATH, MODEL_NAME, TEST_SIZE
