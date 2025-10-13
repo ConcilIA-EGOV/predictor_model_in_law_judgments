@@ -10,7 +10,7 @@ from util.parameters import TEST_SIZE, MODEL_PATH
 from util.parameters import MAIN_MODEL_FILE, FILE_PATH, LOG_DATA_PATH
 from util.parameters import BALANCE_STRATEGY, RANDOM_STATE
 from src.formatation.preprocessing import load_data
-from formatation.data_preparation import balance_data, split_data
+from src.formatation.test_preparation import balance_data, split_data
 
 
 def get_values(model, X_train, X_test) -> shap.Explanation:

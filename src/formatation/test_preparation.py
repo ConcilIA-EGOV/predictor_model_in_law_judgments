@@ -1,12 +1,11 @@
-from os import SEEK_END
 import pandas as pd
 import numpy as np
 import math
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import train_test_split
 
-from src.util.parameters import update_data_log, get_data_log, log_file
-from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE
+from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE, log_file_preparation as log_file
+from src.util.parameters import update_data_log, get_data_log
 
 def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
     """

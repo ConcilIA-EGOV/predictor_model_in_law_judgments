@@ -3,7 +3,9 @@ FILE_PATH = "input/original.csv"
 LOG_PATH = "model/logs/"
 LOG_DATA_PATH = LOG_PATH + "data/"
 PIPELINE_LOG_PATH = LOG_PATH + "pipeline.json"
-log_file = open(LOG_PATH + "data_preparation.txt", 'a')
+log_file_preprocessing = open(LOG_PATH + "preprocessing.txt", 'a')
+log_file_preparation = open(LOG_PATH + "preparation.txt", 'a')
+# log_file_filtering = open(LOG_PATH + "filtering.txt", 'a')
 
 MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
 # diretório para salvar os modelos treinados
