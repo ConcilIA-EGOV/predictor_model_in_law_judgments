@@ -66,18 +66,18 @@ def format_money(value) -> int:
     return out_value
 
 
-def format_binario(value, anomaly: int=0, yes: int=1, no: int=0) -> int:
+def format_binario(value, yes: int=1, no: int=0) -> int:
     output = 0
     if type(value) == float:
         if np.isnan(value):
-            output = anomaly
+            output = 0
     elif type(value) == int:
         if value == 1:
             output = yes
         if value == 0:
             output = no
         if value == -1:
-            output = anomaly
+            output = 0
     elif type(value) == bool:
         if value:
             output = yes
@@ -89,15 +89,15 @@ def format_binario(value, anomaly: int=0, yes: int=1, no: int=0) -> int:
         if value in ['N', 'n', 'Não', 'não', 'NÃO', 'NO', 'No', 'no', '0']:
             output = no
         if value in ['-1', '-']:
-            output = anomaly
+            output = 0
     else:
         log_file.write(f" -> Valor binario não reconhecido: {value}\n")
-        output = anomaly
+        output = 0
     global first_run
     if first_run:
         msg = f"Coluna '{current_column
             }': convertendo valores binarios como '{value
-            }' para '{yes}, {no}, ou {anomaly}'"
+            }' para '{yes} ou {no}'"
         log_file.write(f" -> {msg}\n")
         append_to_data_log_list("Alteracoes nas Features", msg)
         first_run = False
@@ -108,6 +108,8 @@ def format_intervalo(value, interval_values=[]) -> int:
     output = 0
     if type(value) == int:
         output =  value
+        if output == -1:
+            output = len(interval_values)
     elif type(value) == float and not np.isnan(value):
         output = int(value)
     elif type(value) == str:
@@ -136,31 +138,36 @@ def format_intervalo(value, interval_values=[]) -> int:
 FUNCTIONS = {
     TARGET: lambda x: format_money(x),
     
-    'ano': lambda x: int(x),
     'sentenca': lambda x: int(x),
-    'semestre': lambda x: int(x),
+    # 'ano': lambda x: int(x),
+    # 'semestre': lambda x: int(x),
     'trimestre': lambda x: int(x),
     
-    'noshow': lambda x: format_binario(x),
-    'overbooking': lambda x: format_binario(x),
+    'desamparo': lambda x: format_binario(x),
     'cancelamento': lambda x: format_binario(x),
-    'hipervulneravel': lambda x: format_binario(x),
-    'extravio_definitivo': lambda x: format_binario(x),
-    'desamparo': lambda x: format_binario(x, anomaly=-1),
-    'violacao_furto_avaria': lambda x: format_binario(x),
-    'descumprimento_de_oferta': lambda x: format_binario(x),
-    'direito_de_arrependimento': lambda x: format_binario(x),
-    'cancelamento/alteracao_destino': lambda x: format_binario(x),
-    
     'intervalo_atraso': lambda x: format_intervalo(x, FAIXAS_ATRASO),
     'intervalo_extravio_temporario': lambda x: format_intervalo(x, FAIXAS_EXTRAVIO),
+
+    'extravio_definitivo': lambda x: format_binario(x),
+    'hipervulneravel': lambda x: format_binario(x),
+    'overbooking': lambda x: format_binario(x),
+
+    'violacao_furto_avaria': lambda x: format_binario(x),
+    'noshow': lambda x: format_binario(x),
+    'descumprimento_de_oferta': lambda x: format_binario(x),
+    'direito_de_arrependimento': lambda x: format_binario(x),
+    
+    # 'atraso': lambda x: format_binario(x),
+    # 'extravio_temporario': lambda x: format_binario(x),
+
+    # 'culpa_exclusiva_consumidor': lambda x: format_binario(x),
+    # 'fechamento_aeroporto': lambda x: format_binario(x),
     
     # 'faixa_intervalo_atraso': lambda x: int(x),
     # 'faixa_intervalo_extravio_temporario': lambda x: int(x),
-
-    # 'culpa_exclusiva_consumidor': lambda x: format_binario(x),
+    
+    # 'cancelamento/alteracao_destino': lambda x: format_binario(x),
     # 'condicoes_climaticas/fechamento_aeroporto': lambda x: format_binario(x),
-    # 'fechamento_aeroporto': lambda x: format_binario(x),
     
     # 'assistencia_cia_aerea': lambda x: format_binario(x, anomaly=-1),
     # 'dano_moral_individual': lambda x: format_comma_strings(x),
