@@ -73,8 +73,11 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
     # combining intervalo_atraso and cancelamento into intervalo_atraso
     if 'cancelamento' in df.columns and ('intervalo_atraso' in df.columns):
         log_file.write("Combinando as colunas cancelamento e intervalo_atraso em intervalo_atraso\n")
-        canc = df['cancelamento'] == 1
-        df.loc[canc, 'intervalo_atraso'] = CANCELAMENTO  # setting to the corresponding value
+        c = df.loc[df['cancelamento'] == 1, 'intervalo_atraso']
+        i = df.loc[df['intervalo_atraso'] == -1, 'cancelamento']
+        ci = pd.concat([c, i]).index
+        df.loc[ci].to_csv('./cancelamento_check.csv', index=False)  # saving for checking
+        df.loc[ci, 'intervalo_atraso'] = CANCELAMENTO  # setting to the corresponding value
         df = df.drop(columns=['cancelamento'])
         # logging the change
         append_to_data_log_list("Alteracoes nas Features", f"cancelamento e combinado com intervalo_atraso, onde cancelamento=1 torna-se intervalo_atraso={CANCELAMENTO}")
