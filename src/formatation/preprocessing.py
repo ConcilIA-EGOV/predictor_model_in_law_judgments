@@ -7,9 +7,9 @@ import pandas as pd
 from util.parameters import append_to_data_log_list, update_data_log
 from util.parameters import LOG_PATH, LOG_DATA_PATH, FILE_PATH
 from util.parameters import CANCELAMENTO, TARGET, log_file_preprocessing as log_file
-import src.formatation.feature_formatation as ff
-from formatation.feature_selection import trim_columns
-from src.formatation.filtering import remove_outliers, separate_zeros
+import formatation.feature_formatation as ff
+from formatation.feature_selection import trim_columns, filter_methods
+from formatation.filtering import remove_outliers, separate_zeros
 
 def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -166,4 +166,36 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
 
 
 if __name__ == "__main__":
-    load_data(FILE_PATH)
+    steps = 0
+    # Ler o arquivo CSV usando pandas
+    data = pd.read_csv(FILE_PATH)
+    log_file.write(f"Dados carregados: {data.shape}\n")
+    log_file.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
+    update_data_log("Numero de Instancias Originais", data.shape[0])
+    data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
+    steps += 1
+    
+    # Garantir a coerência dos nomes das colunas
+    data = feature_name_coherence(data)
+    log_file.write(f"\n---\nColunas após coerência de nomes: {data.columns.tolist()}\n")
+    data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
+    steps += 1
+
+    # Remove colunas não relacionadas ao experimento
+    log_file.write("\n-----\nRemovendo colunas não relacionadas...\n")
+    data = trim_columns(data)
+    log_file.write(f"\n-----\nColunas após remoção: {data.columns.tolist()}\n")
+    data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
+    append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
+    steps += 1
+
+    # Formata os features conforme necessário
+    log_file.write("\n-----\nFormatando dados...\n")
+    data = format_data(data)
+    data.to_csv(f'{LOG_DATA_PATH}{steps}-formatted_data.csv', index=False)
+    steps += 1
+    
+    # Seleção de features
+    log_file.write("\n-----\nSelecionando features...\n")
+    X, y = separate_features_labels(data)
+    filter_methods(X.drop(columns=["sentenca"]), y)

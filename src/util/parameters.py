@@ -24,9 +24,12 @@ BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'mino
 # tamanho do intervalo de cada faixa para balanceamento
 FOLD_SIZE = 1000
 
+# Definição das faixas de atraso e extravio em horas
 FAIXAS_EXTRAVIO = [1, 24, 72, 168]
 FAIXAS_ATRASO = [1, 4, 8, 12, 16, 24, 28]
+# índice para cancelamento
 CANCELAMENTO = len(FAIXAS_ATRASO) + 1
+# Target variable
 TARGET = 'Dano-Moral'
 
 import json, os
