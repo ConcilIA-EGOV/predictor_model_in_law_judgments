@@ -17,7 +17,7 @@ def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
     return y_bin, step
 
 
-def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series
+def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series, random_state:int
                ) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
     """
     Dividir em conjuntos de treino e teste
@@ -38,7 +38,7 @@ def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series
      y_train, y_test) = train_test_split(X, y,
                         test_size=test_size,
                         stratify=y_bin,
-                        random_state=42)
+                        random_state=random_state)
     n_folds = get_data_log()['Numero de Faixas de Valor']
     # Recalcula y_bin para os conjuntos de treino e teste
     y_test_bin, _ = stratify(y_test, n_folds)
@@ -107,9 +107,12 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,random_state
     update_data_log("Limite de tamanho para cada Faixa", FOLD_SIZE)
     update_data_log("Numero de Faixas de Valor", n_folds)
     # Realizar oversampling com base nos bins
-    ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
     strat, step = stratify(y, n_folds)
-    X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, strat)]
+    if strategy is not None:
+        ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
+        X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, strat)]
+    else:
+        X_resampled, y_bins_resampled = X_temp, strat
     
     # Log dos dados balanceados
     log_file.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")

@@ -22,7 +22,7 @@ def main(model, model_name: str):
     print("-> Dados balanceados.")
     
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin)
+    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin, RANDOM_STATE)
     print("-> Dados divididos em treino e teste.")
 
     # Fit the base model
