@@ -76,7 +76,6 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
         c = df.loc[df['cancelamento'] == 1, 'intervalo_atraso']
         i = df.loc[df['intervalo_atraso'] == -1, 'cancelamento']
         ci = pd.concat([c, i]).index
-        df.loc[ci].to_csv('./cancelamento_check.csv', index=False)  # saving for checking
         df.loc[ci, 'intervalo_atraso'] = CANCELAMENTO  # setting to the corresponding value
         df = df.drop(columns=['cancelamento'])
         # logging the change
