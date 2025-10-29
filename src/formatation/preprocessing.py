@@ -5,10 +5,12 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pandas as pd
 
 from util.parameters import append_to_data_log_list, update_data_log
+from src.util.parameters import BALANCE_STRATEGY, RANDOM_STATE, TEST_SIZE
 from util.parameters import LOG_PATH, LOG_DATA_PATH, FILE_PATH
 from util.parameters import CANCELAMENTO, TARGET, log_file_preprocessing as log_file
 import formatation.feature_formatation as ff
 from formatation.feature_selection import trim_columns, filter_methods
+from src.formatation.test_preparation import split_data, balance_data
 from formatation.filtering import remove_outliers, separate_zeros
 
 def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
@@ -103,7 +105,7 @@ def separate_features_labels(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Serie
     log_file.write(f"Features shape: {X.shape}, Labels shape: {y.shape}\n")
     return X, y
 
-def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
+def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
     """
     Carregar e preparar os dados do arquivo CSV;
     Lê o arquivo CSV usando pandas
@@ -113,7 +115,9 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     Remove outliers
     Salva o arquivo principal formatado
     Separa features (X) e labels (y)
-    Retorna features (X) e labels (y).
+    Balanceia os dados
+    Divide os dados em conjuntos de treino e teste
+    Retorna X_train, X_test, y_train, y_test, y_test_bin
     """
     steps = 0
     # Ler o arquivo CSV usando pandas
@@ -158,13 +162,22 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.Series]:
     # storing the main data
     prep_data_path = f'{LOG_DATA_PATH}{steps}-Preprocessed.csv'
     data.to_csv(prep_data_path, index=False)
+    log_file.write(f"\n-----\nDados formatados salvos em: {prep_data_path}\n")
     steps += 1
-    log_file.write(f"\n-----\nDados principais salvos em {prep_data_path}\n")
 
     # Separa features (X) e labels (y)
     log_file.write("\n-----\nSeparando features e labels...\n")
     X, y = separate_features_labels(data)
-    return X, y
+    log_file.write("-> Features e labels separados.\n")
+    
+    # Balance the data
+    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE)
+    log_file.write("-> Dados balanceados.\n")
+    
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin, RANDOM_STATE)
+    log_file.write("-> Dados divididos em treino e teste.\n")
+    return X_train, X_test, y_train, y_test, y_test_bin
 
 
 if __name__ == "__main__":
