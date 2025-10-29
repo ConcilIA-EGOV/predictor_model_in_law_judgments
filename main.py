@@ -33,10 +33,10 @@ def main(model, model_name: str):
     print(f"-> Avaliando o modelo {model_name}...")
 
     # Make predictions with the base model
-    (bs_rmse, bs_mae, bs_pmae, folds) = test_model(model, X_test, y_test, y_test_bin)
+    (bs_rmse, bs_mae, bs_mape, bs_mape_x, folds) = test_model(model, X_test, y_test, y_test_bin)
 
     # Log and save the model
-    save_model(model, model_name, bs_rmse, bs_mae, bs_pmae, folds)
+    save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds)
     print(f"-> Modelo {model_name} salvo.")
     
     # SHAP explainability
