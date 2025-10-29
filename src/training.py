@@ -15,10 +15,10 @@ def train_model(model, X, y):
     return model
 
 
-def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple:
+def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[float, float, float, float, list[str]]:
     '''
     Testar o modelo usando o conjunto de teste
-    Retorna RMSE, MAE, PMAE e resultados por faixa de valores    
+    Retorna RMSE, MAE, MAPE e resultados por faixa de valores
     '''
     # Make predictions
     predictions = model.predict(X)
@@ -26,7 +26,8 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple:
     # Calculate the RMSE, MAE and proportional MAE overall
     rmse_all = root_mean_squared_error(y, predictions)
     # Calculate the percentual MAE
-    pmae_all = np.mean(np.abs((y - predictions) / y)) * 100
+    mape_all = np.mean(np.abs((y - predictions) / y)) * 100
+    mape_x_all = np.mean(np.abs((y - predictions) / predictions)) * 100
     mae_all = mean_absolute_error(y, predictions)
 
     # Calculate the RMSE, and MAE for each fold
@@ -40,18 +41,20 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple:
         maximo = grupo['y_true'].max()
         mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
         rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
-        pmae = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_true'])) * 100
+        mape = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_true'])) * 100
+        mape_x = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_pred'])) * 100
         resultados.append(f"""Faixa {
             faixa + 1
             }:\n\t - MAE:  {round(mae,2
             )}\n\t - RMSE: {round(rmse,2
-            )}\n\t - PMAE: {round(pmae,2
+            )}\n\t - MAPE: {round(mape,2
+            )}%\n\t - MAPE X: {round(mape_x,2
             )}%\n\t - N Amostras: {len(grupo
             )}\n\t - Valores: {mininmo} a {maximo}""")
-    return (rmse_all, mae_all, pmae_all, resultados)
+    return (rmse_all, mae_all, mape_all, mape_x_all, resultados)
 
 
-def save_model(model, model_name, bs_rmse, bs_mae, bs_pmae, folds):
+def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     """
     Salvar o modelo treinado em um arquivo e os logs de performance em outro
     """    
@@ -73,9 +76,11 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_pmae, folds):
     print(f'RMSE: {bs_rmse}')
     log_file.write(f' - MAE:  {bs_mae}\n')
     print(f'MAE:  {bs_mae}')
-    log_file.write(f' - PMAE: {bs_pmae:.2f}%\n')
-    # prints the PMAE with 2 decimal places
-    print(f'PMAE: {bs_pmae:.2f}%')
+    log_file.write(f' - MAPE: {bs_mape:.2f}%\n')
+    print(f'MAPE: {bs_mape:.2f}%')
+    log_file.write(f' - MAPE X: {bs_mape_x:.2f}%\n')
+    print(f'MAPE X: {bs_mape_x:.2f}%')
+    
     [log_file.write(f' - {folds[i]}\n') for i in range(len(folds))]
     
     # Log dos dados usados
