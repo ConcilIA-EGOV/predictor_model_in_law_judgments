@@ -28,7 +28,7 @@ FOLD_SIZE = 1000
 FAIXAS_EXTRAVIO = [1, 24, 72, 168]
 FAIXAS_ATRASO = [1, 4, 8, 12, 16, 24, 28]
 # índice para cancelamento
-CANCELAMENTO = len(FAIXAS_ATRASO) + 1
+CANCELAMENTO = -1
 # Target variable
 TARGET = 'Dano-Moral'
 
