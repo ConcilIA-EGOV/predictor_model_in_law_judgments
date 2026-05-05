@@ -7,18 +7,23 @@ from sklearn.model_selection import train_test_split
 from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE, log_file_preparation as log_file
 from src.util.parameters import update_data_log, get_data_log
 
-def stratify(y: pd.Series, N) -> tuple[pd.Series, float]:
+def stratify(y: pd.Series, n_folds:int=0) -> tuple[pd.Series, float, int]:
     """
     retorna um y_bin, para estratificação, que divide o y em N partes
     """
-    bins, step = np.linspace(y.min(), y.max(), N + 1, retstep=True)
-    labels = [f"{i}" for i in range(N)]
+    if n_folds == 0:
+        n_folds = math.ceil((y.max() - y.min()) / FOLD_SIZE)
+    bins, step = np.linspace(y.min(), y.max(), n_folds + 1, retstep=True)
+    labels = [f"{i}" for i in range(n_folds)]
     y_bin = pd.cut(y, bins=bins, labels=labels, include_lowest=True)
-    return y_bin, step
+    return y_bin, step, n_folds
 
 
-def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series, random_state:int
-               ) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
+def split_data(X:pd.DataFrame, y:pd.Series,
+               test_size:float, random_state:int
+               ) -> tuple[pd.DataFrame, pd.DataFrame,
+                          pd.Series, pd.Series,
+                          pd.Series, pd.Series]:
     """
     Dividir em conjuntos de treino e teste
     Parâmetros:
@@ -34,21 +39,15 @@ def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series, r
     STORE : bool
         Se True, armazena informações de debug e da coluna de sentenças.
     """
+    y_bin, _, n_folds = stratify(y)
     (X_train, X_test,
      y_train, y_test) = train_test_split(X, y,
                         test_size=test_size,
                         stratify=y_bin,
                         random_state=random_state)
-    n_folds = get_data_log()['Numero de Faixas de Valor']
     # Recalcula y_bin para os conjuntos de treino e teste
-    y_test_bin, _ = stratify(y_test, n_folds)
-    y_train_bin, _ = stratify(y_train, n_folds)
-
-    # Log dos tamanhos dos conjuntos
-    update_data_log('Tamanho do Conjunto de Treino', len(y_train))
-    update_data_log('Tamanho do Conjunto de Teste', len(y_test))
-    log_file.write(f"\n----\nTamanho do conjunto de treino: {len(y_train)}\n")
-    log_file.write(f"Tamanho do conjunto de teste: {len(y_test)}\n")
+    y_test_bin, _, _ = stratify(y_test, n_folds)
+    y_train_bin, _, _ = stratify(y_train, n_folds)
 
     # Para verificar o balanceamento das sentenças
     X_train[TARGET] = y_train.values
@@ -60,12 +59,16 @@ def split_data(X:pd.DataFrame, y:pd.Series, test_size:float, y_bin: pd.Series, r
 
     X_train = X_train.drop(columns=['sentenca', 'bin', TARGET])
     X_test = X_test.drop(columns=['sentenca', 'bin', TARGET])
-    
-    
-    return X_train, X_test, y_train, y_test, y_test_bin
+
+    log_file.write(f"\n----\nTamanho original do conjunto de treino: {len(y_train)}\n")
+    log_file.write(f"Tamanho do conjunto de teste: {len(y_test)}\n")
 
 
-def balance_data(X: pd.DataFrame, y: pd.Series, strategy,random_state
+    return X_train, X_test, y_train, y_test, y_train_bin, y_test_bin
+
+
+def balance_data(X: pd.DataFrame, y: pd.Series,
+                 strategy: str | None, random_state: int
                  )-> tuple[pd.DataFrame, pd.Series, pd.Series]:
     """
     Realiza oversampling em um problema de regressão com variáveis categóricas,
@@ -103,23 +106,24 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,random_state
     X_temp["__index__"] = X.index
 
     # Determinar o número de faixas (bins) com base no intervalo do alvo
-    n_folds = math.ceil((y.max() - y.min()) / FOLD_SIZE)
     update_data_log("Limite de tamanho para cada Faixa", FOLD_SIZE)
+    strat, step, n_folds = stratify(y)
     update_data_log("Numero de Faixas de Valor", n_folds)
     # Realizar oversampling com base nos bins
-    strat, step = stratify(y, n_folds)
     if strategy is not None:
         ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
         X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, strat)]
     else:
         X_resampled, y_bins_resampled = X_temp, strat
-    
+
     # Log dos dados balanceados
     log_file.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
     update_data_log("Tamanho de cada Faixa", round(step, 2))
     update_data_log("Bibliteca de Balanceamento", 'imblearn.over_sampling.RandomOverSampler')
     update_data_log("Metodo de Balanceamento", "fit_resample")
+    update_data_log("Numero de Instancias Pre-Balanceamento", len(y))
     update_data_log("Numero de Instancias Apos Balanceamento", len(y_bins_resampled))
+    update_data_log("Numero de Instancias Adicionadas pelo Balanceamento", len(y_bins_resampled) - len(y))
     update_data_log("Valor Medio Apos Balanceamento", round(y.mean(), 2))
     update_data_log("Valor Minimo Apos Balanceamento", int(y.min()))
     update_data_log("Valor Maximo Apos Balanceamento", int(y.max()))
@@ -130,7 +134,7 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,random_state
     log_file.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
     log_file.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
     log_file.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")
-    
+
 
     # Recuperar os índices dos dados originais usados
     idx_resampled = list(X_resampled["__index__"].values)
@@ -141,7 +145,7 @@ def balance_data(X: pd.DataFrame, y: pd.Series, strategy,random_state
     # Limpar coluna de índice temporário
     X_resampled = X_resampled.drop(columns=["__index__"]).reset_index(drop=True)
     X_resampled = pd.DataFrame(X_resampled)
-    
+
     # Salvar dados balanceados para debug
     X_resampled[TARGET] = y_resampled
     X_resampled['Faixa'] = y_bins_resampled

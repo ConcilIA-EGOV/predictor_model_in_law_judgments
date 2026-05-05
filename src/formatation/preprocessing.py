@@ -127,7 +127,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     update_data_log("Numero de Instancias Originais", data.shape[0])
     data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
     steps += 1
-    
+
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
     log_file.write(f"\n---\nColunas após coerência de nomes: {data.columns.tolist()}\n")
@@ -154,7 +154,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     ip.to_csv(f'{LOG_DATA_PATH}{steps}.5-Improcedentes.csv', index=False)
     data.to_csv(f'{LOG_DATA_PATH}{steps}-procedentes.csv', index=False)
     steps += 1
-    
+
      # Remove outliers
     log_file.write("\n-----\nRemovendo outliers...\n")
     data = remove_outliers(data)
@@ -169,14 +169,19 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     log_file.write("\n-----\nSeparando features e labels...\n")
     X, y = separate_features_labels(data)
     log_file.write("-> Features e labels separados.\n")
-    
-    # Balance the data
-    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE)
-    log_file.write("-> Dados balanceados.\n")
-    
+
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin, RANDOM_STATE)
+    X_train, X_test, y_train, y_test, _, y_test_bin = split_data(X, y, TEST_SIZE, RANDOM_STATE)
     log_file.write("-> Dados divididos em treino e teste.\n")
+
+    # Balance the data
+    X_train, y_train, _ = balance_data(X_train, y_train, BALANCE_STRATEGY, RANDOM_STATE)
+    log_file.write("-> Dados balanceados.\n")
+
+    # Log dos tamanhos dos conjuntos
+    update_data_log('Tamanho do Conjunto de Treino', len(y_train))
+    update_data_log('Tamanho do Conjunto de Teste', len(y_test))
+
     return X_train, X_test, y_train, y_test, y_test_bin
 
 
@@ -189,7 +194,7 @@ if __name__ == "__main__":
     update_data_log("Numero de Instancias Originais", data.shape[0])
     data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
     steps += 1
-    
+
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
     log_file.write(f"\n---\nColunas após coerência de nomes: {data.columns.tolist()}\n")
@@ -209,7 +214,7 @@ if __name__ == "__main__":
     data = format_data(data)
     data.to_csv(f'{LOG_DATA_PATH}{steps}-formatted_data.csv', index=False)
     steps += 1
-    
+
     # Seleção de features
     log_file.write("\n-----\nSelecionando features...\n")
     X, y = separate_features_labels(data)

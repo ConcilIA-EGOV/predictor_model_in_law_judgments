@@ -74,11 +74,7 @@ if __name__ == '__main__':
     # Importar o modelo base
     base_model = jl.load(MAIN_MODEL_FILE)
     # Carregar os dados
-    X, y = load_data(FILE_PATH)
-    # Balancear os dados
-    X_bal, y_bal, y_bin = balance_data(X, y, BALANCE_STRATEGY, RANDOM_STATE)
-    # Split into train and test sets
-    X_train, X_test, y_train, y_test, y_test_bin = split_data(X_bal, y_bal, TEST_SIZE, y_bin)
+    X_train, X_test, y_train, y_test, y_test_bin  = load_data(FILE_PATH)
     # Calculate SHAP values
     shap_values = get_values(base_model, X_train, X_test)
     #

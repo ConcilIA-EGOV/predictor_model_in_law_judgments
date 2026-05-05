@@ -84,6 +84,8 @@ start_data_log = {
     "Bibliteca de Balanceamento": "",
     "Metodo de Balanceamento": "",
     'Estrategia de Balanceamento': BALANCE_STRATEGY,
+    "Numero de Instancias Pre-Balanceamento": 0,
+    "Numero de Instancias Adicionadas pelo Balanceamento": 0,
     "Numero de Instancias Apos Balanceamento": 0,
     "Valor Medio Apos Balanceamento": 0,
     "Valor Minimo Apos Balanceamento": 0,
