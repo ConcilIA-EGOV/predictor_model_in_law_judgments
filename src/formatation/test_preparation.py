@@ -130,7 +130,7 @@ def balance_data(X: pd.DataFrame, y: pd.Series,
 
     log_file.write(f"\n----\nDiscretizando o alvo contínuo em {n_folds
                    } faixas com step = {step}\n")
-    log_file.write(f"Numero de instâncias Apos Balanceamento: {len(y_bins_resampled)}\n")
+    log_file.write(f"Numero de instancias Apos Balanceamento: {len(y_bins_resampled)}\n")
     log_file.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
     log_file.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
     log_file.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")

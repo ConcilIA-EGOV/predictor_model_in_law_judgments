@@ -32,10 +32,10 @@ def export_tree_to_graphviz(model, feature_names):
 
 
 def plot_graphic_from_csv(data: pd.DataFrame,
-        data_col:str,res_col:str,title:str): 
+        data_col:str,res_col:str,title:str):
     """
     reads a csv file with 2 columns,
-    and plot a boxplot or pairplot graphic comparing them 
+    and plot a boxplot or pairplot graphic comparing them
     """
     if 'intervalo' in data_col and not 'faixa' in data_col:
         data.plot.scatter(x=data_col, y=res_col)
@@ -95,7 +95,7 @@ def associate_id_with_target(df1: pd.DataFrame, df2: pd.DataFrame, id_col: str, 
     counts = df2.groupby(id_col).size()
     print("max rows per id in df2:", counts.max())
     print("keys with >1 rows:", (counts>1).sum())
-    
+
     # If df2 has multiple rows per id, reduce it to one row per id to avoid expanding df1 on a left merge.
     if dups > 0:
         print("Warning: df2 contains duplicate IDs; dropping duplicate rows and keeping the first occurrence for each ID.")

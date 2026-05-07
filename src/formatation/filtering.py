@@ -14,8 +14,8 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     log_file.write(f"   --> Limite inferior ({OUTLIERS_MIN_QUANTILE * 100}% quantil): {q_low}\n")
     log_file.write(f"   --> Limite superior ({OUTLIERS_MAX_QUANTILE * 100}% quantil): {q_hi}\n")
     log_file.write(f"   --> Resultando em {df_main.shape
-                        } instâncias principais e {df_out.shape
-                        } instâncias outliers.\n")
+                        } instancias principais e {df_out.shape
+                        } instancias outliers.\n")
     log_file.write(f"   --> Valores de {TARGET} entre {df_main[TARGET].min()} e {df_main[TARGET].max()}.\n")
     update_data_log("Numero de Outliers Removidos", f"{df_out.shape[0]}, com valores <= {q_low} ou >= {q_hi}")
 
@@ -31,8 +31,8 @@ def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     ip = df[(df['Dano-Moral'] == 0)]
     p = df[(df['Dano-Moral'] > 0)]
     log_file.write(f"Separando {ip.shape
-                   } instâncias de Dano-Moral = 0 e {p.shape
-                   } instâncias de Dano-Moral > 0.\n")
+                   } instancias de Dano-Moral = 0 e {p.shape
+                   } instancias de Dano-Moral > 0.\n")
     append_to_data_log_list("Alteracoes nas Features", f"Removidas {ip.shape[0]
                             } instancias com Dano-Moral = 0")
     return ip, p

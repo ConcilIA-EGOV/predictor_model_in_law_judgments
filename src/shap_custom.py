@@ -43,7 +43,7 @@ def map_sentences_idx(X_test: pd.DataFrame, numero_sentenca:int) -> int:
             return idx
         # else:
         #     print(f"Sentença {sent} não é igual a {numero_sentenca}")
-    raise KeyError(f"Sentença {numero_sentenca} não encontrada no conjunto de teste.")
+    raise KeyError(f"Sentença {numero_sentenca} nao encontrada no conjunto de teste.")
 
 
 def explain_prediction(shap_values, N_features, sent_num:int, sent_pos:int):

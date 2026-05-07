@@ -91,7 +91,7 @@ def format_binario(value, yes: int=1, no: int=0) -> int:
         if value in ['-1', '-']:
             output = 0
     else:
-        log_file.write(f" -> Valor binario não reconhecido: {value}\n")
+        log_file.write(f" -> Valor binario nao reconhecido: {value}\n")
         output = 0
     global first_run
     if first_run:
@@ -102,7 +102,7 @@ def format_binario(value, yes: int=1, no: int=0) -> int:
         append_to_data_log_list("Alteracoes nas Features", msg)
         first_run = False
     return output
-    
+
 
 def format_intervalo(value, interval_values=[]) -> int:
     output = 0
@@ -122,7 +122,7 @@ def format_intervalo(value, interval_values=[]) -> int:
         if type(output) != int:
             output = int(output)
     else:
-        log_file.write(f" -> Valor de intervalo não reconhecido: {value}\n")
+        log_file.write(f" -> Valor de intervalo nao reconhecido: {value}\n")
     global first_run
     if first_run:
         msg = f"Coluna '{current_column
@@ -137,12 +137,12 @@ def format_intervalo(value, interval_values=[]) -> int:
 
 FUNCTIONS = {
     TARGET: lambda x: format_money(x),
-    
+
     'sentenca': lambda x: int(x),
     # 'ano': lambda x: int(x),
     # 'semestre': lambda x: int(x),
     'trimestre': lambda x: int(x),
-    
+
     'desamparo': lambda x: format_binario(x),
     'cancelamento': lambda x: format_binario(x),
     'intervalo_atraso': lambda x: format_intervalo(x, FAIXAS_ATRASO),
@@ -156,19 +156,19 @@ FUNCTIONS = {
     'noshow': lambda x: format_binario(x),
     'descumprimento_de_oferta': lambda x: format_binario(x),
     'direito_de_arrependimento': lambda x: format_binario(x),
-    
+
     # 'atraso': lambda x: format_binario(x),
     # 'extravio_temporario': lambda x: format_binario(x),
 
     # 'culpa_exclusiva_consumidor': lambda x: format_binario(x),
     # 'fechamento_aeroporto': lambda x: format_binario(x),
-    
+
     # 'faixa_intervalo_atraso': lambda x: int(x),
     # 'faixa_intervalo_extravio_temporario': lambda x: int(x),
-    
+
     # 'cancelamento/alteracao_destino': lambda x: format_binario(x),
     # 'condicoes_climaticas/fechamento_aeroporto': lambda x: format_binario(x),
-    
+
     # 'assistencia_cia_aerea': lambda x: format_binario(x, anomaly=-1),
     # 'dano_moral_individual': lambda x: format_comma_strings(x),
     # 'faixa_dano_moral_individual': lambda x: int(x),

@@ -1,8 +1,8 @@
 
 ## How to run this project?
 
-- First, create a python enviroment (python -m venv env)
-- Activate it with "source env/bin/activate" 
+- First, create a python enviroment (python -m venv .env)
+- Activate it with "source .env/bin/activate"
 - Then, install the dependencies by running `pip install -r requirements.txt`
 - Type `make` on root directory to receive the running instrutions
 - Pick your desired outcome
@@ -16,7 +16,7 @@
 - In `model/logs/`, there will be more details of the pipeline process:
     - `model/logs/pipeline.json` contains a dictionary with the pipeline parameters and a summary of the preprocessing the data went through
     - `model/logs/data_preparation.txt` contains a detailed step-by-step of everything done to the dataset in proper order.
-- In `model/logs/data/`, there will be intermediate datasets of original one    
+- In `model/logs/data/`, there will be intermediate datasets of original one
 
 ### Model Creation
 - Same requirements as the Preprocessing Test

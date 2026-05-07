@@ -35,25 +35,25 @@ def remove_confactors(df: pd.DataFrame) -> pd.DataFrame:
     if conf1 in df.columns and conf2 in df.columns:
         pro = df[(df[conf1] == 0) & (df[conf2] == 0)]
         con = df[(df[conf1] == 1) | (df[conf2] == 1)]
-        append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instâncias que continham confactors: {conf1}, {conf2}")
-        log_file.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instâncias sem confactors e {con.shape} instâncias com confactors.\n")
+        append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instancias que continham confactors: {conf1}, {conf2}")
+        log_file.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instancias sem confactors e {con.shape} instancias com confactors.\n")
     else:
         if all(conf not in df.columns for conf in remove):
-            log_file.write("Ambas as colunas de confatores já foram removidas. Nenhuma ação necessária.\n")
+            log_file.write("Ambas as colunas de confatores ja foram removidas. Nenhuma açao necessaria.\n")
             # an empty dataframe with the same columns as df
             con = pd.DataFrame(columns=df.columns)
             remove.clear()
         else:
             if conf1 in df.columns:
-                log_file.write(f"Coluna confator {conf2} já removida.\n")
+                log_file.write(f"Coluna confator {conf2} ja removida.\n")
                 remove.remove(conf2)
             elif conf2 in df.columns:
-                log_file.write(f"Coluna confator {conf1} já removida.\n")
+                log_file.write(f"Coluna confator {conf1} ja removida.\n")
                 remove.remove(conf1)
             pro = df[df[remove[0]] == 0]
             con = df[df[remove[0]] == 1]
             append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instancias que continham confactor: {remove[0]}")
-            log_file.write(f"Removendo coluna de co-fator: {remove[0]}.\n   --> Resultando em {pro.shape} instâncias sem confator e {con.shape} instâncias com confator.\n")
+            log_file.write(f"Removendo coluna de co-fator: {remove[0]}.\n   --> Resultando em {pro.shape} instancias sem confator e {con.shape} instancias com confator.\n")
     con.to_csv(f'{LOG_DATA_PATH}_Confactors.csv', index=False)
     df = df.drop(columns=remove)
     return df
@@ -95,10 +95,10 @@ def filter_methods(X_df: pd.DataFrame, y_df: pd.Series):
     # Creates a dataframe to store the scores
     scores_df = pd.DataFrame(columns=["Feature"])
     scores_df["Feature"] = X_df.columns.tolist()
-    
+
     # gets feature importance ranking
     ranking, _, _ = feature_importance(X, y)
-    
+
     cols = X_df.columns.tolist()
     cols = sorted([(cols[i], ranking[i]) for i in range(len(cols))], key=lambda x: x[1])
     # Adds the feature names to the dataframe
@@ -110,7 +110,7 @@ def filter_methods(X_df: pd.DataFrame, y_df: pd.Series):
     append_scores_log(scores_df, n_r, cols, "Boruta Ranking")
 
     cols = []
-    
+
 
     # Better when both input and target are nominal
     # calculates the reduction in entropy from the transformation of a dataset
@@ -142,13 +142,13 @@ def filter_methods(X_df: pd.DataFrame, y_df: pd.Series):
     append_scores_log(scores_df, [p[0] for p in pbs], cols, "Point-Biserial r Statistic")
     append_scores_log(scores_df, [r[0] for r in rho], cols, "Spearman's rho Statistic")
     append_scores_log(scores_df, [t[0] for t in tau], cols, "Kendall's tau Statistic")
-    
+
     # A p-value < 0.05 means the linear relationship is "statistically significant."
     # A p-value > 0.05 means the linear relationship is not statistically significant (it could be due to random chance).
     append_scores_log(scores_df, [p[1] for p in pbs], cols, "Point-Biserial r P-Value")
     append_scores_log(scores_df, [r[1] for r in rho], cols, "Spearman's rho P-Value")
     append_scores_log(scores_df, [t[1] for t in tau], cols, "Kendall's tau P-Value")
-    
+
 
     # # Uses pearson-r internally
     # # Only for Linear Relationships, Assuming Normality on input and target
@@ -157,10 +157,10 @@ def filter_methods(X_df: pd.DataFrame, y_df: pd.Series):
     # append_scores_log(scores_df, fs11[1], cols, "F Regression (P-value)")
 
     scores_df.to_csv(f'{LOG_DATA_PATH}_FeatureSelection_Scores.csv', index=False)
-    
+
     for col in cols:
         print_scores(scores_df, col)
-    
+
 
 def feature_importance(X: np.ndarray, y: np.ndarray) -> tuple[list, list, list]:
     """

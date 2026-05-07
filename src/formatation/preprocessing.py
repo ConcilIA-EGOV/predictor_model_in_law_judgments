@@ -40,14 +40,14 @@ def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     # renames faixa_intervalo_atraso to intervalo_atraso
     if 'faixa_intervalo_atraso' in df.columns:
         if 'intervalo_atraso' in df.columns:
-            log_file.write("Coluna faixa_intervalo_atraso já existe. Removendo intervalo_atraso.\n")
+            log_file.write("Coluna faixa_intervalo_atraso ja existe. Removendo intervalo_atraso.\n")
             df = df.drop(columns=['intervalo_atraso'])
         log_file.write("Renomeando coluna faixa_intervalo_atraso para intervalo_atraso\n")
         df.rename(columns={'faixa_intervalo_atraso': 'intervalo_atraso'}, inplace=True)
     # renames faixa_intervalo_extravio_temporario to intervalo_extravio_temporario
     if 'faixa_intervalo_extravio_temporario' in df.columns:
         if 'intervalo_extravio_temporario' in df.columns:
-            log_file.write("Coluna faixa_intervalo_extravio_temporario já existe. Removendo intervalo_extravio_temporario.\n")
+            log_file.write("Coluna faixa_intervalo_extravio_temporario ja existe. Removendo intervalo_extravio_temporario.\n")
             df = df.drop(columns=['intervalo_extravio_temporario'])
         log_file.write("Renomeando coluna faixa_intervalo_extravio_temporario para intervalo_extravio_temporario\n")
         df = df.rename(columns={'faixa_intervalo_extravio_temporario': 'intervalo_extravio_temporario'})
@@ -85,7 +85,7 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
     # Inverting the values of desamparo to make it a profactor
     des_col = 'desamparo'
     if des_col in df.columns:
-        log_file.write("Invertendo os valores de Assistência para torná-la um profator\n")
+        log_file.write("Invertendo os valores de Assistência para torna-la um profator\n")
         df.loc[(df['intervalo_atraso'] == 0), 'desamparo'] = -1
         df[des_col] = df[des_col].replace(1, -1)
         df[des_col] = df[des_col].replace(0, 1)
@@ -130,14 +130,14 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
 
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
-    log_file.write(f"\n---\nColunas após coerência de nomes: {data.columns.tolist()}\n")
+    log_file.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
     steps += 1
 
     # Remove colunas não relacionadas ao experimento
-    log_file.write("\n-----\nRemovendo colunas não relacionadas...\n")
+    log_file.write("\n-----\nRemovendo colunas nao relacionadas...\n")
     data = trim_columns(data)
-    log_file.write(f"\n-----\nColunas após remoção: {data.columns.tolist()}\n")
+    log_file.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
     steps += 1
@@ -149,7 +149,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     steps += 1
 
     # Separa os dados em procedentes e não procedentes
-    log_file.write("\n-----\nSeparando dados procedentes e não procedentes...\n")
+    log_file.write("\n-----\nSeparando dados procedentes e nao procedentes...\n")
     ip, data = separate_zeros(data)
     ip.to_csv(f'{LOG_DATA_PATH}{steps}.5-Improcedentes.csv', index=False)
     data.to_csv(f'{LOG_DATA_PATH}{steps}-procedentes.csv', index=False)
@@ -197,14 +197,14 @@ if __name__ == "__main__":
 
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
-    log_file.write(f"\n---\nColunas após coerência de nomes: {data.columns.tolist()}\n")
+    log_file.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
     steps += 1
 
     # Remove colunas não relacionadas ao experimento
-    log_file.write("\n-----\nRemovendo colunas não relacionadas...\n")
+    log_file.write("\n-----\nRemovendo colunas nao relacionadas...\n")
     data = trim_columns(data)
-    log_file.write(f"\n-----\nColunas após remoção: {data.columns.tolist()}\n")
+    log_file.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
     steps += 1

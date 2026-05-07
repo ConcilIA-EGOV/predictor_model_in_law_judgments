@@ -10,8 +10,8 @@ from util.param_grids import MODEL_PARAMS
 def train_model(model, X, y):
     """
     Treinar o modelo usando o conjunto de treino.
-    """    
-    model.fit(X, y)        
+    """
+    model.fit(X, y)
     return model
 
 
@@ -22,7 +22,7 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[flo
     '''
     # Make predictions
     predictions = model.predict(X)
-    
+
     # Calculate the RMSE, MAE and proportional MAE overall
     rmse_all = root_mean_squared_error(y, predictions)
     # Calculate the percentual MAE
@@ -57,9 +57,9 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[flo
 def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     """
     Salvar o modelo treinado em um arquivo e os logs de performance em outro
-    """    
+    """
     log_file = open(f'{MODEL_PATH}/{model_name}-log.txt', 'w')
-    log_file.write('Parâmetros da Pipeline:\n')
+    log_file.write('Parametros da Pipeline:\n')
     for key, value in get_data_log().items():
         if isinstance(value, list):
             if len(value) == 0:
@@ -68,7 +68,7 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
             log_file.write(f' - {key}: \n\t - {"\n\t - ".join(map(str, value))}\n')
             continue
         log_file.write(f' - {key}: {value}\n')
-    log_file.write(f'\nParâmetros do Modelo ({model_name}):\n')
+    log_file.write(f'\nParametros do Modelo ({model_name}):\n')
     for param, value in MODEL_PARAMS.items():
         log_file.write(f' - {param}: {value}\n')
     log_file.write('\nPerformance do Modelo Base:\n')
@@ -80,9 +80,9 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     print(f'MAPE: {bs_mape:.2f}%')
     log_file.write(f' - MAPE X: {bs_mape_x:.2f}%\n')
     print(f'MAPE X: {bs_mape_x:.2f}%')
-    
+
     [log_file.write(f' - {folds[i]}\n') for i in range(len(folds))]
-    
+
     # Log dos dados usados
     log_file.close()
     # Save the base model
