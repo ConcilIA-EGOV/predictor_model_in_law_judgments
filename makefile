@@ -6,18 +6,8 @@ all:
 	@echo "make preprocessing	- to run the preprocessing test cases"
 
 run:
-	@rm -rf __pycache__
-	@rm -rf */__pycache__
-	@rm -rf */*/__pycache__
-	@rm -rf data/*.csv
-	@rm -rf model/logs/*.txt
-	@rm -rf model/logs/*.json
-	@rm -rf model/logs/*.csv
-	@rm -rf model/logs/*/*.csv
-	@rm -rf model/*.pkl
-	@rm -rf model/*.png
-	@rm -rf model/*.pdf
-	@rm -rf model/*.txt
+	@rm -rf _logs
+	@rm -rf model_*
 	@python main.py
 
 SENT=0
@@ -34,12 +24,6 @@ clean:
 	@rm -rf __pycache__
 	@rm -rf */__pycache__
 	@rm -rf */*/__pycache__
-	@rm -rf data/*.csv
-	@rm -rf model/logs/*.txt
-	@rm -rf model/logs/*.json
-	@rm -rf model/logs/*.csv
-	@rm -rf model/logs/*/*.csv
-	@rm -rf model/*.pkl
-	@rm -rf model/*.png
-	@rm -rf model/*.pdf
-	@rm -rf model/*.txt
+	@rm -rf _logs
+	@rm -rf model_*
+	@clear

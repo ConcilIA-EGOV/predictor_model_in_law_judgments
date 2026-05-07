@@ -4,17 +4,15 @@ import pandas as pd
 import numpy as np
 import graphviz
 
-from util.parameters import MODEL_PATH
-
-def plot_decision_tree(model, feature_names):
+def plot_decision_tree(model, feature_names, path:str):
     plt.figure(figsize=(20,10))
     plot_tree(model, feature_names=feature_names, filled=True,
               rounded=True, max_depth=3, fontsize=10)
     plt.title("Árvore de Decisão - Explicação")
-    plt.savefig(f"{MODEL_PATH}DecisionTree.png", dpi=300)
+    plt.savefig(f"{path}DecisionTree.png", dpi=300)
 
 
-def export_tree_to_graphviz(model, feature_names):
+def export_tree_to_graphviz(model, feature_names, path:str):
     # Exporta para o formato .dot
     dot_data = export_graphviz(
         model,
@@ -28,7 +26,7 @@ def export_tree_to_graphviz(model, feature_names):
 
     # Cria visualização
     graph = graphviz.Source(dot_data)
-    graph.render(f"{MODEL_PATH}arvore_decisao", format="pdf", cleanup=True)
+    graph.render(f"{path}arvore_decisao", format="pdf", cleanup=True)
 
 
 def plot_graphic_from_csv(data: pd.DataFrame,
@@ -60,7 +58,7 @@ def plot_all_columns(df: pd.DataFrame, res_col: str, drop_cols: list):
     plt.show()
 
 
-def feature_importance(model, X):
+def feature_importance(model, X, path):
     importances = model.feature_importances_
     features = X.columns
     sorted_idx = importances.argsort()
@@ -70,7 +68,7 @@ def feature_importance(model, X):
     plt.title('Importância das Features')
     plt.tight_layout()
     # since FigureCanvasAgg is non-interactive, and thus cannot be show
-    plt.savefig(f"{MODEL_PATH}feature_importance.png")
+    plt.savefig(f"{path}feature_importance.png")
     plt.close()
 
 
@@ -122,8 +120,4 @@ def associate_id_with_target(df1: pd.DataFrame, df2: pd.DataFrame, id_col: str, 
     return merged_df
 
 if __name__ == "__main__":
-    df1 = pd.read_csv("input/ajudicada.csv")
-    df2 = pd.read_csv("input/original.csv")
-    merged = associate_id_with_target(df1, df2, 'sentenca', 'Dano-Moral')
-    # print(merged.columns)
-    print(merged.shape)
+    df = pd.read_csv("input/original.csv")

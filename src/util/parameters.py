@@ -1,16 +1,8 @@
-# caminhos para os arquivos de dados e modelos
+# caminhos para os arquivos de entrada e saída
 FILE_PATH = "input/original.csv"
-LOG_PATH = "model/logs/"
+LOG_PATH = "_logs/"
 LOG_DATA_PATH = LOG_PATH + "data/"
 PIPELINE_LOG_PATH = LOG_PATH + "pipeline.json"
-log_file_preprocessing = open(LOG_PATH + "preprocessing.txt", 'a')
-log_file_preparation = open(LOG_PATH + "preparation.txt", 'a')
-# log_file_filtering = open(LOG_PATH + "filtering.txt", 'a')
-
-MODEL_NAME = "DecisionTree"  # 'DecisionTree' ou 'RandomForest'
-# diretório para salvar os modelos treinados
-MODEL_PATH = "model/"
-MAIN_MODEL_FILE = MODEL_PATH + MODEL_NAME + ".pkl"
 
 # Tamanho do conjunto de teste
 TEST_SIZE = 0.2
@@ -32,39 +24,36 @@ CANCELAMENTO = -1
 # Target variable
 TARGET = 'Dano-Moral'
 
-import json, os
-def get_data_log() -> dict:
-    # first verify if the file exists
-    if not os.path.exists(PIPELINE_LOG_PATH):
-        write_log(start_data_log)  # create the file with the initial data
-    # reads the dictionary from the json file
-    output = {}
-    with open(PIPELINE_LOG_PATH, 'r') as f:
-        output = json.load(f)
-    return output
+MODELS = ["DecisionTree", "RandomForest"]
+# diretório para salvar os modelos treinados
+MODELS_FOLDERS = {mn: f"model_{mn}/" for mn in MODELS}
+MODELS_FILES = {mn: f"{MODELS_FOLDERS[mn]}_Model.pkl" for mn in MODELS}
 
-def update_data_log(key: str, value) -> None:
-    DATA_LOG = get_data_log()
-    if key in DATA_LOG:
-        DATA_LOG[key] = value
-        write_log(DATA_LOG)
-    else:
-        raise KeyError(f"Chave '{key}' não encontrada em DATA_LOG.")
+DT_PARAMS = {
+    'random_state': RANDOM_STATE,
+    'splitter': 'best',
+    'criterion': 'poisson',
+    'min_samples_split': 2,
+    'max_features': 1.0,
+    'max_depth': 10,
+}
 
-def append_to_data_log_list(key: str, value) -> None:
-    DATA_LOG = get_data_log()
-    if key in DATA_LOG and isinstance(DATA_LOG[key], list):
-        if isinstance(value, list):
-            DATA_LOG[key].extend(value)
-        else:
-            DATA_LOG[key].append(value)
-        write_log(DATA_LOG)
-    else:
-        raise KeyError(f"Chave '{key}' não encontrada em DATA_LOG ou não é uma lista.")
 
-def write_log(data_log: dict) -> None:
-    with open(PIPELINE_LOG_PATH, 'w') as f:
-        json.dump(data_log, f, indent=4)
+RF_PARAMS = {
+    'random_state': RANDOM_STATE,
+    'min_samples_split': 2,
+    'criterion': 'poisson',
+    'n_estimators': 330,
+    'max_features': 1.0,
+    'max_depth': 10,
+    'n_jobs': -1,
+}
+
+
+MODELS_PARAMS = {
+    'RandomForest': RF_PARAMS,
+    'DecisionTree': DT_PARAMS
+}
 
 start_data_log = {
     "Numero de Instancias Originais": 0,
@@ -94,4 +83,45 @@ start_data_log = {
     "Tamanho do Conjunto de Treino": 0,
     'Tamanho percentual do Conjunto de teste': f"{TEST_SIZE*100}%",
     "Tamanho do Conjunto de Teste": 0
+}
+
+param_grid_RandForest = {
+    'n_estimators': [200, 330, 400],
+    'criterion': ['squared_error', 'absolute_error', 'friedman_mse', 'poisson'],
+    'max_depth': [None, 10, 15, 20],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
+    'max_features': ['sqrt', 'log2', None, 1.0],
+    'max_leaf_nodes': [None, 10, 20, 30],
+    'min_impurity_decrease': [0.0, 0.1, 0.2],
+    'bootstrap': [True, False],
+    'oob_score': [True, False],
+    'n_jobs': [-1],
+    'random_state': [RANDOM_STATE],
+    'verbose': [0],
+    'warm_start': [False, True],
+    'ccp_alpha': [0.0, 0.1, 0.2],
+    'max_samples': [None, 0.5, 0.75, 1.0]
+}
+
+
+param_grid_DecisionTree = {
+    'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+    'splitter': 'best',
+    'max_depth': [None, 5, 10, 15],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
+    'max_features': [None, 'sqrt', 'log2', 1.0],
+    'random_state': [RANDOM_STATE],
+    'max_leaf_nodes': [None, 10, 20, 30],
+    'min_impurity_decrease': [0.0, 0.1, 0.2],
+    'ccp_alpha': [0.0, 0.1, 0.2]
+}
+
+
+param_grids = {
+    'RandomForest': param_grid_RandForest,
+    'DecisionTree': param_grid_DecisionTree
 }

@@ -3,9 +3,25 @@ import numpy as np
 import pandas as pd
 
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
-from util.parameters import MODEL_PATH, get_data_log
-from util.param_grids import MODEL_PARAMS
+from util.parameters import MODELS_FOLDERS, MODELS_PARAMS, MODELS_FILES
+from util.log_aux import get_data_log
+
+
+MODELS_CLS = {
+    "DecisionTree": DecisionTreeRegressor,
+    "RandomForest": RandomForestRegressor
+}
+
+
+def get_model_instance(model_name: str):
+    try:
+        return MODELS_CLS[model_name](**MODELS_PARAMS[model_name])
+    except:
+        raise ValueError(f"Modelo desconhecido: {model_name}")
+
 
 def train_model(model, X, y):
     """
@@ -58,7 +74,7 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     """
     Salvar o modelo treinado em um arquivo e os logs de performance em outro
     """
-    log_file = open(f'{MODEL_PATH}/{model_name}-log.txt', 'w')
+    log_file = open(f'{MODELS_FOLDERS[model_name]}Model-log.txt', 'w')
     log_file.write('Parametros da Pipeline:\n')
     for key, value in get_data_log().items():
         if isinstance(value, list):
@@ -69,7 +85,7 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
             continue
         log_file.write(f' - {key}: {value}\n')
     log_file.write(f'\nParametros do Modelo ({model_name}):\n')
-    for param, value in MODEL_PARAMS.items():
+    for param, value in MODELS_PARAMS[model_name].items():
         log_file.write(f' - {param}: {value}\n')
     log_file.write('\nPerformance do Modelo Base:\n')
     log_file.write(f' - RMSE: {bs_rmse}\n')
@@ -86,4 +102,4 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     # Log dos dados usados
     log_file.close()
     # Save the base model
-    dump(model, f'{MODEL_PATH}/{model_name}.pkl')
+    dump(model, f'{MODELS_FILES[model_name]}')

@@ -163,21 +163,7 @@ cython_debug/
 #.idea/
 
 
-model/*.pth
-model/*.joblib
-model/*.json
-model/*.pkl
-model/*.txt
-model/*.pdf
-model/*.png
-model/*/*.csv
-model/*/*/*.csv
-model/*/*.txt
-model/*/*.pdf
-model/*/*.png
-model/*/*.pth
-model/*/*.joblib
-model/*/*.json
-model/*/*.pkl
+model_*/
+_logs/
 input/*.csv
 data/*.csv

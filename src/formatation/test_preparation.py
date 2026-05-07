@@ -4,8 +4,8 @@ import math
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import train_test_split
 
-from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE, log_file_preparation as log_file
-from src.util.parameters import update_data_log, get_data_log
+from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE
+from src.util.log_aux import update_data_log, log_file_preparation
 
 def stratify(y: pd.Series, n_folds:int=0) -> tuple[pd.Series, float, int]:
     """
@@ -60,8 +60,8 @@ def split_data(X:pd.DataFrame, y:pd.Series,
     X_train = X_train.drop(columns=['sentenca', 'bin', TARGET])
     X_test = X_test.drop(columns=['sentenca', 'bin', TARGET])
 
-    log_file.write(f"\n----\nTamanho original do conjunto de treino: {len(y_train)}\n")
-    log_file.write(f"Tamanho do conjunto de teste: {len(y_test)}\n")
+    log_file_preparation.write(f"\n----\nTamanho original do conjunto de treino: {len(y_train)}\n")
+    log_file_preparation.write(f"Tamanho do conjunto de teste: {len(y_test)}\n")
 
 
     return X_train, X_test, y_train, y_test, y_train_bin, y_test_bin
@@ -117,7 +117,7 @@ def balance_data(X: pd.DataFrame, y: pd.Series,
         X_resampled, y_bins_resampled = X_temp, strat
 
     # Log dos dados balanceados
-    log_file.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
+    log_file_preparation.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
     update_data_log("Tamanho de cada Faixa", round(step, 2))
     update_data_log("Bibliteca de Balanceamento", 'imblearn.over_sampling.RandomOverSampler')
     update_data_log("Metodo de Balanceamento", "fit_resample")
@@ -128,12 +128,12 @@ def balance_data(X: pd.DataFrame, y: pd.Series,
     update_data_log("Valor Minimo Apos Balanceamento", int(y.min()))
     update_data_log("Valor Maximo Apos Balanceamento", int(y.max()))
 
-    log_file.write(f"\n----\nDiscretizando o alvo contínuo em {n_folds
+    log_file_preparation.write(f"\n----\nDiscretizando o alvo contínuo em {n_folds
                    } faixas com step = {step}\n")
-    log_file.write(f"Numero de instancias Apos Balanceamento: {len(y_bins_resampled)}\n")
-    log_file.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
-    log_file.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
-    log_file.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")
+    log_file_preparation.write(f"Numero de instancias Apos Balanceamento: {len(y_bins_resampled)}\n")
+    log_file_preparation.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
+    log_file_preparation.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
+    log_file_preparation.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")
 
 
     # Recuperar os índices dos dados originais usados

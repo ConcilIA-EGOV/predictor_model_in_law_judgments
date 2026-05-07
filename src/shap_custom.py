@@ -6,14 +6,11 @@ import shap
 import matplotlib.pyplot as plt
 import joblib as jl
 import pandas as pd
-from util.parameters import TEST_SIZE, MODEL_PATH
-from util.parameters import MAIN_MODEL_FILE, FILE_PATH, LOG_DATA_PATH
-from util.parameters import BALANCE_STRATEGY, RANDOM_STATE
+from util.parameters import MODELS, MODELS_FILES, MODELS_FOLDERS, FILE_PATH, LOG_DATA_PATH
 from src.formatation.preprocessing import load_data
-from src.formatation.test_preparation import balance_data, split_data
 
 
-def get_values(model, X_train, X_test) -> shap.Explanation:
+def get_values(model, X_train, X_test) -> shap.Explanation | list[shap.Explanation]:
     """
     Calculate SHAP values for a given model and dataset.
     Parameters:
@@ -46,54 +43,56 @@ def map_sentences_idx(X_test: pd.DataFrame, numero_sentenca:int) -> int:
     raise KeyError(f"Sentença {numero_sentenca} nao encontrada no conjunto de teste.")
 
 
-def explain_prediction(shap_values, N_features, sent_num:int, sent_pos:int):
+def explain_prediction(shap_values, N_features, path:str, sent_num:int, sent_pos:int):
     """
     mostrando o valor base, cada contribuição das variáveis, e o valor final previsto.
     """
     shap.plots.waterfall(shap_values[sent_pos], show=False, max_display=N_features)
     plt.title(f"SHAP - Sentença {sent_num}")
-    plt.savefig(f"{MODEL_PATH}shap_sentenca_{sent_num}.png", bbox_inches="tight", dpi=300)
+    plt.savefig(f"{path}shap_sentenca_{sent_num}.png", bbox_inches="tight", dpi=300)
     plt.clf()
 
 
-def explain_global(shap_values, N_features):
+def explain_global(shap_values, N_features, path:str):
     ## Global graphs
 
     # Importância média global
     shap.plots.bar(shap_values, show=False, max_display=N_features)
-    plt.savefig(f"{MODEL_PATH}shap_global.png", bbox_inches="tight", dpi=300)
+    plt.savefig(f"{path}shap_global.png", bbox_inches="tight", dpi=300)
     plt.clf()
     # Dispersão do impacto por feature
     shap.plots.beeswarm(shap_values, show=False, max_display=N_features)
-    plt.savefig(f"{MODEL_PATH}shap_beeswarm.png", bbox_inches="tight", dpi=300)
+    plt.savefig(f"{path}shap_beeswarm.png", bbox_inches="tight", dpi=300)
     plt.clf()
     return 0
 
 
 if __name__ == '__main__':
-    # Importar o modelo base
-    base_model = jl.load(MAIN_MODEL_FILE)
-    # Carregar os dados
-    X_train, X_test, y_train, y_test, y_test_bin  = load_data(FILE_PATH)
-    # Calculate SHAP values
-    shap_values = get_values(base_model, X_train, X_test)
-    #
-    N_features = X_test.shape[1]
-    # Is needed to map the sentence number to its index in X_test
-    X_test = pd.read_csv(f'{LOG_DATA_PATH}Test.csv')
-    # receive the arguments from the command line
-    args = sys.argv[1:]
-    # check if the arguments are empty
-    if len(args) > 0 and args[0].isdigit() and int(args[0]) > 0:
-        sent_num = int(args[0])
-        try:
-            sent_pos = map_sentences_idx(X_test, sent_num)
-            print(f"Explaining sentence: {sent_num}")
-            explain_prediction(shap_values, N_features, sent_num, sent_pos)
-        except Exception as e:
-            print("Error explaining the sentence:", sent_num)
-            print(e)
-    else:
-        print("No sentence provided.\nWill explain globally")
-        explain_global(shap_values, N_features)
-        print(args)
+    for mn in MODELS:
+        # Importar o modelo base
+        m_file = MODELS_FILES[mn]
+        base_model = jl.load(m_file)
+        # Carregar os dados
+        X_train, X_test, y_train, y_test, y_test_bin  = load_data(FILE_PATH)
+        # Calculate SHAP values
+        shap_values = get_values(base_model, X_train, X_test)
+        #
+        N_features = X_test.shape[1]
+        # Is needed to map the sentence number to its index in X_test
+        X_test = pd.read_csv(f'{LOG_DATA_PATH}Test.csv')
+        # receive the arguments from the command line
+        args = sys.argv[1:]
+        # check if the arguments are empty
+        if len(args) > 0 and args[0].isdigit() and int(args[0]) > 0:
+            sent_num = int(args[0])
+            try:
+                sent_pos = map_sentences_idx(X_test, sent_num)
+                print(f"Explaining sentence: {sent_num}")
+                explain_prediction(shap_values, N_features, MODELS_FOLDERS[mn], sent_num, sent_pos)
+            except Exception as e:
+                print("Error explaining the sentence:", sent_num)
+                print(e)
+        else:
+            print("No sentence provided.\nWill explain globally")
+            explain_global(shap_values, N_features, MODELS_FOLDERS[mn])
+            print(args)

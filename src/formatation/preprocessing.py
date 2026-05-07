@@ -4,10 +4,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ###
 import pandas as pd
 
-from util.parameters import append_to_data_log_list, update_data_log
-from src.util.parameters import BALANCE_STRATEGY, RANDOM_STATE, TEST_SIZE
+from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
+from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, TEST_SIZE
 from util.parameters import LOG_PATH, LOG_DATA_PATH, FILE_PATH
-from util.parameters import CANCELAMENTO, TARGET, log_file_preprocessing as log_file
+from util.parameters import CANCELAMENTO, TARGET
 import formatation.feature_formatation as ff
 from formatation.feature_selection import trim_columns, filter_methods
 from src.formatation.test_preparation import split_data, balance_data
@@ -32,7 +32,7 @@ def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     pd.set_option('future.no_silent_downcasting', True)
     # renames dano_moral_individual to Target
     if 'dano_moral_individual' in df.columns:
-        log_file.write("Renomeando coluna dano_moral_individual para {}\n".format(TARGET))
+        log_file_preprocessing.write("Renomeando coluna dano_moral_individual para {}\n".format(TARGET))
         df = df.rename(columns={'dano_moral_individual': TARGET})
     # check if target column exists
     if TARGET not in df.columns:
@@ -40,27 +40,27 @@ def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     # renames faixa_intervalo_atraso to intervalo_atraso
     if 'faixa_intervalo_atraso' in df.columns:
         if 'intervalo_atraso' in df.columns:
-            log_file.write("Coluna faixa_intervalo_atraso ja existe. Removendo intervalo_atraso.\n")
+            log_file_preprocessing.write("Coluna faixa_intervalo_atraso ja existe. Removendo intervalo_atraso.\n")
             df = df.drop(columns=['intervalo_atraso'])
-        log_file.write("Renomeando coluna faixa_intervalo_atraso para intervalo_atraso\n")
+        log_file_preprocessing.write("Renomeando coluna faixa_intervalo_atraso para intervalo_atraso\n")
         df.rename(columns={'faixa_intervalo_atraso': 'intervalo_atraso'}, inplace=True)
     # renames faixa_intervalo_extravio_temporario to intervalo_extravio_temporario
     if 'faixa_intervalo_extravio_temporario' in df.columns:
         if 'intervalo_extravio_temporario' in df.columns:
-            log_file.write("Coluna faixa_intervalo_extravio_temporario ja existe. Removendo intervalo_extravio_temporario.\n")
+            log_file_preprocessing.write("Coluna faixa_intervalo_extravio_temporario ja existe. Removendo intervalo_extravio_temporario.\n")
             df = df.drop(columns=['intervalo_extravio_temporario'])
-        log_file.write("Renomeando coluna faixa_intervalo_extravio_temporario para intervalo_extravio_temporario\n")
+        log_file_preprocessing.write("Renomeando coluna faixa_intervalo_extravio_temporario para intervalo_extravio_temporario\n")
         df = df.rename(columns={'faixa_intervalo_extravio_temporario': 'intervalo_extravio_temporario'})
     # Inverting the values of assistencia_cia_aerea to make it a profactor
     if 'assistencia_cia_aerea' in df.columns:
-        log_file.write("Renomeando coluna assistencia_cia_aerea para desamparo\n")
+        log_file_preprocessing.write("Renomeando coluna assistencia_cia_aerea para desamparo\n")
         df.rename(columns={'assistencia_cia_aerea': 'desamparo'}, inplace=True)
     # renaming some columns for coherence
     if 'cancelamento/alteracao_destino' in df.columns:
-        log_file.write("Renomeando coluna cancelamento/alteracao_destino para cancelamento\n")
+        log_file_preprocessing.write("Renomeando coluna cancelamento/alteracao_destino para cancelamento\n")
         df.rename(columns={'cancelamento/alteracao_destino': 'cancelamento'}, inplace=True)
     if 'condicoes_climaticas/fechamento_aeroporto' in df.columns:
-        log_file.write("Renomeando coluna condicoes_climaticas/fechamento_aeroporto para fechamento_aeroporto\n")
+        log_file_preprocessing.write("Renomeando coluna condicoes_climaticas/fechamento_aeroporto para fechamento_aeroporto\n")
         df.rename(columns={'condicoes_climaticas/fechamento_aeroporto': 'fechamento_aeroporto'}, inplace=True)
     return df
 
@@ -74,7 +74,7 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
     pd.set_option('future.no_silent_downcasting', True)
     # combining intervalo_atraso and cancelamento into intervalo_atraso
     if 'cancelamento' in df.columns and ('intervalo_atraso' in df.columns):
-        log_file.write("Combinando as colunas cancelamento e intervalo_atraso em intervalo_atraso\n")
+        log_file_preprocessing.write("Combinando as colunas cancelamento e intervalo_atraso em intervalo_atraso\n")
         c = df.loc[df['cancelamento'] == 1, 'intervalo_atraso']
         i = df.loc[df['intervalo_atraso'] == -1, 'cancelamento']
         ci = pd.concat([c, i]).index
@@ -85,7 +85,7 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
     # Inverting the values of desamparo to make it a profactor
     des_col = 'desamparo'
     if des_col in df.columns:
-        log_file.write("Invertendo os valores de Assistência para torna-la um profator\n")
+        log_file_preprocessing.write("Invertendo os valores de Assistência para torna-la um profator\n")
         df.loc[(df['intervalo_atraso'] == 0), 'desamparo'] = -1
         df[des_col] = df[des_col].replace(1, -1)
         df[des_col] = df[des_col].replace(0, 1)
@@ -102,7 +102,7 @@ def separate_features_labels(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Serie
     """
     y = data[TARGET]
     X = data.drop(columns=[TARGET])
-    log_file.write(f"Features shape: {X.shape}, Labels shape: {y.shape}\n")
+    log_file_preprocessing.write(f"Features shape: {X.shape}, Labels shape: {y.shape}\n")
     return X, y
 
 def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
@@ -122,61 +122,61 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     steps = 0
     # Ler o arquivo CSV usando pandas
     data = pd.read_csv(csv_file)
-    log_file.write(f"Dados carregados: {data.shape}\n")
-    log_file.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
+    log_file_preprocessing.write(f"Dados carregados: {data.shape}\n")
+    log_file_preprocessing.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
     update_data_log("Numero de Instancias Originais", data.shape[0])
     data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
     steps += 1
 
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
-    log_file.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
+    log_file_preprocessing.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
     steps += 1
 
     # Remove colunas não relacionadas ao experimento
-    log_file.write("\n-----\nRemovendo colunas nao relacionadas...\n")
+    log_file_preprocessing.write("\n-----\nRemovendo colunas nao relacionadas...\n")
     data = trim_columns(data)
-    log_file.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
+    log_file_preprocessing.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
     steps += 1
 
     # Formata os features conforme necessário
-    log_file.write("\n-----\nFormatando dados...\n")
+    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
     data = format_data(data)
     data.to_csv(f'{LOG_DATA_PATH}{steps}-formatted_data.csv', index=False)
     steps += 1
 
     # Separa os dados em procedentes e não procedentes
-    log_file.write("\n-----\nSeparando dados procedentes e nao procedentes...\n")
+    log_file_preprocessing.write("\n-----\nSeparando dados procedentes e nao procedentes...\n")
     ip, data = separate_zeros(data)
     ip.to_csv(f'{LOG_DATA_PATH}{steps}.5-Improcedentes.csv', index=False)
     data.to_csv(f'{LOG_DATA_PATH}{steps}-procedentes.csv', index=False)
     steps += 1
 
      # Remove outliers
-    log_file.write("\n-----\nRemovendo outliers...\n")
+    log_file_preprocessing.write("\n-----\nRemovendo outliers...\n")
     data = remove_outliers(data)
 
     # storing the main data
     prep_data_path = f'{LOG_DATA_PATH}{steps}-Preprocessed.csv'
     data.to_csv(prep_data_path, index=False)
-    log_file.write(f"\n-----\nDados formatados salvos em: {prep_data_path}\n")
+    log_file_preprocessing.write(f"\n-----\nDados formatados salvos em: {prep_data_path}\n")
     steps += 1
 
     # Separa features (X) e labels (y)
-    log_file.write("\n-----\nSeparando features e labels...\n")
+    log_file_preprocessing.write("\n-----\nSeparando features e labels...\n")
     X, y = separate_features_labels(data)
-    log_file.write("-> Features e labels separados.\n")
+    log_file_preprocessing.write("-> Features e labels separados.\n")
 
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test, _, y_test_bin = split_data(X, y, TEST_SIZE, RANDOM_STATE)
-    log_file.write("-> Dados divididos em treino e teste.\n")
+    log_file_preprocessing.write("-> Dados divididos em treino e teste.\n")
 
     # Balance the data
     X_train, y_train, _ = balance_data(X_train, y_train, BALANCE_STRATEGY, RANDOM_STATE)
-    log_file.write("-> Dados balanceados.\n")
+    log_file_preprocessing.write("-> Dados balanceados.\n")
 
     # Log dos tamanhos dos conjuntos
     update_data_log('Tamanho do Conjunto de Treino', len(y_train))
@@ -189,33 +189,33 @@ if __name__ == "__main__":
     steps = 0
     # Ler o arquivo CSV usando pandas
     data = pd.read_csv(FILE_PATH)
-    log_file.write(f"Dados carregados: {data.shape}\n")
-    log_file.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
+    log_file_preprocessing.write(f"Dados carregados: {data.shape}\n")
+    log_file_preprocessing.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
     update_data_log("Numero de Instancias Originais", data.shape[0])
     data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
     steps += 1
 
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
-    log_file.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
+    log_file_preprocessing.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
     steps += 1
 
     # Remove colunas não relacionadas ao experimento
-    log_file.write("\n-----\nRemovendo colunas nao relacionadas...\n")
+    log_file_preprocessing.write("\n-----\nRemovendo colunas nao relacionadas...\n")
     data = trim_columns(data)
-    log_file.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
+    log_file_preprocessing.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
     data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
     steps += 1
 
     # Formata os features conforme necessário
-    log_file.write("\n-----\nFormatando dados...\n")
+    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
     data = format_data(data)
     data.to_csv(f'{LOG_DATA_PATH}{steps}-formatted_data.csv', index=False)
     steps += 1
 
     # Seleção de features
-    log_file.write("\n-----\nSelecionando features...\n")
+    log_file_preprocessing.write("\n-----\nSelecionando features...\n")
     X, y = separate_features_labels(data)
     filter_methods(X.drop(columns=["sentenca"]), y)

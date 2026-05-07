@@ -1,8 +1,6 @@
 import numpy as np
 from util.parameters import FAIXAS_EXTRAVIO, FAIXAS_ATRASO, TARGET
-from util.parameters import  log_file_preprocessing, append_to_data_log_list
-# log file to record changes
-log_file = log_file_preprocessing
+from util.log_aux import  log_file_preprocessing, append_to_data_log_list
 # Global variable to keep track of the current column being processed
 current_column = ""
 # Global variable to indicate if it's the first run
@@ -32,7 +30,7 @@ def hour_to_int(value:str, interval_values=[]) -> int:
     global first_run
     if first_run:
         msg = f"Coluna '{current_column}': convertendo hora no formato '{value}' para {ttp} como '{f_value}'"
-        log_file.write(f" -> {msg}\n")
+        log_file_preprocessing.write(f" -> {msg}\n")
         append_to_data_log_list("Alteracoes nas Features", msg)
         first_run = False
     return f_value
@@ -60,7 +58,7 @@ def format_money(value) -> int:
     global first_run
     if first_run:
         msg = f"Coluna '{current_column}': convertendo strings monetarias como '{original_value}' para int como '{out_value}'"
-        log_file.write(f" -> {msg}\n")
+        log_file_preprocessing.write(f" -> {msg}\n")
         append_to_data_log_list("Alteracoes nas Features", msg)
         first_run = False
     return out_value
@@ -91,14 +89,14 @@ def format_binario(value, yes: int=1, no: int=0) -> int:
         if value in ['-1', '-']:
             output = 0
     else:
-        log_file.write(f" -> Valor binario nao reconhecido: {value}\n")
+        log_file_preprocessing.write(f" -> Valor binario nao reconhecido: {value}\n")
         output = 0
     global first_run
     if first_run:
         msg = f"Coluna '{current_column
             }': convertendo valores binarios como '{value
             }' para '{yes} ou {no}'"
-        log_file.write(f" -> {msg}\n")
+        log_file_preprocessing.write(f" -> {msg}\n")
         append_to_data_log_list("Alteracoes nas Features", msg)
         first_run = False
     return output
@@ -122,14 +120,14 @@ def format_intervalo(value, interval_values=[]) -> int:
         if type(output) != int:
             output = int(output)
     else:
-        log_file.write(f" -> Valor de intervalo nao reconhecido: {value}\n")
+        log_file_preprocessing.write(f" -> Valor de intervalo nao reconhecido: {value}\n")
     global first_run
     if first_run:
         msg = f"Coluna '{current_column
             }': convertendo valores {type(value).__name__} como '{value
             }' para faixa como '{output
             }' com valores de intervalo {interval_values}"
-        log_file.write(f" -> {msg}\n")
+        log_file_preprocessing.write(f" -> {msg}\n")
         append_to_data_log_list("Alteracoes nas Features", msg)
         first_run = False
     return output

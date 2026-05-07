@@ -1,7 +1,7 @@
 import pandas as pd
 
 from util.parameters import LOG_DATA_PATH, RANDOM_STATE
-from util.parameters import append_to_data_log_list, log_file_preprocessing as log_file
+from util.log_aux import append_to_data_log_list, log_file_preprocessing
 from formatation.feature_formatation import FUNCTIONS
 
 def trim_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -10,7 +10,7 @@ def trim_columns(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = remove_confactors(df)
     remove_columns = [col for col in df.columns if col not in FUNCTIONS.keys()]
-    log_file.write(f"Removendo colunas: {remove_columns}\n")
+    log_file_preprocessing.write(f"Removendo colunas: {remove_columns}\n")
     append_to_data_log_list('Features Removidas', remove_columns)
     df = df.drop(columns=remove_columns)
     return df
@@ -36,24 +36,24 @@ def remove_confactors(df: pd.DataFrame) -> pd.DataFrame:
         pro = df[(df[conf1] == 0) & (df[conf2] == 0)]
         con = df[(df[conf1] == 1) | (df[conf2] == 1)]
         append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instancias que continham confactors: {conf1}, {conf2}")
-        log_file.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instancias sem confactors e {con.shape} instancias com confactors.\n")
+        log_file_preprocessing.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instancias sem confactors e {con.shape} instancias com confactors.\n")
     else:
         if all(conf not in df.columns for conf in remove):
-            log_file.write("Ambas as colunas de confatores ja foram removidas. Nenhuma açao necessaria.\n")
+            log_file_preprocessing.write("Ambas as colunas de confatores ja foram removidas. Nenhuma açao necessaria.\n")
             # an empty dataframe with the same columns as df
             con = pd.DataFrame(columns=df.columns)
             remove.clear()
         else:
             if conf1 in df.columns:
-                log_file.write(f"Coluna confator {conf2} ja removida.\n")
+                log_file_preprocessing.write(f"Coluna confator {conf2} ja removida.\n")
                 remove.remove(conf2)
             elif conf2 in df.columns:
-                log_file.write(f"Coluna confator {conf1} ja removida.\n")
+                log_file_preprocessing.write(f"Coluna confator {conf1} ja removida.\n")
                 remove.remove(conf1)
             pro = df[df[remove[0]] == 0]
             con = df[df[remove[0]] == 1]
             append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instancias que continham confactor: {remove[0]}")
-            log_file.write(f"Removendo coluna de co-fator: {remove[0]}.\n   --> Resultando em {pro.shape} instancias sem confator e {con.shape} instancias com confator.\n")
+            log_file_preprocessing.write(f"Removendo coluna de co-fator: {remove[0]}.\n   --> Resultando em {pro.shape} instancias sem confator e {con.shape} instancias com confator.\n")
     con.to_csv(f'{LOG_DATA_PATH}_Confactors.csv', index=False)
     df = df.drop(columns=remove)
     return df

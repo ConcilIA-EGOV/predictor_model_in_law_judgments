@@ -20,9 +20,10 @@
       - E/ou, teste várias variações de holdout e use a média delas.
         - Mas, para cada variação, é necessário encontrar o melhor conjunto de parâmetros, modelos e hiperparâmetros.
         - Depois achar as combinações que performa melhor na média
-- [ ] Adicionar uma subseção de "Análise Estatística dos Resultados", onde aplicaria testes para verificar se as features que o SHAP apontou como mais importantes possuem distribuições estatisticamente diferentes nos casos de acerto e erro do modelo, assim como faz o exemplo.
 - [ ] Pesquisar mais como interpretar o gráfico SHAP
 - [ ] Tornar o repositório capaz de rodar múltiplos testes diferentes parametrizáveis
+  - [x] Testar diferentes Modelos de uma vez
+  - [ ] Testar diferentes formatações de dados de uma vez
 - [ ] Analizar os casos removidos e testá-los no modelo final
   - [ ] Criar outro modelo separado incluindo os casos removidos
 - [ ] Criar uma Wiki compreensiva do repositório
