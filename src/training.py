@@ -88,14 +88,15 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     for param, value in MODELS_PARAMS[model_name].items():
         log_file.write(f' - {param}: {value}\n')
     log_file.write('\nPerformance do Modelo Base:\n')
-    log_file.write(f' - RMSE: {bs_rmse}\n')
-    print(f'RMSE: {bs_rmse}')
-    log_file.write(f' - MAE:  {bs_mae}\n')
-    print(f'MAE:  {bs_mae}')
-    log_file.write(f' - MAPE: {bs_mape:.2f}%\n')
-    print(f'MAPE: {bs_mape:.2f}%')
+    print('\nPerformance do Modelo Base:')
+    log_file.write(f' - RMSE:   {bs_rmse:.2f}\n')
+    print(f' - RMSE:   {bs_rmse:.2f}')
+    log_file.write(f' - MAE:    {bs_mae:.2f}\n')
+    print(f' - MAE:    {bs_mae:.2f}')
+    log_file.write(f' - MAPE:   {bs_mape:.2f}%\n')
+    print(f' - MAPE:   {bs_mape:.2f}%')
     log_file.write(f' - MAPE X: {bs_mape_x:.2f}%\n')
-    print(f'MAPE X: {bs_mape_x:.2f}%')
+    print(f' - MAPE X: {bs_mape_x:.2f}%')
 
     [log_file.write(f' - {folds[i]}\n') for i in range(len(folds))]
 

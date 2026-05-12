@@ -1,9 +1,9 @@
 all:
-	@echo "make run            	- to run the program"
+	@echo "make run             - to run the program"
 	@echo "make shap (SENT=X)   - to run the SHAP explainability (optionally with a sentence number instead of X)"
-	@echo "make clean          	- to clear all logs and cache"
-	@echo "make parameters  	- to run the models parameters test cases"
-	@echo "make preprocessing	- to run the preprocessing test cases"
+	@echo "make clean           - to clear all logs and cache"
+	@echo "make parameters      - to run the models parameters test cases"
+	@echo "make preprocessing   - to run the preprocessing test cases"
 
 run:
 	@rm -rf _logs
