@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 import math
 from imblearn.over_sampling import RandomOverSampler
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import StratifiedKFold
 
-from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE
+from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE, BIN_COL
 from src.util.log_aux import update_data_log, log_file_preparation
 
 def stratify(y: pd.Series, n_folds:int=0) -> tuple[pd.Series, float, int]:
@@ -19,67 +19,50 @@ def stratify(y: pd.Series, n_folds:int=0) -> tuple[pd.Series, float, int]:
     return y_bin, step, n_folds
 
 
-def split_data(X:pd.DataFrame, y:pd.Series,
-               test_size:float, random_state:int
-               ) -> tuple[pd.DataFrame, pd.DataFrame,
-                          pd.Series, pd.Series,
-                          pd.Series, pd.Series]:
+def split_data(X:pd.DataFrame, n_splits:int, random_state:int
+               ) -> list[tuple[pd.DataFrame, pd.DataFrame]]:
     """
-    Dividir em conjuntos de treino e teste
+    cria múltiplas divisões de treino/teste (0.8/0.2)
     Parâmetros:
     -----------
     X : pd.DataFrame
-        DataFrame com variáveis categóricas.
-    y : pd.Series
-        Série com alvo contínuo (ex: atraso em minutos).
-    test_size : float
-        Proporção do conjunto de teste.
-    y_bin : pd.Series or None
-        Série com o alvo discretizado para estratificação.
-    STORE : bool
-        Se True, armazena informações de debug e da coluna de sentenças.
+        DataFrame com com features, target e coluna estratificada do target.
+    n_splits : int
+        Número de cross-validation splits, cada um contendo sua própria divisão distinta de treino/teste
+    random_state : int
+        Seed de aleatorieadade para permitir a reprodução de experimentos
     """
-    y_bin, _, n_folds = stratify(y)
-    (X_train, X_test,
-     y_train, y_test) = train_test_split(X, y,
-                        test_size=test_size,
-                        stratify=y_bin,
-                        random_state=random_state)
-    # Recalcula y_bin para os conjuntos de treino e teste
-    y_test_bin, _, _ = stratify(y_test, n_folds)
-    y_train_bin, _, _ = stratify(y_train, n_folds)
+    # Determinar o número de faixas (bins) com base no intervalo do alvo
+    update_data_log("Limite de tamanho para cada Faixa", FOLD_SIZE)
+    y_bin, step, nf = stratify(X[TARGET])
+    update_data_log("Tamanho de cada Faixa", round(step, 2))
+    update_data_log("Numero de Faixas de Valor", nf)
+    log_file_preparation.write(f"\n----\nDiscretizando o alvo contínuo em {nf} faixas com step = {step}\n")
+    X[BIN_COL] = y_bin.values
+    skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=random_state)
+    split_idxs = list(skf.split(X, y_bin))
+    output = []
+    for fold, (train_idx, test_idx) in enumerate(split_idxs):
+        train = X.iloc[train_idx]
+        test = X.iloc[test_idx]
 
-    # Para verificar o balanceamento das sentenças
-    X_train[TARGET] = y_train.values
-    X_train['bin'] = y_train_bin.values
-    X_test[TARGET] = y_test.values
-    X_test['bin'] = y_test_bin.values
-    X_train.to_csv(f"{LOG_DATA_PATH}Train.csv", index=False)
-    X_test.to_csv(f"{LOG_DATA_PATH}Test.csv", index=False)
+        log_file_preparation.write(f"\n----\nTamanho original do conjunto de treino {fold}: {len(train)}\n")
+        log_file_preparation.write(f"Tamanho do conjunto de teste {fold}: {len(test)}\n")
+        output.append((train, test))
 
-    X_train = X_train.drop(columns=['sentenca', 'bin', TARGET])
-    X_test = X_test.drop(columns=['sentenca', 'bin', TARGET])
-
-    log_file_preparation.write(f"\n----\nTamanho original do conjunto de treino: {len(y_train)}\n")
-    log_file_preparation.write(f"Tamanho do conjunto de teste: {len(y_test)}\n")
+    return output
 
 
-    return X_train, X_test, y_train, y_test, y_train_bin, y_test_bin
-
-
-def balance_data(X: pd.DataFrame, y: pd.Series,
-                 strategy: str | None, random_state: int
-                 )-> tuple[pd.DataFrame, pd.Series, pd.Series]:
+def balance_data(data: pd.DataFrame, strategy: str | None,
+                 random_state: int)-> pd.DataFrame:
     """
     Realiza oversampling em um problema de regressão com variáveis categóricas,
     usando discretização do alvo contínuo em faixas (bins).
 
     Parâmetros:
     -----------
-    X : pd.DataFrame
-        DataFrame com variáveis categóricas.
-    y : pd.Series
-        Série com alvo contínuo (ex: atraso em minutos).
+    data : pd.DataFrame
+        DataFrame com features e target.
     bins : list or None
         Lista de limites de faixas.
     labels : list or None
@@ -93,63 +76,26 @@ def balance_data(X: pd.DataFrame, y: pd.Series,
 
     Retorna:
     --------
-    X_resampled : pd.DataFrame
-        Conjunto de entrada balanceado.
-    y_resampled : pd.Series
-        Alvo contínuo balanceado.
-    y_bins_resampled : pd.Series
-        Alvo discretizado balanceado.
+    resampled : pd.DataFrame
+        Conjunto balanceado.
     """
 
-    # Guardar os índices originais
-    X_temp = X.copy()
-    X_temp["__index__"] = X.index
-
-    # Determinar o número de faixas (bins) com base no intervalo do alvo
-    update_data_log("Limite de tamanho para cada Faixa", FOLD_SIZE)
-    strat, step, n_folds = stratify(y)
-    update_data_log("Numero de Faixas de Valor", n_folds)
-    # Realizar oversampling com base nos bins
     if strategy is not None:
         ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)
-        X_resampled, y_bins_resampled = [i for i in ros.fit_resample(X_temp, strat)]
+        log_file_preparation.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
+        update_data_log("Bibliteca de Balanceamento", 'imblearn.over_sampling.RandomOverSampler')
+        # Realizar oversampling com base nos bins
+        resampled, _ = [i for i in ros.fit_resample(data, data[BIN_COL])]
+        update_data_log("Metodo de Balanceamento", "fit_resample")
+        resampled = pd.DataFrame(resampled)
     else:
-        X_resampled, y_bins_resampled = X_temp, strat
+        resampled = data
 
     # Log dos dados balanceados
-    log_file_preparation.write(f"\n----\nBalanceando os dados usando RandomOverSampler com a estratégia '{strategy}'\n")
-    update_data_log("Tamanho de cada Faixa", round(step, 2))
-    update_data_log("Bibliteca de Balanceamento", 'imblearn.over_sampling.RandomOverSampler')
-    update_data_log("Metodo de Balanceamento", "fit_resample")
-    update_data_log("Numero de Instancias Pre-Balanceamento", len(y))
-    update_data_log("Numero de Instancias Apos Balanceamento", len(y_bins_resampled))
-    update_data_log("Numero de Instancias Adicionadas pelo Balanceamento", len(y_bins_resampled) - len(y))
-    update_data_log("Valor Medio Apos Balanceamento", round(y.mean(), 2))
-    update_data_log("Valor Minimo Apos Balanceamento", int(y.min()))
-    update_data_log("Valor Maximo Apos Balanceamento", int(y.max()))
+    update_data_log("Numero de Instancias Pre-Balanceamento", len(data))
+    update_data_log("Valor Medio Pre-Balanceamento", round(data[TARGET].mean(), 2))
+    update_data_log("Numero de Instancias Apos Balanceamento", len(resampled))
+    update_data_log("Numero de Instancias Adicionadas pelo Balanceamento", len(resampled) - len(data))
+    update_data_log("Valor Medio Pos-Balanceamento", round(resampled[TARGET].mean(), 2))
 
-    log_file_preparation.write(f"\n----\nDiscretizando o alvo contínuo em {n_folds
-                   } faixas com step = {step}\n")
-    log_file_preparation.write(f"Numero de instancias Apos Balanceamento: {len(y_bins_resampled)}\n")
-    log_file_preparation.write(f"Valor Medio Apos Balanceamento: {round(y.mean(), 2)}\n")
-    log_file_preparation.write(f"Valor Minimo Apos Balanceamento: {y.min()}\n")
-    log_file_preparation.write(f"Valor Maximo Apos Balanceamento: {y.max()}\n")
-
-
-    # Recuperar os índices dos dados originais usados
-    idx_resampled = list(X_resampled["__index__"].values)
-
-    # Converter idx_resampled para uma lista/Index para satisfazer o tipo aceito por .loc
-    y_resampled = y.loc[idx_resampled].reset_index(drop=True)
-
-    # Limpar coluna de índice temporário
-    X_resampled = X_resampled.drop(columns=["__index__"]).reset_index(drop=True)
-    X_resampled = pd.DataFrame(X_resampled)
-
-    # Salvar dados balanceados para debug
-    X_resampled[TARGET] = y_resampled
-    X_resampled['Faixa'] = y_bins_resampled
-    X_resampled.to_csv(f'{LOG_DATA_PATH}Balanced-Data.csv', index=False)
-    X_resampled = X_resampled.drop(columns=[TARGET, "Faixa"])
-
-    return X_resampled, y_resampled, pd.Series(y_bins_resampled)
+    return resampled

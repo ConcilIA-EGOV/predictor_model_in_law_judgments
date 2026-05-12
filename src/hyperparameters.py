@@ -31,8 +31,11 @@ def grid_search(X, y, model, param_grid):
     return best_params, best_score, best_model
 
 if __name__ == "__main__":
-    X, _, y, _, _ = load_data(FILE_PATH)
-    # TODO: Isso aqui deveria ser parte do main.py
+    train, test = load_data(FILE_PATH)[0]
+    X_train, y_train, _ = train
+    X_test, y_test, _ = test
+    X = X_train + X_test
+    y = y_train + y_test
     best_params_all = dict()
     for key, model in MODELS_CLS.items():
         print(f"Testing {key}")

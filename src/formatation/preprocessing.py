@@ -5,9 +5,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pandas as pd
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
-from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, TEST_SIZE
-from util.parameters import LOG_PATH, LOG_DATA_PATH, FILE_PATH
-from util.parameters import CANCELAMENTO, TARGET
+from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, N_FOLDS
+from util.parameters import LOG_PATH, LOG_DATA_PATH
+from util.parameters import CANCELAMENTO, TARGET, BIN_COL, ID_COL
 import formatation.feature_formatation as ff
 from formatation.feature_selection import trim_columns, filter_methods
 from src.formatation.test_preparation import split_data, balance_data
@@ -94,18 +94,19 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
         append_to_data_log_list("Alteracoes nas Features", "assistencia_cia_aerea e invertida (0 torna-se 1, 1 e -1 tornam-se 0) para tornar-se um profactor (desamparo)")
     return df
 
-def separate_features_labels(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
+def separate_features_labels_bins(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
     """
-    Separar features (X) dos labels (Y)
+    Separar features (X) dos labels (Y) e das Faixas (Y_bin)
     Baseado na constante TARGET definida em parameters.py
-    Retorna features (X) e labels (y).
+    E na constante BIN_COL, também lá definida
+    Retorna features (X), labels (y) e bins (y_bin).
     """
     y = data[TARGET]
-    X = data.drop(columns=[TARGET])
-    log_file_preprocessing.write(f"Features shape: {X.shape}, Labels shape: {y.shape}\n")
-    return X, y
+    y_bin = data[BIN_COL]
+    X = data.drop(columns=[TARGET, BIN_COL, ID_COL])
+    return X, y, y_bin
 
-def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series, pd.Series]:
+def load_data(csv_file: str) -> list[tuple[tuple[pd.DataFrame, pd.Series, pd.Series], tuple[pd.DataFrame, pd.Series, pd.Series]]]:
     """
     Carregar e preparar os dados do arquivo CSV;
     Lê o arquivo CSV usando pandas
@@ -117,7 +118,7 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     Separa features (X) e labels (y)
     Balanceia os dados
     Divide os dados em conjuntos de treino e teste
-    Retorna X_train, X_test, y_train, y_test, y_test_bin
+    Retorna list[(X_train, y_train, bin_train), (X_test, y_test, bin_test)]
     """
     steps = 0
     # Ler o arquivo CSV usando pandas
@@ -165,57 +166,29 @@ def load_data(csv_file: str) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.
     log_file_preprocessing.write(f"\n-----\nDados formatados salvos em: {prep_data_path}\n")
     steps += 1
 
-    # Separa features (X) e labels (y)
-    log_file_preprocessing.write("\n-----\nSeparando features e labels...\n")
-    X, y = separate_features_labels(data)
-    log_file_preprocessing.write("-> Features e labels separados.\n")
-
     # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test, _, y_test_bin = split_data(X, y, TEST_SIZE, RANDOM_STATE)
+    cv_folds = split_data(data, N_FOLDS, RANDOM_STATE)
     log_file_preprocessing.write("-> Dados divididos em treino e teste.\n")
 
     # Balance the data
-    X_train, y_train, _ = balance_data(X_train, y_train, BALANCE_STRATEGY, RANDOM_STATE)
-    log_file_preprocessing.write("-> Dados balanceados.\n")
-
-    # Log dos tamanhos dos conjuntos
-    update_data_log('Tamanho do Conjunto de Treino', len(y_train))
-    update_data_log('Tamanho do Conjunto de Teste', len(y_test))
-
-    return X_train, X_test, y_train, y_test, y_test_bin
-
-
-if __name__ == "__main__":
-    steps = 0
-    # Ler o arquivo CSV usando pandas
-    data = pd.read_csv(FILE_PATH)
-    log_file_preprocessing.write(f"Dados carregados: {data.shape}\n")
-    log_file_preprocessing.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
-    update_data_log("Numero de Instancias Originais", data.shape[0])
-    data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
+    output = []
+    split_folder = f"{LOG_DATA_PATH}{steps}-Splits"
+    os.makedirs(split_folder, exist_ok=True)
     steps += 1
+    bal_folder = f"{LOG_DATA_PATH}{steps}-Balanced_Data"
+    os.makedirs(bal_folder, exist_ok=True)
+    for i, (train, test) in enumerate(cv_folds):
+        train.to_csv(f"{split_folder}/{i}_Train.csv", index=False)
+        test.to_csv(f"{split_folder}/{i}_Test.csv", index=False)
 
-    # Garantir a coerência dos nomes das colunas
-    data = feature_name_coherence(data)
-    log_file_preprocessing.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
-    steps += 1
+        balanced_train = balance_data(train, BALANCE_STRATEGY, RANDOM_STATE)
+        balanced_train.to_csv(f"{bal_folder}/Balanced_Train_{i}.csv", index=False)
+        log_file_preprocessing.write(f"-> Dados {i} balanceados.\n")
 
-    # Remove colunas não relacionadas ao experimento
-    log_file_preprocessing.write("\n-----\nRemovendo colunas nao relacionadas...\n")
-    data = trim_columns(data)
-    log_file_preprocessing.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
-    append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
-    steps += 1
+        log_file_preprocessing.write(f"\n-----\nSeparando features e labels do split {i} \n")
+        # Separa features (X) e labels (y)
+        output.append(
+            (separate_features_labels_bins(balanced_train), separate_features_labels_bins(test))
+        )
 
-    # Formata os features conforme necessário
-    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
-    data = format_data(data)
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-formatted_data.csv', index=False)
-    steps += 1
-
-    # Seleção de features
-    log_file_preprocessing.write("\n-----\nSelecionando features...\n")
-    X, y = separate_features_labels(data)
-    filter_methods(X.drop(columns=["sentenca"]), y)
+    return output

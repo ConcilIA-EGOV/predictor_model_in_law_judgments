@@ -33,6 +33,9 @@
 
 # Implementadas
 
+- [x] Cross-Validation
+      - Mas, para cada variação, é necessário encontrar o melhor conjunto de parâmetros, modelos e hiperparâmetros.
+      - Depois achar as combinações que performam melhor na média
 - [x] Desenvolver um gerador automático de logs
 - [x] Técnicas de Feature Selection (wrappers \+ Boruta)
        1. [\_FeatureSelection\_Scores.csv](https://drive.google.com/file/d/1fqA9ht-Jfs9rqblxvvUe-xy4yQ-3T6Ny/view)

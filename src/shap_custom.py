@@ -73,7 +73,9 @@ if __name__ == '__main__':
         m_file = MODELS_FILES[mn]
         base_model = jl.load(m_file)
         # Carregar os dados
-        X_train, X_test, y_train, y_test, y_test_bin  = load_data(FILE_PATH)
+        train, test  = load_data(FILE_PATH)[0]
+        X_train, y_train, _ = train
+        X_test, y_test, _ = test
         # Calculate SHAP values
         shap_values = get_values(base_model, X_train, X_test)
         #

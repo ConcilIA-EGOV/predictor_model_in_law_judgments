@@ -5,7 +5,7 @@ LOG_DATA_PATH = LOG_PATH + "data/"
 PIPELINE_LOG_PATH = LOG_PATH + "pipeline.json"
 
 # Tamanho do conjunto de teste
-TEST_SIZE = 0.2
+N_FOLDS = 5
 # Random Seed
 RANDOM_STATE = 42
 # Outliers removal
@@ -23,6 +23,8 @@ FAIXAS_ATRASO = [1, 4, 8, 12, 16, 24, 28]
 CANCELAMENTO = -1
 # Target variable
 TARGET = 'Dano-Moral'
+BIN_COL = "Faixa-de-Valores"
+ID_COL = "sentenca"
 
 MODELS = ["DecisionTree", "RandomForest"]
 # diretório para salvar os modelos treinados
@@ -76,12 +78,9 @@ start_data_log = {
     "Numero de Instancias Pre-Balanceamento": 0,
     "Numero de Instancias Adicionadas pelo Balanceamento": 0,
     "Numero de Instancias Apos Balanceamento": 0,
-    "Valor Medio Apos Balanceamento": 0,
-    "Valor Minimo Apos Balanceamento": 0,
-    "Valor Maximo Apos Balanceamento": 0,
-    'Tamanho percentual do Conjunto de treino': f"{(1 - TEST_SIZE)*100}%",
+    "Valor Medio Pre-Balanceamento": 0,
+    "Valor Medio Pos-Balanceamento": 0,
     "Tamanho do Conjunto de Treino": 0,
-    'Tamanho percentual do Conjunto de teste': f"{TEST_SIZE*100}%",
     "Tamanho do Conjunto de Teste": 0
 }
 

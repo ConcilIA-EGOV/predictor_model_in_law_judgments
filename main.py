@@ -11,30 +11,62 @@ from src.training import train_model, test_model, save_model, get_model_instance
 # Função principal para executar o pipeline
 def main(models_names: list[str]):
     # Load the dataset
-    X_train, X_test, y_train, y_test, y_test_bin = load_data(FILE_PATH)
+    datasets = load_data(FILE_PATH)
+    N_features = datasets[0][0][0].shape[1]
     print("-> Dados carregados.")
 
     # Fit the base model
     for mn in models_names:
         # Select the model
         print("\n##################################\n")
-        model = get_model_instance(mn)
-        print(f"-> Usando o Modelo:\n   -> {model}")
-        train_model(model, X_train, y_train)
-        print(f"-> Modelo {mn} treinado.")
+        print(f"-> Usando o Modelo:\n   -> {mn}")
+        model = None
+        scores = []
+        avg_rmse, avg_mae, avg_mape, avg_mape_x = 0, 0, 0, 0
+        for i, (train, test) in enumerate(datasets):
+            model = get_model_instance(mn)
+            X_train, y_train, _ = train
+            X_test, y_test, bin_test = test
+            train_model(model, X_train, y_train)
 
-        # Evaluate the base mnmodel
-        print(f"-> Avaliando o modelo {mn}...")
+            # Make predictions with the base model
+            (var_rmse, var_mae, var_mape, var_mape_x, folds) = test_model(model, X_test, y_test, bin_test)
+            avg_rmse += var_rmse
+            avg_mae += var_mae
+            avg_mape += var_mape
+            avg_mape_x += var_mape_x
+            print(f'    {i+1} -> RMSE: {var_rmse:.2f} - MAE: {var_mae:.2f} - MAPE: {var_mape:.2f}% - MAPE X: {var_mape_x:.2f}%')
+            scores.append((var_rmse, var_mae, var_mape, var_mape_x, folds, model))
 
-        # Make predictions with the base model
-        (bs_rmse, bs_mae, bs_mape, bs_mape_x, folds) = test_model(model, X_test, y_test, y_test_bin)
+        # Evaluate the best model
+        print(f"\n-> Avaliando o modelo medio para {mn}...")
+        n_folds = len(datasets)
+        avg_rmse /= n_folds
+        avg_mae /= n_folds
+        avg_mape /= n_folds
+        avg_mape_x /= n_folds
+        print(f'    --> AVG RMSE:   {avg_rmse:.2f}')
+        print(f'    --> AVG MAE:    {avg_mae:.2f}')
+        print(f'    --> AVG MAPE:   {avg_mape:.2f}%')
+        print(f'    --> AVG MAPE X: {avg_mape_x:.2f}%')
 
-        # Log and save the model
-        save_model(model, mn, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds)
-        print(f"-> Modelo {mn} salvo.")
+        lowest = avg_rmse
+        folds = []
+        chosen = -1
+        for i, inst in enumerate(scores):
+            var_rmse, var_mae, var_mape, var_mape_x, _, _ = inst
+            if abs(avg_rmse - var_rmse) < lowest:
+                lowest = abs(avg_rmse - var_rmse)
+                chosen = i
+
+        rmse, mae, mape, mape_x, folds, model = scores[chosen]
+        save_model(model, mn, rmse, mae, mape, mape_x, folds)
+        print(f"\nModelo {mn} {chosen+1} salvo.")
 
         # SHAP explainability
-        N_features = X_test.shape[1]
+        train, test = datasets[chosen]
+        X_train = train[0]
+        X_test = test[0]
         # Calculate SHAP values
         shap_values = get_values(model, X_train, X_test)
         # Global explanation
