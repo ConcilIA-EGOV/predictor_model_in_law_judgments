@@ -9,14 +9,15 @@ if not this_path in sys.path:
 
 from src.formatation.preprocessing import load_data
 from src.formatation.visualization import export_tree_to_graphviz
-from src.util.parameters import FILE_PATH, MODELS, MODELS_FOLDERS
+from src.util.parameters import FILE_PATH, LOG_DATA_PATH
+from src.util.parameters import MODELS, MODELS_FOLDERS
 from src.shap_custom import explain_global, get_values
 from src.training import train_model, test_model, save_model, get_model_instance
 
 # Função principal para executar o pipeline
 def main(models_names: list[str]):
     # Load the dataset
-    datasets = load_data(FILE_PATH)
+    datasets = load_data(FILE_PATH, LOG_DATA_PATH)
     N_features = datasets[0][0][0].shape[1]
     print("-> Dados carregados.")
 

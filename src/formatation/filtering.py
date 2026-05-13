@@ -7,10 +7,10 @@ if not this_path in sys.path:
 import pandas as pd
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
-from util.parameters import OUTLIERS_MIN_QUANTILE, OUTLIERS_MAX_QUANTILE, TARGET, LOG_DATA_PATH
+from util.parameters import OUTLIERS_MIN_QUANTILE, OUTLIERS_MAX_QUANTILE, TARGET
 
 
-def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
+def remove_outliers(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     # remove outliers based on out_col and the quantiles
     q_low = df[TARGET].quantile(OUTLIERS_MIN_QUANTILE)
     q_hi  = df[TARGET].quantile(OUTLIERS_MAX_QUANTILE)
@@ -25,13 +25,11 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     log_file_preprocessing.write(f"   --> Valores de {TARGET} entre {df_main[TARGET].min()} e {df_main[TARGET].max()}.\n")
     update_data_log("Numero de Outliers Removidos", f"{df_out.shape[0]}, com valores <= {q_low} ou >= {q_hi}")
 
-    df_out.to_csv(f'{LOG_DATA_PATH}_Outliers.csv', index=False)
-
     update_data_log("Valor Minimo", int(df_main[TARGET].min()))
     update_data_log("Valor Maximo", int(df_main[TARGET].max()))
     update_data_log("Valor Medio", round(df_main[TARGET].mean(), 2))
     update_data_log("Instancias Usadas", df_main.shape[0])
-    return df_main
+    return df_main, df_out
 
 def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     ip = df[(df[TARGET] == 0)]

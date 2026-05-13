@@ -1,23 +1,24 @@
+import os
 import pandas as pd
 
-from util.parameters import LOG_DATA_PATH, RANDOM_STATE
+from util.parameters import LOG_DATA_PATH, RANDOM_STATE, REMOVED_FEATURES
 from util.log_aux import append_to_data_log_list, log_file_preprocessing
 from formatation.feature_formatation import FUNCTIONS
 
-def trim_columns(df: pd.DataFrame) -> pd.DataFrame:
+def trim_columns(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Remove colunas não relacionadas ao experimento
+    Remove colunas não relacionadas ao experimento e retorna os confactors
     """
-    df = remove_confactors(df)
+    df, con = feature_selection(df, REMOVED_FEATURES)
     remove_columns = [col for col in df.columns if col not in FUNCTIONS.keys()]
     log_file_preprocessing.write(f"Removendo colunas: {remove_columns}\n")
     append_to_data_log_list('Features Removidas', remove_columns)
     df = df.drop(columns=remove_columns)
-    return df
+    return df, con
 
-def remove_confactors(df: pd.DataFrame) -> pd.DataFrame:
+def feature_selection(df: pd.DataFrame, remove_cols:list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Remove confatores do DataFrame
+    Remove confatores do DataFrame e as retorna separadamente
     1. Identifica as colunas de confatores: culpa_exclusiva_consumidor e fechamento_aeroporto
     2. Se ambas as colunas existirem, separa as instâncias em dois grupos:
        - Instâncias sem confatores (ambas as colunas iguais a 0)
@@ -29,34 +30,25 @@ def remove_confactors(df: pd.DataFrame) -> pd.DataFrame:
     7. Se uma das colunas de confatores já foi removida, utiliza a outra coluna para filtrar as instâncias
     8. Se ambas as colunas de confatores foram removidas, não faz nada
     """
-    conf1 = 'culpa_exclusiva_consumidor'
-    conf2 = 'fechamento_aeroporto'
-    remove = [conf1, conf2]
-    if conf1 in df.columns and conf2 in df.columns:
-        pro = df[(df[conf1] == 0) & (df[conf2] == 0)]
-        con = df[(df[conf1] == 1) | (df[conf2] == 1)]
-        append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instancias que continham confactors: {conf1}, {conf2}")
-        log_file_preprocessing.write(f"Removendo colunas de co-fatores: {conf1}, {conf2}.\n   --> Resultando em {pro.shape} instancias sem confactors e {con.shape} instancias com confactors.\n")
-    else:
-        if all(conf not in df.columns for conf in remove):
-            log_file_preprocessing.write("Ambas as colunas de confatores ja foram removidas. Nenhuma açao necessaria.\n")
-            # an empty dataframe with the same columns as df
-            con = pd.DataFrame(columns=df.columns)
-            remove.clear()
-        else:
-            if conf1 in df.columns:
-                log_file_preprocessing.write(f"Coluna confator {conf2} ja removida.\n")
-                remove.remove(conf2)
-            elif conf2 in df.columns:
-                log_file_preprocessing.write(f"Coluna confator {conf1} ja removida.\n")
-                remove.remove(conf1)
-            pro = df[df[remove[0]] == 0]
-            con = df[df[remove[0]] == 1]
-            append_to_data_log_list('Alteracoes nas Features', f"Removidas {con.shape[0]} instancias que continham confactor: {remove[0]}")
-            log_file_preprocessing.write(f"Removendo coluna de co-fator: {remove[0]}.\n   --> Resultando em {pro.shape} instancias sem confator e {con.shape} instancias com confator.\n")
-    con.to_csv(f'{LOG_DATA_PATH}_Confactors.csv', index=False)
-    df = df.drop(columns=remove)
-    return df
+
+    remove_cols = [c for c in remove_cols if c in df.columns]
+    pro = df
+    con = pd.DataFrame(columns=df.columns)
+    conf_dir = f"{LOG_DATA_PATH}/_confactors/"
+    st_size = pro.shape[0]
+    os.makedirs(conf_dir)
+    for col in remove_cols:
+        tmp = df[df[col] != 0]
+        tmp.to_csv(f"{conf_dir}{col}.csv")
+        con = pd.concat([con, tmp])
+        pro = pro[pro[col] == 0]
+
+    end_size = pro.shape[0] - st_size
+    log_file_preprocessing.write(f"Removendo colunas: {remove_cols}.\n   --> Resultando em {pro.shape} instancias sem confactors e {end_size} instancias com confactors.\n")
+    append_to_data_log_list('Alteracoes nas Features', f"Removidas {end_size} instancias que continham confactors: {remove_cols}")
+    pro = pro.drop(columns=remove_cols)
+
+    return pro, con
 
 
 # Feature Selection Methods

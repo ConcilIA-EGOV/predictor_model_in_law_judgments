@@ -1,5 +1,5 @@
 import numpy as np
-from util.parameters import FAIXAS_EXTRAVIO, FAIXAS_ATRASO, TARGET
+from util.parameters import FAIXAS_EXTRAVIO, FAIXAS_ATRASO, TARGET, ID_COL
 from util.log_aux import  log_file_preprocessing, append_to_data_log_list
 # Global variable to keep track of the current column being processed
 current_column = ""
@@ -135,11 +135,7 @@ def format_intervalo(value, interval_values=[]) -> int:
 
 FUNCTIONS = {
     TARGET: lambda x: format_money(x),
-
-    'sentenca': lambda x: int(x),
-    # 'ano': lambda x: int(x),
-    # 'semestre': lambda x: int(x),
-    'trimestre': lambda x: int(x),
+    ID_COL: lambda x: int(x),
 
     'desamparo': lambda x: format_binario(x),
     'cancelamento': lambda x: format_binario(x),
@@ -152,14 +148,16 @@ FUNCTIONS = {
 
     'violacao_furto_avaria': lambda x: format_binario(x),
     'noshow': lambda x: format_binario(x),
+
     'descumprimento_de_oferta': lambda x: format_binario(x),
     'direito_de_arrependimento': lambda x: format_binario(x),
+
+    'culpa_exclusiva_consumidor': lambda x: format_binario(x),
+    'fechamento_aeroporto': lambda x: format_binario(x),
 
     # 'atraso': lambda x: format_binario(x),
     # 'extravio_temporario': lambda x: format_binario(x),
 
-    # 'culpa_exclusiva_consumidor': lambda x: format_binario(x),
-    # 'fechamento_aeroporto': lambda x: format_binario(x),
 
     # 'faixa_intervalo_atraso': lambda x: int(x),
     # 'faixa_intervalo_extravio_temporario': lambda x: int(x),

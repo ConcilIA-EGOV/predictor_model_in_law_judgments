@@ -10,7 +10,6 @@ import pandas as pd
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
 from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, N_FOLDS
-from util.parameters import LOG_PATH, LOG_DATA_PATH
 from util.parameters import CANCELAMENTO, TARGET, BIN_COL, ID_COL
 import feature_formatation as ff
 from feature_selection import trim_columns
@@ -110,19 +109,32 @@ def separate_features_labels_bins(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.
     X = data.drop(columns=[TARGET, BIN_COL, ID_COL])
     return X, y, y_bin
 
-def load_data(csv_file: str) -> list[tuple[tuple[pd.DataFrame, pd.Series, pd.Series], tuple[pd.DataFrame, pd.Series, pd.Series]]]:
+def load_data(csv_file: str, log_data_path:str,
+              split:bool=True, balance:bool=True, label:bool=True) -> list[
+    tuple[
+        tuple[pd.DataFrame, pd.Series, pd.Series],
+        tuple[pd.DataFrame, pd.Series, pd.Series]
+        ]
+    ]:
     """
     Carregar e preparar os dados do arquivo CSV;
-    Lê o arquivo CSV usando pandas
+    Lê o arquivo de caminho `csv_file` usando pandas e salva os datasets intermediários em `log_data_path`
+    Altera os nomes das colunas para evitar variações
+    Separa os dados em procedentes e não procedentes
     Remove colunas não relacionadas ao experimento
     Formata os dados conforme necessário
-    Separa os dados em procedentes e não procedentes
     Remove outliers
     Salva o arquivo principal formatado
-    Separa features (X) e labels (y)
-    Balanceia os dados
-    Divide os dados em conjuntos de treino e teste
-    Retorna list[(X_train, y_train, bin_train), (X_test, y_test, bin_test)]
+    Se split=True
+        Divide os dados em conjuntos de treino e teste
+    Se balance=True
+        Balanceia os dados
+    Se label=True
+        Separa features (X) e labels (y)
+        Retorna list[(X_train, y_train, bin_train), (X_test, y_test, bin_test)]
+        (se split=False, X_train=X_test)
+    Se label=False
+        Não divide em X, y e bin; retorna só o dataset com o target e faixas
     """
     steps = 0
     # Ler o arquivo CSV usando pandas
@@ -130,69 +142,96 @@ def load_data(csv_file: str) -> list[tuple[tuple[pd.DataFrame, pd.Series, pd.Ser
     log_file_preprocessing.write(f"Dados carregados: {data.shape}\n")
     log_file_preprocessing.write(f"Colunas originais: {data.columns.tolist()}\n---\n")
     update_data_log("Numero de Instancias Originais", data.shape[0])
-    data.to_csv(f'{LOG_PATH}data/{steps}-original_data.csv', index=False)
+    data.to_csv(f'{log_data_path}{steps}-Original_data.csv', index=False)
     steps += 1
 
     # Garantir a coerência dos nomes das colunas
     data = feature_name_coherence(data)
     log_file_preprocessing.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-coherent_names.csv', index=False)
+    data.to_csv(f'{log_data_path}{steps}-Coherent_names.csv', index=False)
     steps += 1
 
     # Remove colunas não relacionadas ao experimento
     log_file_preprocessing.write("\n-----\nRemovendo colunas nao relacionadas...\n")
-    data = trim_columns(data)
+    data, con = trim_columns(data)
     log_file_preprocessing.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-trimmed_data.csv', index=False)
+    data.to_csv(f'{log_data_path}{steps}-Trimmed_data.csv', index=False)
+    con.to_csv(f'{log_data_path}{steps}.5-Removed-Features.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
-    steps += 1
-
-    # Formata os features conforme necessário
-    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
-    data = format_data(data)
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-formatted_data.csv', index=False)
     steps += 1
 
     # Separa os dados em procedentes e não procedentes
     log_file_preprocessing.write("\n-----\nSeparando dados procedentes e nao procedentes...\n")
     ip, data = separate_zeros(data)
-    ip.to_csv(f'{LOG_DATA_PATH}{steps}.5-Improcedentes.csv', index=False)
-    data.to_csv(f'{LOG_DATA_PATH}{steps}-procedentes.csv', index=False)
+    data.to_csv(f'{log_data_path}{steps}-Procedentes.csv', index=False)
+    ip.to_csv(f'{log_data_path}{steps}.5-Improcedentes.csv', index=False)
     steps += 1
 
      # Remove outliers
     log_file_preprocessing.write("\n-----\nRemovendo outliers...\n")
-    data = remove_outliers(data)
+    data, df_out = remove_outliers(data)
+    data.to_csv(f'{log_data_path}{steps}-No-Outliers.csv', index=False)
+    df_out.to_csv(f'{log_data_path}{steps}.5-Outliers.csv', index=False)
+    steps += 1
+
+    # Formata os features conforme necessário
+    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
+    data = format_data(data)
+    data.to_csv(f'{log_data_path}{steps}-Formatted_data.csv', index=False)
+    steps += 1
 
     # storing the main data
-    prep_data_path = f'{LOG_DATA_PATH}{steps}-Preprocessed.csv'
+    prep_data_path = f'{log_data_path}{steps}-Preprocessed.csv'
     data.to_csv(prep_data_path, index=False)
     log_file_preprocessing.write(f"\n-----\nDados formatados salvos em: {prep_data_path}\n")
     steps += 1
 
-    # Split the data into training and testing sets
-    cv_folds = split_data(data, N_FOLDS, RANDOM_STATE)
-    log_file_preprocessing.write("-> Dados divididos em treino e teste.\n")
+    if split:
+        # Split the data into training and testing sets
+        cv_folds = split_data(data, N_FOLDS, RANDOM_STATE)
+        log_file_preprocessing.write("-> Dados divididos em treino e teste.\n")
+        split_folder = f"{log_data_path}{steps}-Splits"
+        os.makedirs(split_folder, exist_ok=True)
+        steps += 1
+    else:
+        cv_folds = [(data, data)]
+        split_folder = "ERRO"
 
-    # Balance the data
+    if balance:
+        bal_folder = f"{log_data_path}{steps}-Balanced_Data"
+        os.makedirs(bal_folder, exist_ok=True)
+    else:
+        bal_folder = "ERRO"
+
     output = []
-    split_folder = f"{LOG_DATA_PATH}{steps}-Splits"
-    os.makedirs(split_folder, exist_ok=True)
-    steps += 1
-    bal_folder = f"{LOG_DATA_PATH}{steps}-Balanced_Data"
-    os.makedirs(bal_folder, exist_ok=True)
+
     for i, (train, test) in enumerate(cv_folds):
-        train.to_csv(f"{split_folder}/{i}_Train.csv", index=False)
-        test.to_csv(f"{split_folder}/{i}_Test.csv", index=False)
+        if split:
+            train.to_csv(f"{split_folder}/{i}_Train.csv", index=False)
+            test.to_csv(f"{split_folder}/{i}_Test.csv", index=False)
 
-        balanced_train = balance_data(train, BALANCE_STRATEGY, RANDOM_STATE)
-        balanced_train.to_csv(f"{bal_folder}/Balanced_Train_{i}.csv", index=False)
-        log_file_preprocessing.write(f"-> Dados {i} balanceados.\n")
+        if balance:
+            train = balance_data(train, BALANCE_STRATEGY, RANDOM_STATE)
+            train.to_csv(f"{bal_folder}/Balanced_Train_{i}.csv", index=False)
+            log_file_preprocessing.write(f"-> Dados {i} balanceados.\n")
 
-        log_file_preprocessing.write(f"\n-----\nSeparando features e labels do split {i} \n")
-        # Separa features (X) e labels (y)
-        output.append(
-            (separate_features_labels_bins(balanced_train), separate_features_labels_bins(test))
-        )
+        if label:
+            # Separa features (X) e labels (y)
+            log_file_preprocessing.write(f"\n-----\nSeparando features e labels do split {i} \n")
+            output.append(
+                (
+                    separate_features_labels_bins(train),
+                    separate_features_labels_bins(test)
+                )
+            )
+        else:
+            output.append(((train, 0), (test, 0)))
 
     return output
+
+from util.parameters import FILE_PATH, LOG_PATH
+if __name__ == "__main__":
+    datasets = load_data(FILE_PATH, LOG_PATH + "Full/data")
+    datasets = load_data(FILE_PATH, LOG_PATH + "No-Split/data", split=False)
+    datasets = load_data(FILE_PATH, LOG_PATH + "No-Balancement/data", balance=False)
+    datasets = load_data(FILE_PATH, LOG_PATH + "No-Label-Split/data", label=False)
