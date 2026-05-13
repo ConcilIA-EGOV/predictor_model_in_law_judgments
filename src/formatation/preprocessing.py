@@ -1,17 +1,21 @@
 # Adiciona o diretório base do projeto ao caminho de busca do Python
 import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-###
+this_path = os.path.dirname(os.path.abspath(__file__))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+this_path = os.path.dirname(this_path)
+if not this_path in sys.path:
+    sys.path.append(this_path)
 import pandas as pd
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
 from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, N_FOLDS
 from util.parameters import LOG_PATH, LOG_DATA_PATH
 from util.parameters import CANCELAMENTO, TARGET, BIN_COL, ID_COL
-import formatation.feature_formatation as ff
-from formatation.feature_selection import trim_columns, filter_methods
-from src.formatation.test_preparation import split_data, balance_data
-from formatation.filtering import remove_outliers, separate_zeros
+import feature_formatation as ff
+from feature_selection import trim_columns
+from test_preparation import split_data, balance_data
+from filtering import remove_outliers, separate_zeros
 
 def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     """

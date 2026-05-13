@@ -1,3 +1,9 @@
+# Adiciona o diretório base do projeto ao caminho de busca do Python
+import sys, os
+this_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+
 import pandas as pd
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
@@ -28,11 +34,11 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     return df_main
 
 def separate_zeros(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    ip = df[(df['Dano-Moral'] == 0)]
-    p = df[(df['Dano-Moral'] > 0)]
+    ip = df[(df[TARGET] == 0)]
+    p = df[(df[TARGET] > 0)]
     log_file_preprocessing.write(f"Separando {ip.shape
-                   } instancias de Dano-Moral = 0 e {p.shape
-                   } instancias de Dano-Moral > 0.\n")
+                   } instancias de {TARGET} = 0 e {p.shape
+                   } instancias de {TARGET} > 0.\n")
     append_to_data_log_list("Alteracoes nas Features", f"Removidas {ip.shape[0]
-                            } instancias com Dano-Moral = 0")
+                            } instancias com {TARGET} = 0")
     return ip, p

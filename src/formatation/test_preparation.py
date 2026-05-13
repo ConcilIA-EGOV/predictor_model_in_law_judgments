@@ -1,15 +1,22 @@
+# Adiciona o diretório base do projeto ao caminho de busca do Python
+import sys, os
+this_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+
 import pandas as pd
 import numpy as np
 import math
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import StratifiedKFold
 
-from src.util.parameters import LOG_DATA_PATH, TARGET, FOLD_SIZE, BIN_COL
-from src.util.log_aux import update_data_log, log_file_preparation
+from util.parameters import TARGET, FOLD_SIZE, BIN_COL
+from util.log_aux import update_data_log, log_file_preparation
 
 def stratify(y: pd.Series, n_folds:int=0) -> tuple[pd.Series, float, int]:
     """
-    retorna um y_bin, para estratificação, que divide o y em N partes
+    retorna um y_bin, para estratificação, que divide y em classes iguais pelo seu valor
+    bem como o intervalo das classes (step) e o número de classes n_folds
     """
     if n_folds == 0:
         n_folds = math.ceil((y.max() - y.min()) / FOLD_SIZE)

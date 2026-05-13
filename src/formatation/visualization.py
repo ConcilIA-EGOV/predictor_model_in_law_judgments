@@ -120,4 +120,9 @@ def associate_id_with_target(df1: pd.DataFrame, df2: pd.DataFrame, id_col: str, 
     return merged_df
 
 if __name__ == "__main__":
-    df = pd.read_csv("input/original.csv")
+    # Adiciona o diretório base do projeto ao caminho de busca do Python
+    import sys, os
+    this_path = os.path.dirname(os.path.abspath(__file__))
+    if not this_path in sys.path:
+        sys.path.append(this_path)
+    ###

@@ -1,7 +1,12 @@
 # Adiciona o diretório base do projeto ao caminho de busca do Python
 import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-###
+this_path = os.path.dirname(os.path.abspath(__file__))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+this_path = os.path.dirname(this_path)
+if not this_path in sys.path:
+    sys.path.append(this_path)
+
 from src.formatation.preprocessing import load_data
 from src.formatation.visualization import export_tree_to_graphviz
 from src.util.parameters import FILE_PATH, MODELS, MODELS_FOLDERS

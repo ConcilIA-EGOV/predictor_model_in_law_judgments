@@ -25,8 +25,18 @@ CANCELAMENTO = -1
 TARGET = 'Dano-Moral'
 BIN_COL = "Faixa-de-Valores"
 ID_COL = "sentenca"
+# Features to Remove
+REMOVED_FEATURES = [
+    'culpa_exclusiva_consumidor',
+    'fechamento_aeroporto',
+    "direito_de_arrependimento",
+    "descumprimento_de_oferta",
+]
 
-MODELS = ["DecisionTree", "RandomForest"]
+MODELS = [
+    "DecisionTree",
+    "RandomForest",
+]
 # diretório para salvar os modelos treinados
 MODELS_FOLDERS = {mn: f"model_{mn}/" for mn in MODELS}
 MODELS_FILES = {mn: f"{MODELS_FOLDERS[mn]}_Model.pkl" for mn in MODELS}

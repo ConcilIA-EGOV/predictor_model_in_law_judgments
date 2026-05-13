@@ -1,5 +1,14 @@
-import json, os
-from src.util.parameters import PIPELINE_LOG_PATH, LOG_PATH, LOG_DATA_PATH, start_data_log, MODELS_FOLDERS
+# Adiciona o diretório base do projeto ao caminho de busca do Python
+import sys, os
+this_path = os.path.dirname(os.path.abspath(__file__))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+this_path = os.path.dirname(this_path)
+if not this_path in sys.path:
+    sys.path.append(this_path)
+
+import json
+from util.parameters import PIPELINE_LOG_PATH, LOG_PATH, LOG_DATA_PATH, start_data_log, MODELS_FOLDERS
 
 os.makedirs(LOG_PATH, exist_ok=True)
 os.makedirs(LOG_DATA_PATH, exist_ok=True)
