@@ -1,13 +1,18 @@
 # Adiciona o diretório base do projeto ao caminho de busca do Python
 import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+this_path = os.path.dirname(os.path.abspath(__file__))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+this_path = os.path.dirname(this_path)
+if not this_path in sys.path:
+    sys.path.append(this_path)
 ###
 import json
 # -----------
 from sklearn.model_selection import GridSearchCV
 import joblib  # Para salvar o modelo
 
-from util.parameters import FILE_PATH, LOG_PATH, MODELS_FOLDERS, param_grids
+from util.parameters import FILE_PATH, LOG_PATH, LOG_DATA_PATH, MODELS_FOLDERS, param_grids
 from src.formatation.preprocessing import load_data
 
 from training import MODELS_CLS
@@ -31,7 +36,7 @@ def grid_search(X, y, model, param_grid):
     return best_params, best_score, best_model
 
 if __name__ == "__main__":
-    train, test = load_data(FILE_PATH)[0]
+    train, test = load_data(FILE_PATH, LOG_DATA_PATH)[0]
     X_train, y_train, _ = train
     X_test, y_test, _ = test
     X = X_train + X_test

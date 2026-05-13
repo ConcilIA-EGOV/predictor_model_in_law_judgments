@@ -35,10 +35,10 @@ def plot_graphic_from_csv(data: pd.DataFrame,
     reads a csv file with 2 columns,
     and plot a boxplot or pairplot graphic comparing them
     """
-    if 'intervalo' in data_col and not 'faixa' in data_col:
-        data.plot.scatter(x=data_col, y=res_col)
-    else:
-        data.boxplot(column=res_col, by=data_col)
+    # if 'intervalo' in data_col and not 'faixa' in data_col:
+    #     data.plot.scatter(x=data_col, y=res_col)
+    # else:
+    data.boxplot(column=res_col, by=data_col)
     plt.xlabel(data_col)
     plt.ylabel(res_col)
     plt.title(title)
@@ -119,6 +119,25 @@ def associate_id_with_target(df1: pd.DataFrame, df2: pd.DataFrame, id_col: str, 
     merged_df.to_csv("input/merged_with_target.csv", index=False)
     return merged_df
 
+
+def separate_features(data_folder:str, df: pd.DataFrame, cols:list[str], target_col:str):
+    log_file = f"{data_folder}_Features-log.md"
+    total = df.shape[0]
+    text = f"# TOTAL Cases: {total} - 100%\n"
+    for col in cols:
+        d = df[(df[col] != 0)]
+        d.to_csv(f"{data_folder}{col}.csv", index=False)
+        targ = d[target_col]
+        cases = targ.shape[0]
+        text += f"\n## {col}\n - Cases: {cases} - {round((cases/total)*100, 2)}%\n - Average: {round(targ.mean(), 2)}\n - Minimum: {targ.min()}\n - Maximum: {targ.max()}\n"
+
+    with open(log_file, 'w') as f:
+        f.write(text)
+
+
+from preprocessing import load_data
+from util.parameters import FILE_PATH, LOG_DATA_PATH, TARGET, ID_COL
+
 if __name__ == "__main__":
     # Adiciona o diretório base do projeto ao caminho de busca do Python
     import sys, os
@@ -126,3 +145,14 @@ if __name__ == "__main__":
     if not this_path in sys.path:
         sys.path.append(this_path)
     ###
+    train = load_data(FILE_PATH, LOG_DATA_PATH,
+                            balance=False, split=False,
+                            label=False)[0][0][0]
+
+    cols = list(train.columns)
+    cols.remove(TARGET)
+    # cols.remove(BIN_COL)
+    cols.remove(ID_COL)
+    test_dir = "_Separated_Features/"
+    os.makedirs(test_dir, exist_ok=True)
+    separate_features(test_dir, train, cols, TARGET)

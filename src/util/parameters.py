@@ -47,7 +47,7 @@ DT_PARAMS = {
     'criterion': 'poisson',
     'min_samples_split': 2,
     'max_features': 1.0,
-    'max_depth': 10,
+    'max_depth': None,
 }
 
 
@@ -57,7 +57,7 @@ RF_PARAMS = {
     'criterion': 'poisson',
     'n_estimators': 330,
     'max_features': 1.0,
-    'max_depth': 10,
+    'max_depth': None,
     'n_jobs': -1,
 }
 

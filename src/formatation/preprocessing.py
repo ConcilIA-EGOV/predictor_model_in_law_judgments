@@ -153,7 +153,7 @@ def load_data(csv_file: str, log_data_path:str,
 
     # Remove colunas não relacionadas ao experimento
     log_file_preprocessing.write("\n-----\nRemovendo colunas nao relacionadas...\n")
-    data, con = trim_columns(data)
+    data, con = trim_columns(data, log_data_path)
     log_file_preprocessing.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
     data.to_csv(f'{log_data_path}{steps}-Trimmed_data.csv', index=False)
     con.to_csv(f'{log_data_path}{steps}.5-Removed-Features.csv', index=False)
@@ -231,7 +231,17 @@ def load_data(csv_file: str, log_data_path:str,
 
 from util.parameters import FILE_PATH, LOG_PATH
 if __name__ == "__main__":
-    datasets = load_data(FILE_PATH, LOG_PATH + "Full/data")
-    datasets = load_data(FILE_PATH, LOG_PATH + "No-Split/data", split=False)
-    datasets = load_data(FILE_PATH, LOG_PATH + "No-Balancement/data", balance=False)
-    datasets = load_data(FILE_PATH, LOG_PATH + "No-Label-Split/data", label=False)
+    log1 = "_log-Full/data/"
+    log2 = "_log-No-Split/data/"
+    log3 = "_log-No-Balancement/data/"
+    log4 = "_log-No-Label-Split/data/"
+
+    os.makedirs(log1, exist_ok=True)
+    os.makedirs(log2, exist_ok=True)
+    os.makedirs(log3, exist_ok=True)
+    os.makedirs(log4, exist_ok=True)
+
+    datasets = load_data(FILE_PATH, log1)
+    datasets = load_data(FILE_PATH, log2, split=False)
+    datasets = load_data(FILE_PATH, log3, balance=False)
+    datasets = load_data(FILE_PATH, log4, label=False)

@@ -1,7 +1,13 @@
 # Adiciona o diretório base do projeto ao caminho de busca do Python
 import sys, os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+this_path = os.path.dirname(os.path.abspath(__file__))
+if not this_path in sys.path:
+    sys.path.append(this_path)
+this_path = os.path.dirname(this_path)
+if not this_path in sys.path:
+    sys.path.append(this_path)
 ###
+
 import shap
 import matplotlib.pyplot as plt
 import joblib as jl
@@ -73,7 +79,7 @@ if __name__ == '__main__':
         m_file = MODELS_FILES[mn]
         base_model = jl.load(m_file)
         # Carregar os dados
-        train, test  = load_data(FILE_PATH)[0]
+        train, test  = load_data(FILE_PATH, LOG_DATA_PATH)[0]
         X_train, y_train, _ = train
         X_test, y_test, _ = test
         # Calculate SHAP values

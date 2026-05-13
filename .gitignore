@@ -165,5 +165,7 @@ cython_debug/
 
 model_*/
 _logs/
+_log*/
+_Separated_Features/
 input/*.csv
 data/*.csv

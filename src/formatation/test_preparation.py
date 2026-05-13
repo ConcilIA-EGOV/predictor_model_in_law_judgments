@@ -86,6 +86,13 @@ def balance_data(data: pd.DataFrame, strategy: str | None,
     resampled : pd.DataFrame
         Conjunto balanceado.
     """
+    if BIN_COL not in data.columns:
+        update_data_log("Limite de tamanho para cada Faixa", FOLD_SIZE)
+        y_bin, step, nf = stratify(data[TARGET])
+        update_data_log("Tamanho de cada Faixa", round(step, 2))
+        update_data_log("Numero de Faixas de Valor", nf)
+        log_file_preparation.write(f"\n----\nDiscretizando o alvo contínuo em {nf} faixas com step = {step}\n")
+        data[BIN_COL] = y_bin.values
 
     if strategy is not None:
         ros = RandomOverSampler(sampling_strategy=strategy, random_state=random_state)

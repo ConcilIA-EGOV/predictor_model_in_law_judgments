@@ -1,22 +1,22 @@
 import os
 import pandas as pd
 
-from util.parameters import LOG_DATA_PATH, RANDOM_STATE, REMOVED_FEATURES
+from util.parameters import RANDOM_STATE, REMOVED_FEATURES
 from util.log_aux import append_to_data_log_list, log_file_preprocessing
 from formatation.feature_formatation import FUNCTIONS
 
-def trim_columns(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+def trim_columns(df: pd.DataFrame, log_data_path:str) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Remove colunas não relacionadas ao experimento e retorna os confactors
     """
-    df, con = feature_selection(df, REMOVED_FEATURES)
+    df, con = feature_selection(df, log_data_path, REMOVED_FEATURES)
     remove_columns = [col for col in df.columns if col not in FUNCTIONS.keys()]
     log_file_preprocessing.write(f"Removendo colunas: {remove_columns}\n")
     append_to_data_log_list('Features Removidas', remove_columns)
     df = df.drop(columns=remove_columns)
     return df, con
 
-def feature_selection(df: pd.DataFrame, remove_cols:list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
+def feature_selection(df: pd.DataFrame, log_data_path:str, remove_cols:list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Remove confatores do DataFrame e as retorna separadamente
     1. Identifica as colunas de confatores: culpa_exclusiva_consumidor e fechamento_aeroporto
@@ -34,7 +34,7 @@ def feature_selection(df: pd.DataFrame, remove_cols:list[str]) -> tuple[pd.DataF
     remove_cols = [c for c in remove_cols if c in df.columns]
     pro = df
     con = pd.DataFrame(columns=df.columns)
-    conf_dir = f"{LOG_DATA_PATH}/_confactors/"
+    conf_dir = f"{log_data_path}_confactors/"
     st_size = pro.shape[0]
     os.makedirs(conf_dir)
     for col in remove_cols:
@@ -78,7 +78,7 @@ def append_scores_log(scores_df: pd.DataFrame, scores, cols: list[str], col: str
     cols.append(col)
     scores_df[col] = [f"{i:.20f}" if i else "0.0" for i in scores] # type: ignore
 
-def filter_methods(X_df: pd.DataFrame, y_df: pd.Series):
+def filter_methods(X_df: pd.DataFrame, y_df: pd.Series, log_data_path:str):
     # Input must be a simple 2D array
     X = X_df.values
     # Target must be 1D array
@@ -148,7 +148,7 @@ def filter_methods(X_df: pd.DataFrame, y_df: pd.Series):
     # append_scores_log(scores_df, fs11[0], cols, "F Regression (F-Statistic)")
     # append_scores_log(scores_df, fs11[1], cols, "F Regression (P-value)")
 
-    scores_df.to_csv(f'{LOG_DATA_PATH}_FeatureSelection_Scores.csv', index=False)
+    scores_df.to_csv(f'{log_data_path}_FeatureSelection_Scores.csv', index=False)
 
     for col in cols:
         print_scores(scores_df, col)
