@@ -44,9 +44,9 @@ MODELS_FILES = {mn: f"{MODELS_FOLDERS[mn]}_Model.pkl" for mn in MODELS}
 DT_PARAMS = {
     'random_state': RANDOM_STATE,
     'splitter': 'best',
-    'criterion': 'poisson',
+    'criterion': 'squared_error',
     'min_samples_split': 2,
-    'max_features': 1.0,
+    'max_features': None,
     'max_depth': None,
 }
 
@@ -54,9 +54,9 @@ DT_PARAMS = {
 RF_PARAMS = {
     'random_state': RANDOM_STATE,
     'min_samples_split': 2,
-    'criterion': 'poisson',
-    'n_estimators': 330,
-    'max_features': 1.0,
+    'criterion': 'squared_error',
+    'n_estimators': 25,
+    'max_features': None,
     'max_depth': None,
     'n_jobs': -1,
 }

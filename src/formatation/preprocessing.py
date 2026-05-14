@@ -7,6 +7,8 @@ this_path = os.path.dirname(this_path)
 if not this_path in sys.path:
     sys.path.append(this_path)
 import pandas as pd
+# to avoid SettingWithCopyWarning
+# pd.set_option('future.no_silent_downcasting', True)
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
 from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, N_FOLDS
@@ -73,18 +75,25 @@ def format_data(df: pd.DataFrame) -> pd.DataFrame:
         ff.current_column = coluna  # setting the current column for logging
         ff.first_run = True  # indicating it's the first run for this column
         df[coluna] = df[coluna].apply(ff.FUNCTIONS[coluna])
-    # to avoid SettingWithCopyWarning
-    pd.set_option('future.no_silent_downcasting', True)
-    # combining intervalo_atraso and cancelamento into intervalo_atraso
+    # combining intervalo_atraso, noshow and cancelamento into intervalo_atraso
     if 'cancelamento' in df.columns and ('intervalo_atraso' in df.columns):
-        log_file_preprocessing.write("Combinando as colunas cancelamento e intervalo_atraso em intervalo_atraso\n")
-        c = df.loc[df['cancelamento'] == 1, 'intervalo_atraso']
         i = df.loc[df['intervalo_atraso'] == -1, 'cancelamento']
+        if 'noshow' in df.columns:
+            c = df.loc[(df['cancelamento'] == 1) | (df['noshow'] == 1), 'intervalo_atraso']
+            drop_cols = ['cancelamento', 'noshow']
+            # logging the change
+            log_file_preprocessing.write("Combinando as colunas cancelamento, noshow e intervalo_atraso em intervalo_atraso\n")
+            append_to_data_log_list("Alteracoes nas Features", f"cancelamento e noshow sao combinadas com intervalo_atraso, onde cancelamento=1 ou noshow=1 torna-se intervalo_atraso={CANCELAMENTO}")
+        else:
+            c = df.loc[df['cancelamento'] == 1, 'intervalo_atraso']
+            drop_cols = ['cancelamento']
+            # logging the change
+            log_file_preprocessing.write("Combinando as colunas cancelamento e intervalo_atraso em intervalo_atraso\n")
+            append_to_data_log_list("Alteracoes nas Features", f"cancelamento combinado com intervalo_atraso, onde cancelamento=1 torna-se intervalo_atraso={CANCELAMENTO}")
+
         ci = pd.concat([c, i]).index
         df.loc[ci, 'intervalo_atraso'] = CANCELAMENTO  # setting to the corresponding value
-        df = df.drop(columns=['cancelamento'])
-        # logging the change
-        append_to_data_log_list("Alteracoes nas Features", f"cancelamento e combinado com intervalo_atraso, onde cancelamento=1 torna-se intervalo_atraso={CANCELAMENTO}")
+        df = df.drop(columns=drop_cols)
     # Inverting the values of desamparo to make it a profactor
     des_col = 'desamparo'
     if des_col in df.columns:
@@ -105,8 +114,13 @@ def separate_features_labels_bins(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.
     Retorna features (X), labels (y) e bins (y_bin).
     """
     y = data[TARGET]
-    y_bin = data[BIN_COL]
-    X = data.drop(columns=[TARGET, BIN_COL, ID_COL])
+    if BIN_COL in data.columns:
+        y_bin = data[BIN_COL]
+        cols = [TARGET, BIN_COL, ID_COL]
+    else:
+        cols = [TARGET, ID_COL]
+        y_bin = data[TARGET]
+    X = data.drop(columns=cols)
     return X, y, y_bin
 
 def load_data(csv_file: str, log_data_path:str,
