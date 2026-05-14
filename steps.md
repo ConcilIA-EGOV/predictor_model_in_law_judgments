@@ -1,21 +1,15 @@
 - [ ] Plotar a distribuição do erro nos modelos
   - [ ] Estratificar em intervalos de 500 reais e observar a frequência
-- [ ] Testar mais modelos
-  - [ ] Linear Regression
-  - [ ] XG-boot
-  - [ ] Redes Neurais
-  - [ ] SVM
-  - [ ] naive bayes
-  - [ ] redes bayesianas
+- [ ] Escalonar os intervalos
 - [ ] Fazer fit de hiperparâmetros para todos os modelos.
-- [ ] Pesquisar mais como interpretar o gráfico SHAP
 - [ ] Modelo particionado
-   1. Quando é caso de atraso/cancelamento
+   1. [x] Quando é caso de atraso/cancelamento/noshow
    2. Outro(s) para o resto
-   3. Direito de arrependimento e Downgrade viram modelo de médias
+      1. Direito de arrependimento e Downgrade viram modelo de médias
 - [ ] Analizar os casos removidos e testá-los no modelo final
   - [ ] Criar outro modelo separado incluindo os casos removidos
 - [ ] Relatório de performance (tanto nas métricas quanto performance computacional)
+- [ ] Pesquisar mais como interpretar o gráfico SHAP
 
 # Talvez
 
@@ -35,6 +29,12 @@
 
 # Implementadas
 
+- [x] Testar mais modelos
+  - [x] Linear Regression
+  - [x] GradientBoost
+  - [x] Redes Neurais
+  - [x] SVM
+  - [x] naive bayes
 - [x] Feature Selection
   - [x] Usando Variancia abaixo de 5% como critério de eliminação
   - [x] Os features não são apenas ignorados, mas todas as entradas onde os features removidos são diferentes de 0 são eliminadas

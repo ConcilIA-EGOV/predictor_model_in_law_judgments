@@ -73,11 +73,12 @@ def main(models_names: list[str]):
         train, test = datasets[chosen]
         X_train = train[0]
         X_test = test[0]
-        # Calculate SHAP values
-        shap_values = get_values(model, X_train, X_test)
-        # Global explanation
-        explain_global(shap_values, N_features, MODELS_FOLDERS[mn])
-        print("-> Gráfico SHAP global salvo.")
+        if mn not in ["NeuralNetork", "NaiveBayes", "SVM"]:
+            # Calculate SHAP values
+            shap_values = get_values(model, X_train, X_test)
+            # Global explanation
+            explain_global(shap_values, N_features, MODELS_FOLDERS[mn])
+            print("-> Gráfico SHAP global salvo.")
 
         # Visualizations
         if mn == "DecisionTree":

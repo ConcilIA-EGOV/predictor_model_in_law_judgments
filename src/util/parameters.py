@@ -57,6 +57,11 @@ SUPORTED_COLS = [
 MODELS = [
     "DecisionTree",
     "RandomForest",
+    "GradientBoost",
+    "LinearRegression",
+    "NeuralNetork",
+    "SVM",
+    "NaiveBayes",
 ]
 # diretório para salvar os modelos treinados
 MODELS_FOLDERS = {mn: f"model_{mn}/" for mn in MODELS}
@@ -66,11 +71,16 @@ DT_PARAMS = {
     'random_state': RANDOM_STATE,
     'splitter': 'best',
     'criterion': 'squared_error',
-    'min_samples_split': 2,
-    'max_features': None,
     'max_depth': None,
+    'max_features': None,
+    "max_leaf_nodes":  None,
+    "min_samples_leaf":  1,
+    'min_samples_split': 2,
+    "min_weight_fraction_leaf":  0.0,
+    "min_impurity_decrease":  0.0,
+    "monotonic_cst":  None,
+    "ccp_alpha":  0.0,
 }
-
 
 RF_PARAMS = {
     'random_state': RANDOM_STATE,
@@ -82,10 +92,91 @@ RF_PARAMS = {
     'n_jobs': -1,
 }
 
+LR_PARAMS = {
+    "fit_intercept": True,
+    "copy_X": True,
+    "tol": 1e-06,
+    "n_jobs": -1,
+    "positive": False
+}
+
+GB_PARAMS = {
+    "loss": 'squared_error',
+    "learning_rate": 0.1,
+    "n_estimators": 100,
+    "subsample": 1.0,
+    "criterion": 'friedman_mse',
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "min_weight_fraction_leaf": 0.0,
+    "max_depth": None,
+    "min_impurity_decrease": 0.0,
+    "init": None,
+    "random_state": RANDOM_STATE,
+    "max_features": None,
+    "verbose": 0,
+    "max_leaf_nodes": None,
+    "warm_start": False,
+    "validation_fraction": 0.1,
+    "n_iter_no_change": None,
+    "tol": 0.0001,
+    "ccp_alpha": 0.0,
+}
+
+SVM_PARAMS = {
+    "kernel":  'poly', # ‘poly’, ‘rbf’, ‘sigmoid’, ‘linear’, ‘precomputed’
+    "degree":  3, # only for 'poly' kernel
+    "gamma":  'scale', # ‘scale’ (1/(N*X.var())) or ‘auto’ (1/N)
+    "coef0":  0.0, # for ‘poly’ and ‘sigmoid’
+    "tol":  0.001,
+    "C":  1.0, # Regularization parameter for rbf
+    "epsilon":  0.1, # epsilon-tube within which no penalty is associated in the training loss function
+    "shrinking":  True,
+    "cache_size":  200,
+    "verbose":  False,
+    "max_iter":  -1,
+}
+
+NN_PARAMS = {
+    "loss": 'squared_error',
+    "hidden_layer_sizes": (100, ),
+    "activation": 'relu', # {‘identity’, ‘logistic’, ‘tanh’, ‘relu’}
+    "solver": 'lbfgs', # {‘lbfgs’, ‘sgd’, ‘adam’}
+    "alpha": 0.0001,
+    "batch_size": 32, #'auto',
+    "learning_rate": 'adaptive', # {‘constant’, ‘invscaling’, ‘adaptive’}
+    "learning_rate_init": 0.001,
+    "power_t": 0.5,
+    "max_iter": 1000,
+    "shuffle": True,
+    "random_state": RANDOM_STATE,
+    "tol": 0.0001,
+    "verbose": False,
+    "warm_start": False,
+    "momentum": 0.9,
+    "nesterovs_momentum": True,
+    "early_stopping": False,
+    "validation_fraction": 0.1,
+    "beta_1": 0.9,
+    "beta_2": 0.999,
+    "epsilon": 1e-08,
+    "n_iter_no_change": 10,
+    "max_fun": 15000
+}
+
+NB_PARAMS = {
+    "priors": None, # Prior probabilities of the classes. If specified, the priors are not adjusted according to the data.
+    "var_smoothing": 1e-09, # Portion of the largest variance of all features that is added to variances for calculation stability.
+}
 
 MODELS_PARAMS = {
+    'DecisionTree': DT_PARAMS,
     'RandomForest': RF_PARAMS,
-    'DecisionTree': DT_PARAMS
+    "GradientBoost": GB_PARAMS,
+    "LinearRegression": LR_PARAMS,
+    "NeuralNetork": NN_PARAMS,
+    "SVM": SVM_PARAMS,
+    "NaiveBayes": NB_PARAMS,
 }
 
 start_data_log = {

@@ -1,10 +1,22 @@
 from joblib import dump
 import numpy as np
 import pandas as pd
-
+# https://scikit-learn.org/stable/modules/tree.html#minimal-cost-complexity-pruning
 from sklearn.metrics import root_mean_squared_error, mean_absolute_error
+# https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor
 from sklearn.tree import DecisionTreeRegressor
+# https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
 from sklearn.ensemble import RandomForestRegressor
+# https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+from sklearn.linear_model import LinearRegression
+# https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html
+from sklearn.ensemble import GradientBoostingRegressor
+# https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html#sklearn.svm.SVR
+from sklearn.svm import SVR
+# https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor
+from sklearn.neural_network import MLPRegressor
+# https://scikit-learn.org/stable/modules/naive_bayes.html
+from sklearn.naive_bayes import GaussianNB
 
 from util.parameters import MODELS_FOLDERS, MODELS_PARAMS, MODELS_FILES
 from util.log_aux import get_data_log
@@ -12,7 +24,12 @@ from util.log_aux import get_data_log
 
 MODELS_CLS = {
     "DecisionTree": DecisionTreeRegressor,
-    "RandomForest": RandomForestRegressor
+    "RandomForest": RandomForestRegressor,
+    "GradientBoost": GradientBoostingRegressor,
+    "LinearRegression": LinearRegression,
+    "NeuralNetork": MLPRegressor,
+    "NaiveBayes": GaussianNB,
+    "SVM": SVR,
 }
 
 
