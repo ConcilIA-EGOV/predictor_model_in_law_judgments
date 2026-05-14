@@ -13,6 +13,7 @@ run:
 
 SENT=0
 shap:
+	@rm -rf _logs*
 	@python src/shap_custom.py $(SENT)
 
 preprocessing:

@@ -17,6 +17,8 @@
   - [ ] Criar outro modelo separado incluindo os casos removidos
 - [ ] Relatório de performance (tanto nas métricas quanto performance computacional)
 
+# Talvez
+
 - [ ] Tornar o repositório capaz de rodar múltiplos testes diferentes parametrizáveis
   - [x] Testar diferentes Modelos de uma vez
   - [ ] Testar diferentes formatações e seleções de dados de uma vez
@@ -33,13 +35,14 @@
 
 # Implementadas
 
+- [x] Feature Selection
+  - [x] Usando Variancia abaixo de 5% como critério de eliminação
+  - [x] Os features não são apenas ignorados, mas todas as entradas onde os features removidos são diferentes de 0 são eliminadas
+  - [x] Técnicas de Feature Selection (wrappers \+ Boruta)
 - [x] Cross-Validation
       - Mas, para cada variação, é necessário encontrar o melhor conjunto de parâmetros, modelos e hiperparâmetros.
       - Depois achar as combinações que performam melhor na média
 - [x] Desenvolver um gerador automático de logs
-- [x] Técnicas de Feature Selection (wrappers \+ Boruta)
-       1. [\_FeatureSelection\_Scores.csv](https://drive.google.com/file/d/1fqA9ht-Jfs9rqblxvvUe-xy4yQ-3T6Ny/view)
-       2. [Comparação de Resultados](https://docs.google.com/spreadsheets/d/1SlSKaXtJJGj8WFjqJx3gtdYIup7hdCXDbXNYF59b4ZQ/edit?gid=0#gid=0) (esqueci de remover o balanceamento)
 - [x] Calcular algo similar ao MAPE, mas baseado no valor predito ao invés do real.
 - [x] O balanceamento e deve acontecer só no conjunto de treino
 - [x] Fazer gráficos de distribuição do valor de dano moral

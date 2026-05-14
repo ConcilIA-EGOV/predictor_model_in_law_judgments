@@ -11,6 +11,8 @@ RANDOM_STATE = 42
 # Outliers removal
 OUTLIERS_MIN_QUANTILE = 0.05
 OUTLIERS_MAX_QUANTILE = 0.95
+# Minimum tolerated variance
+VAR_THRESHOLD = 0.05 # 5%
 # Estratégia de balanceamento
 BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
 # tamanho do intervalo de cada faixa para balanceamento
@@ -25,12 +27,31 @@ CANCELAMENTO = -1
 TARGET = 'Dano-Moral'
 BIN_COL = "Faixa-de-Valores"
 ID_COL = "sentenca"
-# Features to Remove
-REMOVED_FEATURES = [
-    'culpa_exclusiva_consumidor',
-    'fechamento_aeroporto',
+
+SUPORTED_COLS = [
+    TARGET,
+    BIN_COL,
+    ID_COL,
+
+    "intervalo_atraso",
+    "cancelamento",
+    "desamparo",
+    'noshow',
+
+    "intervalo_extravio_temporario",
+    "violacao_furto_avaria",
+    "extravio_definitivo",
+    "hipervulneravel",
+    "overbooking",
+
     "direito_de_arrependimento",
     "descumprimento_de_oferta",
+
+    'culpa_exclusiva_consumidor',
+    'fechamento_aeroporto',
+
+    # 'extravio_temporario',
+    # 'atraso',
 ]
 
 MODELS = [
@@ -70,6 +91,7 @@ MODELS_PARAMS = {
 start_data_log = {
     "Numero de Instancias Originais": 0,
     "Features Removidas": [],
+    "Features Eliminadas": [],
     "Alteracoes nas Features": [],
     "Features Usadas": [],
     'Quantis de Outliers': f'min: {OUTLIERS_MIN_QUANTILE*100}% e max: {OUTLIERS_MAX_QUANTILE*100}%',

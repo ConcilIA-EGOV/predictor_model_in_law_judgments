@@ -12,7 +12,7 @@ import json
 from sklearn.model_selection import GridSearchCV
 import joblib  # Para salvar o modelo
 
-from util.parameters import FILE_PATH, LOG_PATH, LOG_DATA_PATH, MODELS_FOLDERS, param_grids
+from util.parameters import FILE_PATH, LOG_DATA_PATH, MODELS_FOLDERS, param_grids
 from src.formatation.preprocessing import load_data
 
 from training import MODELS_CLS

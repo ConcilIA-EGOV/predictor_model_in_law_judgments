@@ -1,42 +1,49 @@
 import os
 import pandas as pd
 
-from util.parameters import RANDOM_STATE, REMOVED_FEATURES
 from util.log_aux import append_to_data_log_list, log_file_preprocessing
-from formatation.feature_formatation import FUNCTIONS
+from util.parameters import TARGET, ID_COL, BIN_COL
 
-def trim_columns(df: pd.DataFrame, log_data_path:str) -> tuple[pd.DataFrame, pd.DataFrame]:
+def feature_selection(
+        df: pd.DataFrame,
+        log_data_path:str,
+        rnd_state:int,
+        var_threshold:float=0.05,
+    ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Remove colunas não relacionadas ao experimento e retorna os confactors
+    Parâmetros:
+        - df: dataset que será alterado
+        - log_data_path: o caminho para registrar as alterações
+        - rnd_state: random seed for reproductibility
+        - var_threshold: Variância mínima tolerada para menter um feature.
+        - features_to_ignore: nomes das features/colunas que serão desconsideradas (isto é, as colunas em si serão removidas, perdendo-se a informação de quais entradas/linhas possuiam valores não 0 nessas features)
+        - features_to_eliminate: nomes das features/coluns que, além de serem removidas, qualquer caso/linha onde possuam valor diferente de 0 será excluído,
+    Remove colunas não relacionadas ao experimento e retorna os casos removidos
     """
-    df, con = feature_selection(df, log_data_path, REMOVED_FEATURES)
-    remove_columns = [col for col in df.columns if col not in FUNCTIONS.keys()]
-    log_file_preprocessing.write(f"Removendo colunas: {remove_columns}\n")
-    append_to_data_log_list('Features Removidas', remove_columns)
-    df = df.drop(columns=remove_columns)
+    # Eliminating features anf any entry that has a non-zero value for them
+    features_to_keep = feature_exploration(df, log_data_path, var_threshold, rnd_state, verbose=False)
+    remove_columns = [col for col in df.columns if col not in features_to_keep]
+    df, con = feature_elimination(df, log_data_path, remove_columns)
+
+    append_to_data_log_list('Features Eliminadas', remove_columns)
     return df, con
 
-def feature_selection(df: pd.DataFrame, log_data_path:str, remove_cols:list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
+def feature_elimination(df: pd.DataFrame, log_data_path:str, remove_cols:list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Remove confatores do DataFrame e as retorna separadamente
-    1. Identifica as colunas de confatores: culpa_exclusiva_consumidor e fechamento_aeroporto
-    2. Se ambas as colunas existirem, separa as instâncias em dois grupos:
-       - Instâncias sem confatores (ambas as colunas iguais a 0)
-       - Instâncias com confatores (pelo menos uma das colunas igual a 1)
-    3. Registra o número de instâncias removidas e salva as instâncias com confatores em um arquivo CSV
-    4. Remove as colunas de confatores do DataFrame
-    5. Retorna o DataFrame sem as colunas de confatores
-    6. Loga todas as mudanças feitas no arquivo de log
-    7. Se uma das colunas de confatores já foi removida, utiliza a outra coluna para filtrar as instâncias
-    8. Se ambas as colunas de confatores foram removidas, não faz nada
+    1. Identifica as linhas/entradas onde o valor dos features a serem removidos é diferente de 0
+    2. Salva o dataset parcial só com as entradas removidas para cada feature em um csv em `log_data_path/_Discarded_Features/`
+    3. Remove todos as entradas com esses features != 0 na variável `pro`
+    4. Concatena todos os dados removidos na variável `con`
+    5. retorna `pro`e `con`
     """
 
     remove_cols = [c for c in remove_cols if c in df.columns]
     pro = df
     con = pd.DataFrame(columns=df.columns)
-    conf_dir = f"{log_data_path}_confactors/"
+    conf_dir = f"{log_data_path}_Discarded_Features/"
     st_size = pro.shape[0]
-    os.makedirs(conf_dir)
+    os.makedirs(conf_dir, exist_ok=True)
     for col in remove_cols:
         tmp = df[df[col] != 0]
         tmp.to_csv(f"{conf_dir}{col}.csv")
@@ -51,153 +58,148 @@ def feature_selection(df: pd.DataFrame, log_data_path:str, remove_cols:list[str]
     return pro, con
 
 
-# Feature Selection Methods
-
-# Statistical correlation methods
-from scipy.stats import kendalltau, spearmanr, pointbiserialr
-from sklearn.feature_selection import mutual_info_regression
-import numpy as np
-from sklearn.ensemble import RandomForestRegressor
-# Filtering Methods
-from sklearn.feature_selection import SelectKBest #, SelectPercentile
-from boruta import BorutaPy # https://github.com/scikit-learn-contrib/boruta_py
-
-def print_scores(scores_df: pd.DataFrame, col: str) -> None:
+def print_scores(scores_df: pd.DataFrame, col: str, reversed) -> None:
     scores = scores_df[col].tolist()
     cols = scores_df["Feature"].tolist()
     print(f"\n{col} Scores:")
     # formats a string to have 30 chars
     match = [(f"{cols[i]:30}:", v) for i, v in enumerate(scores)]
-    match = sorted(match, key=lambda x: float(x[1]), reverse=True)
-    match = [(f"{m[0]} {m[1]}" if float(m[1]) < 0.0 else f"{m[0]} 0{m[1]}") if abs(float(m[1])) < 10 else f"{m[0]} {m[1]}"  for m in match]
+    match = sorted(match, key=lambda x: float(x[1]), reverse=reversed)
+    match = [f"{m[0]} {m[1]}"  for m in match]
     log = " - " + "\n - ".join(match)
     print(log)
     # log_file.write(f"{log}\n")
 
+
 def append_scores_log(scores_df: pd.DataFrame, scores, cols: list[str], col: str) -> None:
     cols.append(col)
-    scores_df[col] = [f"{i:.20f}" if i else "0.0" for i in scores] # type: ignore
+    scores_df[col] = [f"{abs(i):.15f}" if i else "0.0" for i in scores] # type: ignore
 
-def filter_methods(X_df: pd.DataFrame, y_df: pd.Series, log_data_path:str):
+
+import warnings
+from scipy.stats import ConstantInputWarning
+warnings.filterwarnings("ignore", category=ConstantInputWarning)
+from scipy.stats import spearmanr
+from scipy.stats import kendalltau
+from scipy.stats import pointbiserialr
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import VarianceThreshold
+from sklearn.feature_selection import mutual_info_regression
+
+from test_preparation import stratify
+
+def feature_exploration(
+        X_df: pd.DataFrame,
+        log_data_path:str,
+        var_threshold:float,
+        rnd_state:int|None,
+        verbose:bool=False,
+        ) -> list[str]:
+    """
+    Executes Multiple exploration methods on the data
+    """
     # Input must be a simple 2D array
-    X = X_df.values
+    y_df = X_df[TARGET]
+    tmp = X_df.drop(columns=[TARGET, ID_COL])
+    col_names = tmp.columns.tolist()
+    X = tmp.values
     # Target must be 1D array
     y = y_df.to_numpy()
+    y_bin, _, _ = stratify(y_df)
+    y_bin = y_bin.to_numpy()
+    cols = []
+    reversed = []
+
 
     # Creates a dataframe to store the scores
     scores_df = pd.DataFrame(columns=["Feature"])
-    scores_df["Feature"] = X_df.columns.tolist()
+    scores_df["Feature"] = col_names
 
-    # gets feature importance ranking
-    ranking, _, _ = feature_importance(X, y)
+    # Feature Variance
+    vt = VarianceThreshold(threshold=var_threshold).fit(X)
+    var = vt.variances_.tolist()
 
-    cols = X_df.columns.tolist()
-    cols = sorted([(cols[i], ranking[i]) for i in range(len(cols))], key=lambda x: x[1])
-    # Adds the feature names to the dataframe
-    n_r = [c[1] for c in cols]
-    scores_df["Feature"] = [c[0] for c in cols]
+    # Sorts the feature names by their variance on the dataframe
+    cols_sorted = sorted([(col_names[i], var[i]) for i in range(len(col_names))], key=lambda x: x[1], reverse=True)
+    col_names = [n for n, _ in cols_sorted]
+    scores_df["Feature"] = col_names
     X = X_df[scores_df["Feature"].tolist()].values
 
-    cols = []
-    append_scores_log(scores_df, n_r, cols, "Boruta Ranking")
+    append_scores_log(scores_df, [v for _, v in cols_sorted], cols, "Variance")
+    reversed.append(1)
 
-    cols = []
-
+    # append_scores_log(scores_df, boruta(X_df, y_df, rnd_state), cols, "Boruta")
+    # reversed.append(1)
 
     # Better when both input and target are nominal
     # calculates the reduction in entropy from the transformation of a dataset
-    mir = lambda X, y: mutual_info_regression(X, y, random_state=RANDOM_STATE, discrete_features=True, copy=True)
-    fs00 = SelectKBest(score_func=mir, k='all').fit(X, y)
+    mir = lambda X, y: mutual_info_regression(X, y_bin, random_state=rnd_state, discrete_features=True, copy=True)
+    fs00 = SelectKBest(score_func=mir, k='all').fit(X, y_bin)
     append_scores_log(scores_df, fs00.scores_, cols, "Mutual Information Regression")
+    reversed.append(1)
 
-    # a correlation measure especially designed to evaluate the relationship between a binary and a continuous variable.
-    # is just a special case of Pearson's correlation,
-    # Makes strong normality assumptions
+    """
+    a correlation measure especially designed to evaluate the relationship between a binary and a continuous variable.
+    is just a special case of Pearson's correlation,
+    Makes strong normality assumptions
+    """
     pbs = [pointbiserialr(X[:, f], y) for f in range(X.shape[1])]
 
-    # Spearman’s rank correlation is an alternative to Pearson correlation for ratio/interval variables.
-    # As the name suggests, it only looks at the rank values,
-    # i.e. it compares the two variables in terms of the relative positions of particular data points within the variables.
-    #   measures the strength of a monotonic relationship (as one increases, the other tends to either increase too)
-    # It is able to capture non-linear relations, but there are no free lunches:
-    #   we lose some information due to only considering the rank instead of the exact data points.
+    """
+    Spearman’s rank correlation is an alternative to Pearson correlation for ratio/interval variables.
+    As the name suggests, it only looks at the rank values,
+    i.e. it compares the two variables in terms of the relative positions of particular data points within the variables.
+      measures the strength of a monotonic relationship (as one increases, the other tends to either increase too)
+    It is able to capture non-line to only considering the rank instead of the exact data points.
+    """
     rho = [spearmanr(X[:, f], y, nan_policy='omit') for f in range(X.shape[1])]
-
-    # Also rank-based like Spearman's rho,
-    # but uses concordant and discordant pairs of values, as opposed to Spearman’s calculations based on deviations
-    # It searches for pairs where if a value of one variable is higher than another,
-    #   the corresponding value of the other variable is also higher (concordant),
-    #   or lower (discordant).
-    # Kendall is often regarded as more robust to outliers in the data.
+    """
+    Also rank-based like Spearman's rho, but uses concordant and discordant pairs of values,
+     as opposed to Spearman’s calculations based on deviations
+    It searches for pairs where if a value of one variable is higher than another,
+      the corresponding value of the other variable is also higher (concordant),
+      or lower (discordant).re robust to outliers in the data.
+    """
     tau = [kendalltau(X[:, f], y, nan_policy='omit') for f in range(X.shape[1])]
 
     append_scores_log(scores_df, [p[0] for p in pbs], cols, "Point-Biserial r Statistic")
+    reversed.append(1)
     append_scores_log(scores_df, [r[0] for r in rho], cols, "Spearman's rho Statistic")
+    reversed.append(1)
     append_scores_log(scores_df, [t[0] for t in tau], cols, "Kendall's tau Statistic")
+    reversed.append(1)
 
-    # A p-value < 0.05 means the linear relationship is "statistically significant."
-    # A p-value > 0.05 means the linear relationship is not statistically significant (it could be due to random chance).
+    """
+    A p-value < 0.05 means the linear relationship is "statistically significant."
+    A p-value > 0.05 means the linear relationship is not statistically significant (it could be due to random chance).
+    """
     append_scores_log(scores_df, [p[1] for p in pbs], cols, "Point-Biserial r P-Value")
+    reversed.append(0)
     append_scores_log(scores_df, [r[1] for r in rho], cols, "Spearman's rho P-Value")
+    reversed.append(0)
     append_scores_log(scores_df, [t[1] for t in tau], cols, "Kendall's tau P-Value")
-
-
-    # # Uses pearson-r internally
-    # # Only for Linear Relationships, Assuming Normality on input and target
-    # fs11 = f_regression(X, y)
-    # append_scores_log(scores_df, fs11[0], cols, "F Regression (F-Statistic)")
-    # append_scores_log(scores_df, fs11[1], cols, "F Regression (P-value)")
-
+    reversed.append(0)
     scores_df.to_csv(f'{log_data_path}_FeatureSelection_Scores.csv', index=False)
 
-    for col in cols:
-        print_scores(scores_df, col)
+
+    if verbose:
+        for i in range(len(cols)):
+            col = cols[i]
+            rev = reversed[i] == 1
+            print_scores(scores_df, col, rev)
+
+    kept_cols = [n for n, v in cols_sorted if v >= var_threshold ]
+    kept_cols += [TARGET, ID_COL, BIN_COL]
+
+    return kept_cols
 
 
-def feature_importance(X: np.ndarray, y: np.ndarray) -> tuple[list, list, list]:
-    """
-    Feature importance techniques assign a score to each feature based on its contribution
-    to the predictive model's performance.
-    ---
-    Common methods include:
-    - Tree-based models (e.g., Random Forest, Gradient Boosting)
-    - Permutation Importance
-    - SHAP Values (SHapley Additive exPlanations)
-    """
-    est = RandomForestRegressor(n_estimators=100, random_state=RANDOM_STATE, n_jobs=-1)
-    bor = BorutaPy(estimator=est, verbose=0, random_state=RANDOM_STATE).fit(X, y)
-    ranking = bor.ranking_.tolist()
-    support = bor.support_.tolist()
-    sur_weak = bor.support_weak_.tolist()
-    return ranking, support, sur_weak
+from sklearn.ensemble import RandomForestRegressor
+from boruta import BorutaPy # https://github.com/scikit-learn-contrib/boruta_py
 
-# chi2 and f_classif are for classification tasks
-# r_regression just uses pearson correlation for all features
-# from sklearn.feature_selection import chi2, f_classif, r_regression, f_regression
-# association is for nominal data
-# from scipy.stats.contingency import association
-
-# Remove unsupervised methods, due to being unsuited to find the best features alone
-'''
-from sklearn.feature_selection import VarianceThreshold
-def unsupervised_methods(X: pd.DataFrame) -> pd.DataFrame:
-    """
-    Unsupervised methods use the intrinsic properties of the data to select predictors
-    without involving any predictive model.
-    ---
-    This function currently implements the Variance Threshold method,
-    which removes features with low variance across samples.
-    Features with variance below the specified threshold are considered less informative
-    and are removed from the dataset.
-    """
-    vt = VarianceThreshold(threshold=VARIANCE_THRESHOLD)
-    vt.fit(X)
-    var = vt.variances_.tolist()
-    print(f"VarianceThreshold variances: {var}\n")
-    X_vt = vt.fit_transform(X)
-    print(f"VarianceThreshold reduced features from {X.shape[1]} to {X_vt.shape[1]}")
-    removed_cols = [X.columns[i] for i in range(len(var)) if var[i] < VARIANCE_THRESHOLD]
-    print(f"VarianceThreshold removed columns: {removed_cols}\n")
-    X_vt = pd.DataFrame(X_vt, columns=vt.get_feature_names_out())
-    return X_vt
-'''
+def boruta(X: pd.DataFrame, y: pd.Series, rnd_state: int|None) -> list[int]:
+    # gets feature importance ranking
+    return BorutaPy(
+        estimator=RandomForestRegressor(random_state=rnd_state, n_jobs=-1),
+        verbose=0, random_state=rnd_state
+        ).fit(X, y).ranking_.tolist()

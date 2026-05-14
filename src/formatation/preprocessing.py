@@ -11,15 +11,18 @@ import pandas as pd
 # pd.set_option('future.no_silent_downcasting', True)
 
 from util.log_aux import append_to_data_log_list, update_data_log, log_file_preprocessing
-from util.parameters import BALANCE_STRATEGY, RANDOM_STATE, N_FOLDS
-from util.parameters import CANCELAMENTO, TARGET, BIN_COL, ID_COL
+from util.parameters import VAR_THRESHOLD, BALANCE_STRATEGY, RANDOM_STATE, SUPORTED_COLS
+from util.parameters import CANCELAMENTO, TARGET, BIN_COL, ID_COL, N_FOLDS
 import feature_formatation as ff
-from feature_selection import trim_columns
+from feature_selection import feature_selection
 from test_preparation import split_data, balance_data
 from filtering import remove_outliers, separate_zeros
 
-def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
+def feature_name_coherence(df: pd.DataFrame, suported_cols:list[str]) -> pd.DataFrame:
     """
+    parameters:
+        - df: dataframe que será alterado.
+        - suported_cols: features/colunas nessa lista serão desconsideradas (isto é, as colunas em si serão removidas, perdendo-se a informação de quais entradas/linhas possuiam valores não 0 nessas features)
     Garantir a coerência dos nomes das colunas
     1. Renomeia dano_moral_individual para Target
     1.5. Verifica se a coluna Target existe
@@ -30,11 +33,10 @@ def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     4. Renomeia assistencia_cia_aerea para desamparo
     5. Renomeia cancelamento/alteracao_destino para cancelamento
     6. Renomeia condicoes_climaticas/fechamento_aeroporto para fechamento_aeroporto
+    7. Remove colunas não reconhecidas
     7. Retorna o DataFrame com os nomes das colunas coerentes
     8. Loga todas as mudanças feitas no arquivo de log
     """
-    # to avoid SettingWithCopyWarning
-    pd.set_option('future.no_silent_downcasting', True)
     # renames dano_moral_individual to Target
     if 'dano_moral_individual' in df.columns:
         log_file_preprocessing.write("Renomeando coluna dano_moral_individual para {}\n".format(TARGET))
@@ -67,6 +69,11 @@ def feature_name_coherence(df: pd.DataFrame) -> pd.DataFrame:
     if 'condicoes_climaticas/fechamento_aeroporto' in df.columns:
         log_file_preprocessing.write("Renomeando coluna condicoes_climaticas/fechamento_aeroporto para fechamento_aeroporto\n")
         df.rename(columns={'condicoes_climaticas/fechamento_aeroporto': 'fechamento_aeroporto'}, inplace=True)
+
+    remove_columns = [col for col in df.columns if col not in suported_cols]
+    df = df.drop(columns=remove_columns)
+    log_file_preprocessing.write(f"Removidas as colunas: {remove_columns}\n")
+    append_to_data_log_list('Features Removidas', remove_columns)
     return df
 
 def format_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -134,10 +141,10 @@ def load_data(csv_file: str, log_data_path:str,
     Carregar e preparar os dados do arquivo CSV;
     Lê o arquivo de caminho `csv_file` usando pandas e salva os datasets intermediários em `log_data_path`
     Altera os nomes das colunas para evitar variações
-    Separa os dados em procedentes e não procedentes
-    Remove colunas não relacionadas ao experimento
     Formata os dados conforme necessário
+    Separa os dados em procedentes e não procedentes
     Remove outliers
+    Seleciona os melhores features e elimina entradas que dependam dos features removidos
     Salva o arquivo principal formatado
     Se split=True
         Divide os dados em conjuntos de treino e teste
@@ -160,16 +167,22 @@ def load_data(csv_file: str, log_data_path:str,
     steps += 1
 
     # Garantir a coerência dos nomes das colunas
-    data = feature_name_coherence(data)
+    data = feature_name_coherence(data, SUPORTED_COLS)
     log_file_preprocessing.write(f"\n---\nColunas após coerencia de nomes: {data.columns.tolist()}\n")
     data.to_csv(f'{log_data_path}{steps}-Coherent_names.csv', index=False)
     steps += 1
 
-    # Remove colunas não relacionadas ao experimento
-    log_file_preprocessing.write("\n-----\nRemovendo colunas nao relacionadas...\n")
-    data, con = trim_columns(data, log_data_path)
-    log_file_preprocessing.write(f"\n-----\nColunas apos remoçao: {data.columns.tolist()}\n")
-    data.to_csv(f'{log_data_path}{steps}-Trimmed_data.csv', index=False)
+    # Formata os features conforme necessário
+    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
+    data = format_data(data)
+    data.to_csv(f'{log_data_path}{steps}-Formatted_data.csv', index=False)
+    steps += 1
+
+    # Feature Selection
+    log_file_preprocessing.write("\n-----\nSelecionando os melhores features\n")
+    data, con = feature_selection(data, log_data_path, RANDOM_STATE, VAR_THRESHOLD)
+    log_file_preprocessing.write(f"\n-----\nFeatures Selecionados: {data.columns.tolist()}\n")
+    data.to_csv(f'{log_data_path}{steps}-Selected-Features.csv', index=False)
     con.to_csv(f'{log_data_path}{steps}.5-Removed-Features.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
     steps += 1
@@ -186,12 +199,6 @@ def load_data(csv_file: str, log_data_path:str,
     data, df_out = remove_outliers(data)
     data.to_csv(f'{log_data_path}{steps}-No-Outliers.csv', index=False)
     df_out.to_csv(f'{log_data_path}{steps}.5-Outliers.csv', index=False)
-    steps += 1
-
-    # Formata os features conforme necessário
-    log_file_preprocessing.write("\n-----\nFormatando dados...\n")
-    data = format_data(data)
-    data.to_csv(f'{log_data_path}{steps}-Formatted_data.csv', index=False)
     steps += 1
 
     # storing the main data
@@ -239,23 +246,27 @@ def load_data(csv_file: str, log_data_path:str,
                 )
             )
         else:
-            output.append(((train, 0), (test, 0)))
+            output.append(((train, train[TARGET], train[TARGET]), (test, test[TARGET], train[TARGET])))
 
     return output
 
-from util.parameters import FILE_PATH, LOG_PATH
+from util.parameters import FILE_PATH, LOG_PATH, LOG_DATA_PATH
+from feature_selection import feature_exploration
 if __name__ == "__main__":
-    log1 = "_log-Full/data/"
-    log2 = "_log-No-Split/data/"
-    log3 = "_log-No-Balancement/data/"
-    log4 = "_log-No-Label-Split/data/"
+    # log1 = "_log-Full/data/"
+    # os.makedirs(log1, exist_ok=True)
+    # datasets1 = load_data(FILE_PATH, log1)
+    # log2 = "_log-No-Split/data/"
+    # os.makedirs(log2, exist_ok=True)
+    # datasets2 = load_data(FILE_PATH, log2, split=False)
+    # log3 = "_log-No-Balancement/data/"
+    # os.makedirs(log3, exist_ok=True)
+    # datasets3 = load_data(FILE_PATH, log3, balance=False)
+    # log4 = "_log-No-Label-Split/data/"
+    # os.makedirs(log4, exist_ok=True)
+    # datasets4 = load_data(FILE_PATH, log4, label=False)
 
-    os.makedirs(log1, exist_ok=True)
-    os.makedirs(log2, exist_ok=True)
-    os.makedirs(log3, exist_ok=True)
-    os.makedirs(log4, exist_ok=True)
+    datasets0 = load_data(FILE_PATH, LOG_DATA_PATH, split=False, balance=False, label=False)
 
-    datasets = load_data(FILE_PATH, log1)
-    datasets = load_data(FILE_PATH, log2, split=False)
-    datasets = load_data(FILE_PATH, log3, balance=False)
-    datasets = load_data(FILE_PATH, log4, label=False)
+    X, _, _ = datasets0[0][0]
+    _ = feature_exploration(X, LOG_DATA_PATH, VAR_THRESHOLD, RANDOM_STATE, verbose=True)

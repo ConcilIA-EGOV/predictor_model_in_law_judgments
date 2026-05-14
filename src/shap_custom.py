@@ -87,7 +87,7 @@ if __name__ == '__main__':
         #
         N_features = X_test.shape[1]
         # Is needed to map the sentence number to its index in X_test
-        X_test = pd.read_csv(f'{LOG_DATA_PATH}Test.csv')
+        X_test = pd.read_csv(f'{LOG_DATA_PATH}6-Preprocessed.csv')
         # receive the arguments from the command line
         args = sys.argv[1:]
         # check if the arguments are empty
