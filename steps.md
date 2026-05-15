@@ -1,7 +1,4 @@
-- [ ] Plotar a distribuição do erro nos modelos
-  - [ ] Estratificar em intervalos de 500 reais e observar a frequência
-- [ ] Escalonar os intervalos
-- [ ] Fazer fit de hiperparâmetros para todos os modelos.
+- [ ] Prunning das árvores
 - [ ] Modelo particionado
    1. [x] Quando é caso de atraso/cancelamento/noshow
    2. Outro(s) para o resto
@@ -13,6 +10,7 @@
 
 # Talvez
 
+- [ ] Fazer fit de hiperparâmetros para todos os modelos.
 - [ ] Tornar o repositório capaz de rodar múltiplos testes diferentes parametrizáveis
   - [x] Testar diferentes Modelos de uma vez
   - [ ] Testar diferentes formatações e seleções de dados de uma vez
@@ -29,6 +27,15 @@
 
 # Implementadas
 
+- [x] Plotar a distribuição do erro nos modelos
+  - [x] Estratificar em intervalos de 250 reais e observar a frequência
+- [x] Combinar extravio definitivo e intervalo de extravio
+  - Só piora muito todos os modelos.
+  - Da mesma forma para avaria
+  - Ou para tentar combinar overbooking com atraso.
+- [x] Escalonar os intervalos
+  - Não melhora a regressão linear nem redes neurais
+  - Elevar ao quadrado também não ajuda
 - [x] Testar mais modelos
   - [x] Linear Regression
   - [x] GradientBoost

@@ -2,7 +2,7 @@ from joblib import dump
 import numpy as np
 import pandas as pd
 # https://scikit-learn.org/stable/modules/tree.html#minimal-cost-complexity-pruning
-from sklearn.metrics import root_mean_squared_error, mean_absolute_error
+
 # https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor
 from sklearn.tree import DecisionTreeRegressor
 # https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
@@ -18,7 +18,7 @@ from sklearn.neural_network import MLPRegressor
 # https://scikit-learn.org/stable/modules/naive_bayes.html
 from sklearn.naive_bayes import GaussianNB
 
-from util.parameters import MODELS_FOLDERS, MODELS_PARAMS, MODELS_FILES
+from util.parameters import MODELS_PARAMS
 from util.log_aux import get_data_log
 
 
@@ -48,7 +48,7 @@ def train_model(model, X, y):
     return model
 
 
-def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[float, float, float, float, list[str]]:
+def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[float, float, float, float, list[str], np.ndarray]:
     '''
     Testar o modelo usando o conjunto de teste
     Retorna RMSE, MAE, MAPE e resultados por faixa de valores
@@ -56,12 +56,15 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[flo
     # Make predictions
     predictions = model.predict(X)
 
+    errors = (y - predictions)
     # Calculate the RMSE, MAE and proportional MAE overall
-    rmse_all = root_mean_squared_error(y, predictions)
+    rmse_all = np.sqrt(np.mean(errors**2))
+
     # Calculate the percentual MAE
-    mape_all = np.mean(np.abs((y - predictions) / y)) * 100
-    mape_x_all = np.mean(np.abs((y - predictions) / predictions)) * 100
-    mae_all = mean_absolute_error(y, predictions)
+    abs_error = np.abs(errors)
+    mae_all = np.mean(abs_error)
+    mape_all = np.mean(abs_error / y) * 100
+    mape_x_all = np.mean(abs_error / predictions) * 100
 
     # Calculate the RMSE, and MAE for each fold
     df = pd.DataFrame({"y_true": y, "y_pred": predictions, "fold": y_bin})
@@ -70,28 +73,33 @@ def test_model(model, X:pd.DataFrame, y:pd.Series, y_bin:pd.Series) -> tuple[flo
         if len(grupo) == 0:
             continue
         faixa = int(faixa) # type: ignore
-        mininmo = grupo['y_true'].min()
-        maximo = grupo['y_true'].max()
-        mae = mean_absolute_error(grupo['y_true'], grupo['y_pred'])
-        rmse = root_mean_squared_error(grupo['y_true'], grupo['y_pred'])
-        mape = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_true'])) * 100
-        mape_x = np.mean(np.abs((grupo['y_true'] - grupo['y_pred']) / grupo['y_pred'])) * 100
+        y_true = grupo['y_true']
+        y_pred = grupo['y_pred']
+        mininmo = y_true.min()
+        maximo = y_true.max()
+        group_error = (y_true - y_pred)
+        abs_error = np.abs(group_error)
+        rmse = np.sqrt(np.mean(group_error**2))
+        mae = np.mean(abs_error)
+        mape = np.mean(abs_error / y_true) * 100
+        mape_x = np.mean(abs_error / y_pred) * 100
         resultados.append(f"""Faixa {
             faixa + 1
-            }:\n\t - MAE:  {round(mae,2
-            )}\n\t - RMSE: {round(rmse,2
+            }:\n\t - RMSE:  {round(rmse,2
+            )}\n\t - MAE: {round(mae,2
             )}\n\t - MAPE: {round(mape,2
             )}%\n\t - MAPE X: {round(mape_x,2
             )}%\n\t - N Amostras: {len(grupo
             )}\n\t - Valores: {mininmo} a {maximo}""")
-    return (rmse_all, mae_all, mape_all, mape_x_all, resultados)
+    return (rmse_all, mae_all, mape_all, mape_x_all, resultados, errors)
 
 
-def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
+def save_model(model, model_name:str, model_file:str, save_path:str, bs_rmse:float, bs_mae:float,
+               bs_mape:float, bs_mape_x:float, folds:list[str]):
     """
     Salvar o modelo treinado em um arquivo e os logs de performance em outro
     """
-    log_file = open(f'{MODELS_FOLDERS[model_name]}Model-log.txt', 'w')
+    log_file = open(f'{save_path}Model-log.txt', 'w')
     log_file.write('Parametros da Pipeline:\n')
     for key, value in get_data_log().items():
         if isinstance(value, list):
@@ -120,4 +128,4 @@ def save_model(model, model_name, bs_rmse, bs_mae, bs_mape, bs_mape_x, folds):
     # Log dos dados usados
     log_file.close()
     # Save the base model
-    dump(model, f'{MODELS_FILES[model_name]}')
+    dump(model, model_file)

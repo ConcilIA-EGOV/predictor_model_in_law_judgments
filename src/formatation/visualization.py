@@ -1,5 +1,6 @@
 from sklearn.tree import plot_tree, export_graphviz
 import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 import numpy as np
 import graphviz
@@ -29,15 +30,20 @@ def export_tree_to_graphviz(model, feature_names, path:str):
     graph.render(f"{path}arvore_decisao", format="pdf", cleanup=True)
 
 
+def plot_distribution(data, model_name:str, path:str):
+    # create histogram
+    bins = int((data.max() - data.min()) / 250)
+    sns.displot(data, kde=True, bins=bins)
+    plt.title(f"{model_name} - Distribuição de Erros")
+    plt.savefig(f"{path}{model_name}-ErrorDistribution.png", dpi=300)
+
+
 def plot_graphic_from_csv(data: pd.DataFrame,
         data_col:str,res_col:str,title:str):
     """
     reads a csv file with 2 columns,
     and plot a boxplot or pairplot graphic comparing them
     """
-    # if 'intervalo' in data_col and not 'faixa' in data_col:
-    #     data.plot.scatter(x=data_col, y=res_col)
-    # else:
     data.boxplot(column=res_col, by=data_col)
     plt.xlabel(data_col)
     plt.ylabel(res_col)

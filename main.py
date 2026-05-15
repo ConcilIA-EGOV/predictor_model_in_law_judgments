@@ -8,9 +8,9 @@ if not this_path in sys.path:
     sys.path.append(this_path)
 
 from src.formatation.preprocessing import load_data
-from src.formatation.visualization import export_tree_to_graphviz
+from src.formatation.visualization import export_tree_to_graphviz, plot_distribution
 from src.util.parameters import FILE_PATH, LOG_DATA_PATH
-from src.util.parameters import MODELS, MODELS_FOLDERS
+from src.util.parameters import MODELS, MODELS_FOLDERS, MODELS_FILES
 from src.shap_custom import explain_global, get_values
 from src.training import train_model, test_model, save_model, get_model_instance
 
@@ -36,13 +36,13 @@ def main(models_names: list[str]):
             train_model(model, X_train, y_train)
 
             # Make predictions with the base model
-            (var_rmse, var_mae, var_mape, var_mape_x, folds) = test_model(model, X_test, y_test, bin_test)
+            (var_rmse, var_mae, var_mape, var_mape_x, folds, errors) = test_model(model, X_test, y_test, bin_test)
             avg_rmse += var_rmse
             avg_mae += var_mae
             avg_mape += var_mape
             avg_mape_x += var_mape_x
             print(f'    {i+1} -> RMSE: {var_rmse:.2f} - MAE: {var_mae:.2f} - MAPE: {var_mape:.2f}% - MAPE X: {var_mape_x:.2f}%')
-            scores.append((var_rmse, var_mae, var_mape, var_mape_x, folds, model))
+            scores.append((var_rmse, var_mae, var_mape, var_mape_x, folds, model, errors))
 
         # Evaluate the best model
         print(f"\n-> Avaliando o modelo medio para {mn}...")
@@ -57,16 +57,18 @@ def main(models_names: list[str]):
         print(f'    --> AVG MAPE X: {avg_mape_x:.2f}%')
 
         lowest = avg_rmse
-        folds = []
         chosen = -1
         for i, inst in enumerate(scores):
-            var_rmse, var_mae, var_mape, var_mape_x, _, _ = inst
+            var_rmse = inst[0]
             if abs(avg_rmse - var_rmse) < lowest:
                 lowest = abs(avg_rmse - var_rmse)
                 chosen = i
 
-        rmse, mae, mape, mape_x, folds, model = scores[chosen]
-        save_model(model, mn, rmse, mae, mape, mape_x, folds)
+        rmse, mae, mape, mape_x, folds, model, errors = scores[chosen]
+        save_model(model, mn, MODELS_FILES[mn], MODELS_FOLDERS[mn], rmse, mae, mape, mape_x, folds)
+
+        # plot error distribution
+        plot_distribution(errors, mn, MODELS_FOLDERS[mn])
         print(f"\nModelo {mn} {chosen+1} salvo.")
 
         # SHAP explainability
