@@ -12,7 +12,7 @@ RANDOM_STATE = 42
 OUTLIERS_MIN_QUANTILE = 0.05
 OUTLIERS_MAX_QUANTILE = 0.95
 # Minimum tolerated variance
-VAR_THRESHOLD = 0.05 # 5%
+VAR_THRESHOLD = 0.5
 # Estratégia de balanceamento
 BALANCE_STRATEGY = 'not majority' # 'all', 'not majority', 'not minority', 'minority', 'auto'
 # tamanho do intervalo de cada faixa para balanceamento
