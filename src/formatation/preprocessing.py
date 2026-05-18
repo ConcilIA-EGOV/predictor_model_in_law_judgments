@@ -178,6 +178,13 @@ def load_data(csv_file: str, log_data_path:str,
     data.to_csv(f'{log_data_path}{steps}-Formatted_data.csv', index=False)
     steps += 1
 
+    # Separa os dados em procedentes e não procedentes
+    log_file_preprocessing.write("\n-----\nSeparando dados procedentes e nao procedentes...\n")
+    ip, data = separate_zeros(data)
+    data.to_csv(f'{log_data_path}{steps}-Procedentes.csv', index=False)
+    ip.to_csv(f'{log_data_path}{steps}.5-Improcedentes.csv', index=False)
+    steps += 1
+
     # Feature Selection
     log_file_preprocessing.write("\n-----\nSelecionando os melhores features\n")
     data, con = feature_selection(data, log_data_path, RANDOM_STATE, VAR_THRESHOLD)
@@ -185,13 +192,6 @@ def load_data(csv_file: str, log_data_path:str,
     data.to_csv(f'{log_data_path}{steps}-Selected-Features.csv', index=False)
     con.to_csv(f'{log_data_path}{steps}.5-Removed-Features.csv', index=False)
     append_to_data_log_list("Features Usadas", list(data.columns[1:-1]))  # all except target
-    steps += 1
-
-    # Separa os dados em procedentes e não procedentes
-    log_file_preprocessing.write("\n-----\nSeparando dados procedentes e nao procedentes...\n")
-    ip, data = separate_zeros(data)
-    data.to_csv(f'{log_data_path}{steps}-Procedentes.csv', index=False)
-    ip.to_csv(f'{log_data_path}{steps}.5-Improcedentes.csv', index=False)
     steps += 1
 
      # Remove outliers

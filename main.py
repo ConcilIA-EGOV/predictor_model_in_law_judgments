@@ -17,7 +17,7 @@ from src.training import train_model, test_model, save_model, get_model_instance
 # Função principal para executar o pipeline
 def main(models_names: list[str]):
     # Load the dataset
-    datasets = load_data(FILE_PATH, LOG_DATA_PATH)
+    datasets = load_data(FILE_PATH, LOG_DATA_PATH, balance=False)
     N_features = datasets[0][0][0].shape[1]
     print("-> Dados carregados.")
 

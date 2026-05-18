@@ -47,8 +47,8 @@ SUPORTED_COLS = [
     "direito_de_arrependimento",
     "descumprimento_de_oferta",
 
-    'culpa_exclusiva_consumidor',
-    'fechamento_aeroporto',
+    # 'culpa_exclusiva_consumidor',
+    # 'fechamento_aeroporto',
 
     # 'extravio_temporario',
     # 'atraso',

@@ -1,7 +1,6 @@
-- [ ] Prunning das árvores
 - [ ] Modelo particionado
    1. [x] Quando é caso de atraso/cancelamento/noshow
-   2. Outro(s) para o resto
+   2. [ ] Outro(s) para o resto
       1. Direito de arrependimento e Downgrade viram modelo de médias
 - [ ] Analizar os casos removidos e testá-los no modelo final
   - [ ] Criar outro modelo separado incluindo os casos removidos
@@ -49,9 +48,9 @@
 - [x] Cross-Validation
       - Mas, para cada variação, é necessário encontrar o melhor conjunto de parâmetros, modelos e hiperparâmetros.
       - Depois achar as combinações que performam melhor na média
-- [x] Desenvolver um gerador automático de logs
 - [x] Calcular algo similar ao MAPE, mas baseado no valor predito ao invés do real.
 - [x] O balanceamento e deve acontecer só no conjunto de treino
+- [x] Desenvolver um gerador automático de logs
 - [x] Fazer gráficos de distribuição do valor de dano moral
     1. [Exploração (Orange)](https://drive.google.com/drive/u/0/folders/1DvvW3kKk3EywpfABm--hK27BixCdlpYg)
 - [x] Inserir a data como variável
