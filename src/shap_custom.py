@@ -12,8 +12,11 @@ import shap
 import matplotlib.pyplot as plt
 import joblib as jl
 import pandas as pd
-from util.parameters import MODELS, MODELS_FILES, MODELS_FOLDERS, FILE_PATH, LOG_DATA_PATH
+
+from util.parameters import FILE_PATH, LOG_DATA_PATH
+from util.parameters import BEST_MODEL_PATH, OUT_PATH
 from src.formatation.preprocessing import load_data
+from src.training import MODELS
 
 
 def get_values(model, X_train, X_test) -> shap.Explanation | list[shap.Explanation]:
@@ -74,33 +77,33 @@ def explain_global(shap_values, N_features, path:str):
 
 
 if __name__ == '__main__':
-    for mn in MODELS:
-        # Importar o modelo base
-        m_file = MODELS_FILES[mn]
-        base_model = jl.load(m_file)
-        # Carregar os dados
-        train, test  = load_data(FILE_PATH, LOG_DATA_PATH)[0]
-        X_train, y_train, _ = train
-        X_test, y_test, _ = test
-        # Calculate SHAP values
-        shap_values = get_values(base_model, X_train, X_test)
-        #
-        N_features = X_test.shape[1]
-        # Is needed to map the sentence number to its index in X_test
-        X_test = pd.read_csv(f'{LOG_DATA_PATH}6-Preprocessed.csv')
-        # receive the arguments from the command line
-        args = sys.argv[1:]
-        # check if the arguments are empty
-        if len(args) > 0 and args[0].isdigit() and int(args[0]) > 0:
-            sent_num = int(args[0])
-            try:
-                sent_pos = map_sentences_idx(X_test, sent_num)
-                print(f"Explaining sentence: {sent_num}")
-                explain_prediction(shap_values, N_features, MODELS_FOLDERS[mn], sent_num, sent_pos)
-            except Exception as e:
-                print("Error explaining the sentence:", sent_num)
-                print(e)
-        else:
-            print("No sentence provided.\nWill explain globally")
-            explain_global(shap_values, N_features, MODELS_FOLDERS[mn])
-            print(args)
+    # Importar o modelo base
+    if not os.path.exists(BEST_MODEL_PATH):
+        raise Exception("Train the Model First")
+    base_model = jl.load(BEST_MODEL_PATH)
+    # Carregar os dados
+    train, test  = load_data(FILE_PATH, LOG_DATA_PATH)[0]
+    X_train, y_train, _ = train
+    X_test, y_test, _ = test
+    # Calculate SHAP values
+    shap_values = get_values(base_model, X_train, X_test)
+    #
+    N_features = X_test.shape[1]
+    # Is needed to map the sentence number to its index in X_test
+    X_test = pd.read_csv(f'{LOG_DATA_PATH}6-Preprocessed.csv')
+    # receive the arguments from the command line
+    args = sys.argv[1:]
+    # check if the arguments are empty
+    if len(args) > 0 and args[0].isdigit() and int(args[0]) > 0:
+        sent_num = int(args[0])
+        try:
+            sent_pos = map_sentences_idx(X_test, sent_num)
+            print(f"Explaining sentence: {sent_num}")
+            explain_prediction(shap_values, N_features, OUT_PATH, sent_num, sent_pos)
+        except Exception as e:
+            print("Error explaining the sentence:", sent_num)
+            print(e)
+    else:
+        print("No sentence provided.\nWill explain globally")
+        explain_global(shap_values, N_features, OUT_PATH)
+        print(args)

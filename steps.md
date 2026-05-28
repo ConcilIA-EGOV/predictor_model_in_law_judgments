@@ -1,31 +1,19 @@
+# Talvez
+
 - [ ] Modelo particionado
    1. [x] Quando é caso de atraso/cancelamento/noshow
    2. [ ] Outro(s) para o resto
-      1. Direito de arrependimento e Downgrade viram modelo de médias
-- [ ] Analizar os casos removidos e testá-los no modelo final
-  - [ ] Criar outro modelo separado incluindo os casos removidos
-- [ ] Relatório de performance (tanto nas métricas quanto performance computacional)
-- [ ] Pesquisar mais como interpretar o gráfico SHAP
-
-# Talvez
-
-- [ ] Fazer fit de hiperparâmetros para todos os modelos.
-- [ ] Tornar o repositório capaz de rodar múltiplos testes diferentes parametrizáveis
-  - [x] Testar diferentes Modelos de uma vez
-  - [ ] Testar diferentes formatações e seleções de dados de uma vez
-- [ ] Criar uma Wiki compreensiva do repositório
 - [ ] Correção Monetária dos Valores para 2025
     1. Talvez usando IPCA
-- [ ] Features de casos especiais
-    1. Juiz
-    2. Pandemia
-    3. Outros Períodos excepcionais
-- [ ] Weight Classification para substituir o balanceamento
-    1. [How to Remove Outliers for Machine Learning - MachineLearningMastery.com](https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)
-    2. Dar pesos para as instâncias, ou para o erro
+- [ ] Criar uma Wiki compreensiva do repositório
 
 # Implementadas
 
+- [x] Fazer fit de hiperparâmetros para todos os modelos.
+  - [x] Geração automática de uma tabela comparativa
+  - [x] Coletor de melhor modelo/conjunto
+- [x] Model Evaluation (obter média e desvio padrão para o conjunto de avaliação e não alterar mais)
+  - Repeated Holdout: Separar 20% dos dados 5 vezes, executar a pipeline toda (só com o DecisionTree) nos 80% selcionados e selecionar o melhor modelo, depois avaliar nos 20% que sobraram 5 vezes. Aí escolher o modelo mais próximo da média e não mexer mais.
 - [x] Plotar a distribuição do erro nos modelos
   - [x] Estratificar em intervalos de 250 reais e observar a frequência
 - [x] Combinar extravio definitivo e intervalo de extravio

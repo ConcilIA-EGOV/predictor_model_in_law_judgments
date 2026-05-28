@@ -7,6 +7,9 @@ if not this_path in sys.path:
 import pandas as pd
 import numpy as np
 import math
+import warnings
+warnings.filterwarnings("ignore")
+
 from imblearn.over_sampling import RandomOverSampler
 from sklearn.model_selection import StratifiedKFold
 

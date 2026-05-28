@@ -8,7 +8,7 @@ all:
 
 run:
 	@rm -rf _logs
-	@rm -rf model_*
+	@rm -rf _Model_*
 	@python main.py
 
 SENT=0
@@ -35,4 +35,5 @@ clean:
 	@rm -rf _logs
 	@rm -rf _log*
 	@rm -rf model_*
+	@rm -rf _Model_*
 	@clear

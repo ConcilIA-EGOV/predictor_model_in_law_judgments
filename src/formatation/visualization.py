@@ -36,6 +36,7 @@ def plot_distribution(data, model_name:str, path:str):
     sns.displot(data, kde=True, bins=bins)
     plt.title(f"{model_name} - Distribuição de Erros")
     plt.savefig(f"{path}{model_name}-ErrorDistribution.png", dpi=300)
+    plt.clf()
 
 
 def plot_graphic_from_csv(data: pd.DataFrame,
@@ -62,6 +63,7 @@ def plot_all_columns(df: pd.DataFrame, res_col: str, drop_cols: list):
         new_df = pd.DataFrame(new_matrix, columns=[col, res_col])
         plot_graphic_from_csv(new_df, col, res_col, title)
     plt.show()
+    plt.close()
 
 
 def feature_importance(model, X, path):

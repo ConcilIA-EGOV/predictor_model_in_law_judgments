@@ -163,7 +163,7 @@ cython_debug/
 #.idea/
 
 
-model_*/
+_Models/
 _logs/
 _log*/
 _Separated_Features/

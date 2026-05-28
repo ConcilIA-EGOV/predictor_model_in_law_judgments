@@ -54,19 +54,6 @@ SUPORTED_COLS = [
     # 'atraso',
 ]
 
-MODELS = [
-    "DecisionTree",
-    "RandomForest",
-    "GradientBoost",
-    "LinearRegression",
-    "NeuralNetork",
-    "SVM",
-    "NaiveBayes",
-]
-# diretório para salvar os modelos treinados
-MODELS_FOLDERS = {mn: f"model_{mn}/" for mn in MODELS}
-MODELS_FILES = {mn: f"{MODELS_FOLDERS[mn]}_Model.pkl" for mn in MODELS}
-
 DT_PARAMS = {
     'random_state': RANDOM_STATE,
     'splitter': 'best',
@@ -123,20 +110,6 @@ GB_PARAMS = {
     "ccp_alpha": 0.0,
 }
 
-SVM_PARAMS = {
-    "kernel":  'poly', # ‘poly’, ‘rbf’, ‘sigmoid’, ‘linear’, ‘precomputed’
-    "degree":  3, # only for 'poly' kernel
-    "gamma":  'scale', # ‘scale’ (1/(N*X.var())) or ‘auto’ (1/N)
-    "coef0":  0.0, # for ‘poly’ and ‘sigmoid’
-    "tol":  0.001,
-    "C":  1.0, # Regularization parameter for rbf
-    "epsilon":  0.1, # epsilon-tube within which no penalty is associated in the training loss function
-    "shrinking":  True,
-    "cache_size":  200,
-    "verbose":  False,
-    "max_iter":  -1,
-}
-
 NN_PARAMS = {
     "loss": 'squared_error',
     "hidden_layer_sizes": (100, ),
@@ -164,6 +137,20 @@ NN_PARAMS = {
     "max_fun": 15000
 }
 
+SVM_PARAMS = {
+    "kernel":  'poly', # ‘poly’, ‘rbf’, ‘sigmoid’, ‘linear’, ‘precomputed’
+    "degree":  3, # only for 'poly' kernel
+    "gamma":  'scale', # ‘scale’ (1/(N*X.var())) or ‘auto’ (1/N)
+    "coef0":  0.0, # for ‘poly’ and ‘sigmoid’
+    "tol":  0.001,
+    "C":  1.0, # Regularization parameter for rbf
+    "epsilon":  0.1, # epsilon-tube within which no penalty is associated in the training loss function
+    "shrinking":  True,
+    "cache_size":  200,
+    "verbose":  False,
+    "max_iter":  -1,
+}
+
 NB_PARAMS = {
     "priors": None, # Prior probabilities of the classes. If specified, the priors are not adjusted according to the data.
     "var_smoothing": 1e-09, # Portion of the largest variance of all features that is added to variances for calculation stability.
@@ -178,6 +165,122 @@ MODELS_PARAMS = {
     "SVM": SVM_PARAMS,
     "NaiveBayes": NB_PARAMS,
 }
+
+param_grid_DecisionTree = {
+    'criterion': ['squared_error'],
+    'splitter': ['best'],
+    'max_depth': [None, 3, 5, 10],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 3, 5],
+    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
+    'max_features': [None, 'sqrt', 'log2', 1.0],
+    'random_state': [RANDOM_STATE],
+    'max_leaf_nodes': [None, 10, 30, 50],
+    'min_impurity_decrease': [0.0, 0.01, 0.1],
+    'ccp_alpha': [0.0, 0.01, 0.1, 0.5],
+}
+param_grid_RandForest = {
+    'n_estimators': [200, 330, 400],
+    'criterion': ['squared_error'],
+    'max_depth': [None, 3, 5, 10],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 3, 5],
+    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
+    'max_features': [None, 'sqrt', 'log2', 1.0],
+    'max_leaf_nodes': [None, 10, 30, 50],
+    'min_impurity_decrease': [0.0, 0.01, 0.1],
+    'bootstrap': [True, False],
+    'oob_score': [True, False],
+    'n_jobs': [-1],
+    'random_state': [RANDOM_STATE],
+    'verbose': [0],
+    'warm_start': [False, True],
+    'ccp_alpha': [0.0, 0.01, 0.1, 0.5],
+    'max_samples': [None, 0.5, 0.75, 1.0]
+}
+param_grid_GBoost = {
+    "loss": 'squared_error',
+    "learning_rate": [0.01, 0.1],
+    "n_estimators": [100, 200, 300],
+    "subsample": [0.5, 1.0],
+    "criterion": ['friedman_mse'],
+    'max_depth': [None, 3, 5, 10],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 3, 5],
+    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
+    'min_impurity_decrease': [0.0, 0.01, 0.1],
+    "init": [None, 'zero'],
+    'max_features': [None, 'sqrt', 'log2', 1.0],
+    'random_state': [RANDOM_STATE],
+    'max_leaf_nodes': [None, 10, 30, 50],
+    'verbose': [0],
+    'warm_start': [False, True],
+    "tol": [0.01, 0.0001],
+    'ccp_alpha': [0.0, 0.01, 0.1, 0.5],
+
+}
+param_grid_LinearReg = {
+    "fit_intercept": [True],
+    "copy_X": [True],
+    "tol": [1e-03, 1e-05, 1e-6],
+    "n_jobs": [-1],
+    "positive": [False, True],
+
+}
+param_grid_NN = {
+    "loss": ['squared_error'],
+    "hidden_layer_sizes": [(50, ), (100, ), (200, ) ],
+    "activation": ['relu', 'identity', 'tanh', 'logistic'],
+    "solver": ['lbfgs', 'sgd', 'adam'],
+    "alpha": [0.1, 0.01, 0.0001],
+    "batch_size": ['auto', 32],
+    "learning_rate": ['invscaling', 'adaptive'],
+    "learning_rate_init": [0.1, 0.001],
+    "power_t": [0.1, 0.5, 1.0],
+    "max_iter": [200, 1000, 10000],
+    "shuffle": [True],
+    "random_state": RANDOM_STATE,
+    "tol": [0.01, 0.0001],
+    "verbose": [False],
+    "momentum": [0.1, 0.9],
+    "early_stopping": [True, False],
+
+}
+param_grid_SVM = {
+    "kernel":  ['poly', 'rbf', 'sigmoid', 'linear', 'precomputed'],
+    "degree":  [2, 3, 5],
+    "gamma":  ['scale', 'auto'],
+    "coef0":  [0.0],
+    "tol":  [0.0001, 0.01],
+    "C":  [0.2, 0.5, 1.0],
+    "epsilon":  [0.0, 0.01, 0.1, 0.5],
+    "shrinking":  [True, False],
+    "cache_size":  [200],
+    "verbose":  [False],
+    "max_iter":  [1000, -1],
+
+}
+param_grid_NB = {
+    "priors": [None],
+    "var_smoothing": [1e-5, 1e-09, 1e-10],
+}
+
+PARAM_GRIDS = {
+    'RandomForest': param_grid_RandForest,
+    'DecisionTree': param_grid_DecisionTree,
+    "GradientBoost": param_grid_GBoost,
+    "LinearRegression": param_grid_LinearReg,
+    "NeuralNetork": param_grid_NN,
+    "SVM": param_grid_SVM,
+    "NaiveBayes": param_grid_NB,
+}
+
+
+# diretório para salvar os modelos treinados
+OUT_PATH = f"_Models/"
+BEST_MODEL_PATH = f"{OUT_PATH}_Best_Model.pkl"
+MODELS_FOLDERS = {mn: f"{OUT_PATH}model_{mn}/" for mn in PARAM_GRIDS.keys()}
+MODELS_FILES = {mn: f"{MODELS_FOLDERS[mn]}_Model.pkl" for mn in PARAM_GRIDS.keys()}
 
 start_data_log = {
     "Numero de Instancias Originais": 0,
@@ -205,45 +308,4 @@ start_data_log = {
     "Valor Medio Pos-Balanceamento": 0,
     "Tamanho do Conjunto de Treino": 0,
     "Tamanho do Conjunto de Teste": 0
-}
-
-param_grid_RandForest = {
-    'n_estimators': [200, 330, 400],
-    'criterion': ['squared_error', 'absolute_error', 'friedman_mse', 'poisson'],
-    'max_depth': [None, 10, 15, 20],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
-    'max_features': ['sqrt', 'log2', None, 1.0],
-    'max_leaf_nodes': [None, 10, 20, 30],
-    'min_impurity_decrease': [0.0, 0.1, 0.2],
-    'bootstrap': [True, False],
-    'oob_score': [True, False],
-    'n_jobs': [-1],
-    'random_state': [RANDOM_STATE],
-    'verbose': [0],
-    'warm_start': [False, True],
-    'ccp_alpha': [0.0, 0.1, 0.2],
-    'max_samples': [None, 0.5, 0.75, 1.0]
-}
-
-
-param_grid_DecisionTree = {
-    'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
-    'splitter': 'best',
-    'max_depth': [None, 5, 10, 15],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'min_weight_fraction_leaf': [0.0, 0.1, 0.2],
-    'max_features': [None, 'sqrt', 'log2', 1.0],
-    'random_state': [RANDOM_STATE],
-    'max_leaf_nodes': [None, 10, 20, 30],
-    'min_impurity_decrease': [0.0, 0.1, 0.2],
-    'ccp_alpha': [0.0, 0.1, 0.2]
-}
-
-
-param_grids = {
-    'RandomForest': param_grid_RandForest,
-    'DecisionTree': param_grid_DecisionTree
 }
