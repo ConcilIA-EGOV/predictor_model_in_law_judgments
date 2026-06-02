@@ -104,7 +104,7 @@ def main(models_names: list[str]):
                 print("-> Exportando árvore de decisão para Graphviz...")
                 export_tree_to_graphviz(model, X_train.columns, MODELS_FOLDERS[mn])
 
-    df = pd.DataFrame(model_results, columns=results_cols)
+    df = pd.DataFrame(model_results, columns=results_cols).sort_values(by="RMSE")
     df.to_csv(f"{OUT_PATH}_Final_Results.csv", index=False)
     dump(best_model, f"{BEST_MODEL_PATH}")
 

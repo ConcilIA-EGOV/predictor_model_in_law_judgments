@@ -16,7 +16,8 @@ import pandas as pd
 from util.parameters import FILE_PATH, LOG_DATA_PATH
 from util.parameters import BEST_MODEL_PATH, OUT_PATH
 from src.formatation.preprocessing import load_data
-from src.training import MODELS
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def get_values(model, X_train, X_test) -> shap.Explanation | list[shap.Explanation]:
@@ -30,8 +31,9 @@ def get_values(model, X_train, X_test) -> shap.Explanation | list[shap.Explanati
     - shap_values: The SHAP values for the test data.
     """
 
-    # Create a SHAP explainer
-    explainer = shap.Explainer(model, X_train)
+    # Create a SHAP explainer]
+    mask = shap.maskers.Independent(X_train, max_samples=1000)
+    explainer = shap.Explainer(model.predict, masker=mask)
     # Calculate SHAP values
     shap_values = explainer(X_test)
     # Save the SHAP values to a file

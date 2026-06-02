@@ -199,7 +199,7 @@ param_grid_RandForest = {
     'max_samples': [None, 0.5, 0.75, 1.0]
 }
 param_grid_GBoost = {
-    "loss": 'squared_error',
+    "loss": ['squared_error'],
     "learning_rate": [0.01, 0.1],
     "n_estimators": [100, 200, 300],
     "subsample": [0.5, 1.0],
@@ -239,7 +239,7 @@ param_grid_NN = {
     "power_t": [0.1, 0.5, 1.0],
     "max_iter": [200, 1000, 10000],
     "shuffle": [True],
-    "random_state": RANDOM_STATE,
+    "random_state": [RANDOM_STATE],
     "tol": [0.01, 0.0001],
     "verbose": [False],
     "momentum": [0.1, 0.9],
@@ -247,7 +247,7 @@ param_grid_NN = {
 
 }
 param_grid_SVM = {
-    "kernel":  ['poly', 'rbf', 'sigmoid', 'linear', 'precomputed'],
+    "kernel":  ['poly', 'rbf', 'sigmoid', 'linear'],
     "degree":  [2, 3, 5],
     "gamma":  ['scale', 'auto'],
     "coef0":  [0.0],

@@ -18,19 +18,22 @@ from sklearn.neural_network import MLPRegressor
 # https://scikit-learn.org/stable/modules/naive_bayes.html
 from sklearn.naive_bayes import GaussianNB
 # https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV
-from sklearn.model_selection import GridSearchCV
 
-from src.util.parameters import PARAM_GRIDS
+# now you can import normally from model_selection
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import ParameterGrid
+
+from src.util.parameters import PARAM_GRIDS, RANDOM_STATE
 from util.log_aux import get_data_log
 
 MODELS = {
-    "DecisionTree": DecisionTreeRegressor,
-    "RandomForest": RandomForestRegressor,
     "GradientBoost": GradientBoostingRegressor,
+    "RandomForest": RandomForestRegressor,
+    "DecisionTree": DecisionTreeRegressor,
     "LinearRegression": LinearRegression,
     "NeuralNetork": MLPRegressor,
-    "SVM": SVR,
     "NaiveBayes": GaussianNB,
+    "SVM": SVR,
 }
 
 def grid_search(model_name: str, X, y) -> tuple:
@@ -43,15 +46,18 @@ def grid_search(model_name: str, X, y) -> tuple:
         raise Exception("Model name not suported for custom grid_search function")
 
     # Realizar a busca em grade
-    grid_search = GridSearchCV(
+    grid_search = RandomizedSearchCV(
         verbose=0,
         n_jobs=-1,
         refit=True,
         cv=5,
         estimator=MODELS[model_name](),
-        param_grid=PARAM_GRIDS[model_name],
+        param_distributions=PARAM_GRIDS[model_name],
+        # param_grid=PARAM_GRIDS[model_name],
         scoring='neg_root_mean_squared_error',
+        random_state=RANDOM_STATE,        
     )
+    print(f"    -> {len(list(ParameterGrid(PARAM_GRIDS[model_name])))} Combinações de Parâmetros", end="\r")
     grid_search.fit(X, y)
 
     # Melhor combinação de hiperparâmetros
