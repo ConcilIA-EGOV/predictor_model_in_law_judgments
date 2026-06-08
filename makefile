@@ -8,8 +8,11 @@ all:
 
 run:
 	@rm -rf _logs
-	@rm -rf _Model_*
-	@python main.py
+	@mkdir -p _logs
+	@rm -rf _Models*
+	@mkdir -p _Models
+	@python main.py > _logs/log.txt
+	@ cat _logs/log.txt
 
 SENT=0
 shap:
